@@ -302,7 +302,7 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1217094, 232447),
             tags = "[important][bleed][physical_debuff]",
         }, { -- Throw Axe
-            text = format(L["Avoid {spell:%d} when {npc:%d} throws axe."], 1216848, 236891),
+            text = format(L["Avoid {spell:%d} when {npc:%d} throws axe."], 1217094, 232447),
             tags = "[important][targeted_avoid]",
         }, { -- Bolstering Flames
             text = format(L["{spell:%d} buff on {npc:%d}."], 1216860, 236891),

@@ -1,3 +1,7 @@
+## 1.1.3
+# Fixes
+* Windrunner Spire: avoid Throw Axe corrected spell and npc id
+* Correctly update Utility Window when Hunter and Warlock changes pets
 ## 1.1.2
 # Miscellaneous
 * The window is now click-through when it is locked.
