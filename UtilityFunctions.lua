@@ -60,12 +60,19 @@ MythicPlusUtility.globals = {
     unlearnAbility = {
         labelList = {default = "\"-\"", defaultText = L["\"Remove\""], none = L["None"], custom = L["Custom_text"]},
     },
-    needAbility = {labelList = {default = "\"+\"", defaultText = L["\"Add\""], none = L["None"], custom = L["Custom_text"]}},
+    needAbility = {
+        labelList = {default = "\"+\"", defaultText = L["\"Add\""], none = L["None"], custom = L["Custom_text"]},
+    },
     onlyNotImportantAbility = {
         labelList = {default = "\"?\"", defaultText = L["\"Optional\""], none = L["None"], custom = L["Custom_text"]},
     },
     needOnlyNotImportantAbility = {
-        labelList = {default = "\"+?\"", defaultText = L["\"Add Optional\""], none = L["None"], custom = L["Custom_text"]},
+        labelList = {
+            default = "\"+?\"",
+            defaultText = L["\"Add Optional\""],
+            none = L["None"],
+            custom = L["Custom_text"],
+        },
     },
     learnedAbility = {
         labelList = {default = "\"*\"", defaultText = L["\"Known\""], none = L["None"], custom = L["Custom_text"]},
@@ -433,7 +440,7 @@ function MythicPlusUtility:UpdateCurrentAbilitiesList(petOnly)
     petOnly = petOnly or false
 
     for _, entry in pairs(self.currentAbilitiesList) do
-        if not (petOnly and entry.pet) and (not entry.racial) then
+        if (not petOnly or entry.pet) and not entry.racial then
 
             if not (entry.alternatives and #entry.alternatives > 0) then
                 entry.isKnown = MythicPlusUtility:IsSpellKnownHandler(entry.spellId, entry.pet)
@@ -465,7 +472,7 @@ function MythicPlusUtility:UpdateCurrentAbilitiesList(petOnly)
     end
 
     for _, entry in pairs(self.currentAbilitiesList) do
-        if not (petOnly and entry.pet) and (not entry.racial) then
+        if (not petOnly or entry.pet) and not entry.racial then
             if entry.override and entry.isKnown and (self.utilityAbilities[self.db.char.class][entry.override]
               or self.utilityAbilities[self.db.char.currentSpec][entry.override]) then
                 for _, subEntry in pairs(self.currentAbilitiesList) do
