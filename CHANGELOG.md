@@ -1,3 +1,6 @@
+## 1.1.4
+# Localisation
+* Added French localisation. Thanks, kaelmnop!
 ## 1.1.3
 # Fixes
 * Windrunner Spire: avoid Throw Axe corrected spell and npc id
