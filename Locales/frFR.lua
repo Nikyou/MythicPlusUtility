@@ -1,4 +1,5 @@
 local L = LibStub("AceLocale-3.0"):NewLocale("MythicPlusUtility", "frFR")
+if not L then return end
 
 -- Options
 L["Toggle Window"] = "Afficher/Masquer la fenêtre"
