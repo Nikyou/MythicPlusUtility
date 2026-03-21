@@ -149,7 +149,7 @@ MythicPlusUtility.utilityAbilities = {
         }, -- Sleep Walk
         [365585] = {tags = "[poison]", baseline = true}, -- Expunge
         [368970] = {tags = "[creature_stun]", baseline = true}, -- Tail Swipe
-        [374251] = {tags = "[bleed][poison][curse][disease]"}, -- Cauterizing Flame
+        [374251] = {tags = "[bleed][poison][curse][disease]", baseline = true}, -- Cauterizing Flame
         [374346] = {tags = "[enrage]"}, -- Overawe
         [387341] = {tags = "[creature_slow]"}, -- Walloping Blow
     },

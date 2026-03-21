@@ -4,9 +4,7 @@ MythicPlusUtility.instancesData = {
     [2526] = { -- Algeth'ar Academy
         -- Boss
         { -- Branch Out
-            text = format(
-              L["{spell:%d} debuff is inflicted on the first boss {npc:%d}. Also, this debuff can be avoided."], 388623,
-              196482),
+            text = format(L["{spell:%d} debuff is inflicted on the first boss {npc:%d}."], 388623, 196482),
             tags = "[bleed][physical_debuff]",
         }, { -- Lasher Toxin
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d} on the first boss {npc:%d}."], 389033, 197398,

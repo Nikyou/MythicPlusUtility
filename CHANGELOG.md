@@ -1,3 +1,8 @@
+## 1.1.6
+# Dungeon Entries
+* Algeth'ar Academy: Updated Branch Out debuff text.
+# Spells
+* Evoker: Cauterizing Flame will no longer be shown for removal.
 ## 1.1.5
 # Fixes
 * Utility Window does not autoshow in Nexus-Point Xenas
