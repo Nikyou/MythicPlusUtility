@@ -263,7 +263,7 @@ MythicPlusUtility.options = {
             name = L["Dungeon Preview"],
             get = "GetValueInstance",
             set = "SetValueInstance",
-            sorting = {2526, 2811, 2874, 123, 658, 1753, 1209, 2805},
+            sorting = {2526, 2811, 2874, 2915, 658, 1753, 1209, 2805},
             values = MythicPlusUtility.dungeonIdToName,
         },
         buttonCosmeticGroup = {

@@ -1,3 +1,6 @@
+## 1.1.5
+# Fixes
+* Utility Window does not autoshow in Nexus-Point Xenas
 ## 1.1.4
 # Localisation
 * Added French localisation. Thanks, kaelmnop!

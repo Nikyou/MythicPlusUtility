@@ -135,7 +135,7 @@ MythicPlusUtility.instancesData = {
             tags = "[targeted_avoid]",
         },
     },
-    [123] = { -- Nexus-Point Xenas
+    [2915] = { -- Nexus-Point Xenas
         -- Boss
         -- Trash
         { -- Supression Field
