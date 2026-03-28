@@ -27,16 +27,16 @@ local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("MythicPlusUtility", {
 })
 
 function MythicPlusUtility:InitializeMinimapIcon()
-    minimapIcon:Register("MythicPlusUtility", LDB, self.db.global.minimap)
-    if not self.db.global.minimap.hide then minimapIcon:Show("MythicPlusUtility") end
+    minimapIcon:Register("MythicPlusUtility", LDB, self.db.profile.minimap)
+    if self.db.profile.minimap.show then minimapIcon:Show("MythicPlusUtility") end
 end
 
 function MythicPlusUtility:ToggleMinimapIcon()
-    self.db.global.minimap.hide = not self.db.global.minimap.hide
+    self.db.profile.minimap.show = not self.db.profile.minimap.show
 
-    if self.db.global.minimap.hide then
-        minimapIcon:Hide("MythicPlusUtility")
-    else
+    if self.db.profile.minimap.show then
         minimapIcon:Show("MythicPlusUtility")
+    else
+        minimapIcon:Hide("MythicPlusUtility")
     end
 end

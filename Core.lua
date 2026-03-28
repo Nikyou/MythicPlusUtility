@@ -3,6 +3,7 @@ MythicPlusUtility = LibStub("AceAddon-3.0"):NewAddon("MythicPlusUtility", "AceEv
 local AC = LibStub("AceConfig-3.0")
 local ACD = LibStub("AceConfigDialog-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
+local minimapIcon = LibStub("LibDBIcon-1.0")
 
 function MythicPlusUtility:OnInitialize()
     self.db = LibStub("AceDB-3.0"):New("MythicPlusUtilityDB", self.defaults, true)
@@ -40,6 +41,7 @@ function MythicPlusUtility:MigrateOldSettings()
     -- Will clean up / change in a few updates
     local db = self.db.profile
     if not db.AddonName then db.AddonName = "MythicPlusUtility" end
+    if self.db.global.minimap then self.db.global.minimap = nil end
 
     local function migrateFrameSetting(oldSetting, newSetting)
         if db[oldSetting] then
@@ -73,7 +75,14 @@ function MythicPlusUtility:MigrateOldSettings()
     db.font = nil
 end
 
-function MythicPlusUtility:RefreshConfig() if self.Frame then self.Frame:ProfileChange() end end
+function MythicPlusUtility:RefreshConfig()
+    if self.db.profile.minimap.show then
+        minimapIcon:Show("MythicPlusUtility")
+    else
+        minimapIcon:Hide("MythicPlusUtility")
+    end
+    if self.Frame then self.Frame:ProfileChange() end
+end
 
 function MythicPlusUtility:OnEnable()
     self:RegisterEvent("ACTIVE_PLAYER_SPECIALIZATION_CHANGED")

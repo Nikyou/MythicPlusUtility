@@ -23,6 +23,7 @@ L["Hides dungeon entries that are marked with %s"] =
   "Скрывает записи в подземельях, помеченные %s"
 L["Dungeon Preview"] = "Просмотр подземелья"
 L["Show in"] = "Показывать в"
+L["Minimap Icon"] = "Значок миникарты"
 
 -- Difficulty
 L["Normal"] = "Обычный"

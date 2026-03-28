@@ -3,9 +3,9 @@ local LSM = LibStub("LibSharedMedia-3.0", true)
 local maxValue = MythicPlusUtility.globals.maxValue
 
 MythicPlusUtility.defaults = {
-    global = {minimap = {hide = false}},
     profile = {
         AddonName = "MythicPlusUtility",
+        minimap = {hide = false},
         toggleFrameLock = true,
         hideOnStart = true,
         frameBackground = {0, 0, 0, 0.5},
@@ -240,9 +240,16 @@ MythicPlusUtility.options = {
             get = "GetValue",
             set = "SetValue",
         },
-        hideNotImportant = {
+        minimap = {
             type = "toggle",
             order = 3,
+            name = L["Minimap Icon"],
+            get = function(info) return MythicPlusUtility.db.profile.minimap.show end,
+            set = function(info, value) MythicPlusUtility:ToggleMinimapIcon() end,
+        },
+        hideNotImportant = {
+            type = "toggle",
+            order = 13,
             name = L["Hide not Important"],
             desc = format(L["Hides dungeon entries that are marked with %s"],
                           CreateAtlasMarkup("map-icon-ignored-bluequestion")),
@@ -251,7 +258,7 @@ MythicPlusUtility.options = {
         },
         difficultyID = {
             type = "multiselect",
-            order = 13,
+            order = 14,
             name = L["Show in"],
             get = "GetValueDifficulty",
             set = "SetValueDifficulty",

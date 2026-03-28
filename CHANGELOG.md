@@ -1,3 +1,6 @@
+## 1.1.7
+# New Options
+* Added show minimap button in options
 ## 1.1.6
 # Dungeon Entries
 * Algeth'ar Academy: Updated Branch Out debuff text.
