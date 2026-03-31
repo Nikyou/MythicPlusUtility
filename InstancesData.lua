@@ -91,10 +91,6 @@ MythicPlusUtility.instancesData = {
         }, { -- Soulbind
             text = format(L["Avoid {spell:%d} when totem starts channeling on the last boss {npc:%d}."], 1252777, 248595),
             tags = "[important][targeted_avoid]",
-        }, { -- Unstable Phantom NPC
-            text = format(L["Prevent {npc:%d} from reaching players or other {npc:%d} on the second boss {npc:%d}."],
-                          250443, 250443, 248595),
-            tags = "[important][creature_slow]",
         }, { -- Cries of the Fallen
             text = format(L["{spell:%d} debuff is inflicted by contact with {npc:%d} on the last boss {npc:%d}."],
                           1254175, 1531, 248605),

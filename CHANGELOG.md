@@ -1,3 +1,9 @@
+## 1.1.8
+# Dungeon Entries
+* Maisara Caverns: removed slow for Unstable Phantom
+# Fixes
+* Added separate Intimidation for Marksmanship Hunter
+* Removed Mortal Wounds pet ability and Master's Call for Marksmanship Hunter
 ## 1.1.7
 # New Options
 * Added show minimap button in options

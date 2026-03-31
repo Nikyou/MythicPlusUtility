@@ -162,14 +162,19 @@ MythicPlusUtility.utilityAbilities = {
     }, -- Augmentation
     HUNTER = {
         [109215] = {tags = "[self_only][slow][snare][root]", baseline = true}, -- Posthaste
-        [109248] = {tags = "[creature_root]"}, -- Binding Shot
+        [109248] = {tags = "[creature_root]", baseline = true}, -- Binding Shot
         [1513] = {tags = "[cc_beast]"}, -- Scare Beast
         [1543] = {tags = "[stealth]", baseline = true}, -- Flare
         [187650] = {tags = "[creature_incapacitate]", baseline = true}, -- Freezing Trap
         [187698] = {tags = "[creature_slow]"}, -- Tar Trap
         [195645] = {tags = "[creature_slow]", alternatives = {5116}, baseline = true}, -- Wing Clip
-        [19577] = {tags = "[creature_stun]", baseline = true}, -- Intimidation
         [19801] = {tags = "[enrage][purge]"}, -- Tranquilizing Shot
+        [459517] = {tags = "[self_only][poison][disease]"}, -- Emergency Salve
+        [5384] = {tags = "[self_only][targeted_avoid]", baseline = true}, -- Feign Death
+        [781] = {tags = "[self_only][player_jump]", baseline = true}, -- Disengage
+    },
+    [253] = {
+        [19577] = {tags = "[creature_stun]", baseline = true}, -- Intimidation
         [24423] = {
             tags = "[creature_mortal_strike]",
             pet = true,
@@ -178,14 +183,23 @@ MythicPlusUtility.utilityAbilities = {
             },
             baseline = true,
         }, -- Mortal Wounds ability (pet)
-        [459517] = {tags = "[self_only][poison][disease]"}, -- Emergency Salve
         [53271] = {tags = "[slow][snare][root]", pet = true}, -- Master's Call (pet)
-        [5384] = {tags = "[self_only][targeted_avoid]", baseline = true}, -- Feign Death
-        [781] = {tags = "[self_only][player_jump]", baseline = true}, -- Disengage
-    },
-    [253] = {}, -- Beast Mastery
-    [254] = {}, -- Marksmanship
-    [255] = {}, -- Survival
+    }, -- Beast Mastery
+    [254] = {
+        [474421] = {tags = "[creature_stun]", baseline = true}, -- Intimidation
+    }, -- Marksmanship
+    [255] = {
+        [19577] = {tags = "[creature_stun]", baseline = true}, -- Intimidation
+        [24423] = {
+            tags = "[creature_mortal_strike]",
+            pet = true,
+            alternatives = {
+                263863, 159936, 160060, 263856, 263861, 279362, 160018, 263853, 54680, 263857, 263854, 263858,
+            },
+            baseline = true,
+        }, -- Mortal Wounds ability (pet)
+        [53271] = {tags = "[slow][snare][root]", pet = true}, -- Master's Call (pet)
+    }, -- Survival
     MAGE = {
         [110959] = {tags = "[self_only][targeted_avoid]"}, -- Greater Invisibility
         [113724] = {tags = "[creature_incapacitate]"}, -- Ring of Frost
