@@ -1,6 +1,8 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
 
 MythicPlusUtility.supportedTags = {
+    self_only = true, -- Ability that only works on the player
+
     cc_aberration = true, -- Aberration that needs a CC effect
     cc_beast = true, -- Beast that needs a CC effect
     cc_critter = true, -- Critter that needs a CC effect
@@ -12,6 +14,7 @@ MythicPlusUtility.supportedTags = {
     cc_mechanical = true, -- Mechanical that needs a CC effect
     cc_undead = true, -- Undead that needs a CC effect
     cc_other = true, -- Uncategorised creature that needs a CC effect
+
     creature_grip = true, -- Creature that needs a forced movement effect
     creature_root = true, -- Creature that needs a root effect
     creature_slow = true, -- Creature that needs a slow effect
@@ -19,6 +22,7 @@ MythicPlusUtility.supportedTags = {
     creature_fear = true, -- Creature that needs a fear effect
     creature_incapacitate = true, -- Creature that needs an incapacitation effect
     creature_mortal_strike = true, -- Creature that needs a mortal strike effect
+
     bleed = true, -- Removable bleed effect 
     charm = true, -- Removable charm effect
     curse = true, -- Removable curse effect
@@ -35,13 +39,14 @@ MythicPlusUtility.supportedTags = {
     snare_jet = true, -- Removable snare effect with Jet Sream (Shaman talent, special case)
     stealth = true, -- Removable stealth effect
     stun = true, -- Removable stun effect
+
     player_jump = true, -- Mechanic that can be prevented by player using "jump" ability
     player_movement_immune = true, -- Mechanic that can be prevented by player using immunity to forced movement
-    self_only = true, -- Ability that only works on the player
-    -- important = true, -- Sets entry as important
-    -- super_important = true, -- Sets entry as super important
-    -- spell_reflect = true, -- Can be spell reflected
+
     targeted_avoid = true, -- Targeted ability that can be avoided with FD, Shadowmeld, etc.
+
+    magic_debuff = true, -- Removable magical debuff, not simply type "magic"
+    physical_debuf = true, -- Removable physical debuff
 }
 MythicPlusUtility.defaultDungeonId = 2526
 MythicPlusUtility.dungeonIdToName = {

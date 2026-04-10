@@ -135,6 +135,10 @@ MythicPlusUtility.instancesData = {
         { -- Supression Field
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 249081, 241647),
             tags = "[important][slow][snare][magic_debuff]",
+        }, { -- Supression Field
+            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."],
+                          249081, 241647),
+            tags = "[important][snare_jet]",
         }, { -- Entropic Leech
             text = format(L["Avoid {spell:%d} when {npc:%d} starts channeling."], 1252062, 241660),
             tags = "[targeted_avoid]",
@@ -163,10 +167,20 @@ MythicPlusUtility.instancesData = {
         -- Boss
         { -- Cryoshards
             text = format(L["{spell:%d} debuff is inflicted by the first boss {npc:%d}."], 1261921, 36494),
-            tags = "[important][slow][snare][snare_jet][magic_debuff]",
+            tags = "[important][slow][snare][magic_debuff]",
+        }, { -- Cryoshards
+            text = format(
+              L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed only from yourself."],
+              1261921, 36494),
+            tags = "[important][snare_jet]",
         }, { -- Shadowbind
             text = format(L["{spell:%d} debuff is inflicted by the second boss {npc:%d}."], 1264186, 36477),
-            tags = "[super_important][slow][snare][snare_jet][curse][magic_debuff]",
+            tags = "[super_important][slow][snare][curse][magic_debuff]",
+        }, { -- Shadowbind
+            text = format(
+              L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Debuff is removed only from yourself."],
+              1264186, 36477),
+            tags = "[super_important][snare_jet]",
         }, { -- Rotting Strikes
             text = format(L["{spell:%d} debuff is inflicted on the last boss {npc:%d}."], 1262930, 36658),
             tags = "[disease][physical_debuff]",
@@ -176,13 +190,17 @@ MythicPlusUtility.instancesData = {
             tags = "[important][curse][magic_debuff]",
         }, { -- Permeating Cold
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1258437, 252566),
-            tags = "[important][slow][snare][snare_jet][magic_debuff]",
+            tags = "[important][slow][snare][magic_debuff]",
+        }, { -- Permeating Cold
+            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."],
+                          1258437, 252566),
+            tags = "[important][snare_jet]",
         }, { -- Plungegrip
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1258997, 252707),
             tags = "[important][slow][root][physical_debuff]",
         }, { -- Plungegrip
             text = format(L["{spell:%d} is channeled by {npc:%d}. The caster is immune to CC while it has {spell:%d}"],
-                          1258997, 252707),
+                          1258997, 252707, 1271543),
             tags = "[important][creature_stun][creature_incapacitate][creature_grip]",
         }, { -- Necromantic Infusion
             text = format(L["{spell:%d} buff is cast by {npc:%d}."], 1258448, 252551),
@@ -222,7 +240,11 @@ MythicPlusUtility.instancesData = {
             tags = "[enrage]",
         }, { -- Chains of Subjugation
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1262509, 124171),
-            tags = "[important][slow][snare][snare_jet][magic_debuff]",
+            tags = "[important][slow][snare][magic_debuff]",
+        }, { -- Chains of Subjugation
+            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."],
+                          1262509, 124171),
+            tags = "[important][snare_jet]",
         }, { -- Devouring Frenzy
             text = format(L["{spell:%d} is cast by {npc:%d}."], 1264678, 255320),
             tags = "[creature_mortal_strike]",
@@ -245,6 +267,10 @@ MythicPlusUtility.instancesData = {
         }, { -- Solar Zealot NPC
             text = format(L["Stun {npc:%d} on the last boss {npc:%d}."], 76267, 76266),
             tags = "[creature_stun][creature_fear][creature_incapacitate]",
+        }, { -- Solar Zealot NPC Jump
+            text = format(L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss {npc:%d}."],
+                          76267, 76266),
+            tags = "[player_jump]",
         }, -- Trash
         { -- Blade Rush
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1254475, 79303),
@@ -258,6 +284,9 @@ MythicPlusUtility.instancesData = {
         }, { -- Solar Flame
             text = format(L["Avoid {spell:%d} when {npc:%d} starts channeling."], 1253446, 76087),
             tags = "[important][targeted_avoid]",
+        }, { -- Wind Maze
+            text = format(L["Skips part of the wind maze after the third boss {npc:%d}."], 76379),
+            tags = "[important][player_jump][player_movement_immune]",
         }, { -- Bloodcrazed
             text = format(L["{spell:%d} is cast by {npc:%d}."], 1254690, 79093),
             tags = "[creature_slow]",

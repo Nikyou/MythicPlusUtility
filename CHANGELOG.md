@@ -1,3 +1,9 @@
+## 1.1.9
+# Dungeon Entries
+* Skyreach: Added dungeon entry for skipping part of the wind maze after the third boss.
+* Skyreach: Added dungeon entry for jump on the last boss.
+# Fixes
+* Dungeon entries with Jet Stream (Shaman) now say that they only work on yourself.
 ## 1.1.8
 # Dungeon Entries
 * Maisara Caverns: removed slow for Unstable Phantom
