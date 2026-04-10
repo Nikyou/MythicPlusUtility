@@ -10,6 +10,9 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d} on the first boss {npc:%d}."], 389033, 197398,
                           196482),
             tags = "[important][poison][magic_debuff]",
+        }, { -- Savage Peck
+            text = format(L["{spell:%d} debuff is inflicted by the second boss {npc:%d}."], 191736, 376997),
+            tags = "[bleed][physical_debuff]",
         }, { -- Power Vacuum
             text = format(L["Mitigates effects of {spell:%d} on the last boss {npc:%d}."], 388822, 190609),
             tags = "[important][player_jump][player_movement_immune]",
@@ -64,6 +67,9 @@ MythicPlusUtility.instancesData = {
         { -- Arcane Blade
             text = format(L["{spell:%d} buff on {npc:%d}."], 1252909, 234124),
             tags = "[important][purge]",
+        }, { -- Runic Glaive
+            text = format(L["Avoid {spell:%d} when {npc:%d} throws glaive."], 240973, 1244907),
+            tags = "[targeted_avoid]",
         }, { -- Terror Wave
             text = format(
               L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted and LoS."],
@@ -99,7 +105,7 @@ MythicPlusUtility.instancesData = {
         { -- Ritual Sacrifice
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1259794, 253683),
             tags = "[super_important][slow][root][magic_debuff]",
-        }, { -- Bloody Frenzy
+        }, { -- Blood Frenzy
             text = format(L["{spell:%d} buff on {npc:%d}."], 1255765, 248684),
             tags = "[enrage]",
         }, { -- Frost Nova
@@ -197,7 +203,7 @@ MythicPlusUtility.instancesData = {
             tags = "[important][snare_jet]",
         }, { -- Plungegrip
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1258997, 252707),
-            tags = "[important][slow][root][physical_debuff]",
+            tags = "[super_important][slow][root][physical_debuff]",
         }, { -- Plungegrip
             text = format(L["{spell:%d} is channeled by {npc:%d}. The caster is immune to CC while it has {spell:%d}"],
                           1258997, 252707, 1271543),
@@ -313,7 +319,7 @@ MythicPlusUtility.instancesData = {
             tags = "[fear]",
         }, { -- Bolt Gale
             text = format(L["Avoid {spell:%d} when the last boss {npc:%d} starts channeling."], 474528, 231636),
-            tags = "[important][targeted_avoid]",
+            tags = "[targeted_avoid]",
         }, -- Trash
         { -- Emphemeral Bloodlust
             text = format(L["{spell:%d} buff is cast by {npc:%d}."], 1216459, 232146),
@@ -324,6 +330,10 @@ MythicPlusUtility.instancesData = {
         }, { -- Fire Spit
             text = format(L["{spell:%d} is channeled by {npc:%d}."], 1216848, 236891),
             tags = "[important][creature_stun][creature_fear][creature_incapacitate][creature_grip]",
+        }, { -- Poison Blades
+            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."], 473794,
+                          232171),
+            tags = "[important][poison][magic_debuff]",
         }, { -- Throw Axe
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1217094, 232447),
             tags = "[important][bleed][physical_debuff]",

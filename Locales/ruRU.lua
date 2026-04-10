@@ -232,6 +232,8 @@ L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed 
   "{spell:%d} дебафф, который накладывает первый босс {npc:%d}. Дебафф снимается только с себя."
 L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Debuff is removed only from yourself."] =
   "{spell:%d} дебафф, который накладывает второй босс {npc:%d}. Дебафф снимается только с себя."
+L["Avoid {spell:%d} when {npc:%d} throws glaive."] =
+  "Избегите {spell:%d}, когда {npc:%d} кинет глефу."
 L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss {npc:%d}."] =
   "Прыгните обратно на платформу, если вас сбросил {npc:%d} на последнем боссе {npc:%d}."
 L["Skips part of the wind maze after the third boss {npc:%d}."] =

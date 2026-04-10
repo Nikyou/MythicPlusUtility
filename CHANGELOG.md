@@ -1,7 +1,10 @@
 ## 1.1.9
 # Dungeon Entries
+* Algeth'ar Academy: Added dungeon entry for Savage Peck
+* Magisters' Terrace: Added dungeon entry to avoid Runic Glaive
 * Skyreach: Added dungeon entry for skipping part of the wind maze after the third boss.
 * Skyreach: Added dungeon entry for jump on the last boss.
+* Windrunner Spire: Added dungeon entry for Poison Blades
 # Fixes
 * Dungeon entries with Jet Stream (Shaman) now say that they only work on yourself.
 ## 1.1.8
