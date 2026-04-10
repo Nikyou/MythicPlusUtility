@@ -1,5 +1,5 @@
-?[group] - Ability/effect applicable on group
 [self_only] - Ability that only works on the player
+
 [cc_aberration] - Aberration that needs a CC effect
 [cc_beast] - Beast that needs a CC effect
 [cc_critter] - Critter that needs a CC effect
@@ -11,6 +11,7 @@
 [cc_mechanical] - Mechanical that needs a CC effect
 [cc_undead] - Undead that needs a CC effect
 [cc_other] - Uncategorised creature that needs a CC effect
+
 [creature_grip] - Creature that needs a forced movement effect
 [creature_root] - Creature that needs a root effect
 [creature_slow] - Creature that needs a slow effect
@@ -18,6 +19,7 @@
 [creature_fear] - Creature that needs a fear effect
 [creature_incapacitate] - Creature that needs an incapacitation effect
 [creature_mortal_strike] - Creature that needs a mortal strike effect
+
 [bleed] - Removable bleed effect 
 [charm] - Removable charm effect
 [curse] - Removable curse effect
@@ -31,13 +33,17 @@
 [slow] - Removable slow effect
 [root]  - Removable root effect
 [snare] - Removable snare effect
+[snare_jet] - Removable snare effect with Jet Sream (Shaman talent, special case)
 [stealth] - Removable stealth effect
+[stun] - Removable stun effect
+
 [player_jump] - Mechanic that can be prevented by player using "jump" ability
 [player_movement_immune] - Mechanic that can be prevented by player using immunity to forced movement
+
 [important] - Sets entry as important
 [super_important] - Sets entry as super important
 
-[spell_reflect] - Can be spell reflected
+-[spell_reflect] - Can be spell reflected
 [targeted_avoid] - Targeted ability that can be avoided with FD, Shadowmeld, etc.
 
 [magic_debuff] - Removable magical debuff, not simply type "magic"

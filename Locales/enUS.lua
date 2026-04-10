@@ -180,3 +180,11 @@ L["Thickness"] = true
 L["Type"] = true
 L["Wrap"] = true
 L["Profiles"] = true
+
+-- 1.1.9
+L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."] = true
+L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed only from yourself."] = true
+L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Debuff is removed only from yourself."] = true
+L["Avoid {spell:%d} when {npc:%d} throws glaive."] = true
+L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss {npc:%d}."] = true
+L["Skips part of the wind maze after the third boss {npc:%d}."] = true

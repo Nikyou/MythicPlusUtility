@@ -153,7 +153,8 @@ L["Currently known abilities that will be useful for this dungeon."] =
   "Изученные способности, которые будут полезны в этом подземелье"
 L["Currently not known abilities that will be useful in this dungeon and only contain dungeon entries that are marked with %s. If disabled, \"Add\" settings will be used."] =
   "Неизученные способности, которые будут полезны в этом подземелье, и содержат только записи, помеченные %s. Если эта опция отключена, будут использоваться настройки \"Взять\""
-L["Currently not known abilities that will be useful in this dungeon."] = "Неизученные способности, которые будут полезны в этом подземелье"
+L["Currently not known abilities that will be useful in this dungeon."] =
+  "Неизученные способности, которые будут полезны в этом подземелье"
 L["Custom Text Settings"] = "Пользовательские настройки текста"
 L["Custom Text"] = "Пользовательский текст"
 L["Custom_text"] = "Свой"
@@ -187,11 +188,13 @@ L["Max Height"] = "Максимальная высота"
 L["Monochrome Outline"] = "Монохромный край; контур"
 L["Monochrome Thick Outline"] = "Монохр-й край; толстый контур"
 L["Monochrome"] = "Монохромный край"
-L["No utility abilities for this dungeon"] = "Для этого подземелья нет вспомогательных способностей"
+L["No utility abilities for this dungeon"] =
+  "Для этого подземелья нет вспомогательных способностей"
 L["None"] = "Ничего"
 L["Outline"] = "Контур"
 L["Overflow"] = "Переполнение"
-L["Paste Import String (replaces current profile)"] = "Вставьте строку импорта (заменит текущий профиль)"
+L["Paste Import String (replaces current profile)"] =
+  "Вставьте строку импорта (заменит текущий профиль)"
 L["Pixel Glow"] = "Пиксельное свечение"
 L["Position Settings"] = "Настройки расположения"
 L["Remove"] = "Убрать"
@@ -199,7 +202,8 @@ L["Reverse Type"] = "В обратном порядке по типу"
 L["Scale"] = "Масштаб"
 L["Set as white (#FFFFFF) to not change icon color"] =
   "Белый (#FFFFFF), чтобы не менять цвет иконки"
-L["Set to negative to inverse direction of rotation"] = "Отрицательное значение изменит направление вращения"
+L["Set to negative to inverse direction of rotation"] =
+  "Отрицательное значение изменит направление вращения"
 L["Shadow Color"] = "Цвет тени"
 L["Shadow Settings"] = "Настройки тени"
 L["Shadow X-Offset"] = "Смещение тени по X"
@@ -220,3 +224,17 @@ L["Thickness"] = "Толщина"
 L["Type"] = "По типу"
 L["Wrap"] = "Переносить слова"
 L["Profiles"] = "Профили"
+
+-- 1.1.9
+L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."] =
+  "{spell:%d} дебафф, который накладывает {npc:%d}. Дебафф снимается только с себя."
+L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed only from yourself."] =
+  "{spell:%d} дебафф, который накладывает первый босс {npc:%d}. Дебафф снимается только с себя."
+L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Debuff is removed only from yourself."] =
+  "{spell:%d} дебафф, который накладывает второй босс {npc:%d}. Дебафф снимается только с себя."
+L["Avoid {spell:%d} when {npc:%d} throws glaive."] =
+  "Избегите {spell:%d}, когда {npc:%d} кинет глефу."
+L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss {npc:%d}."] =
+  "Прыгните обратно на платформу, если вас сбросил {npc:%d} на последнем боссе {npc:%d}."
+L["Skips part of the wind maze after the third boss {npc:%d}."] =
+  "Пропускает часть лабиринта ветра после третьего босса {npc:%d}."

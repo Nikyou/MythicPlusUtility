@@ -303,7 +303,7 @@ MythicPlusUtility.utilityAbilities = {
             tags = "[cc_aberration][cc_beast][cc_critter][cc_demon][cc_dragonkin][cc_elemental][cc_giant][cc_humanoid][cc_mechanical][cc_undead][cc_other][creature_incapacitate]",
             baseline = true,
         }, -- Blind
-        [31224] = {tags = "[magic_debuff]", baseline = true}, -- Cloak of Shadows
+        [31224] = {tags = "[self_only][magic_debuff]", baseline = true}, -- Cloak of Shadows
         [3408] = {tags = "[creature_slow]", baseline = true}, -- Crippling Poison
         [408] = {tags = "[creature_stun]", baseline = true}, -- Kidney Shot
         [5938] = {tags = "[enrage]", baseline = true}, -- Shiv
