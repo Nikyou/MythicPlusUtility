@@ -11,7 +11,7 @@ MythicPlusUtility.instancesData = {
                           196482),
             tags = "[important][poison][magic_debuff]",
         }, { -- Savage Peck
-            text = format(L["{spell:%d} debuff is inflicted by the second boss {npc:%d}."], 191736, 376997),
+            text = format(L["{spell:%d} debuff is inflicted by the second boss {npc:%d}."], 376997, 191736),
             tags = "[bleed][physical_debuff]",
         }, { -- Power Vacuum
             text = format(L["Mitigates effects of {spell:%d} on the last boss {npc:%d}."], 388822, 190609),
@@ -68,7 +68,7 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} buff on {npc:%d}."], 1252909, 234124),
             tags = "[important][purge]",
         }, { -- Runic Glaive
-            text = format(L["Avoid {spell:%d} when {npc:%d} throws glaive."], 240973, 1244907),
+            text = format(L["Avoid {spell:%d} when {npc:%d} throws glaive."], 1244907, 240973),
             tags = "[targeted_avoid]",
         }, { -- Terror Wave
             text = format(
@@ -105,15 +105,15 @@ MythicPlusUtility.instancesData = {
         { -- Ritual Sacrifice
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1259794, 253683),
             tags = "[super_important][slow][root][magic_debuff]",
+        }, { -- Grim Ward
+            text = format(L["{spell:%d} buff on {npc:%d}."], 1270079, 248690),
+            tags = "[important][purge]",
         }, { -- Blood Frenzy
             text = format(L["{spell:%d} buff on {npc:%d}."], 1255765, 248684),
             tags = "[enrage]",
         }, { -- Frost Nova
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1271623, 249024),
             tags = "[slow][root][magic_debuff]",
-        }, { -- Grim Ward
-            text = format(L["{spell:%d} buff on {npc:%d}."], 1270079, 248690),
-            tags = "[purge]",
         }, { -- Hooked Snare
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."], 1266381,
                           242964),
@@ -191,7 +191,14 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} debuff is inflicted on the last boss {npc:%d}."], 1262930, 36658),
             tags = "[disease][physical_debuff]",
         }, -- Trash
-        { -- Curse of Torment
+        { -- Plungegrip
+            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1258997, 252707),
+            tags = "[super_important][slow][root][physical_debuff]",
+        }, { -- Plungegrip
+            text = format(L["{spell:%d} is channeled by {npc:%d}. The caster is immune to CC while it has {spell:%d}"],
+                          1258997, 252707, 1271543),
+            tags = "[important][creature_stun][creature_incapacitate][creature_grip]",
+        }, { -- Curse of Torment
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1258434, 252561),
             tags = "[important][curse][magic_debuff]",
         }, { -- Permeating Cold
@@ -201,13 +208,6 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."],
                           1258437, 252566),
             tags = "[important][snare_jet]",
-        }, { -- Plungegrip
-            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1258997, 252707),
-            tags = "[super_important][slow][root][physical_debuff]",
-        }, { -- Plungegrip
-            text = format(L["{spell:%d} is channeled by {npc:%d}. The caster is immune to CC while it has {spell:%d}"],
-                          1258997, 252707, 1271543),
-            tags = "[important][creature_stun][creature_incapacitate][creature_grip]",
         }, { -- Necromantic Infusion
             text = format(L["{spell:%d} buff is cast by {npc:%d}."], 1258448, 252551),
             tags = "[purge]",
@@ -272,7 +272,7 @@ MythicPlusUtility.instancesData = {
             tags = "[creature_slow][creature_grip]",
         }, { -- Solar Zealot NPC
             text = format(L["Stun {npc:%d} on the last boss {npc:%d}."], 76267, 76266),
-            tags = "[creature_stun][creature_fear][creature_incapacitate]",
+            tags = "[creature_stun][creature_fear]",
         }, { -- Solar Zealot NPC Jump
             text = format(L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss {npc:%d}."],
                           76267, 76266),
