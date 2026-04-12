@@ -1,3 +1,9 @@
+## 1.1.10
+# Dungeon Entries
+* Seat of the Triumvirate: Added CC to Coalesced Void on the first boss.
+# Spells
+* Fear (Warlock): No longer is shown in Remove
+* Imprison (Demon Hunter): No longer is shown in Remove
 ## 1.1.9
 # Dungeon Entries
 * Algeth'ar Academy: Added dungeon entry for Savage Peck

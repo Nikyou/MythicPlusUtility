@@ -100,7 +100,7 @@ MythicPlusUtility.utilityAbilities = {
         [188501] = {tags = "[stealth]", baseline = true}, -- Spectral Sight
         [198793] = {tags = "[self_only][snare]", baseline = true}, -- Vengeful Retreat
         [207684] = {tags = "[creature_fear]", baseline = true}, -- Sigil of Misery
-        [217832] = {tags = "[cc_demon][cc_beast][cc_humanoid]"}, -- Imprison
+        [217832] = {tags = "[cc_demon][cc_beast][cc_humanoid]", baseline = true}, -- Imprison
         [278326] = {tags = "[purge]"}, -- Consume Magic
     },
     [577] = {
@@ -165,7 +165,7 @@ MythicPlusUtility.utilityAbilities = {
         [109248] = {tags = "[creature_root]", baseline = true}, -- Binding Shot
         [1513] = {tags = "[cc_beast]"}, -- Scare Beast
         [1543] = {tags = "[stealth]", baseline = true}, -- Flare
-        [187650] = {tags = "[creature_incapacitate]", baseline = true}, -- Freezing Trap
+        [187650] = {tags = "[cc_aberration][cc_beast][cc_critter][cc_demon][cc_dragonkin][cc_elemental][cc_giant][cc_humanoid][cc_mechanical][cc_undead][cc_other]", baseline = true}, -- Freezing Trap
         [187698] = {tags = "[creature_slow]"}, -- Tar Trap
         [195645] = {tags = "[creature_slow]", alternatives = {5116}, baseline = true}, -- Wing Clip
         [19801] = {tags = "[enrage][purge]"}, -- Tranquilizing Shot
@@ -340,7 +340,7 @@ MythicPlusUtility.utilityAbilities = {
         [30283] = {tags = "[creature_stun]", baseline = true}, -- Shadowfury
         [334275] = {tags = "[creature_slow]"}, -- Curse of Exhaustion
         [5484] = {tags = "[creature_fear]"}, -- Howl of Terror
-        [5782] = {tags = "[creature_fear], baseline = true"}, -- Fear
+        [5782] = {tags = "[creature_fear]", baseline = true}, -- Fear
         [6358] = {tags = "[cc_humanoid]", pet = true, baseline = true}, -- Seduction (pet)
         [6789] = {tags = "[creature_incapacitate]", baseline = true}, -- Mortal Coil
         [710] = {tags = "[cc_demon][cc_aberration][cc_elemental]"}, -- Banish
