@@ -307,6 +307,7 @@ MythicPlusUtility.utilityAbilities = {
         [3408] = {tags = "[creature_slow]", baseline = true}, -- Crippling Poison
         [408] = {tags = "[creature_stun]", baseline = true}, -- Kidney Shot
         [5938] = {tags = "[enrage]", baseline = true}, -- Shiv
+        [8679] = {tags = "[creature_mortal_strike]", baseline = true}, -- Wound Poison
     },
     [259] = {}, -- Assassination
     [260] = {}, -- Outlaw

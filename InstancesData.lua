@@ -67,6 +67,9 @@ MythicPlusUtility.instancesData = {
         { -- Arcane Blade
             text = format(L["{spell:%d} buff on {npc:%d}."], 1252909, 234124),
             tags = "[important][purge]",
+        }, { -- Consuming Shadows
+            text = format(L["{spell:%d} is cast by {npc:%d}."], 1265977, 234068),
+            tags = "[important][creature_mortal_strike]",
         }, { -- Runic Glaive
             text = format(L["Avoid {spell:%d} when {npc:%d} throws glaive."], 1244907, 240973),
             tags = "[targeted_avoid]",
@@ -163,7 +166,7 @@ MythicPlusUtility.instancesData = {
             tags = "[purge]",
         }, { -- Leech Veil
             text = format(L["{spell:%d} is cast by {npc:%d}."], 1252204, 241645),
-            tags = "[creature_stun][creature_fear][creature_incapacitate][creature_grip]",
+            tags = "[creature_stun][creature_fear][creature_incapacitate][creature_grip][creature_mortal_strike]",
         }, { -- Smudge NPC
             text = format(L["Prevent {npc:%d} from reaching {npc:%d}."], 248769, 252903),
             tags = "[creature_slow][creature_grip]",
