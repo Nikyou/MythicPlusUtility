@@ -23,7 +23,6 @@ function MythicPlusUtility:OnInitialize()
     self:RegisterChatCommand("mpu", "SlashCommand")
     self:InitializeMinimapIcon()
     self:GetCharacterInfo()
-    self:ExtractSpellsFromDB()
     self:CheckLocalisation()
     self:FormatInstanceData()
     self:FormatSpellsData()
@@ -89,6 +88,7 @@ function MythicPlusUtility:OnEnable()
     self:RegisterEvent("TRAIT_CONFIG_UPDATED")
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
     self:RegisterEvent("CHALLENGE_MODE_START")
+    EventRegistry:RegisterCallback("PlayerSpellsFrame.OpenFrame", self.TalentFrameHighlight.UpdateAnchers)
 end
 
 function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
@@ -100,6 +100,7 @@ function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
         self.db.char.changedSpec = true
     end
 
+    if self.Frame then self.TalentFrameHighlight:UpdateSpec() end
 end
 
 function MythicPlusUtility:TRAIT_CONFIG_UPDATED(event)
@@ -117,9 +118,7 @@ function MythicPlusUtility:PLAYER_ENTERING_WORLD(event, isInitialLogin, isReload
             local _, _, difficultyID, _, _, _, _, instanceID = GetInstanceInfo()
             if MythicPlusUtility.db.profile.difficultyID[difficultyID] and MythicPlusUtility.instancesData[instanceID] then
                 MythicPlusUtility.db.profile.instanceID = instanceID
-                if not MythicPlusUtility.Frame then
-                    MythicPlusUtility.Frame = MythicPlusUtility:UtilityAbilitiesFrame()
-                end
+                if not MythicPlusUtility.Frame then MythicPlusUtility:InitializeFrames() end
                 MythicPlusUtility.Frame:SetShownHandler(true)
                 MythicPlusUtility.Frame:ChangeInstance()
             else
@@ -201,9 +200,8 @@ end
 
 function MythicPlusUtility:ToggleAbilitiesFrame()
     if not self.Frame then
-        self.Frame = self:UtilityAbilitiesFrame()
+        self:InitializeFrames()
         self.Frame:SetShownHandler(true)
-
         return
     end
     self.Frame:SetShownHandler(not self.Frame:IsVisible())

@@ -41,6 +41,8 @@ MythicPlusUtility.defaults = {
                 enabled = true,
                 iconDesaturate = false,
                 iconColor = {1, 1, 1, 1},
+                hightlightEnabled = true,
+                hightlightColor = {1, 1, 1, 0.3},
                 iconGlow = false,
                 iconGlowType = "action",
                 iconGlowColor = {1, 1, 1, 1},
@@ -72,16 +74,29 @@ MythicPlusUtility.defaults = {
                 customLabelText = "",
                 customLabelTextFormatted = "",
             },
-            learnedAbility = {enabled = false, label = "*"},
-            onlyNotImportantAbility = {iconGlowColor = {1, 1, 0, 1}, label = "?", labelColor = {1, 1, 0, 1}},
-            needAbility = {iconDesaturate = true, iconGlowColor = {0, 1, 0, 1}, label = "+", labelColor = {0, 1, 0, 1}},
+            learnedAbility = {enabled = false, hightlightEnabled = false, label = "*"},
+            onlyNotImportantAbility = {
+                hightlightColor = {1, 1, 0, 0.3},
+                iconGlowColor = {1, 1, 0, 1},
+                label = "?",
+                labelColor = {1, 1, 0, 1},
+            },
+            needAbility = {
+                iconDesaturate = true,
+                hightlightColor = {0, 1, 0, 0.3},
+                iconGlowColor = {0, 1, 0, 1},
+                label = "+",
+                labelColor = {0, 1, 0, 1},
+            },
             needOnlyNotImportantAbility = {
                 iconDesaturate = true,
+                hightlightColor = {0.6, 1, 0, 0.3},
                 iconGlowColor = {0.75, 1, 0, 1},
                 label = "+?",
                 labelColor = {0.75, 1, 0, 1},
             },
             unlearnAbility = {
+                hightlightColor = {1, 0, 0, 0.3},
                 iconColor = {1, 0, 0, 1},
                 iconGlowColor = {1, 0, 0, 1},
                 label = "-",
@@ -454,7 +469,7 @@ local function populateButtonCosmeticGroup()
             get = "GetValueButtonCosmetic",
             set = "SetValueButtonCosmetic",
             args = {
-                enabled = {type = "toggle", order = 1, name = L["Enable"], width = 0.7},
+                enabled = {type = "toggle", order = 1, name = L["Enable"], width = 0.65},
                 iconDesaturate = {
                     type = "toggle",
                     order = 1.1,
@@ -473,14 +488,33 @@ local function populateButtonCosmeticGroup()
                     get = "GetValueButtonCosmeticColor",
                     set = "SetValueButtonCosmeticColor",
                 },
-                -- Glow Settings
-                glowBreakLine = {
+                -- Talent Highlight Settings
+                hightlightBreakLine = {
                     type = "header",
-                    order = 2,
-                    name = L["Glow Settings"],
+                    order = 1.90,
+                    name = L["Talent Highlight Settings"],
                     hidden = "ButtonCosmeticHide",
-                    set = "SetValueButtonCosmeticGlow",
                 },
+                hightlightEnabled = {
+                    type = "toggle",
+                    order = 1.91,
+                    name = L["Enable"],
+                    width = 0.7,
+                    hidden = "ButtonCosmeticHide",
+                    set = "SetValueTalentHighlight",
+                },
+                hightlightColor = {
+                    type = "color",
+                    hasAlpha = true,
+                    order = 1.92,
+                    name = L["Highlight Color"],
+                    width = 1,
+                    hidden = "ButtonCosmeticHide",
+                    get = "GetValueButtonCosmeticColor",
+                    set = "SetValueButtonCosmeticColor",
+                },
+                -- Glow Settings
+                glowBreakLine = {type = "header", order = 2, name = L["Glow Settings"], hidden = "ButtonCosmeticHide"},
                 iconGlow = {
                     type = "toggle",
                     order = 2.1,
@@ -823,6 +857,17 @@ function MythicPlusUtility:GetValue(info) return self.db.profile[info[#info]] en
 
 function MythicPlusUtility:SetValue(info, value) self.db.profile[info[#info]] = value end
 
+function MythicPlusUtility:SetValueTalentHighlight(info, value)
+    local name = info[#info]
+    local db = self.db.profile.buttonCosmetic[info[#info - 1]]
+    db[name] = value
+
+    if self.Frame and self.Frame:IsVisible() then
+        self.TalentFrameHighlight:HideAll()
+        self.TalentFrameHighlight:ShowRelevant()
+    end
+end
+
 function MythicPlusUtility:SetValueWindowSettings(info, value)
     local name = info[#info]
     local db = self.db.profile[info[#info - 1]]
@@ -999,6 +1044,8 @@ function MythicPlusUtility:SetValueButtonCosmeticColor(info, r, g, b, a)
             self.Frame:updateButtonCosmeticLabel(info[#info - 1])
         elseif name == "iconGlowColor" then
             self.Frame:updateButtonCosmeticGlow(info[#info - 1])
+        elseif name == "hightlightColor" then
+            self.TalentFrameHighlight:UpdateHighlight()
         end
     end
 end
@@ -1008,7 +1055,13 @@ function MythicPlusUtility:ButtonCosmeticHide(info)
     local db = self.db.profile.buttonCosmetic[info[#info - 1]]
     local enabled = not db.enabled
 
-    if name == "iconGlowColor" or name == "iconGlowType" then
+    if name == "hightlightBreakLine" or name == "hightlightEnabled" or name == "glowBreakLine" or name == "iconGlow" then
+        return enabled
+
+    elseif name == "hightlightColor" then
+        return enabled or not db.hightlightEnabled
+
+    elseif name == "iconGlowColor" or name == "iconGlowType" then
         return enabled or not db.iconGlow
 
     elseif name == "labelFont" or name == "labelSize" or name == "labelColor" or name == "labelOutline" or name

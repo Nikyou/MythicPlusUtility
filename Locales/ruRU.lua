@@ -24,6 +24,8 @@ L["Hides dungeon entries that are marked with %s"] =
 L["Dungeon Preview"] = "Просмотр подземелья"
 L["Show in"] = "Показывать в"
 L["Minimap Icon"] = "Значок миникарты"
+L["Talent Highlight Settings"] = "Настройки подсветки таланта"
+L["Highlight Color"] = "Цвет подсветки"
 
 -- Difficulty
 L["Normal"] = "Обычный"

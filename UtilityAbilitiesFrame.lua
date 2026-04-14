@@ -57,14 +57,6 @@ local function CalculateCoords(frame, framePoint)
     return x, y
 end
 
-local function GetbuttonsIndices()
-    if MythicPlusUtility.db.profile.buttonCosmetic.unlearnAbility.enabled then
-        return MythicPlusUtility.buttonsIndicesWithEmpty
-    else
-        return MythicPlusUtility.buttonsIndices
-    end
-end
-
 local function ApplyGlowToFrame(frame, db, type)
     if type == "pixel" then
         LCG.PixelGlow_Start(frame, db.iconGlowColor, db.glowPixelN, db.glowPixelFrequency, db.glowPixelLength,
@@ -161,6 +153,13 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
         self.dungeonNameText:SetText(MythicPlusUtility.dungeonIdToName[profile.instanceID] or "")
         self:UpdateButtons()
         self:UpdateLayout()
+
+        MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
+        MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
+        if self:IsVisible() then
+            MythicPlusUtility.TalentFrameHighlight:HideAll()
+            MythicPlusUtility.TalentFrameHighlight:ShowRelevant()
+        end
     end
 
     function frame:SetShownHandler(show)
@@ -177,7 +176,11 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
 
                 self:ChangeInstance()
             end
+            MythicPlusUtility.TalentFrameHighlight:ShowRelevant()
+        else
+            MythicPlusUtility.TalentFrameHighlight:HideAll()
         end
+
         self:SetShown(show)
         self.leftLabelFrame:SetShown(show)
     end
@@ -195,7 +198,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     frame.buttons = {}
 
     function frame:UpdateLeftLabelFrameWidth()
-        buttonsIndices = GetbuttonsIndices()
+        buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
         local width = 0
         for id, _ in ipairs(buttonsIndices) do
             if self.buttons[id].labelLeft:IsShown() and self.buttons[id].labelLeft:GetWrappedWidth() > width then
@@ -209,7 +212,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     function frame:UpdateLayout()
         local currentY = -TOP_PADDING - self:GetTop() + self.dungeonNameText:GetBottom()
         self.listEmptyText:SetPoint("TOPLEFT", LEFT_PADDING + RIGHT_PADDING, currentY)
-        buttonsIndices = GetbuttonsIndices()
+        buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
 
         self:UpdateLeftLabelFrameWidth()
 
@@ -261,7 +264,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
 
     function frame:UpdateButtons()
 
-        buttonsIndices = GetbuttonsIndices()
+        buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
 
         if #buttonsIndices == 0 then
             self.listEmptyText:Show()
@@ -496,7 +499,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     function frame:updateButtonCosmeticIcon(buttonType)
         local cosmeticDB = buttonCosmetic[buttonType]
         c = buttonCosmetic[buttonType].iconColor
-        buttonsIndices = GetbuttonsIndices()
+        buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
 
         for id, _ in ipairs(buttonsIndices) do
             local button = self.buttons[id]
@@ -525,7 +528,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
         else
             text = cosmeticDB.label
         end
-        buttonsIndices = GetbuttonsIndices()
+        buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
 
         for id, _ in ipairs(buttonsIndices) do
             local button = self.buttons[id]
@@ -566,7 +569,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
 
     function frame:updateButtonCosmeticGlow(buttonType)
         local cosmeticDB = buttonCosmetic[buttonType]
-        buttonsIndices = GetbuttonsIndices()
+        buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
 
         for id, _ in ipairs(buttonsIndices) do
             local button = self.buttons[id]
@@ -682,7 +685,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
 
     function frame:UpdateTextWrap(updateLayout)
         updateLayout = updateLayout or true
-        buttonsIndices = GetbuttonsIndices()
+        buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
 
         self.dungeonNameText:SetWidth(windowSettings.width - 2 * CLOSE_BUTTON_SIZE - TEXT_WRAP_PADDING)
         self.listEmptyText:SetWidth(windowSettings.width - LEFT_PADDING - RIGHT_PADDING - TEXT_WRAP_PADDING)

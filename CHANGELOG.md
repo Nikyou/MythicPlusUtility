@@ -1,3 +1,8 @@
+#### 1.2.0
+### New: Talent Highlight
+Added new option to Icon Cosmetics Settings that highlights talents in the talent window. Most are enabled by default.
+### Dungeon Entries
+* Maisara Caverns: Added targeted avoid tag (Shadowmeld, Vanish, etc.) to Ritual Sacrifice
 #### 1.1.11
 ### Dungeon Entries
 * Magisters' Terrace: Added Consuming Shadows cast by Shadowrift Voidcaller

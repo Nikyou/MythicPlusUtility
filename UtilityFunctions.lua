@@ -96,6 +96,21 @@ MythicPlusUtility.globals = {
 
 MythicPlusUtility.npcIdToEncounterSectionId = {[76227] = 33940}
 
+function MythicPlusUtility:GetbuttonsIndices()
+    if self.db.profile.buttonCosmetic.unlearnAbility.enabled then
+        return self.buttonsIndicesWithEmpty
+    else
+        return self.buttonsIndices
+    end
+end
+
+function MythicPlusUtility:InitializeFrames()
+    self.Frame = self:UtilityAbilitiesFrame()
+    self:CreateTalentFrameHighlight()
+    self.TalentFrameHighlight:UpdateHighlight()
+    self.TalentFrameHighlight:ShowRelevant()
+end
+
 function MythicPlusUtility:IsSpellKnownHandler(spellId, isPet)
     isPet = isPet or false
     local known = false
