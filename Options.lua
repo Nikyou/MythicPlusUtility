@@ -259,7 +259,7 @@ MythicPlusUtility.options = {
             type = "toggle",
             order = 3,
             name = L["Minimap Icon"],
-            get = function(info) return MythicPlusUtility.db.profile.minimap.show end,
+            get = function(info) return not MythicPlusUtility.db.profile.minimap.hide end,
             set = function(info, value) MythicPlusUtility:ToggleMinimapIcon() end,
         },
         hideNotImportant = {

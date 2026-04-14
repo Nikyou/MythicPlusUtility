@@ -41,6 +41,10 @@ function MythicPlusUtility:MigrateOldSettings()
     local db = self.db.profile
     if not db.AddonName then db.AddonName = "MythicPlusUtility" end
     if self.db.global.minimap then self.db.global.minimap = nil end
+    if self.db.profile.minimap.show ~= nil then
+        self.db.profile.minimap.hide = not self.db.profile.minimap.show
+        self.db.profile.minimap.show = nil
+    end
 
     local function migrateFrameSetting(oldSetting, newSetting)
         if db[oldSetting] then
@@ -75,7 +79,7 @@ function MythicPlusUtility:MigrateOldSettings()
 end
 
 function MythicPlusUtility:RefreshConfig()
-    if self.db.profile.minimap.show then
+    if not self.db.profile.minimap.hide then
         minimapIcon:Show("MythicPlusUtility")
     else
         minimapIcon:Hide("MythicPlusUtility")

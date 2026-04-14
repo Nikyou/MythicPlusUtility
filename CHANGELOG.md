@@ -2,13 +2,15 @@
 ### New: Talent Highlight
 Added new option to Icon Cosmetics Settings that highlights talents in the talent window. Most are enabled by default.
 ### Dungeon Entries
-* Maisara Caverns: Added targeted avoid tag (Shadowmeld, Vanish, etc.) to Ritual Sacrifice
+* Maisara Caverns: Added targeted avoid tag (Shadowmeld, Vanish, etc.) to Ritual Sacrifice.
+### Fixes
+* Minimap button reappeared after /reload when disabled.
 #### 1.1.11
 ### Dungeon Entries
-* Magisters' Terrace: Added Consuming Shadows cast by Shadowrift Voidcaller
-* Nexus-Point Xenas: Added mortal strike tag to Leech Veil
+* Magisters' Terrace: Added Consuming Shadows cast by Shadowrift Voidcaller.
+* Nexus-Point Xenas: Added mortal strike tag to Leech Veil.
 ### Spells
-* Wound Poison (Rogue): Added to the list of spells
+* Wound Poison (Rogue): Added to the list of spells.
 #### 1.1.10
 ### Dungeon Entries
 * Seat of the Triumvirate: Added CC to Coalesced Void on the first boss.
