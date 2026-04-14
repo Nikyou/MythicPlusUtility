@@ -88,6 +88,7 @@ function MythicPlusUtility:OnEnable()
     self:RegisterEvent("TRAIT_CONFIG_UPDATED")
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
     self:RegisterEvent("CHALLENGE_MODE_START")
+    EventRegistry:RegisterCallback("PlayerSpellsFrame.OpenFrame", self.TalentFrameHighlight.UpdateAnchers)
 end
 
 function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
@@ -99,6 +100,7 @@ function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
         self.db.char.changedSpec = true
     end
 
+    if self.Frame then self.TalentFrameHighlight:UpdateSpec() end
 end
 
 function MythicPlusUtility:TRAIT_CONFIG_UPDATED(event)

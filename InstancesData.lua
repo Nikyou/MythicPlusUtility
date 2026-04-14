@@ -107,7 +107,7 @@ MythicPlusUtility.instancesData = {
         }, -- Trash
         { -- Ritual Sacrifice
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1259794, 253683),
-            tags = "[super_important][slow][root][magic_debuff]",
+            tags = "[super_important][slow][root][magic_debuff][targeted_avoid]",
         }, { -- Grim Ward
             text = format(L["{spell:%d} buff on {npc:%d}."], 1270079, 248690),
             tags = "[important][purge]",

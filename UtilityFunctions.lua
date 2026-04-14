@@ -107,6 +107,8 @@ end
 function MythicPlusUtility:InitializeFrames()
     self.Frame = self:UtilityAbilitiesFrame()
     self:CreateTalentFrameHighlight()
+    self.TalentFrameHighlight:UpdateHighlight()
+    self.TalentFrameHighlight:ShowRelevant()
 end
 
 function MythicPlusUtility:IsSpellKnownHandler(spellId, isPet)

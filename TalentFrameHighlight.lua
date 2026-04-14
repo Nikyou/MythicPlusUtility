@@ -4,55 +4,127 @@ MythicPlusUtility.TalentFrameHighlight = TalentFrameHighlight
 function MythicPlusUtility:CreateTalentFrameHighlight()
     TalentFrameHighlight.frames = {}
 
-    local treeID = C_ClassTalents.GetTraitTreeForSpec(PlayerUtil.GetCurrentSpecID())
-    local nodes = C_Traits.GetTreeNodes(treeID)
+    local lastSelected = PlayerUtil.GetCurrentSpecID()
+                           and C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
+    local selectionID = PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame
+                          and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown
+                          and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown.GetSelectionID
+                          and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown:GetSelectionID()
+    local configID = lastSelected or selectionID or C_ClassTalents.GetActiveConfigID()
+    local configInfo = C_Traits.GetConfigInfo(configID)
 
-    for _, nodeID in ipairs(nodes) do
-        local nodeInfo = C_Traits.GetNodeInfo(configID, nodeID)
-        for _, entryID in ipairs(nodeInfo.entryIDs) do -- each node can have multiple entries (e.g. choice nodes have 2)
-            local entryInfo = C_Traits.GetEntryInfo(configID, entryID)
-            if entryInfo and entryInfo.definitionID then
-                local definitionInfo = C_Traits.GetDefinitionInfo(entryInfo.definitionID)
-                if definitionInfo.spellID and self.db.char.availableSpells[definitionInfo.spellID]
-                  and not TalentFrameHighlight.frames[definitionInfo.spellID] then
-                    TalentFrameHighlight.frames[definitionInfo.spellID] = {
-                        nodeID = nodeID,
-                        buttonFrame = PlayerSpellsFrame.TalentsFrame:GetTalentButtonByNodeID(nodeID),
-                    }
+    for _, treeID in ipairs(configInfo.treeIDs) do
+        local nodes = C_Traits.GetTreeNodes(treeID)
+
+        for _, nodeID in ipairs(nodes) do
+            local nodeInfo = C_Traits.GetNodeInfo(configID, nodeID)
+            for _, entryID in ipairs(nodeInfo.entryIDs) do
+                local entryInfo = C_Traits.GetEntryInfo(configID, entryID)
+                if entryInfo and entryInfo.definitionID then
+                    local definitionInfo = C_Traits.GetDefinitionInfo(entryInfo.definitionID)
+                    if definitionInfo.spellID and self.db.char.availableSpells[definitionInfo.spellID] then
+                        if not TalentFrameHighlight.frames[definitionInfo.spellID] then
+                            TalentFrameHighlight.frames[definitionInfo.spellID] = {nodeIDs = {}}
+                        end
+                        if not TalentFrameHighlight.frames[definitionInfo.spellID].nodeIDs[nodeID] then
+                            TalentFrameHighlight.frames[definitionInfo.spellID].nodeIDs[nodeID] = {
+                                buttonFrame = PlayerSpellsFrame.TalentsFrame:GetTalentButtonByNodeID(nodeID),
+                            }
+                        end
+                    end
                 end
             end
         end
     end
 
     for spellId, entry in pairs(TalentFrameHighlight.frames) do
-        entry.frame = CreateFrame("Frame", "MythicPlusUtility_TalentFrameHighlight_" .. spellId, entry.buttonFrame,
-                                  "BackdropTemplate")
-        entry.frame:EnableMouse(false)
-        entry.frame:Hide()
+        for nodeID, listEntry in pairs(entry.nodeIDs) do
+            listEntry.frame = CreateFrame("Frame",
+                                          "MythicPlusUtility_TalentFrameHighlight_" .. spellId .. "_" .. nodeID,
+                                          listEntry.buttonFrame, "BackdropTemplate")
+            listEntry.frame:EnableMouse(false)
+            listEntry.frame:Hide()
+            listEntry.frame:SetHeight(40)
+            listEntry.frame:SetWidth(40)
 
-        local texture = entry.frame:CreateTexture(nil, "ARTWORK")
-        texture:SetAllPoints()
-        TalentFrameHighlight.texture = texture
+            local texture = listEntry.frame:CreateTexture(nil, "ARTWORK")
+            texture:SetAllPoints()
+            listEntry.frame.texture = texture
+        end
     end
 end
 
-function TalentFrameHighlight:HideAll() for _, entry in pairs(self.frames) do entry.frame:Hide() end end
+function TalentFrameHighlight:UpdateSpec()
+    local lastSelected = PlayerUtil.GetCurrentSpecID()
+                           and C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
+    local selectionID = PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame
+                          and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown
+                          and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown.GetSelectionID
+                          and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown:GetSelectionID()
+    local configID = lastSelected or selectionID or C_ClassTalents.GetActiveConfigID()
+    local configInfo = C_Traits.GetConfigInfo(configID)
+
+    for _, treeID in ipairs(configInfo.treeIDs) do
+        local nodes = C_Traits.GetTreeNodes(treeID)
+
+        for _, nodeID in ipairs(nodes) do
+            local nodeInfo = C_Traits.GetNodeInfo(configID, nodeID)
+            for _, entryID in ipairs(nodeInfo.entryIDs) do
+                local entryInfo = C_Traits.GetEntryInfo(configID, entryID)
+                if entryInfo and entryInfo.definitionID then
+                    local definitionInfo = C_Traits.GetDefinitionInfo(entryInfo.definitionID)
+                    if definitionInfo.spellID and MythicPlusUtility.db.char.availableSpells[definitionInfo.spellID] then
+                        if not self.frames[definitionInfo.spellID] then
+                            self.frames[definitionInfo.spellID] = {nodeIDs = {}}
+                        end
+                        if not self.frames[definitionInfo.spellID].nodeIDs[nodeID] then
+                            self.frames[definitionInfo.spellID].nodeIDs[nodeID] = {
+                                buttonFrame = PlayerSpellsFrame.TalentsFrame:GetTalentButtonByNodeID(nodeID),
+                            }
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    for spellId, entry in pairs(self.frames) do
+        for nodeID, listEntry in pairs(entry.nodeIDs) do
+            if not listEntry.frame then
+                listEntry.frame = CreateFrame("Frame",
+                                              "MythicPlusUtility_TalentFrameHighlight_" .. spellId .. "_" .. nodeID,
+                                              listEntry.buttonFrame, "BackdropTemplate")
+                listEntry.frame:EnableMouse(false)
+                listEntry.frame:Hide()
+                listEntry.frame:SetHeight(40)
+                listEntry.frame:SetWidth(40)
+
+                local texture = listEntry.frame:CreateTexture(nil, "ARTWORK")
+                texture:SetAllPoints()
+                listEntry.frame.texture = texture
+            end
+        end
+    end
+end
+
+function TalentFrameHighlight:HideAll()
+    for _, entry in pairs(self.frames) do for _, listEntry in pairs(entry.nodeIDs) do listEntry.frame:Hide() end end
+end
 
 function TalentFrameHighlight:ShowRelevant()
     local buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
-    local buttonCosmetic = self.db.profile.buttonCosmetic
+    local buttonCosmetic = MythicPlusUtility.db.profile.buttonCosmetic
 
     for _, abilityId in ipairs(buttonsIndices) do
         local currentAbility = MythicPlusUtility.currentAbilitiesList[abilityId]
-        local enabled = buttonCosmetic[currentAbility.buttonType].enabled
 
-        if enabled then
+        if buttonCosmetic[currentAbility.buttonType].enabled
+          and buttonCosmetic[currentAbility.buttonType].hightlightEnabled then
             local spellId = currentAbility.spellId
 
             if currentAbility.altSpellId then spellId = currentAbility.altSpellId end
             if self.frames[spellId] then
-                local frame = self.frames[spellId].frame
-                frame:Show()
+                for _, listEntry in pairs(self.frames[spellId].nodeIDs) do listEntry.frame:Show() end
             end
         end
 
@@ -61,21 +133,39 @@ end
 
 function TalentFrameHighlight:UpdateHighlight()
     local buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
-    local buttonCosmetic = self.db.profile.buttonCosmetic
+    local buttonCosmetic = MythicPlusUtility.db.profile.buttonCosmetic
 
     for _, abilityId in ipairs(buttonsIndices) do
         local currentAbility = MythicPlusUtility.currentAbilitiesList[abilityId]
-        local enabled = buttonCosmetic[currentAbility.buttonType].enabled
 
-        if enabled then
+        if buttonCosmetic[currentAbility.buttonType].enabled
+          and buttonCosmetic[currentAbility.buttonType].hightlightEnabled then
             local spellId = currentAbility.spellId
             local cosmeticDB = buttonCosmetic[currentAbility.buttonType]
 
             if currentAbility.altSpellId then spellId = currentAbility.altSpellId end
             if self.frames[spellId] then
-                local frame = self.frames[spellId].frame
-                local c = cosmeticDB.iconColor
-                frame.texture:SetVertexColor(c[1], c[2], c[3], c[4])
+                local c = cosmeticDB.hightlightColor
+                for _, listEntry in pairs(self.frames[spellId].nodeIDs) do
+                    listEntry.frame.texture:SetColorTexture(c[1], c[2], c[3], c[4])
+                end
+            end
+        end
+    end
+
+end
+
+function TalentFrameHighlight:UpdateAnchers()
+    if MythicPlusUtility.Frame then
+        for _, entry in pairs(TalentFrameHighlight.frames) do
+            for nodeID, listEntry in pairs(entry.nodeIDs) do
+                local buttonFrame = PlayerSpellsFrame.TalentsFrame:GetTalentButtonByNodeID(nodeID)
+                if buttonFrame ~= listEntry.buttonFrame then
+                    listEntry.frame:ClearAllPoints()
+                    listEntry.frame:SetParent(buttonFrame)
+                    listEntry.buttonFrame = buttonFrame
+                    listEntry.frame:SetPoint("CENTER", buttonFrame)
+                end
             end
         end
     end

@@ -22,6 +22,8 @@ L["Hides dungeon entries that are marked with %s"] = true
 L["Dungeon Preview"] = true
 L["Show in"] = true
 L["Minimap Icon"] = true
+L["Talent Highlight Settings"] = true
+L["Highlight Color"] = true
 
 -- Difficulty
 L["Normal"] = true
