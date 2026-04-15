@@ -108,10 +108,10 @@ end
 function TalentFrameHighlight:UpdateAnchers()
 
     if MythicPlusUtility.Frame then
-        local shouldUpdate = #self.frames == 0
+        local shouldUpdate = #TalentFrameHighlight.frames == 0
 
-        if shouldUpdate then self:UpdateSpec() end
-        for _, entry in pairs(self.frames) do
+        if shouldUpdate then TalentFrameHighlight:UpdateSpec() end
+        for _, entry in pairs(TalentFrameHighlight.frames) do
             for nodeID, listEntry in pairs(entry.nodeIDs) do
                 local buttonFrame = PlayerSpellsFrame.TalentsFrame:GetTalentButtonByNodeID(nodeID)
                 if buttonFrame ~= listEntry.buttonFrame then
@@ -122,10 +122,11 @@ function TalentFrameHighlight:UpdateAnchers()
                 end
             end
         end
-        if shouldUpdate and #self.frames > 0 then
-            self:ShowRelevant()
-            self:UpdateHighlight()
+        if shouldUpdate and #TalentFrameHighlight.frames > 0 then
+            TalentFrameHighlight:ShowRelevant()
+            TalentFrameHighlight:UpdateHighlight()
         end
+
     end
 
 end
