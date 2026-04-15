@@ -1,58 +1,6 @@
 local TalentFrameHighlight = {}
+TalentFrameHighlight.frames = {}
 MythicPlusUtility.TalentFrameHighlight = TalentFrameHighlight
-
-function MythicPlusUtility:CreateTalentFrameHighlight()
-    TalentFrameHighlight.frames = {}
-
-    local lastSelected = PlayerUtil.GetCurrentSpecID()
-                           and C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
-    local selectionID = PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame
-                          and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown
-                          and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown.GetSelectionID
-                          and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown:GetSelectionID()
-    local configID = lastSelected or selectionID or C_ClassTalents.GetActiveConfigID()
-    local configInfo = C_Traits.GetConfigInfo(configID)
-
-    for _, treeID in ipairs(configInfo.treeIDs) do
-        local nodes = C_Traits.GetTreeNodes(treeID)
-
-        for _, nodeID in ipairs(nodes) do
-            local nodeInfo = C_Traits.GetNodeInfo(configID, nodeID)
-            for _, entryID in ipairs(nodeInfo.entryIDs) do
-                local entryInfo = C_Traits.GetEntryInfo(configID, entryID)
-                if entryInfo and entryInfo.definitionID then
-                    local definitionInfo = C_Traits.GetDefinitionInfo(entryInfo.definitionID)
-                    if definitionInfo.spellID and self.db.char.availableSpells[definitionInfo.spellID] then
-                        if not TalentFrameHighlight.frames[definitionInfo.spellID] then
-                            TalentFrameHighlight.frames[definitionInfo.spellID] = {nodeIDs = {}}
-                        end
-                        if not TalentFrameHighlight.frames[definitionInfo.spellID].nodeIDs[nodeID] then
-                            TalentFrameHighlight.frames[definitionInfo.spellID].nodeIDs[nodeID] = {
-                                buttonFrame = PlayerSpellsFrame.TalentsFrame:GetTalentButtonByNodeID(nodeID),
-                            }
-                        end
-                    end
-                end
-            end
-        end
-    end
-
-    for spellId, entry in pairs(TalentFrameHighlight.frames) do
-        for nodeID, listEntry in pairs(entry.nodeIDs) do
-            listEntry.frame = CreateFrame("Frame",
-                                          "MythicPlusUtility_TalentFrameHighlight_" .. spellId .. "_" .. nodeID,
-                                          listEntry.buttonFrame, "BackdropTemplate")
-            listEntry.frame:EnableMouse(false)
-            listEntry.frame:Hide()
-            listEntry.frame:SetHeight(40)
-            listEntry.frame:SetWidth(40)
-
-            local texture = listEntry.frame:CreateTexture(nil, "ARTWORK")
-            texture:SetAllPoints()
-            listEntry.frame.texture = texture
-        end
-    end
-end
 
 function TalentFrameHighlight:UpdateSpec()
     local lastSelected = PlayerUtil.GetCurrentSpecID()
@@ -105,6 +53,7 @@ function TalentFrameHighlight:UpdateSpec()
             end
         end
     end
+
 end
 
 function TalentFrameHighlight:HideAll()
@@ -129,6 +78,7 @@ function TalentFrameHighlight:ShowRelevant()
         end
 
     end
+
 end
 
 function TalentFrameHighlight:UpdateHighlight()
@@ -156,7 +106,11 @@ function TalentFrameHighlight:UpdateHighlight()
 end
 
 function TalentFrameHighlight:UpdateAnchers()
+
     if MythicPlusUtility.Frame then
+        local shouldUpdate = #TalentFrameHighlight.frames == 0
+
+        if shouldUpdate then TalentFrameHighlight:UpdateSpec() end
         for _, entry in pairs(TalentFrameHighlight.frames) do
             for nodeID, listEntry in pairs(entry.nodeIDs) do
                 local buttonFrame = PlayerSpellsFrame.TalentsFrame:GetTalentButtonByNodeID(nodeID)
@@ -168,5 +122,11 @@ function TalentFrameHighlight:UpdateAnchers()
                 end
             end
         end
+        if shouldUpdate and #TalentFrameHighlight.frames > 0 then
+            TalentFrameHighlight:ShowRelevant()
+            TalentFrameHighlight:UpdateHighlight()
+        end
+
     end
+
 end
