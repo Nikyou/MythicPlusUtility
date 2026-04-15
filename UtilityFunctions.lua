@@ -106,7 +106,7 @@ end
 
 function MythicPlusUtility:InitializeFrames()
     self.Frame = self:UtilityAbilitiesFrame()
-    self:CreateTalentFrameHighlight()
+    self.TalentFrameHighlight:UpdateSpec()
     self.TalentFrameHighlight:UpdateHighlight()
     self.TalentFrameHighlight:ShowRelevant()
 end
