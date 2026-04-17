@@ -8,6 +8,7 @@
 * Skyreach: Added targeted avoid on Lens Flare on the last boss.
 * Skyreach: Updated text for Sunwings on the third boss.
 ### Fixes
+* Fixed addon not showing window on new characters.
 * Fixed an error with talent highlight.
 #### 1.2.0
 ### New: Talent Highlight
