@@ -1,3 +1,14 @@
+#### 1.2.1
+### Dungeon Entries
+* Magisters' Terrace: Added a route specific skip of add pack before the last boss.
+* Magisters' Terrace: Arcane Blade changed to non important.
+* Magisters' Terrace: Hastening Ward changed to super important.
+* Maisara Caverns: Added Vilebranch Sting on the first boss
+* Nexus-Point Xenas: Holy Echo purge changed to important
+* Skyreach: Added targeted avoid on Lens Flare on the last boss.
+* Skyreach: Updated text for Sunwings on the third boss.
+### Fixes
+* Fixed an error with talent highlight.
 #### 1.2.0
 ### New: Talent Highlight
 Added new option to Icon Cosmetics Settings that highlights talents in the talent window. Most are enabled by default.

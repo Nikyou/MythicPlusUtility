@@ -87,12 +87,14 @@ function MythicPlusUtility:RefreshConfig()
     if self.Frame then self.Frame:ProfileChange() end
 end
 
+function MythicPlusUtility:onTalentFrameShow() MythicPlusUtility.TalentFrameHighlight.UpdateAnchers(MythicPlusUtility) end
+
 function MythicPlusUtility:OnEnable()
     self:RegisterEvent("ACTIVE_PLAYER_SPECIALIZATION_CHANGED")
     self:RegisterEvent("TRAIT_CONFIG_UPDATED")
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
     self:RegisterEvent("CHALLENGE_MODE_START")
-    EventRegistry:RegisterCallback("PlayerSpellsFrame.OpenFrame", self.TalentFrameHighlight.UpdateAnchers)
+    EventRegistry:RegisterCallback("PlayerSpellsFrame.OpenFrame", MythicPlusUtility.onTalentFrameShow)
 end
 
 function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
@@ -100,6 +102,7 @@ function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
     if self.Frame and self.Frame:IsVisible() then
         self:CreateCurrentAbilitiesList()
         self.Frame:ChangeInstance()
+        C_Timer.NewTimer(0.5, function() MythicPlusUtility.TalentFrameHighlight.UpdateAnchers(MythicPlusUtility) end)
     else
         self.db.char.changedSpec = true
     end

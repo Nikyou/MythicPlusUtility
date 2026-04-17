@@ -240,3 +240,11 @@ L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss 
   "Прыгните обратно на платформу, если вас сбросил {npc:%d} на последнем боссе {npc:%d}."
 L["Skips part of the wind maze after the third boss {npc:%d}."] =
   "Пропускает часть лабиринта ветра после третьего босса {npc:%d}."
+
+-- 1.2.1
+L["Avoid {spell:%d} when the last boss {npc:%d} targets you."] =
+  "Избегите {spell:%d}, когда последний босс {npc:%d} выбирает вас целью."
+L["Prevent {npc:%d} from reaching players on the third boss {npc:%d}."] =
+  "Мешает {npc:%d} достичь игроков на третьем боссе {npc:%d}."
+L["Skips add pack before the last boss {npc:%d}. This is route specific."] =
+  "Пропускает пачку врагов перед последним боссом {npc:%d}. Это специфично для маршрута."

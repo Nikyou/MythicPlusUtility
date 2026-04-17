@@ -154,8 +154,8 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
         self:UpdateButtons()
         self:UpdateLayout()
 
-        MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
         MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
+        MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
         if self:IsVisible() then
             MythicPlusUtility.TalentFrameHighlight:HideAll()
             MythicPlusUtility.TalentFrameHighlight:ShowRelevant()

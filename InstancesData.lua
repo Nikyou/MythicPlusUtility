@@ -58,21 +58,18 @@ MythicPlusUtility.instancesData = {
             tags = "[important][slow][root][magic_debuff]",
         }, { -- Hastening Ward
             text = format(L["{spell:%d} buff on the second boss {npc:%d}."], 1248689, 231863),
-            tags = "[purge]",
+            tags = "[super_important][purge]",
         }, { -- Entropy Orb
             text = format(L["{spell:%d} debuff is inflicted by contact with orbs on the last boss {npc:%d}."], 1269631,
                           231865),
             tags = "[important][slow][root][magic_debuff]",
         }, -- Trash
-        { -- Arcane Blade
-            text = format(L["{spell:%d} buff on {npc:%d}."], 1252909, 234124),
-            tags = "[important][purge]",
-        }, { -- Consuming Shadows
+        { -- Consuming Shadows
             text = format(L["{spell:%d} is cast by {npc:%d}."], 1265977, 234068),
             tags = "[important][creature_mortal_strike]",
         }, { -- Runic Glaive
             text = format(L["Avoid {spell:%d} when {npc:%d} throws glaive."], 1244907, 240973),
-            tags = "[targeted_avoid]",
+            tags = "[important][targeted_avoid]",
         }, { -- Terror Wave
             text = format(
               L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted and LoS."],
@@ -81,9 +78,15 @@ MythicPlusUtility.instancesData = {
         }, { -- Arcane Beam
             text = format(L["Avoid {spell:%d} when {npc:%d} casts on last seconds."], 1282050, 257476),
             tags = "[targeted_avoid]",
+        }, { -- Arcane Blade
+            text = format(L["{spell:%d} buff on {npc:%d}."], 1252909, 234124),
+            tags = "[purge]",
         }, { -- Power Word: Shield
             text = format(L["{spell:%d} buff is cast by {npc:%d}."], 1254306, 234486),
             tags = "[purge]",
+        }, { -- Last adds skip
+            text = format(L["Skips add pack before the last boss {npc:%d}. This is route specific."], 231865),
+            tags = "[player_jump]",
         },
     },
     [2874] = { -- Maisara Caverns
@@ -97,6 +100,14 @@ MythicPlusUtility.instancesData = {
         }, { -- Infected Pinions
             text = format(L["{spell:%d} debuff is inflicted by the first boss {npc:%d}."], 1246666, 247572),
             tags = "[disease][magic_debuff]",
+        }, { -- Vilebranch Sting
+            text = format(L["{spell:%d} debuff is inflicted by the first boss {npc:%d}."], 1260709, 247570),
+            tags = "[snare][magic_debuff]",
+        }, { -- Vilebranch Sting
+            text = format(
+              L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed only from yourself."],
+              1260709, 247570),
+            tags = "[snare_jet]",
         }, { -- Soulbind
             text = format(L["Avoid {spell:%d} when totem starts channeling on the last boss {npc:%d}."], 1252777, 248595),
             tags = "[important][targeted_avoid]",
@@ -141,7 +152,10 @@ MythicPlusUtility.instancesData = {
     [2915] = { -- Nexus-Point Xenas
         -- Boss
         -- Trash
-        { -- Supression Field
+        { -- Holy Echo
+            text = format(L["{spell:%d} buff on {npc:%d}."], 1263785, 254928),
+            tags = "[important][purge]",
+        }, { -- Supression Field
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 249081, 241647),
             tags = "[important][slow][snare][magic_debuff]",
         }, { -- Supression Field
@@ -161,9 +175,6 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this debuff can be avoided."], 1282724,
                           251853),
             tags = "[fear]",
-        }, { -- Holy Echo
-            text = format(L["{spell:%d} buff on {npc:%d}."], 1263785, 254928),
-            tags = "[purge]",
         }, { -- Leech Veil
             text = format(L["{spell:%d} is cast by {npc:%d}."], 1252204, 241645),
             tags = "[creature_stun][creature_fear][creature_incapacitate][creature_grip][creature_mortal_strike]",
@@ -271,15 +282,18 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} debuff is inflicted on the first boss {npc:%d}."], 153757, 75964),
             tags = "[bleed][physical_debuff]",
         }, { -- Sunwings npc
-            text = format(L["Slow {npc:%d} on the third boss {npc:%d}."], 76227, 76379),
+            text = format(L["Prevent {npc:%d} from reaching players on the third boss {npc:%d}."], 76227, 76379),
             tags = "[creature_slow][creature_grip]",
         }, { -- Solar Zealot NPC
             text = format(L["Stun {npc:%d} on the last boss {npc:%d}."], 76267, 76266),
             tags = "[creature_stun][creature_fear]",
+        }, { -- Lens Flare
+            text = format(L["Avoid {spell:%d} when the last boss {npc:%d} targets you."], 154044, 76266),
+            tags = "[important][targeted_avoid]",
         }, { -- Solar Zealot NPC Jump
             text = format(L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss {npc:%d}."],
                           76267, 76266),
-            tags = "[player_jump]",
+            tags = "[important][player_jump]",
         }, -- Trash
         { -- Blade Rush
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1254475, 79303),

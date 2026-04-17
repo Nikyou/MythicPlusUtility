@@ -3,6 +3,12 @@ TalentFrameHighlight.frames = {}
 MythicPlusUtility.TalentFrameHighlight = TalentFrameHighlight
 
 function TalentFrameHighlight:UpdateSpec()
+
+    if not (PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame) then
+        PlayerSpellsMicroButton:Click()
+        PlayerSpellsMicroButton:Click()
+    end
+
     local lastSelected = PlayerUtil.GetCurrentSpecID()
                            and C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
     local selectionID = PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame
@@ -25,7 +31,8 @@ function TalentFrameHighlight:UpdateSpec()
                         if not self.frames[definitionInfo.spellID] then
                             self.frames[definitionInfo.spellID] = {nodeIDs = {}}
                         end
-                        if not self.frames[definitionInfo.spellID].nodeIDs[nodeID] then
+                        if not self.frames[definitionInfo.spellID].nodeIDs[nodeID] and PlayerSpellsFrame
+                          and PlayerSpellsFrame.TalentsFrame then
                             self.frames[definitionInfo.spellID].nodeIDs[nodeID] = {
                                 buttonFrame = PlayerSpellsFrame.TalentsFrame:GetTalentButtonByNodeID(nodeID),
                             }
@@ -38,7 +45,7 @@ function TalentFrameHighlight:UpdateSpec()
 
     for spellId, entry in pairs(self.frames) do
         for nodeID, listEntry in pairs(entry.nodeIDs) do
-            if not listEntry.frame then
+            if not listEntry.frame and PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame then
                 listEntry.frame = CreateFrame("Frame",
                                               "MythicPlusUtility_TalentFrameHighlight_" .. spellId .. "_" .. nodeID,
                                               listEntry.buttonFrame, "BackdropTemplate")
@@ -108,24 +115,24 @@ end
 function TalentFrameHighlight:UpdateAnchers()
 
     if MythicPlusUtility.Frame then
-        local shouldUpdate = #TalentFrameHighlight.frames == 0
+        TalentFrameHighlight:UpdateSpec()
 
-        if shouldUpdate then TalentFrameHighlight:UpdateSpec() end
         for _, entry in pairs(TalentFrameHighlight.frames) do
             for nodeID, listEntry in pairs(entry.nodeIDs) do
-                local buttonFrame = PlayerSpellsFrame.TalentsFrame:GetTalentButtonByNodeID(nodeID)
-                if buttonFrame ~= listEntry.buttonFrame then
-                    listEntry.frame:ClearAllPoints()
-                    listEntry.frame:SetParent(buttonFrame)
-                    listEntry.buttonFrame = buttonFrame
-                    listEntry.frame:SetPoint("CENTER", buttonFrame)
+                if PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame then
+                    local buttonFrame = PlayerSpellsFrame.TalentsFrame:GetTalentButtonByNodeID(nodeID)
+                    if buttonFrame ~= listEntry.buttonFrame then
+                        listEntry.frame:ClearAllPoints()
+                        listEntry.frame:SetParent(buttonFrame)
+                        listEntry.buttonFrame = buttonFrame
+                        listEntry.frame:SetPoint("CENTER", buttonFrame)
+                    end
                 end
             end
         end
-        if shouldUpdate and #TalentFrameHighlight.frames > 0 then
-            TalentFrameHighlight:ShowRelevant()
-            TalentFrameHighlight:UpdateHighlight()
-        end
+
+        TalentFrameHighlight:ShowRelevant()
+        TalentFrameHighlight:UpdateHighlight()
 
     end
 
