@@ -131,9 +131,7 @@ function TalentFrameHighlight:UpdateAnchers()
             end
         end
 
-        TalentFrameHighlight:ShowRelevant()
-        TalentFrameHighlight:UpdateHighlight()
-
+        MythicPlusUtility:onUtilityWindowSetShown()
     end
 
 end

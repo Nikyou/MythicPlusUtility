@@ -3,17 +3,31 @@ local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
 MythicPlusUtility.supportedTags = {
     self_only = true, -- Ability that only works on the player
 
-    cc_aberration = true, -- Aberration that needs a CC effect
-    cc_beast = true, -- Beast that needs a CC effect
-    cc_critter = true, -- Critter that needs a CC effect
-    cc_demon = true, -- Demon that needs a CC effect
-    cc_dragonkin = true, -- Dragonkin that needs a CC effect
-    cc_elemental = true, -- Elemental that needs a CC effect
-    cc_giant = true, -- Giant that needs a CC effect
-    cc_humanoid = true, -- Humanoid that needs a CC effect
-    cc_mechanical = true, -- Mechanical that needs a CC effect
-    cc_undead = true, -- Undead that needs a CC effect
-    cc_other = true, -- Uncategorised creature that needs a CC effect
+    cast_cc_aberration = true, -- Aberration that needs a CC effect  (cast time)
+    cast_cc_beast = true, -- Beast that needs a CC effect  (cast time)
+    cast_cc_critter = true, -- Critter that needs a CC effect  (cast time)
+    cast_cc_demon = true, -- Demon that needs a CC effect  (cast time)
+    cast_cc_dragonkin = true, -- Dragonkin that needs a CC effect  (cast time)
+    cast_cc_elemental = true, -- Elemental that needs a CC effect  (cast time)
+    cast_cc_giant = true, -- Giant that needs a CC effect  (cast time)
+    cast_cc_humanoid = true, -- Humanoid that needs a CC effect  (cast time)
+    cast_cc_mechanical = true, -- Mechanical that needs a CC effect  (cast time)
+    cast_cc_undead = true, -- Undead that needs a CC effect  (cast time)
+    cast_cc_other = true, -- Uncategorised creature that needs a CC effect  (cast time)
+
+    cc_aberration = true, -- Aberration that needs a CC effect (insta cast)
+    cc_beast = true, -- Beast that needs a CC effect (insta cast)
+    cc_critter = true, -- Critter that needs a CC effect (insta cast)
+    cc_demon = true, -- Demon that needs a CC effect (insta cast)
+    cc_dragonkin = true, -- Dragonkin that needs a CC effect (insta cast)
+    cc_elemental = true, -- Elemental that needs a CC effect (insta cast)
+    cc_giant = true, -- Giant that needs a CC effect (insta cast)
+    cc_humanoid = true, -- Humanoid that needs a CC effect (insta cast)
+    cc_mechanical = true, -- Mechanical that needs a CC effect (insta cast)
+    cc_undead = true, -- Undead that needs a CC effect (insta cast)
+    cc_other = true, -- Uncategorised creature that needs a CC effect (insta cast)
+
+    cc_cyclone = true, -- Special CC effect for cyclone as damage does not break it
 
     creature_grip = true, -- Creature that needs a forced movement effect
     creature_root = true, -- Creature that needs a root effect
@@ -42,6 +56,7 @@ MythicPlusUtility.supportedTags = {
 
     player_jump = true, -- Mechanic that can be prevented by player using "jump" ability
     player_movement_immune = true, -- Mechanic that can be prevented by player using immunity to forced movement
+    alter_time = true, -- Special case of alter time
 
     targeted_avoid = true, -- Targeted ability that can be avoided with FD, Shadowmeld, etc.
 
@@ -365,7 +380,11 @@ function MythicPlusUtility:FormatSpellsData(spellId)
             if entry.isKnown then
                 extract(entry)
                 entry.spellId = spellId
-                entry.spellName = self:GetSpellNameById(spellId)
+                if entry.altSpellId then
+                    entry.spellName = self:GetSpellNameById(entry.altSpellId)
+                else
+                    entry.spellName = self:GetSpellNameById(spellId)
+                end
             end
         end
     else
@@ -445,7 +464,13 @@ function MythicPlusUtility:CreateCurrentAbilitiesList()
     end
 
     for spellId, entry in pairs(self.utilityAbilitiesRacials) do
-        if entry.isKnown then t[spellId] = self:tablecopy(entry) end
+        if entry.isKnown then
+            if entry.altSpellId then
+                t[entry.altSpellId] = self:tablecopy(entry)
+            else
+                t[spellId] = self:tablecopy(entry)
+            end
+        end
     end
 
     self.currentAbilitiesList = {}

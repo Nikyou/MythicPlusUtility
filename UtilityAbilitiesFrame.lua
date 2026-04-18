@@ -153,13 +153,6 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
         self.dungeonNameText:SetText(MythicPlusUtility.dungeonIdToName[profile.instanceID] or "")
         self:UpdateButtons()
         self:UpdateLayout()
-
-        MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
-        MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
-        if self:IsVisible() then
-            MythicPlusUtility.TalentFrameHighlight:HideAll()
-            MythicPlusUtility.TalentFrameHighlight:ShowRelevant()
-        end
     end
 
     function frame:SetShownHandler(show)
@@ -173,16 +166,14 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
                     db.char.changedTalents = false
                     MythicPlusUtility:UpdateCurrentAbilitiesList()
                 end
-
                 self:ChangeInstance()
             end
-            MythicPlusUtility.TalentFrameHighlight:ShowRelevant()
-        else
-            MythicPlusUtility.TalentFrameHighlight:HideAll()
         end
 
         self:SetShown(show)
         self.leftLabelFrame:SetShown(show)
+
+        EventRegistry:TriggerEvent("MPU_UtilityWindow_SetShown")
     end
 
     function frame:UpdatePosition()

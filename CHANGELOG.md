@@ -1,3 +1,24 @@
+#### 1.2.2
+### Dungeon Entries
+* Added insta CC tags to many CCable entries.
+* Magisters' Terrace: Power Word: Shield changed to super important.
+* Seat of the Triumvirate: Abyssal Enhancement changed to non important.
+* Windrunner Spire: Bolstering Flames changed to important.
+### Fixes
+* Fixed an error with talent highlight staying with window closed.
+### Spells
+* Many CC spells are now distingly categorised as insta and non insta cast.
+* Added new racials:
+    * Arcane Torrent
+    * Bull Rush
+    * Escape Artist
+    * Glide (changed from Evoker only)
+    * Quaking Palm
+    * Rocket Jump
+    * War Stomp
+    * Will of the Forsaken
+    * Will to Survive
+    * Wing Buffet (changed from Evoker only)
 #### 1.2.1
 ### Dungeon Entries
 * Magisters' Terrace: Added a route specific skip of add pack before the last boss.

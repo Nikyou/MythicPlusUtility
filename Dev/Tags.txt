@@ -1,16 +1,29 @@
 [self_only] - Ability that only works on the player
 
-[cc_aberration] - Aberration that needs a CC effect
-[cc_beast] - Beast that needs a CC effect
-[cc_critter] - Critter that needs a CC effect
-[cc_demon] - Demon that needs a CC effect
-[cc_dragonkin] - Dragonkin that needs a CC effect
-[cc_elemental] - Elemental that needs a CC effect
-[cc_giant] - Giant that needs a CC effect
-[cc_humanoid] - Humanoid that needs a CC effect
-[cc_mechanical] - Mechanical that needs a CC effect
-[cc_undead] - Undead that needs a CC effect
-[cc_other] - Uncategorised creature that needs a CC effect
+[cast_cc_aberration] - Aberration that needs a CC effect (cast time)
+[cast_cc_beast] - Beast that needs a CC effect (cast time)
+[cast_cc_critter] - Critter that needs a CC effect (cast time)
+[cast_cc_demon] - Demon that needs a CC effect (cast time)
+[cast_cc_dragonkin] - Dragonkin that needs a CC effect (cast time)
+[cast_cc_elemental] - Elemental that needs a CC effect (cast time)
+[cast_cc_giant] - Giant that needs a CC effect (cast time)
+[cast_cc_humanoid] - Humanoid that needs a CC effect (cast time)
+[cast_cc_mechanical] - Mechanical that needs a CC effect (cast time)
+[cast_cc_other] - Uncategorised creature that needs a CC effect (cast time)
+[cast_cc_undead] - Undead that needs a CC effect (cast time)
+
+[cc_aberration] - Aberration that needs a CC effect (insta cast)
+[cc_beast] - Beast that needs a CC effect (insta cast)
+[cc_critter] - Critter that needs a CC effect (insta cast)
+[cc_demon] - Demon that needs a CC effect (insta cast)
+[cc_dragonkin] - Dragonkin that needs a CC effect (insta cast)
+[cc_elemental] - Elemental that needs a CC effect (insta cast)
+[cc_giant] - Giant that needs a CC effect (insta cast)
+[cc_humanoid] - Humanoid that needs a CC effect (insta cast)
+[cc_mechanical] - Mechanical that needs a CC effect (insta cast)
+[cc_other] - Uncategorised creature that needs a CC effect (cast time)
+[cc_undead] - Undead that needs a CC effect (insta cast)
+[cc_cyclone] - Special CC effect for cyclone as damage does not break it
 
 [creature_grip] - Creature that needs a forced movement effect
 [creature_root] - Creature that needs a root effect
@@ -39,6 +52,7 @@
 
 [player_jump] - Mechanic that can be prevented by player using "jump" ability
 [player_movement_immune] - Mechanic that can be prevented by player using immunity to forced movement
+[alter_time] - Special case of alter time
 
 [important] - Sets entry as important
 [super_important] - Sets entry as super important

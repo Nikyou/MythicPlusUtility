@@ -68,14 +68,24 @@ MythicPlusUtility.classSpecialisations = {
 }
 
 MythicPlusUtility.utilityAbilitiesRacials = {
-    [20594] = {tags = "[poison][disease][curse][bleed]", racial = true}, -- Stoneform
-    [265221] = {tags = "[poison][disease][curse][bleed]", racial = true}, -- Fireblood
-    [58984] = {tags = "[targeted_avoid]", racial = true}, -- Shadowmeld
+    [107079] = {tags = "[creature_incapacitate]", racial = true}, -- Quaking Palm
+    [20549] = {tags = "[creature_stun]", racial = true}, -- War Stomp
+    [20589] = {tags = "[self_only][slow][snare][root]", racial = true}, -- Escape Artist
+    [20594] = {tags = "[self_only][poison][disease][curse][bleed]", racial = true}, -- Stoneform
+    [255654] = {tags = "[creature_stun]", racial = true}, -- Bull Rush
+    [265221] = {tags = "[self_only][poison][disease][curse][bleed]", racial = true}, -- Fireblood
+    [28730] = {tags = "[purge]", alternatives = {25046, 50613, 69179, 80483, 129597, 202719}, racial = true}, -- Arcane Torrent
+    [357214] = {tags = "[creature_grip]", racial = true}, -- Wing Buffet
+    [358733] = {tags = "[self_only][player_jump]", racial = true}, -- Glide
+    [58984] = {tags = "[self_only][targeted_avoid]", racial = true}, -- Shadowmeld
+    [59752] = {tags = "[self_only][stun]", racial = true}, -- Will to Survive
+    [69070] = {tags = "[self_only][player_jump]", racial = true}, -- Rocket Jump
+    [7744] = {tags = "[self_only][charm][fear][sleep]", racial = true}, -- Will of the Forsaken
 }
 
 MythicPlusUtility.utilityAbilities = {
     DEATHKNIGHT = {
-        [111673] = {tags = "[cc_undead]"}, -- Control Undead
+        [111673] = {tags = "[cast_cc_undead]"}, -- Control Undead
         [207167] = {tags = "[creature_incapacitate]"}, -- Blinding Sleet
         [212552] = {tags = "[self_only][root]"}, -- Wraith Walk
         [221562] = {tags = "[creature_stun]", baseline = true}, -- Asphyxiate
@@ -117,11 +127,9 @@ MythicPlusUtility.utilityAbilities = {
         [102793] = {tags = "[creature_slow][creature_root]"}, -- Ursol's Vortex
         [132469] = {tags = "[creature_grip][creature_slow]"}, -- Typhoon
         [22570] = {tags = "[creature_stun]", baseline = true}, -- Maim
-        [2637] = {tags = "[cc_beast][cc_dragonkin]"}, -- Hibernate
+        [2637] = {tags = "[cast_cc_beast][cast_cc_dragonkin]"}, -- Hibernate
         [2908] = {tags = "[enrage]"}, -- Soothe
-        [33786] = {
-            tags = "[cc_aberration][cc_beast][cc_critter][cc_demon][cc_dragonkin][cc_elemental][cc_giant][cc_humanoid][cc_mechanical][cc_undead][cc_other]",
-        }, -- Cyclone
+        [33786] = {tags = "[cc_cyclone]"}, -- Cyclone
         [339] = {tags = "[creature_root]", baseline = true}, -- Entangling Roots
         [5211] = {tags = "[creature_stun]", baseline = true}, -- Mighty Bash
         [768] = {tags = "[self_only][slow][snare][root]", baseline = true}, -- Cat Form (as a general shapeshift)
@@ -141,11 +149,9 @@ MythicPlusUtility.utilityAbilities = {
     }, -- Restoration
     EVOKER = {
         [357210] = {tags = "[self_only][slow][snare][root][player_movement_immune]", override = 403631, baseline = true}, -- Deep Breath
-        [357214] = {tags = "[creature_grip]", baseline = true}, -- Wing Buffet
         [358385] = {tags = "[creature_root]", baseline = true}, -- Landslide
-        [358733] = {tags = "[self_only][player_jump]", baseline = true}, -- Glide
         [360806] = {
-            tags = "[cc_aberration][cc_beast][cc_critter][cc_demon][cc_dragonkin][cc_elemental][cc_giant][cc_humanoid][cc_mechanical][cc_undead][cc_other]",
+            tags = "[cast_cc_aberration][cast_cc_beast][cast_cc_critter][cast_cc_demon][cast_cc_dragonkin][cast_cc_elemental][cast_cc_giant][cast_cc_humanoid][cast_cc_mechanical][cast_cc_undead][cast_cc_other]",
         }, -- Sleep Walk
         [365585] = {tags = "[poison]", baseline = true}, -- Expunge
         [368970] = {tags = "[creature_stun]", baseline = true}, -- Tail Swipe
@@ -165,7 +171,10 @@ MythicPlusUtility.utilityAbilities = {
         [109248] = {tags = "[creature_root]", baseline = true}, -- Binding Shot
         [1513] = {tags = "[cc_beast]"}, -- Scare Beast
         [1543] = {tags = "[stealth]", baseline = true}, -- Flare
-        [187650] = {tags = "[cc_aberration][cc_beast][cc_critter][cc_demon][cc_dragonkin][cc_elemental][cc_giant][cc_humanoid][cc_mechanical][cc_undead][cc_other]", baseline = true}, -- Freezing Trap
+        [187650] = {
+            tags = "[cc_aberration][cc_beast][cc_critter][cc_demon][cc_dragonkin][cc_elemental][cc_giant][cc_humanoid][cc_mechanical][cc_undead][cc_other]",
+            baseline = true,
+        }, -- Freezing Trap
         [187698] = {tags = "[creature_slow]"}, -- Tar Trap
         [195645] = {tags = "[creature_slow]", alternatives = {5116}, baseline = true}, -- Wing Clip
         [19801] = {tags = "[enrage][purge]"}, -- Tranquilizing Shot
@@ -203,7 +212,7 @@ MythicPlusUtility.utilityAbilities = {
     MAGE = {
         [110959] = {tags = "[self_only][targeted_avoid]"}, -- Greater Invisibility
         [113724] = {tags = "[creature_incapacitate]"}, -- Ring of Frost
-        [118] = {tags = "[cc_beast][cc_humanoid][cc_critter]", baseline = true}, -- Polymorph
+        [118] = {tags = "[cast_cc_beast][cast_cc_humanoid][cast_cc_critter]", baseline = true}, -- Polymorph
         [120] = {tags = "[creature_slow]", baseline = true}, -- Cone of Cold
         [122] = {tags = "[creature_root]", baseline = true}, -- Frost Nova
         [157980] = {tags = "[creature_grip]"}, -- Supernova
@@ -211,7 +220,7 @@ MythicPlusUtility.utilityAbilities = {
         [1953] = {tags = "[self_only][root][player_jump]", alternatives = {212653}, baseline = true}, -- Blink
         [30449] = {tags = "[purge]"}, -- Spellsteal
         [31661] = {tags = "[creature_incapacitate]"}, -- Dragon's Breath
-        [342245] = {tags = "[player_movement_immune]", baseline = true}, -- Alter Time
+        [342245] = {tags = "[alter_time]", baseline = true}, -- Alter Time
         [386763] = {tags = "[creature_root]"}, -- Freezing Cold
         [386828] = {tags = "[self_only][snare]"}, -- Energized Barriers
         [45438] = {
@@ -251,7 +260,7 @@ MythicPlusUtility.utilityAbilities = {
     }, -- Windwalker
     PALADIN = {
         [1022] = {tags = "[bleed][physical_debuff]"}, -- Blessing of Protection
-        [10326] = {tags = "[cc_undead][cc_aberration][cc_demon]"}, -- Turn Evil
+        [10326] = {tags = "[cast_cc_undead][cast_cc_aberration][cast_cc_demon]"}, -- Turn Evil
         [1044] = {tags = "[slow][snare][root]"}, -- Blessing of Freedom
         [115750] = {tags = "[creature_incapacitate]"}, -- Blinding Light
         [469304] = {tags = "[self_only][slow][snare][root]"}, -- Steed of Liberty
@@ -276,17 +285,17 @@ MythicPlusUtility.utilityAbilities = {
         [108942] = {tags = "[self_only][snare]"}, -- Phantasm
         [1250691] = {tags = "[creature_root]"}, -- Void Tendrils
         [205364] = {
-            tags = "[cc_aberration][cc_beast][cc_critter][cc_dragonkin][cc_elemental][cc_giant][cc_humanoid][cc_other]",
+            tags = "[cast_cc_aberration][cast_cc_beast][cast_cc_critter][cast_cc_dragonkin][cast_cc_elemental][cast_cc_giant][cast_cc_humanoid][cast_cc_other]",
             override = 605,
         }, -- Dominate Mind
         [32375] = {tags = "[purge]", baseline = true}, -- Mass Dispel
         [528] = {tags = "[purge]"}, -- Dispel Magic
         [605] = {
-            tags = "[cc_aberration][cc_beast][cc_critter][cc_dragonkin][cc_elemental][cc_giant][cc_humanoid][cc_other]",
+            tags = "[cast_cc_aberration][cast_cc_beast][cast_cc_critter][cast_cc_dragonkin][cast_cc_elemental][cast_cc_giant][cast_cc_humanoid][cast_cc_other]",
             override = 205364,
         }, -- Mind Control
         [8122] = {tags = "[creature_fear]", baseline = true}, -- Psychic Scream
-        [9484] = {tags = "[cc_aberration][cc_undead]"}, -- Shackle Horror
+        [9484] = {tags = "[cast_cc_aberration][cast_cc_undead]"}, -- Shackle Horror
     },
     [256] = {
         [390632] = {tags = "[disease]"}, -- Improved Purify
@@ -321,7 +330,7 @@ MythicPlusUtility.utilityAbilities = {
         [383013] = {tags = "[poison]"}, -- Poison Cleansing Totem
         [462817] = {tags = "[snare_jet]"}, -- Jet Stream for Wind Rush Totem
         [51485] = {tags = "[creature_slow][creature_root]", override = 2484}, -- Earthgrab Totem
-        [51514] = {tags = "[cc_humanoid][cc_beast]"}, -- Hex
+        [51514] = {tags = "[cast_cc_humanoid][cast_cc_beast]"}, -- Hex
         [58875] = {tags = "[self_only][slow][snare][root]", baseline = true}, -- Spirit Walk
         [8143] = {tags = "[fear][charm][sleep]"}, -- Tremor Totem
     },
@@ -342,9 +351,9 @@ MythicPlusUtility.utilityAbilities = {
         [334275] = {tags = "[creature_slow]"}, -- Curse of Exhaustion
         [5484] = {tags = "[creature_fear]"}, -- Howl of Terror
         [5782] = {tags = "[creature_fear]", baseline = true}, -- Fear
-        [6358] = {tags = "[cc_humanoid]", pet = true, baseline = true}, -- Seduction (pet)
+        [6358] = {tags = "[cast_cc_humanoid]", pet = true, baseline = true}, -- Seduction (pet)
         [6789] = {tags = "[creature_incapacitate]", baseline = true}, -- Mortal Coil
-        [710] = {tags = "[cc_demon][cc_aberration][cc_elemental]"}, -- Banish
+        [710] = {tags = "[cast_cc_demon][cast_cc_aberration][cast_cc_elemental]"}, -- Banish
     },
     [265] = {}, -- Affliction
     [266] = {

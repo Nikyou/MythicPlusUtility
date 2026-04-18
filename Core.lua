@@ -88,14 +88,25 @@ function MythicPlusUtility:RefreshConfig()
     if self.Frame then self.Frame:ProfileChange() end
 end
 
-function MythicPlusUtility:onTalentFrameShow() MythicPlusUtility.TalentFrameHighlight.UpdateAnchers(MythicPlusUtility) end
+function MythicPlusUtility:onTalentFrameShow() MythicPlusUtility.TalentFrameHighlight:UpdateAnchers() end
+
+function MythicPlusUtility:onUtilityWindowSetShown()
+    if MythicPlusUtility.Frame:IsVisible() then
+        MythicPlusUtility.TalentFrameHighlight:HideAll()
+        MythicPlusUtility.TalentFrameHighlight:ShowRelevant()
+    else
+        MythicPlusUtility.TalentFrameHighlight:HideAll()
+    end
+end
 
 function MythicPlusUtility:OnEnable()
     self:RegisterEvent("ACTIVE_PLAYER_SPECIALIZATION_CHANGED")
     self:RegisterEvent("TRAIT_CONFIG_UPDATED")
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
     self:RegisterEvent("CHALLENGE_MODE_START")
+
     EventRegistry:RegisterCallback("PlayerSpellsFrame.OpenFrame", MythicPlusUtility.onTalentFrameShow)
+    EventRegistry:RegisterCallback("MPU_UtilityWindow_SetShown", MythicPlusUtility.onUtilityWindowSetShown)
 end
 
 function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
@@ -108,7 +119,10 @@ function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
         self.db.char.changedSpec = true
     end
 
-    if self.Frame then self.TalentFrameHighlight:UpdateSpec() end
+    if self.Frame then
+        self.TalentFrameHighlight:UpdateAnchers()
+        self.TalentFrameHighlight:UpdateHighlight()
+    end
 end
 
 function MythicPlusUtility:TRAIT_CONFIG_UPDATED(event)
@@ -201,8 +215,24 @@ function MythicPlusUtility:GetCharacterInfo()
         MythicPlusUtility:ExtractSpellsFromDB()
     end)
 
-    for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesRacials) do
-        entry.isKnown = self:IsSpellKnownHandler(spellId)
+    for spellId, entry in pairs(self.utilityAbilitiesRacials) do
+        if not (entry.alternatives and #entry.alternatives > 0) then
+            entry.isKnown = self:IsSpellKnownHandler(spellId)
+        else
+            local known = false
+
+            for _, subSpellId in ipairs(entry.alternatives) do
+                known = MythicPlusUtility:IsSpellKnownHandler(subSpellId)
+                if known then
+                    entry.isKnown = true
+                    entry.altSpellId = subSpellId
+                    entry.spellName = self:GetSpellNameById(subSpellId)
+
+                    break
+                end
+            end
+            if not known then entry.isKnown = self:IsSpellKnownHandler(spellId) end
+        end
     end
 end
 
