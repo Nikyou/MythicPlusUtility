@@ -377,15 +377,9 @@ function MythicPlusUtility:FormatSpellsData(spellId)
             end
         end
         for spellId, entry in pairs(self.utilityAbilitiesRacials) do
-            if entry.isKnown then
-                extract(entry)
-                entry.spellId = spellId
-                if entry.altSpellId then
-                    entry.spellName = self:GetSpellNameById(entry.altSpellId)
-                else
-                    entry.spellName = self:GetSpellNameById(spellId)
-                end
-            end
+            extract(entry)
+            entry.spellId = spellId
+            entry.spellName = self:GetSpellNameById(spellId)
         end
     else
         if self.utilityAbilities[self.db.char.class][spellId] then
@@ -400,7 +394,7 @@ function MythicPlusUtility:FormatSpellsData(spellId)
                 self.utilityAbilities[specId][spellId].spellName = self:GetSpellNameById(spellId)
             end
         end
-        if self.utilityAbilitiesRacials[spellId] and self.utilityAbilitiesRacials[spellId].isKnown then
+        if self.utilityAbilitiesRacials[spellId] then
             extract(self.utilityAbilitiesRacials[spellId])
             self.utilityAbilitiesRacials[spellId].spellId = spellId
             self.utilityAbilitiesRacials[spellId].spellName = self:GetSpellNameById(spellId)

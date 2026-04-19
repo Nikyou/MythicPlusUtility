@@ -210,30 +210,31 @@ end
 function MythicPlusUtility:GetCharacterInfo()
     self.db.char.class = UnitClassBase("player")
     C_Timer.NewTimer(0.5, function()
+        for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesRacials) do
+            if not (entry.alternatives and #entry.alternatives > 0) then
+                entry.isKnown = MythicPlusUtility:IsSpellKnownHandler(spellId)
+                entry.spellId = spellId
+                entry.spellName = MythicPlusUtility:GetSpellNameById(spellId)
+            else
+                local known = false
+
+                for _, subSpellId in ipairs(entry.alternatives) do
+                    known = MythicPlusUtility:IsSpellKnownHandler(subSpellId)
+                    if known then
+                        entry.isKnown = true
+                        entry.altSpellId = subSpellId
+                        entry.spellName = MythicPlusUtility:GetSpellNameById(subSpellId)
+
+                        break
+                    end
+                end
+                if not known then entry.isKnown = self:IsSpellKnownHandler(spellId) end
+            end
+        end
         MythicPlusUtility.db.char.currentSpec = C_SpecializationInfo.GetSpecializationInfo(
                                                   C_SpecializationInfo.GetSpecialization())
         MythicPlusUtility:ExtractSpellsFromDB()
     end)
-
-    for spellId, entry in pairs(self.utilityAbilitiesRacials) do
-        if not (entry.alternatives and #entry.alternatives > 0) then
-            entry.isKnown = self:IsSpellKnownHandler(spellId)
-        else
-            local known = false
-
-            for _, subSpellId in ipairs(entry.alternatives) do
-                known = MythicPlusUtility:IsSpellKnownHandler(subSpellId)
-                if known then
-                    entry.isKnown = true
-                    entry.altSpellId = subSpellId
-                    entry.spellName = self:GetSpellNameById(subSpellId)
-
-                    break
-                end
-            end
-            if not known then entry.isKnown = self:IsSpellKnownHandler(spellId) end
-        end
-    end
 end
 
 function MythicPlusUtility:ToggleAbilitiesFrame()

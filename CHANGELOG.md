@@ -1,3 +1,6 @@
+#### 1.2.3
+### Fixes
+* Racial abilities appeared now appear on login and not only after /reload
 #### 1.2.2
 ### Dungeon Entries
 * Added insta CC tags to many CCable entries.
