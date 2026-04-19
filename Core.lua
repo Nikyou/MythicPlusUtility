@@ -99,6 +99,13 @@ function MythicPlusUtility:onUtilityWindowSetShown()
     end
 end
 
+function MythicPlusUtility:onUtilityWindowChangeInstance()
+    if MythicPlusUtility.Frame then
+        MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
+        MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
+    end
+end
+
 function MythicPlusUtility:OnEnable()
     self:RegisterEvent("ACTIVE_PLAYER_SPECIALIZATION_CHANGED")
     self:RegisterEvent("TRAIT_CONFIG_UPDATED")
@@ -107,6 +114,7 @@ function MythicPlusUtility:OnEnable()
 
     EventRegistry:RegisterCallback("PlayerSpellsFrame.OpenFrame", MythicPlusUtility.onTalentFrameShow)
     EventRegistry:RegisterCallback("MPU_UtilityWindow_SetShown", MythicPlusUtility.onUtilityWindowSetShown)
+    EventRegistry:RegisterCallback("MPU_UtilityWindow_ChangeInstance", MythicPlusUtility.onUtilityWindowChangeInstance)
 end
 
 function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
@@ -119,10 +127,7 @@ function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
         self.db.char.changedSpec = true
     end
 
-    if self.Frame then
-        self.TalentFrameHighlight:UpdateAnchers()
-        self.TalentFrameHighlight:UpdateHighlight()
-    end
+    self:onUtilityWindowChangeInstance()
 end
 
 function MythicPlusUtility:TRAIT_CONFIG_UPDATED(event)

@@ -153,6 +153,8 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
         self.dungeonNameText:SetText(MythicPlusUtility.dungeonIdToName[profile.instanceID] or "")
         self:UpdateButtons()
         self:UpdateLayout()
+
+        EventRegistry:TriggerEvent("MPU_UtilityWindow_ChangeInstance")
     end
 
     function frame:SetShownHandler(show)
