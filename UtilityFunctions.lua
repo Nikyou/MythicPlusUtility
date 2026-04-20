@@ -27,7 +27,8 @@ MythicPlusUtility.supportedTags = {
     cc_undead = true, -- Undead that needs a CC effect (insta cast)
     cc_other = true, -- Uncategorised creature that needs a CC effect (insta cast)
 
-    cc_cyclone = true, -- Special CC effect for cyclone as damage does not break it
+    cc_banish = true, -- Special CC case for Banish as damage does not break it ([cast_cc_demon][cast_cc_aberration][cast_cc_elemental])
+    cc_cyclone = true, -- Special CC case for cyclone as damage does not break it (cast cc everything)
 
     creature_grip = true, -- Creature that needs a forced movement effect
     creature_root = true, -- Creature that needs a root effect
@@ -54,14 +55,14 @@ MythicPlusUtility.supportedTags = {
     stealth = true, -- Removable stealth effect
     stun = true, -- Removable stun effect
 
+    magic_debuff = true, -- Removable magical debuff, not simply type "magic"
+    physical_debuf = true, -- Removable physical debuff
+
     player_jump = true, -- Mechanic that can be prevented by player using "jump" ability
     player_movement_immune = true, -- Mechanic that can be prevented by player using immunity to forced movement
     alter_time = true, -- Special case of alter time
 
     targeted_avoid = true, -- Targeted ability that can be avoided with FD, Shadowmeld, etc.
-
-    magic_debuff = true, -- Removable magical debuff, not simply type "magic"
-    physical_debuf = true, -- Removable physical debuff
 }
 MythicPlusUtility.defaultDungeonId = 2526
 MythicPlusUtility.dungeonIdToName = {
