@@ -217,7 +217,7 @@ MythicPlusUtility.instancesData = {
         -- Boss
         { -- Coalesced Void NPC
             text = format(L["Prevent {npc:%d} from reaching the first boss {npc:%d}."], 122716, 122313),
-            tags = "[important][creature_slow][creature_grip][cc_aberration][cast_cc_aberration]",
+            tags = "[important][creature_slow][creature_grip][cc_aberration][cast_cc_aberration][cc_cyclone][cc_banish]",
         }, { -- Shadow Pounce
             text = format(L["{spell:%d} debuff is inflicted on the second boss {npc:%d}."], 245742, 122316),
             tags = "[bleed][physical_debuff]",

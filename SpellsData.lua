@@ -353,7 +353,7 @@ MythicPlusUtility.utilityAbilities = {
         [5782] = {tags = "[creature_fear]", baseline = true}, -- Fear
         [6358] = {tags = "[cast_cc_humanoid]", pet = true, baseline = true}, -- Seduction (pet)
         [6789] = {tags = "[creature_incapacitate]", baseline = true}, -- Mortal Coil
-        [710] = {tags = "[cast_cc_demon][cast_cc_aberration][cast_cc_elemental]"}, -- Banish
+        [710] = {tags = "[cc_banish]"}, -- Banish
     },
     [265] = {}, -- Affliction
     [266] = {
