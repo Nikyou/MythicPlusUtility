@@ -5,8 +5,9 @@ MythicPlusUtility.TalentFrameHighlight = TalentFrameHighlight
 function TalentFrameHighlight:UpdateSpec()
 
     if not (PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame) then
-        PlayerSpellsMicroButton:Click()
-        PlayerSpellsMicroButton:Click()
+        return
+        -- PlayerSpellsMicroButton:Click()
+        -- PlayerSpellsMicroButton:Click()
     end
 
     local lastSelected = PlayerUtil.GetCurrentSpecID()
@@ -56,6 +57,7 @@ function TalentFrameHighlight:UpdateSpec()
 
                 local texture = listEntry.frame:CreateTexture(nil, "ARTWORK")
                 texture:SetAllPoints()
+                texture:SetColorTexture(1, 1, 1, 1)
                 listEntry.frame.texture = texture
             end
         end
@@ -64,10 +66,13 @@ function TalentFrameHighlight:UpdateSpec()
 end
 
 function TalentFrameHighlight:HideAll()
-    for _, entry in pairs(self.frames) do for _, listEntry in pairs(entry.nodeIDs) do listEntry.frame:Hide() end end
+    for _, entry in pairs(self.frames) do
+        for _, listEntry in pairs(entry.nodeIDs) do if listEntry.frame:IsShown() then listEntry.frame:Hide() end end
+    end
 end
 
 function TalentFrameHighlight:ShowRelevant()
+    self:HideAll()
     local buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
     local buttonCosmetic = MythicPlusUtility.db.profile.buttonCosmetic
 
@@ -131,7 +136,6 @@ function TalentFrameHighlight:UpdateAnchers()
             end
         end
 
-        MythicPlusUtility:onUtilityWindowSetShown()
     end
 
 end

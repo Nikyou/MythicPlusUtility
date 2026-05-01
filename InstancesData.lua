@@ -103,11 +103,6 @@ MythicPlusUtility.instancesData = {
         }, { -- Vilebranch Sting
             text = format(L["{spell:%d} debuff is inflicted by the first boss {npc:%d}."], 1260709, 247570),
             tags = "[snare][magic_debuff]",
-        }, { -- Vilebranch Sting
-            text = format(
-              L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed only from yourself."],
-              1260709, 247570),
-            tags = "[snare_jet]",
         }, { -- Soulbind
             text = format(L["Avoid {spell:%d} when totem starts channeling on the last boss {npc:%d}."], 1252777, 248595),
             tags = "[important][targeted_avoid]",
@@ -158,10 +153,6 @@ MythicPlusUtility.instancesData = {
         }, { -- Supression Field
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 249081, 241647),
             tags = "[important][slow][snare][magic_debuff]",
-        }, { -- Supression Field
-            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."],
-                          249081, 241647),
-            tags = "[important][snare_jet]",
         }, { -- Entropic Leech
             text = format(L["Avoid {spell:%d} when {npc:%d} starts channeling."], 1252062, 241660),
             tags = "[targeted_avoid]",
@@ -188,19 +179,9 @@ MythicPlusUtility.instancesData = {
         { -- Cryoshards
             text = format(L["{spell:%d} debuff is inflicted by the first boss {npc:%d}."], 1261921, 36494),
             tags = "[important][slow][snare][magic_debuff]",
-        }, { -- Cryoshards
-            text = format(
-              L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed only from yourself."],
-              1261921, 36494),
-            tags = "[important][snare_jet]",
         }, { -- Shadowbind
             text = format(L["{spell:%d} debuff is inflicted by the second boss {npc:%d}."], 1264186, 36477),
             tags = "[super_important][slow][snare][curse][magic_debuff]",
-        }, { -- Shadowbind
-            text = format(
-              L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Debuff is removed only from yourself."],
-              1264186, 36477),
-            tags = "[super_important][snare_jet]",
         }, { -- Rotting Strikes
             text = format(L["{spell:%d} debuff is inflicted on the last boss {npc:%d}."], 1262930, 36658),
             tags = "[disease][physical_debuff]",
@@ -218,10 +199,6 @@ MythicPlusUtility.instancesData = {
         }, { -- Permeating Cold
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1258437, 252566),
             tags = "[important][slow][snare][magic_debuff]",
-        }, { -- Permeating Cold
-            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."],
-                          1258437, 252566),
-            tags = "[important][snare_jet]",
         }, { -- Necromantic Infusion
             text = format(L["{spell:%d} buff is cast by {npc:%d}."], 1258448, 252551),
             tags = "[purge]",
@@ -255,10 +232,6 @@ MythicPlusUtility.instancesData = {
         { -- Chains of Subjugation
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1262509, 124171),
             tags = "[important][slow][snare][magic_debuff]",
-        }, { -- Chains of Subjugation
-            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."],
-                          1262509, 124171),
-            tags = "[important][snare_jet]",
         }, { -- Abyssal Enhancement
             text = format(L["{spell:%d} buff on {npc:%d}."], 1262526, 122404),
             tags = "[purge]",

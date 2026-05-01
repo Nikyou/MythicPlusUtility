@@ -862,8 +862,7 @@ function MythicPlusUtility:SetValueTalentHighlight(info, value)
     local db = self.db.profile.buttonCosmetic[info[#info - 1]]
     db[name] = value
 
-    if self.Frame and self.Frame:IsVisible() then
-        self.TalentFrameHighlight:HideAll()
+    if self.Frame and self.Frame:IsShown() then
         self.TalentFrameHighlight:ShowRelevant()
     end
 end

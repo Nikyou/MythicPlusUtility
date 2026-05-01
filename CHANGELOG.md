@@ -1,3 +1,7 @@
+#### 1.2.4
+### Spells
+* Jet Stream: no longer a special case with working only on yourself (yay)
+* Vengeful Retreat: added "jump" tag
 #### 1.2.3
 ### Fixes
 * Racial abilities appeared now appear on login and not only after /reload

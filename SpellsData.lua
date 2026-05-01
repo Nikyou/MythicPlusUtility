@@ -108,7 +108,7 @@ MythicPlusUtility.utilityAbilities = {
         [1266496] = {tags = "[self_only][curse]"}, -- Soul Cleanse
         [131347] = {tags = "[self_only][player_jump]", baseline = true}, -- Glide
         [188501] = {tags = "[stealth]", baseline = true}, -- Spectral Sight
-        [198793] = {tags = "[self_only][snare]", baseline = true}, -- Vengeful Retreat
+        [198793] = {tags = "[self_only][snare][player_jump]", baseline = true}, -- Vengeful Retreat
         [207684] = {tags = "[creature_fear]", baseline = true}, -- Sigil of Misery
         [217832] = {tags = "[cc_demon][cc_beast][cc_humanoid]", baseline = true}, -- Imprison
         [278326] = {tags = "[purge]"}, -- Consume Magic
@@ -328,7 +328,7 @@ MythicPlusUtility.utilityAbilities = {
         [370] = {tags = "[purge]"}, -- Purge
         [378075] = {tags = "[self_only][snare]"}, -- Thunderous Paws
         [383013] = {tags = "[poison]"}, -- Poison Cleansing Totem
-        [462817] = {tags = "[snare_jet]"}, -- Jet Stream for Wind Rush Totem
+        [462817] = {tags = "[snare]"}, -- Jet Stream for Wind Rush Totem  [snare_jet]
         [51485] = {tags = "[creature_slow][creature_root]", override = 2484}, -- Earthgrab Totem
         [51514] = {tags = "[cast_cc_humanoid][cast_cc_beast]"}, -- Hex
         [58875] = {tags = "[self_only][slow][snare][root]", baseline = true}, -- Spirit Walk
