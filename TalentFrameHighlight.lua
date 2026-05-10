@@ -57,7 +57,7 @@ function TalentFrameHighlight:UpdateSpec()
 
                 local texture = listEntry.frame:CreateTexture(nil, "ARTWORK")
                 texture:SetAllPoints()
-                texture:SetColorTexture(1, 1, 1, 1)
+                texture:SetColorTexture(1, 1, 1, 0)
                 listEntry.frame.texture = texture
             end
         end

@@ -2,6 +2,8 @@
 ### Spells
 * Jet Stream: no longer a special case with working only on yourself (yay)
 * Vengeful Retreat: added "jump" tag
+### Fixes
+* (.1) Fixed talent highlight sometimes appearing as white squares
 #### 1.2.3
 ### Fixes
 * Racial abilities appeared now appear on login and not only after /reload

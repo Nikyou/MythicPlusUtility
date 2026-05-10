@@ -91,6 +91,7 @@ end
 function MythicPlusUtility:onTalentFrameShow()
     if MythicPlusUtility.Frame and MythicPlusUtility.Frame:IsShown() then
         MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
+        MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
         MythicPlusUtility.TalentFrameHighlight:ShowRelevant()
     end
 end
@@ -98,6 +99,7 @@ end
 function MythicPlusUtility:onUtilityWindowSetShown()
     if MythicPlusUtility.Frame:IsShown() then
         MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
+        MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
         MythicPlusUtility.TalentFrameHighlight:ShowRelevant()
     else
         MythicPlusUtility.TalentFrameHighlight:HideAll()
