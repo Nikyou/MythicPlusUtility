@@ -96,6 +96,12 @@ function MythicPlusUtility:onTalentFrameShow()
     end
 end
 
+function MythicPlusUtility:onTalentFrameClose()
+    if MythicPlusUtility.Frame and MythicPlusUtility.Frame:IsShown() then
+        MythicPlusUtility.TalentFrameHighlight:HideAll()
+    end
+end
+
 function MythicPlusUtility:onUtilityWindowSetShown()
     if MythicPlusUtility.Frame:IsShown() then
         MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
@@ -107,11 +113,11 @@ function MythicPlusUtility:onUtilityWindowSetShown()
 end
 
 function MythicPlusUtility:onUtilityWindowChangeInstance()
-    if MythicPlusUtility.Frame then
+    C_Timer.NewTimer(0.5, function()
         MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
         MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
         if MythicPlusUtility.Frame:IsShown() then MythicPlusUtility.TalentFrameHighlight:ShowRelevant() end
-    end
+    end)
 end
 
 function MythicPlusUtility:OnEnable()
@@ -121,6 +127,7 @@ function MythicPlusUtility:OnEnable()
     self:RegisterEvent("CHALLENGE_MODE_START")
 
     EventRegistry:RegisterCallback("PlayerSpellsFrame.OpenFrame", MythicPlusUtility.onTalentFrameShow)
+    EventRegistry:RegisterCallback("PlayerSpellsFrame.CloseFrame", MythicPlusUtility.onTalentFrameClose)
     EventRegistry:RegisterCallback("MPU_UtilityWindow_SetShown", MythicPlusUtility.onUtilityWindowSetShown)
     EventRegistry:RegisterCallback("MPU_UtilityWindow_ChangeInstance", MythicPlusUtility.onUtilityWindowChangeInstance)
 end
@@ -130,13 +137,9 @@ function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
     if self.Frame and self.Frame:IsShown() then
         self:CreateCurrentAbilitiesList()
         self.Frame:ChangeInstance()
-       -- C_Timer.NewTimer(0.5, function() MythicPlusUtility.TalentFrameHighlight:UpdateAnchers() end)
-       C_Timer.NewTimer(0.5, function() MythicPlusUtility:onUtilityWindowChangeInstance() end)
     else
         self.db.char.changedSpec = true
     end
-
-    --self:onUtilityWindowChangeInstance()
 end
 
 function MythicPlusUtility:TRAIT_CONFIG_UPDATED(event)

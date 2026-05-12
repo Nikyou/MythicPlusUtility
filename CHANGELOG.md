@@ -4,6 +4,8 @@
 * Vengeful Retreat: added "jump" tag
 ### Fixes
 * (.1) Fixed talent highlight sometimes appearing as white squares
+* (.2) Fixed talent highlight appearing in the center of the screen after inspecting other player's talents
+* (.2) Fixed talent highlight appearing in wrong place on spec change
 #### 1.2.3
 ### Fixes
 * Racial abilities appeared now appear on login and not only after /reload
