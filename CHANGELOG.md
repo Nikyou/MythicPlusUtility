@@ -1,3 +1,6 @@
+#### 1.2.5
+### Spells
+* Rising Sun Kick (Monk): Removed for Mistweaver.
 #### 1.2.4
 ### Spells
 * Jet Stream: no longer a special case with working only on yourself (yay)

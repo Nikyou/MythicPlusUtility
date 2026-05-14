@@ -251,7 +251,6 @@ MythicPlusUtility.utilityAbilities = {
         [218164] = {tags = "[poison][disease]"}, -- Detox
     }, -- Brewmaster
     [270] = {
-        [107428] = {tags = "[creature_mortal_strike]", baseline = true}, -- Rising Sun Kick
         [388874] = {tags = "[poison][disease]"}, -- Improved Detox
     }, -- Mistweaver
     [269] = {
