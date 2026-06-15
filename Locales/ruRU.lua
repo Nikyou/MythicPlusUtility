@@ -37,8 +37,8 @@ L["Open Settings"] = "Открыть настройки"
 L["Disable Minimap Button"] = "Отключить кнопку миникарты"
 
 -- Dungeons
-L["Algeth\'ar Academy"] = "Академия Алгет\'ар"
-L["Magisters\' Terrace"] = "Терраса Магистров"
+L["Algeth'ar Academy"] = "Академия Алгет'ар"
+L["Magisters' Terrace"] = "Терраса Магистров"
 L["Maisara Caverns"] = "Пещеры Маисара"
 L["Nexus-Point Xenas"] = "Узел Нексуса Зенас"
 L["Pit of Saron"] = "Яма Сарона"

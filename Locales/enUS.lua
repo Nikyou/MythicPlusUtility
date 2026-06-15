@@ -35,8 +35,8 @@ L["Open Settings"] = true
 L["Disable Minimap Button"] = true
 
 -- Dungeons
-L["Algeth\'ar Academy"] = true
-L["Magisters\' Terrace"] = true
+L["Algeth'ar Academy"] = true
+L["Magisters' Terrace"] = true
 L["Maisara Caverns"] = true
 L["Nexus-Point Xenas"] = true
 L["Pit of Saron"] = true

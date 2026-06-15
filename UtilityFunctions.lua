@@ -65,8 +65,8 @@ MythicPlusUtility.supportedTags = {
 }
 MythicPlusUtility.defaultDungeonId = 2526
 MythicPlusUtility.dungeonIdToName = {
-    [2526] = L["Algeth\'ar Academy"],
-    [2811] = L["Magisters\' Terrace"],
+    [2526] = L["Algeth'ar Academy"],
+    [2811] = L["Magisters' Terrace"],
     [2874] = L["Maisara Caverns"],
     [2915] = L["Nexus-Point Xenas"],
     [658] = L["Pit of Saron"],
