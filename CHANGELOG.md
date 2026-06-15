@@ -1,3 +1,6 @@
+#### 1.2.6
+### Localisation
+* Added Simplified Chinese localisation. Thanks, Ye11ow!
 #### 1.2.5
 ### Spells
 * Rising Sun Kick (Monk): Removed for Mistweaver.
