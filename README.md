@@ -59,3 +59,4 @@ Thanks to Tactyks and his [M+ Ability Tracking Sheet](https://docs.google.com/sp
 Localisation:
 * German - Feedy88
 * French - kaelmnop, latnm, Gicade
+* Simplified Chinese - Ye11ow
