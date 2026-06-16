@@ -1,3 +1,6 @@
+#### 1.2.7
+### Spells
+* Dispersion (Priest): Added to the list of spells.
 #### 1.2.6
 ### Localisation
 * Added Simplified Chinese localisation. Thanks, Ye11ow!

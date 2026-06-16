@@ -304,6 +304,7 @@ MythicPlusUtility.utilityAbilities = {
     }, -- Holy
     [258] = {
         [213634] = {tags = "[disease]"}, -- Purify Disease
+        [47585] = {tags = "[self_only][slow][snare][root]"}, -- Dispersion
     }, -- Shadow
     ROGUE = {
         [1856] = {tags = "[self_only][slow][snare][root][targeted_avoid]", baseline = true}, -- Vanish

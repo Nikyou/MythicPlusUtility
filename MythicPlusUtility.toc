@@ -1,4 +1,4 @@
-## Interface: 120001, 120005, 120007
+## Interface: 120005, 120007
 ## Version: @project-version@
 ## Title: Mythic Plus Utility
 ## Author: Nikyou (Megabelly-Silvermoon EU)
