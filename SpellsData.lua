@@ -132,7 +132,7 @@ MythicPlusUtility.utilityAbilities = {
         [33786] = {tags = "[cc_cyclone]"}, -- Cyclone
         [339] = {tags = "[creature_root]", baseline = true}, -- Entangling Roots
         [5211] = {tags = "[creature_stun]", baseline = true}, -- Mighty Bash
-        [768] = {tags = "[self_only][slow][snare][root]", baseline = true}, -- Cat Form (as a general shapeshift)
+        [768] = {tags = "[self_only][slow][snare][root][polymorph]", baseline = true}, -- Cat Form (as a general shapeshift)
         [99] = {tags = "[creature_incapacitate]"}, -- Incapacitating Roar
     },
     [102] = {
@@ -218,7 +218,7 @@ MythicPlusUtility.utilityAbilities = {
         [157980] = {tags = "[creature_grip]"}, -- Supernova
         [157997] = {tags = "[creature_root]"}, -- Ice Nova
         [1953] = {tags = "[self_only][root][player_jump]", alternatives = {212653}, baseline = true}, -- Blink
-        [30449] = {tags = "[purge]"}, -- Spellsteal
+        [30449] = {tags = "[purge_spellsteal]"}, -- Spellsteal
         [31661] = {tags = "[creature_incapacitate]"}, -- Dragon's Breath
         [342245] = {tags = "[alter_time]", baseline = true}, -- Alter Time
         [386763] = {tags = "[creature_root]"}, -- Freezing Cold

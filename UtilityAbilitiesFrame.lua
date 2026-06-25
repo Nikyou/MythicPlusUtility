@@ -82,7 +82,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     local buttonsIndices
 
     local db = self.db
-    local profile = self.db.profile
+    local profile = self.db.profile or {}
     local buttonCosmetic = self.db.profile.buttonCosmetic
     local windowSettings = self.db.profile.windowSettings
     local textAndIcon = self.db.profile.textAndIcon
@@ -133,7 +133,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
 
     function frame:ProfileChange()
         db = MythicPlusUtility.db
-        profile = MythicPlusUtility.db.profile
+        profile = MythicPlusUtility.db.profile or {}
         buttonCosmetic = MythicPlusUtility.db.profile.buttonCosmetic
         windowSettings = MythicPlusUtility.db.profile.windowSettings
         textAndIcon = MythicPlusUtility.db.profile.textAndIcon
@@ -150,7 +150,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
 
     function frame:ChangeInstance()
         MythicPlusUtility:PopulateCurrentAbilitiesListWithInstanceData(profile.instanceID)
-        self.dungeonNameText:SetText(MythicPlusUtility.dungeonIdToName[profile.instanceID] or "")
+        self.dungeonNameText:SetText(MythicPlusUtility.dungeonGlobals.dungeonIdToName[profile.instanceID] or "")
         self:UpdateButtons()
         self:UpdateLayout()
 
@@ -714,7 +714,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     dungeonNameText:SetJustifyV("TOP")
     dungeonNameText:SetWordWrap(true)
     dungeonNameText:SetWidth(windowSettings.width - 2 * CLOSE_BUTTON_SIZE - TEXT_WRAP_PADDING)
-    dungeonNameText:SetText(self.dungeonIdToName[profile.instanceID] or "")
+    dungeonNameText:SetText(self.dungeonGlobals.dungeonIdToName[profile.instanceID] or "")
     dungeonNameText:SetFont(LSM:Fetch("font", textAndIcon.dungeonName.labelFont), textAndIcon.dungeonName.labelSize,
                             "OUTLINE")
     dungeonNameText:SetPoint("TOP", 0, -TOP_PADDING)

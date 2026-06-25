@@ -1,4 +1,4 @@
-## Interface: 120005, 120007
+## Interface: 120005, 120007, 120010
 ## Version: @project-version@
 ## Title: Mythic Plus Utility
 ## Author: Nikyou (Megabelly-Silvermoon EU)
@@ -36,6 +36,7 @@ Libs\LibDBIcon-1.0\lib.xml
 Locales.xml
 
 Core.lua
+Constants.lua
 UtilityFunctions.lua
 Options.lua
 Profiles.lua
