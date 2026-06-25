@@ -1,3 +1,19 @@
+#### 1.4.0
+### Dungeons
+Added Midnight Season 2 dungeons:
+* Altar of Fangs
+* Den of Nalorakk
+* Kings' Rest
+* Murder Row
+* Ruby Life Pools
+* Temple of Sethraliss
+* The Blinding Vale
+* Voidscar Arena
+### Options
+Added Mythic+ seasons select, defaults to the current season.
+### Spells
+* Shapesift (Druid): added "polymorph" tag, will now be recommended against effects that polymorph
+* Spellsteal (Mage): changed from general purge to special case purge (it won't be recommended for buffs that are hurmful if stolen)
 #### 1.3.0
 ### New: NPC Model in tooltip
 Added NPC models in tooltips.

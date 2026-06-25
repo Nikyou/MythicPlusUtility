@@ -2,48 +2,70 @@ local L = LibStub("AceLocale-3.0"):NewLocale("MythicPlusUtility", "frFR")
 if not L then return end
 
 -- Options
-L["Toggle Window"] = "Afficher/Masquer la fenêtre"
-L["Window Position and Size Settings"] = "Paramètres de position et taille de la fenêtre"
-L["Width"] = "Largeur"
-L["Height"] = "Hauteur"
-L["Lock Window"] = "Verrouiller la fenêtre"
 L["Anchor to Screen's"] = "Ancrer à l'écran"
+L["Background Color"] = "Couleur de l'arrière-plan"
+L["Background Opacity"] = "Opacité de l'arrière-plan"
+-- L["Background Settings"] = true -- Translation missing
+L["Body Text Size"] = "Taille du texte principal"
+L["Disable Minimap Button"] = "Désactiver le bouton de la minicarte"
+L["Dungeon Name Size"] = "Taille du nom du donjon"
+L["Dungeon Preview"] = "Aperçu du donjon"
+L["Height"] = "Hauteur"
+L["Hide not Important"] = "Masquer non important"
+L["Hide on Mythic+ start"] = "Masquer au début du Mythique+"
+L["Hides dungeon entries that are marked with %s"] = "Masque les entrées marquées avec %s"
+-- L["Highlight Color"] = true -- Translation missing
+L["Icon Label Size"] = "Taille du texte des symboles"
+L["Icon Size"] = "Taille des symboles"
+L["Lock Window"] = "Verrouiller la fenêtre"
+L["Minimap Icon"] = "Symbole de Minimap"
+L["Open Settings"] = "Ouvrir les paramètres"
+-- L["Season Select"] = true -- Translation missing
+L["Show in"] = "Afficher dans"
+L["Show/Hide Utility Window"] = "Afficher/Masquer la fenêtre utilitaire"
+-- L["Talent Highlight Settings"] = true -- Translation missing
+L["Text and Icon Settings"] = "Paramètres du texte et des icônes"
+L["Toggle Window"] = "Afficher/Masquer la fenêtre"
+L["Width"] = "Largeur"
+L["Window Settings"] = "Paramètres de la fenêtre"
 L["X-Offset"] = "Décalage X"
 L["Y-Offset"] = "Décalage Y"
-L["Text and Icon Settings"] = "Paramètres du texte et des icônes"
-L["Dungeon Name Size"] = "Taille du nom du donjon"
-L["Icon Size"] = "Taille des symboles"
-L["Icon Label Size"] = "Taille du texte des symboles"
-L["Body Text Size"] = "Taille du texte principal"
-L["Background Opacity"] = "Opacité de l'arrière-plan"
-L["Background Color"] = "Couleur de l'arrière-plan"
-L["Hide on Mythic+ start"] = "Masquer au début du Mythique+"
-L["Hide not Important"] = "Masquer non important"
-L["Hides dungeon entries that are marked with %s"] = "Masque les entrées marquées avec %s"
-L["Dungeon Preview"] = "Aperçu du donjon"
-L["Show in"] = "Afficher dans"
-L["Minimap Icon"] = "Symbole de Minimap"
--- L["Talent Highlight Settings"] = true -- Translation missing
--- L["Highlight Color"] = true -- Translation missing
 
 -- Difficulty
 L["Normal"] = true
 L["Heroic"] = "Héroïque"
 L["Mythic"] = "Mythique"
 
-L["Show/Hide Utility Window"] = "Afficher/Masquer la fenêtre utilitaire"
-L["Open Settings"] = "Ouvrir les paramètres"
-L["Disable Minimap Button"] = "Désactiver le bouton de la minicarte"
+-- Other
+L["No utility abilities for this dungeon"] = "Aucun utilitaire pour ce donjon"
+
+-- Mythic+ Seasons
+-- L["Midnight Season 2"] = true -- Translation missing
+-- L["Midnight Season 1"] = true -- Translation missing
 
 -- Dungeons
-L["Algeth'ar Academy"] = "Académie d'Algeth'ar"
+-- Midnight
+-- L["Altar of Fangs"] = true -- Translation missing
+L["Den of Nalorakk"] = "Antre de Nalorakk"
 L["Magisters' Terrace"] = "Terrasse des Magistères"
 L["Maisara Caverns"] = "Cavernes de Maisara"
+L["Murder Row"] = "Allée du meurtre"
 L["Nexus-Point Xenas"] = "Point-Nexus Xenas"
-L["Pit of Saron"] = "Fosse de Saron"
-L["Seat of the Triumvirate"] = "Siège du Triumvirat"
-L["Skyreach"] = "Orée-du-Ciel"
+L["The Blinding Vale"] = "Le val Aveuglant"
+L["Voidscar Arena"] = "Arène de la Cicatrice du Vide"
 L["Windrunner Spire"] = "Flèche de Coursevent"
+-- Dragonflight
+L["Algeth'ar Academy"] = "Académie d'Algeth'ar"
+L["Ruby Life Pools"] = "Bassins de l’Essence rubis"
+-- Battle for Azeroth
+L["Kings' Rest"] = "Repos des rois"
+L["Temple of Sethraliss"] = "Temple de Sephraliss"
+-- Legion
+L["Seat of the Triumvirate"] = "Siège du Triumvirat"
+-- Warlords of Draenor
+L["Skyreach"] = "Orée-du-Ciel"
+-- Wrath of the Lich King
+L["Pit of Saron"] = "Fosse de Saron"
 
 -- Dungeon entries
 L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
@@ -52,14 +74,20 @@ L["{spell:%d} buff is cast by {npc:%d}."] = "Le buff {spell:%d} est lancé par {
 L["{spell:%d} buff on {npc:%d} (trash before {npc:%d})."] = "Buff {spell:%d} sur {npc:%d} (ennemis avant {npc:%d})."
 L["{spell:%d} buff on {npc:%d}."] = "Buff {spell:%d} sur {npc:%d}."
 L["{spell:%d} buff on the second boss {npc:%d}."] = "Buff {spell:%d} sur le deuxième boss {npc:%d}."
+L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted and LoS."] =
+  "Le debuff {spell:%d} est infligé par {npc:%d} (ennemis avant {npc:%d}). L'incantation peut être interrompue et évitée en sortant de la ligne de vue (LoS)."
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
   "Le debuff {spell:%d} est infligé par {npc:%d} (ennemis avant {npc:%d}). L'incantation peut être interrompue."
+L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be LoS."] =
+  "Le debuff {spell:%d} est infligé par {npc:%d} (ennemis avant {npc:%d}). L'incantation peut être évitée en sortant de la ligne de vue (LoS)."
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d})."] =
   "Le debuff {spell:%d} est infligé par {npc:%d} (ennemis avant {npc:%d})."
 L["{spell:%d} debuff is inflicted by {npc:%d} on the first boss {npc:%d}."] =
   "Le debuff {spell:%d} est infligé par {npc:%d} sur le premier boss {npc:%d}."
 L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."] =
   "Le debuff {spell:%d} est infligé par {npc:%d}. L'incantation peut être interrompue."
+L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this debuff can be avoided."] =
+  "Le debuff {spell:%d} est infligé par {npc:%d}. Ce debuff peut être évité."
 L["{spell:%d} debuff is inflicted by {npc:%d}."] = "Le debuff {spell:%d} est infligé par {npc:%d}."
 L["{spell:%d} debuff is inflicted by contact with {npc:%d} on the last boss {npc:%d}."] =
   "Le debuff {spell:%d} est infligé au contact de {npc:%d} sur le dernier boss {npc:%d}."
@@ -69,6 +97,8 @@ L["{spell:%d} debuff is inflicted by the first boss {npc:%d}."] =
   "Le debuff {spell:%d} est infligé par le premier boss {npc:%d}."
 L["{spell:%d} debuff is inflicted by the second boss {npc:%d}."] =
   "Le debuff {spell:%d} est infligé par le deuxième boss {npc:%d}."
+L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this debuff can be avoided."] =
+  "Le debuff {spell:%d} est infligé par le troisième boss {npc:%d}. Ce debuff peut être évité."
 L["{spell:%d} debuff is inflicted on the first boss {npc:%d}. Also, this debuff can be avoided."] =
   "Le debuff {spell:%d} est infligé sur le premier boss {npc:%d}. Ce debuff peut être évité."
 L["{spell:%d} debuff is inflicted on the first boss {npc:%d}."] =
@@ -85,6 +115,21 @@ L["{spell:%d} is channeled by {npc:%d} on the third boss {npc:%d}."] =
 L["{spell:%d} is channeled by {npc:%d}. The caster is immune to CC while it has {spell:%d}"] =
   "Le sort {spell:%d} est canalisé par {npc:%d}. Le lanceur est insensible aux contrôles pendant {spell:%d}."
 L["{spell:%d} is channeled by {npc:%d}."] = "Le sort {spell:%d} est canalisé par {npc:%d}."
+L["Avoid {spell:%d} when {npc:%d} casts on last seconds."] =
+  "Éviter {spell:%d} quand {npc:%d} lance en fin d'incantation."
+L["Avoid {spell:%d} when {npc:%d} jumps on you."] = "Éviter {spell:%d} quand {npc:%d} saute sur vous."
+L["Avoid {spell:%d} when {npc:%d} jumps. Targets the furthest player."] =
+  "Éviter {spell:%d} quand {npc:%d} saute. Cible le joueur le plus éloigné."
+L["Avoid {spell:%d} when {npc:%d} starts channeling on the third boss {npc:%d}."] =
+  "Éviter {spell:%d} quand {npc:%d} commence à canaliser sur le troisième boss {npc:%d}."
+L["Avoid {spell:%d} when {npc:%d} starts channeling."] = "Éviter {spell:%d} quand {npc:%d} commence à canaliser."
+L["Avoid {spell:%d} when {npc:%d} throws axe."] = "Éviter {spell:%d} quand {npc:%d} lance sa hache."
+L["Avoid {spell:%d} when the first boss {npc:%d} starts channeling."] =
+  "Éviter {spell:%d} quand le premier boss {npc:%d} commence à canaliser."
+L["Avoid {spell:%d} when the last boss {npc:%d} starts channeling."] =
+  "Éviter {spell:%d} quand le dernier boss {npc:%d} commence à canaliser."
+L["Avoid {spell:%d} when totem starts channeling on the last boss {npc:%d}."] =
+  "Éviter {spell:%d} quand le totem commence à canaliser sur le dernier boss {npc:%d}."
 L["Mitigates effects of {spell:%d} on the last boss {npc:%d}."] =
   "Réduit les effets de {spell:%d} sur le dernier boss {npc:%d}."
 L["Prevent {npc:%d} from reaching {npc:%d}."] = "Empêcher {npc:%d} d'atteindre {npc:%d}."
@@ -94,40 +139,58 @@ L["Prevent {npc:%d} from reaching the first boss {npc:%d}."] =
   "Empêcher {npc:%d} d'atteindre le premier boss {npc:%d}."
 L["Slow {npc:%d} on the third boss {npc:%d}."] = "Ralentir {npc:%d} sur le troisième boss {npc:%d}."
 L["Stun {npc:%d} on the last boss {npc:%d}."] = "Étourdir {npc:%d} sur le dernier boss {npc:%d}."
-L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be LoS."] =
-  "Le debuff {spell:%d} est infligé par {npc:%d} (ennemis avant {npc:%d}). L'incantation peut être évitée en sortant de la ligne de vue (LoS)."
-L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted and LoS."] =
-  "Le debuff {spell:%d} est infligé par {npc:%d} (ennemis avant {npc:%d}). L'incantation peut être interrompue et évitée en sortant de la ligne de vue (LoS)."
-L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this debuff can be avoided."] =
-  "Le debuff {spell:%d} est infligé par {npc:%d}. Ce debuff peut être évité."
-L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this debuff can be avoided."] =
-  "Le debuff {spell:%d} est infligé par le troisième boss {npc:%d}. Ce debuff peut être évité."
-L["Avoid {spell:%d} when {npc:%d} casts on last seconds."] =
-  "Éviter {spell:%d} quand {npc:%d} lance en fin d'incantation."
-L["Avoid {spell:%d} when the first boss {npc:%d} starts channeling."] =
-  "Éviter {spell:%d} quand le premier boss {npc:%d} commence à canaliser."
-L["Avoid {spell:%d} when totem starts channeling on the last boss {npc:%d}."] =
-  "Éviter {spell:%d} quand le totem commence à canaliser sur le dernier boss {npc:%d}."
-L["Avoid {spell:%d} when {npc:%d} starts channeling."] = "Éviter {spell:%d} quand {npc:%d} commence à canaliser."
-L["Avoid {spell:%d} when {npc:%d} starts channeling on the third boss {npc:%d}."] =
-  "Éviter {spell:%d} quand {npc:%d} commence à canaliser sur le troisième boss {npc:%d}."
-L["Avoid {spell:%d} when {npc:%d} jumps on you."] = "Éviter {spell:%d} quand {npc:%d} saute sur vous."
-L["Avoid {spell:%d} when the last boss {npc:%d} starts channeling."] =
-  "Éviter {spell:%d} quand le dernier boss {npc:%d} commence à canaliser."
-L["Avoid {spell:%d} when {npc:%d} throws axe."] = "Éviter {spell:%d} quand {npc:%d} lance sa hache."
+-- 1.1.9
+-- L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed only from yourself."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Debuff is removed only from yourself."] = true -- Translation missing
+-- L["Avoid {spell:%d} when {npc:%d} throws glaive."] = true -- Translation missing
+-- L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss {npc:%d}."] = true -- Translation missing
+-- L["Skips part of the wind maze after the third boss {npc:%d}."] = true -- Translation missing
+-- 1.2.1
+-- L["Avoid {spell:%d} when the last boss {npc:%d} targets you."] = true -- Translation missing
+-- L["Prevent {npc:%d} from reaching players on the third boss {npc:%d}."] = true -- Translation missing
+-- L["Skips add pack before the last boss {npc:%d}. This is route specific."] = true -- Translation missing
+-- 1.3.0
+-- L["{npc:%d} are in stealth before the first boss."] = true -- Translation missing
+-- L["{npc:%d} are in stealth in the room with the orb (trash before {npc:%d})."] = true -- Translation missing
+-- L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
+-- L["{spell:%d} buff is cast by {npc:%d} on the third boss {npc:%d}."] = true -- Translation missing
+-- L["{spell:%d} buff is cast by {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
+-- L["{spell:%d} buff on {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = true -- Translation missing
+-- L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = true -- Translation missing
+-- L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss). Also, this cast can be interrupted."] =
+--   true
+-- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss)."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] =
+--   true
+-- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by contact with {npc:%d}."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by not soaking the void zone on the second boss {npc:%d}."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by the last boss {npc:%d}."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by the third boss {npc:%d}."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted on the second boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
+-- L["{spell:%d} is cast by {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
+-- L["{spell:%d} is cast by {npc:%d} (trash before the third boss)."] = true -- Translation missing
+-- L["{spell:%d} is cast by {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
+-- L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
+-- L["{spell:%d} is channeled by {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
 
--- 1.1.0
+-- Icon Cosmetics Settings
 L["\"Add Optional\""] = "\"Ajouter (optionnel)\""
 L["\"Add\""] = "\"Ajouter\""
 L["\"Known\""] = "\"Connu\""
 L["\"Optional\""] = "\"Optionnel\""
 L["\"Remove\""] = "\"Supprimer\""
-L["|cff40ff40Profile imported successfully.|r"] = "|cff40ff40Profil importé avec succès.|r"
-L["|cffff4040Decompression failed.|r"] = "|cffff4040Échec de la décompression.|r"
-L["|cffff4040Invalid encoded string.|r"] = "|cffff4040Chaîne encodée invalide.|r"
-L["|cffff4040Invalid serialised data.|r"] = "|cffff4040Données sérialisées invalides.|r"
-L["|cffff4040Missing profile data.|r"] = "|cffff4040Données de profil manquantes.|r"
-L["|cffff4040Profile belongs to another addon.|r"] = "|cffff4040Le profil appartient à un autre addon.|r"
 L["Action Button Glow"] = "Lueur du bouton d'action"
 L["Add Not Important"] = "Ajouter (non important)"
 L["Add"] = "Ajouter"
@@ -136,8 +199,6 @@ L["AtlasID Texture"] = "Texture AtlasID"
 L["Auto Expand Height"] = "Ajuster automatiquement la hauteur"
 L["Autocast Shine"] = "Brillance d'incantation automatique"
 L["Automatic"] = "Automatique"
-L["Avoid {spell:%d} when {npc:%d} jumps. Targets the furthest player."] =
-  "Éviter {spell:%d} quand {npc:%d} saute. Cible le joueur le plus éloigné."
 L["Body Text"] = "Texte principal"
 L["Border"] = "Bordure"
 L["Currently known abilities that will be useful for this dungeon and only contain dungeon entries that are marked with %s. If disabled, \"Known\" settings will be used."] =
@@ -156,9 +217,6 @@ L["Descending Alphabetical"] = "Alphabétique décroissant"
 L["Dungeon Name"] = "Nom du donjon"
 L["Enable Icon Glow"] = "Activer la lueur du symbole"
 L["Enable"] = "Activer"
-L["Export Profile"] = "Exporter le profil"
-L["Export String (Ctrl+C to copy)"] = "Chaîne d'export (Ctrl+C pour copier)"
-L["Export"] = "Exporter"
 L["Fixed"] = "Fixe"
 L["Font Settings"] = "Paramètres de police"
 L["Font"] = "Police"
@@ -170,8 +228,6 @@ L["Icon Color"] = "Couleur du symbole"
 L["Icon Cosmetics Settings"] = "Paramètres esthétiques des symboles"
 L["Icon"] = "Symbole"
 L["Ignore"] = "Ignorer"
-L["Import / Export"] = "Importer / Exporter"
-L["Import Profile"] = "Importer un profil"
 L["Known Not Important"] = "Connu (non important)"
 L["Known"] = "Connu"
 L["Length"] = "Longueur"
@@ -180,7 +236,6 @@ L["Max Height"] = "Hauteur maximale"
 L["Monochrome Outline"] = "Contour monochrome"
 L["Monochrome Thick Outline"] = "Contour épais monochrome"
 L["Monochrome"] = true
-L["No utility abilities for this dungeon"] = "Aucun utilitaire pour ce donjon"
 L["None"] = "Aucun"
 L["Outline"] = "Contour"
 L["Overflow"] = "Débordement"
@@ -213,17 +268,17 @@ L["Thick Outline"] = "Contour épais"
 L["Thickness"] = "Épaisseur"
 L["Type"] = true
 L["Wrap"] = "Retour à la ligne"
+
+-- Profile
+L["|cff40ff40Profile imported successfully.|r"] = "|cff40ff40Profil importé avec succès.|r"
+L["|cffff4040Decompression failed.|r"] = "|cffff4040Échec de la décompression.|r"
+L["|cffff4040Invalid encoded string.|r"] = "|cffff4040Chaîne encodée invalide.|r"
+L["|cffff4040Invalid serialised data.|r"] = "|cffff4040Données sérialisées invalides.|r"
+L["|cffff4040Missing profile data.|r"] = "|cffff4040Données de profil manquantes.|r"
+L["|cffff4040Profile belongs to another addon.|r"] = "|cffff4040Le profil appartient à un autre addon.|r"
+L["Export Profile"] = "Exporter le profil"
+L["Export String (Ctrl+C to copy)"] = "Chaîne d'export (Ctrl+C pour copier)"
+L["Export"] = "Exporter"
+L["Import / Export"] = "Importer / Exporter"
+L["Import Profile"] = "Importer un profil"
 L["Profiles"] = "Profils"
-
--- 1.1.9
--- L["{spell:%d} debuff is inflicted by {npc:%d}. Debuff is removed only from yourself."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed only from yourself."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Debuff is removed only from yourself."] = true -- Translation missing
--- L["Avoid {spell:%d} when {npc:%d} throws glaive."] = true -- Translation missing
--- L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss {npc:%d}."] = true -- Translation missing
--- L["Skips part of the wind maze after the third boss {npc:%d}."] = true -- Translation missing
-
--- 1.2.1
--- L["Avoid {spell:%d} when the last boss {npc:%d} targets you."] = true -- Translation missing
--- L["Prevent {npc:%d} from reaching players on the third boss {npc:%d}."] = true -- Translation missing
--- L["Skips add pack before the last boss {npc:%d}. This is route specific."] = true -- Translation missing

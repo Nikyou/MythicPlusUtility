@@ -14,6 +14,8 @@ function MythicPlusUtility:OnInitialize()
     -- ACD:SetDefaultSize("MythicPlusUtility_Options", 800, 630)
 
     self.profiles = self.Profiles:CreateOptions()
+    self.db.profile.seasonSelect = self.dungeonGlobals.currentSeason
+    --self.db.profile.instanceID = self.defaultDungeonId
     self.profilesFrame = ACD:AddToBlizOptions("MythicPlusUtility_Profiles", L["Profiles"], "Mythic Plus Utility")
 
     self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")

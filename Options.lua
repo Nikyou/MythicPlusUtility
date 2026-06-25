@@ -8,10 +8,11 @@ MythicPlusUtility.defaults = {
         minimap = {hide = false},
         toggleFrameLock = true,
         hideOnStart = true,
-        frameBackground = {0, 0, 0, 0.5},
         hideNotImportant = false,
         instanceID = MythicPlusUtility.defaultDungeonId,
+        seasonSelect = MythicPlusUtility.dungeonGlobals.currentSeason,
         difficultyID = {[1] = false, [2] = false, [23] = true},
+        frameBackground = {0, 0, 0, 0.5},
         windowSettings = {
             width = 350,
             height = 600,
@@ -112,19 +113,86 @@ MythicPlusUtility.options = {
     handler = MythicPlusUtility,
     childGroups = "tab",
     args = {
-        toggleFrame = {type = "execute", order = 1, name = L["Toggle Window"], func = "ToggleAbilitiesFrame"},
-        breakLine1 = {type = "header", order = 10, name = ""},
+        toggleFrame = {type = "execute", order = 1.1, name = L["Toggle Window"], func = "ToggleAbilitiesFrame"},
+        hideOnStart = {
+            type = "toggle",
+            order = 1.2,
+            width = 1.25,
+            name = L["Hide on Mythic+ start"],
+            get = "GetValue",
+            set = "SetValue",
+        },
+        minimap = {
+            type = "toggle",
+            order = 1.3,
+            name = L["Minimap Icon"],
+            get = function(info) return not MythicPlusUtility.db.profile.minimap.hide end,
+            set = function(info, value) MythicPlusUtility:ToggleMinimapIcon() end,
+        },
+        breakLine1 = {type = "header", order = 2, name = ""},
+        instanceID = {
+            type = "select",
+            order = 2.1,
+            name = L["Dungeon Preview"],
+            get = "GetValueInstance",
+            set = "SetValueInstance",
+            sorting = "GetInstanceIDOrder",
+            values = "GetInstanceIDValues",
+        },
+        seasonSelect = {
+            type = "select",
+            order = 2.2,
+            name = L["Season Select"],
+            get = "GetValue",
+            set = "SetValue",
+            sorting = MythicPlusUtility.dungeonGlobals.seasonsOrder,
+            values = MythicPlusUtility.dungeonGlobals.seasons,
+        },
+        hideNotImportant = {
+            type = "toggle",
+            order = 2.3,
+            name = L["Hide not Important"],
+            desc = format(L["Hides dungeon entries that are marked with %s"],
+                          CreateAtlasMarkup("map-icon-ignored-bluequestion")),
+            get = "GetValue",
+            set = "SetValueInstance",
+        },
+        difficultyID = {
+            type = "multiselect",
+            order = 2.4,
+            name = L["Show in"],
+            get = "GetValueDifficulty",
+            set = "SetValueDifficulty",
+            values = {[1] = L["Normal"], [2] = L["Heroic"], [23] = L["Mythic"]},
+        },
         windowSettings = {
             type = "group",
             order = 1,
-            name = L["Window Position and Size Settings"],
+            name = L["Window Settings"],
             get = "GetValueWithParent",
             set = "SetValueWindowSettings",
             args = {
-                sizeHeader = {type = "header", order = 1, name = L["Size Settings"]},
+                backgroundHeader = {type = "header", order = 1, name = L["Background Settings"]},
+                frameBackground = {
+                    type = "color",
+                    hasAlpha = true,
+                    order = 1.1,
+                    name = L["Background Color"],
+                    get = function(info)
+                        local t = MythicPlusUtility.db.profile.frameBackground
+                        return t[1], t[2], t[3], t[4]
+                    end,
+                    set = function(info, r, g, b, a)
+                        MythicPlusUtility.db.profile.frameBackground = {r, g, b, a}
+                        if MythicPlusUtility.Frame then
+                            MythicPlusUtility.Frame.background:SetColorTexture(r, g, b, a)
+                        end
+                    end,
+                },
+                sizeHeader = {type = "header", order = 2, name = L["Size Settings"]},
                 width = {
                     type = "range",
-                    order = 1.1,
+                    order = 2.1,
                     name = L["Width"],
                     min = 150,
                     max = 8880,
@@ -134,7 +202,7 @@ MythicPlusUtility.options = {
                 },
                 height = {
                     type = "range",
-                    order = 1.2,
+                    order = 2.2,
                     name = L["Height"],
                     hidden = function(info)
                         return MythicPlusUtility.db.profile.windowSettings.autoExpand
@@ -145,10 +213,10 @@ MythicPlusUtility.options = {
                     bigStep = 5,
                     step = 0.01,
                 },
-                autoExpand = {type = "toggle", order = 1.3, name = L["Auto Expand Height"]},
+                autoExpand = {type = "toggle", order = 2.3, name = L["Auto Expand Height"]},
                 maxHeightEnable = {
                     type = "toggle",
-                    order = 1.4,
+                    order = 2.4,
                     name = L["Max Height"],
                     hidden = function(info)
                         return not MythicPlusUtility.db.profile.windowSettings.autoExpand
@@ -156,7 +224,7 @@ MythicPlusUtility.options = {
                 },
                 maxHeight = {
                     type = "range",
-                    order = 1.2,
+                    order = 2.2,
                     name = L["Max Height"],
                     hidden = function(info)
                         return not MythicPlusUtility.db.profile.windowSettings.maxHeightEnable
@@ -168,10 +236,10 @@ MythicPlusUtility.options = {
                     bigStep = 5,
                     step = 0.01,
                 },
-                positionHeader = {type = "header", order = 2, name = L["Position Settings"]},
+                positionHeader = {type = "header", order = 3, name = L["Position Settings"]},
                 framePoint = {
                     type = "select",
-                    order = 2.1,
+                    order = 3.1,
                     name = L["Anchor to Screen's"],
                     sorting = {
                         "TOPLEFT", "TOP", "TOPRIGHT", "LEFT", "CENTER", "RIGHT", "BOTTOMLEFT", "BOTTOM", "BOTTOMRIGHT",
@@ -190,7 +258,7 @@ MythicPlusUtility.options = {
                 },
                 xOffset = {
                     type = "range",
-                    order = 2.2,
+                    order = 3.2,
                     name = L["X-Offset"],
                     min = -8880,
                     max = 8880,
@@ -201,7 +269,7 @@ MythicPlusUtility.options = {
                 },
                 yOffset = {
                     type = "range",
-                    order = 2.3,
+                    order = 3.3,
                     name = L["Y-Offset"],
                     min = -4800,
                     max = 4800,
@@ -212,7 +280,7 @@ MythicPlusUtility.options = {
                 },
                 toggleFrameLock = {
                     type = "toggle",
-                    order = 2.4,
+                    order = 3.4,
                     name = L["Lock Window"],
                     get = "GetValue",
                     set = function(info, value)
@@ -230,63 +298,6 @@ MythicPlusUtility.options = {
             get = "GetValueTextAndIcon",
             set = "SetValueTextAndIcon",
             args = {},
-        },
-        frameBackground = {
-            type = "color",
-            hasAlpha = true,
-            order = 12,
-            name = L["Background Color"],
-            get = function(info)
-                local t = MythicPlusUtility.db.profile[info[#info]]
-                return t[1], t[2], t[3], t[4]
-            end,
-            set = function(info, r, g, b, a)
-                MythicPlusUtility.db.profile[info[#info]] = {r, g, b, a}
-                if MythicPlusUtility.Frame then
-                    MythicPlusUtility.Frame.background:SetColorTexture(r, g, b, a)
-                end
-            end,
-        },
-        hideOnStart = {
-            type = "toggle",
-            order = 2,
-            width = 1.25,
-            name = L["Hide on Mythic+ start"],
-            get = "GetValue",
-            set = "SetValue",
-        },
-        minimap = {
-            type = "toggle",
-            order = 3,
-            name = L["Minimap Icon"],
-            get = function(info) return not MythicPlusUtility.db.profile.minimap.hide end,
-            set = function(info, value) MythicPlusUtility:ToggleMinimapIcon() end,
-        },
-        hideNotImportant = {
-            type = "toggle",
-            order = 13,
-            name = L["Hide not Important"],
-            desc = format(L["Hides dungeon entries that are marked with %s"],
-                          CreateAtlasMarkup("map-icon-ignored-bluequestion")),
-            get = "GetValue",
-            set = "SetValueInstance",
-        },
-        difficultyID = {
-            type = "multiselect",
-            order = 14,
-            name = L["Show in"],
-            get = "GetValueDifficulty",
-            set = "SetValueDifficulty",
-            values = {[1] = L["Normal"], [2] = L["Heroic"], [23] = L["Mythic"]},
-        },
-        instanceID = {
-            type = "select",
-            order = 11,
-            name = L["Dungeon Preview"],
-            get = "GetValueInstance",
-            set = "SetValueInstance",
-            sorting = {2526, 2811, 2874, 2915, 658, 1753, 1209, 2805},
-            values = MythicPlusUtility.dungeonIdToName,
         },
         buttonCosmeticGroup = {
             type = "group",
@@ -862,9 +873,7 @@ function MythicPlusUtility:SetValueTalentHighlight(info, value)
     local db = self.db.profile.buttonCosmetic[info[#info - 1]]
     db[name] = value
 
-    if self.Frame and self.Frame:IsShown() then
-        self.TalentFrameHighlight:ShowRelevant()
-    end
+    if self.Frame and self.Frame:IsShown() then self.TalentFrameHighlight:ShowRelevant() end
 end
 
 function MythicPlusUtility:SetValueWindowSettings(info, value)
@@ -895,7 +904,8 @@ function MythicPlusUtility:SetValueUpdatePosition(info, value)
 end
 
 function MythicPlusUtility:GetValueInstance(info)
-    return self.dungeonIdToName[self.db.profile.instanceID] and self.db.profile.instanceID or self.defaultDungeonId
+    return self.dungeonGlobals.dungeonIdToName[self.db.profile.instanceID] and self.db.profile.instanceID
+             or self.dungeonGlobals.defaultDungeonId
 end
 
 function MythicPlusUtility:SetValueInstance(info, value)
@@ -1084,4 +1094,12 @@ function MythicPlusUtility:ButtonCosmeticHide(info)
     end
 
     return enabled
+end
+
+function MythicPlusUtility:GetInstanceIDValues(info)
+    return self.dungeonGlobals.dungeonListBySeason[self.db.profile.seasonSelect]
+end
+
+function MythicPlusUtility:GetInstanceIDOrder(info)
+    return self.dungeonGlobals.dungeonListBySeasonOrder[self.db.profile.seasonSelect]
 end
