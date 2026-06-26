@@ -16,7 +16,7 @@ Added Mythic+ seasons select, defaults to the current season.
 * Spellsteal (Mage): changed from general purge to special case purge (it won't be recommended for buffs that are hurmful if stolen)
 #### 1.3.0
 ### New: NPC Model in tooltip
-Added NPC models in tooltips.
+Added NPC models in tooltips. Enabled by default.
 #### 1.2.7
 ### Spells
 * Dispersion (Priest): Added to the list of spells.

@@ -22,6 +22,9 @@ MythicPlusUtility.defaults = {
             xOffset = 100,
             yOffset = -150,
             framePoint = "TOPLEFT",
+            showTooltipModel = true,
+            tooltipModelWidth = 190,
+            tooltipModelHeight = 270,
         },
         textAndIcon = {
             ['**'] = {
@@ -287,6 +290,30 @@ MythicPlusUtility.options = {
                         MythicPlusUtility.db.profile[info[#info]] = value
                         if MythicPlusUtility.Frame then MythicPlusUtility.Frame:FrameLockUpdate() end
                     end,
+                },
+                tooltipHeader = {type = "header", order = 3, name = L["Tooltip NPC Model Settings"]},
+                showTooltipModel = {type = "toggle", order = 3.1, name = L["Enable"], set = "SetValueWithParent"},
+                tooltipModelWidth = {
+                    type = "range",
+                    order = 3.2,
+                    name = L["Width"],
+                    min = 50,
+                    max = 8880,
+                    softMax = 600,
+                    bigStep = 10,
+                    step = 0.01,
+                    set = "SetValueTooltipModel",
+                },
+                tooltipModelHeight = {
+                    type = "range",
+                    order = 3.3,
+                    name = L["Height"],
+                    min = 50,
+                    max = 4800,
+                    softMax = 600,
+                    bigStep = 10,
+                    step = 0.01,
+                    set = "SetValueTooltipModel",
                 },
             },
         },
@@ -919,6 +946,8 @@ function MythicPlusUtility:SetValueDifficulty(info, key, state) self.db.profile.
 
 function MythicPlusUtility:GetValueWithParent(info) return self.db.profile[info[#info - 1]][info[#info]] end
 
+function MythicPlusUtility:SetValueWithParent(info, value) self.db.profile[info[#info - 1]][info[#info]] = value end
+
 function MythicPlusUtility:GetValueTextAndIcon(info) return self.db.profile.textAndIcon[info[#info - 1]][info[#info]] end
 
 function MythicPlusUtility:SetValueTextAndIcon(info, value)
@@ -1094,6 +1123,13 @@ function MythicPlusUtility:ButtonCosmeticHide(info)
     end
 
     return enabled
+end
+
+function MythicPlusUtility:SetValueTooltipModel(info, value)
+    local profile = self.db.profile or {}
+    self.db.profile[info[#info - 1]][info[#info]] = value
+    MythicPlusUtility.ModelContainer:SetSize(profile.windowSettings.tooltipModelWidth,
+                                             profile.windowSettings.tooltipModelHeight)
 end
 
 function MythicPlusUtility:GetInstanceIDValues(info)

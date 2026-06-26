@@ -25,6 +25,7 @@ L["Show/Hide Utility Window"] = true
 L["Talent Highlight Settings"] = true
 L["Text and Icon Settings"] = true
 L["Toggle Window"] = true
+L["Tooltip NPC Model Settings"] = true
 L["Width"] = true
 L["Window Settings"] = true
 L["X-Offset"] = true

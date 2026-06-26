@@ -15,7 +15,9 @@ function MythicPlusUtility:OnInitialize()
 
     self.profiles = self.Profiles:CreateOptions()
     self.db.profile.seasonSelect = self.dungeonGlobals.currentSeason
-    --self.db.profile.instanceID = self.defaultDungeonId
+    -- self.db.profile.instanceID = self.defaultDungeonId
+    self.ModelContainer:SetSize(self.db.profile.windowSettings.tooltipModelWidth,
+                                self.db.profile.windowSettings.tooltipModelHeight)
     self.profilesFrame = ACD:AddToBlizOptions("MythicPlusUtility_Profiles", L["Profiles"], "Mythic Plus Utility")
 
     self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")
@@ -88,6 +90,8 @@ function MythicPlusUtility:RefreshConfig()
         minimapIcon:Hide("MythicPlusUtility")
     end
     if self.Frame then self.Frame:ProfileChange() end
+    self.ModelContainer:SetSize(self.db.profile.windowSettings.tooltipModelWidth,
+                                self.db.profile.windowSettings.tooltipModelHeight)
 end
 
 function MythicPlusUtility:onTalentFrameShow()
