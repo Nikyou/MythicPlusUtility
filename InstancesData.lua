@@ -287,7 +287,7 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} is cast by {npc:%d}."], 1254690, 79093),
             tags = "[creature_slow]",
         }, { -- Rushing Winds
-            text = format(L["{spell:%d} buff on {npc:%d}."], 1254670, 78096),
+            text = format(L["{spell:%d} buff on {npc:%d}."], 1254670, 76205),
             tags = "[purge]",
         }, { -- Solar Barrier
             text = format(L["{spell:%d} buff is cast by {npc:%d}."], 1273356, 79462),
