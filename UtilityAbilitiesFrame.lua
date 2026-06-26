@@ -452,7 +452,9 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
                     GameTooltip:SetOwner(self, "ANCHOR_CURSOR_RIGHT")
                     GameTooltip:SetHyperlink(link)
                     GameTooltip:Show()
-                    MythicPlusUtility.ModelContainer:ShowModel(link)
+                    if profile.windowSettings.showTooltipModel then
+                        MythicPlusUtility.ModelContainer:ShowModel(link)
+                    end
                 end)
                 listFrame:SetScript("OnHyperlinkClick",
                                     function(self, link, text, button)

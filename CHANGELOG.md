@@ -1,6 +1,6 @@
 #### 1.3.0
 ### New: NPC Model in tooltip
-Added NPC models in tooltips.
+Added NPC models in tooltips. Enabled by default.
 #### 1.2.7
 ### Spells
 * Dispersion (Priest): Added to the list of spells.

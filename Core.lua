@@ -16,6 +16,9 @@ function MythicPlusUtility:OnInitialize()
     self.profiles = self.Profiles:CreateOptions()
     self.profilesFrame = ACD:AddToBlizOptions("MythicPlusUtility_Profiles", L["Profiles"], "Mythic Plus Utility")
 
+    self.ModelContainer:SetSize(self.db.profile.windowSettings.tooltipModelWidth,
+                                self.db.profile.windowSettings.tooltipModelHeight)
+
     self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")
     self.db.RegisterCallback(self, "OnProfileCopied", "RefreshConfig")
     self.db.RegisterCallback(self, "OnProfileReset", "RefreshConfig")
@@ -86,6 +89,8 @@ function MythicPlusUtility:RefreshConfig()
         minimapIcon:Hide("MythicPlusUtility")
     end
     if self.Frame then self.Frame:ProfileChange() end
+    self.ModelContainer:SetSize(self.db.profile.windowSettings.tooltipModelWidth,
+                                self.db.profile.windowSettings.tooltipModelHeight)
 end
 
 function MythicPlusUtility:onTalentFrameShow()

@@ -21,6 +21,9 @@ MythicPlusUtility.defaults = {
             xOffset = 100,
             yOffset = -150,
             framePoint = "TOPLEFT",
+            showTooltipModel = true,
+            tooltipModelWidth = 190,
+            tooltipModelHeight = 270,
         },
         textAndIcon = {
             ['**'] = {
@@ -117,7 +120,7 @@ MythicPlusUtility.options = {
         windowSettings = {
             type = "group",
             order = 1,
-            name = L["Window Position and Size Settings"],
+            name = L["Window Settings"],
             get = "GetValueWithParent",
             set = "SetValueWindowSettings",
             args = {
@@ -219,6 +222,30 @@ MythicPlusUtility.options = {
                         MythicPlusUtility.db.profile[info[#info]] = value
                         if MythicPlusUtility.Frame then MythicPlusUtility.Frame:FrameLockUpdate() end
                     end,
+                },
+                tooltipHeader = {type = "header", order = 3, name = L["Tooltip NPC Model Settings"]},
+                showTooltipModel = {type = "toggle", order = 3.1, name = L["Enable"], set = "SetValueWithParent"},
+                tooltipModelWidth = {
+                    type = "range",
+                    order = 3.2,
+                    name = L["Width"],
+                    min = 50,
+                    max = 8880,
+                    softMax = 600,
+                    bigStep = 10,
+                    step = 0.01,
+                    set = "SetValueTooltipModel",
+                },
+                tooltipModelHeight = {
+                    type = "range",
+                    order = 3.3,
+                    name = L["Height"],
+                    min = 50,
+                    max = 4800,
+                    softMax = 600,
+                    bigStep = 10,
+                    step = 0.01,
+                    set = "SetValueTooltipModel",
                 },
             },
         },
@@ -862,9 +889,7 @@ function MythicPlusUtility:SetValueTalentHighlight(info, value)
     local db = self.db.profile.buttonCosmetic[info[#info - 1]]
     db[name] = value
 
-    if self.Frame and self.Frame:IsShown() then
-        self.TalentFrameHighlight:ShowRelevant()
-    end
+    if self.Frame and self.Frame:IsShown() then self.TalentFrameHighlight:ShowRelevant() end
 end
 
 function MythicPlusUtility:SetValueWindowSettings(info, value)
@@ -908,6 +933,8 @@ function MythicPlusUtility:GetValueDifficulty(info, key) return self.db.profile.
 function MythicPlusUtility:SetValueDifficulty(info, key, state) self.db.profile.difficultyID[key] = state end
 
 function MythicPlusUtility:GetValueWithParent(info) return self.db.profile[info[#info - 1]][info[#info]] end
+
+function MythicPlusUtility:SetValueWithParent(info, value) self.db.profile[info[#info - 1]][info[#info]] = value end
 
 function MythicPlusUtility:GetValueTextAndIcon(info) return self.db.profile.textAndIcon[info[#info - 1]][info[#info]] end
 
@@ -1084,4 +1111,11 @@ function MythicPlusUtility:ButtonCosmeticHide(info)
     end
 
     return enabled
+end
+
+function MythicPlusUtility:SetValueTooltipModel(info, value)
+    local profile = self.db.profile or {}
+    self.db.profile[info[#info - 1]][info[#info]] = value
+    MythicPlusUtility.ModelContainer:SetSize(profile.windowSettings.tooltipModelWidth,
+                                             profile.windowSettings.tooltipModelHeight)
 end
