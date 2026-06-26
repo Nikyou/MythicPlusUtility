@@ -82,7 +82,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     local buttonsIndices
 
     local db = self.db
-    local profile = self.db.profile
+    local profile = self.db.profile or {}
     local buttonCosmetic = self.db.profile.buttonCosmetic
     local windowSettings = self.db.profile.windowSettings
     local textAndIcon = self.db.profile.textAndIcon
@@ -133,7 +133,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
 
     function frame:ProfileChange()
         db = MythicPlusUtility.db
-        profile = MythicPlusUtility.db.profile
+        profile = MythicPlusUtility.db.profile or {}
         buttonCosmetic = MythicPlusUtility.db.profile.buttonCosmetic
         windowSettings = MythicPlusUtility.db.profile.windowSettings
         textAndIcon = MythicPlusUtility.db.profile.textAndIcon
@@ -452,12 +452,16 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
                     GameTooltip:SetOwner(self, "ANCHOR_CURSOR_RIGHT")
                     GameTooltip:SetHyperlink(link)
                     GameTooltip:Show()
+                    MythicPlusUtility.ModelContainer:ShowModel(link)
                 end)
                 listFrame:SetScript("OnHyperlinkClick",
                                     function(self, link, text, button)
                     SetItemRef(link, text, button, self)
                 end)
-                listFrame:SetScript("OnHyperlinkLeave", function() GameTooltip:Hide() end)
+                listFrame:SetScript("OnHyperlinkLeave", function()
+                    GameTooltip:Hide()
+                    MythicPlusUtility.ModelContainer:HideModel()
+                end)
                 button.listFrame = listFrame
 
                 for i, text in ipairs(button.list) do

@@ -44,3 +44,4 @@ InstancesData.lua
 UtilityAbilitiesFrame.lua
 MinimapIcon.lua
 TalentFrameHighlight.lua
+TooltipModel.lua
