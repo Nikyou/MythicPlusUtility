@@ -3,7 +3,7 @@ if not L then return end
 
 -- Options
 L["Toggle Window"] = "Переключение окна"
-L["Window Position and Size Settings"] = "Размер и положение окна"
+L["Window Settings"] = "Настройки окна"
 L["Width"] = "Ширина"
 L["Height"] = "Высота"
 L["Lock Window"] = "Не двигать мышкой"
@@ -26,6 +26,7 @@ L["Show in"] = "Показывать в"
 L["Minimap Icon"] = "Значок миникарты"
 L["Talent Highlight Settings"] = "Настройки подсветки таланта"
 L["Highlight Color"] = "Цвет подсветки"
+L["Tooltip NPC Model Settings"] = "Настройки модели в подсказке"
 
 -- Difficulty
 L["Normal"] = "Обычный"

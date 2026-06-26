@@ -3,7 +3,7 @@ if not L then return end
 
 -- Options
 L["Toggle Window"] = "Fenster umschalten"
-L["Window Position and Size Settings"] = "Fensterposition und Größeneinstellungen"
+L["Window Settings"] = "Fenstereinstellungen"
 L["Width"] = "Breite"
 L["Height"] = "Höhe"
 L["Lock Window"] = "Fensterpositionierung verriegeln"

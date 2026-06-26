@@ -3,7 +3,7 @@ if not L then return end
 
 -- Options
 L["Toggle Window"] = "Afficher/Masquer la fenêtre"
-L["Window Position and Size Settings"] = "Paramètres de position et taille de la fenêtre"
+L["Window Settings"] = "Paramètres de la fenêtre"
 L["Width"] = "Largeur"
 L["Height"] = "Hauteur"
 L["Lock Window"] = "Verrouiller la fenêtre"

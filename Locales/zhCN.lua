@@ -3,7 +3,7 @@ if not L then return end
 
 -- Options
 L["Toggle Window"] = "切换窗口显示"
-L["Window Position and Size Settings"] = "窗口位置和尺寸设置"
+L["Window Settings"] = "窗口设置"
 L["Width"] = "宽度"
 L["Height"] = "高度"
 L["Lock Window"] = "锁定窗口"
