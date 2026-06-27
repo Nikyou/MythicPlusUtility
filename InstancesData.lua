@@ -2,6 +2,23 @@ local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
 MythicPlusUtility.instancesData = {
     -- Current Season (12.1)
     [2993] = { -- Altar of Fangs
+        -- Boss
+        { -- Regurgitate
+            text = format(
+              L["{spell:%d} debuff is inflicted on the first boss {npc:%d}. Also, this debuff can be avoided."],
+              1296069, 259445),
+            tags = "[snare][slow][disease][magic_debuff]",
+        }, { -- Spiteful Venom
+            text = format(
+              L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this debuff can be avoided."],
+              1305368, 262398, 259446),
+            tags = "[important][poison][magic_debuff]",
+        }, { -- Boneslicer
+            text = format(
+              L["{spell:%d} debuff is inflicted by the last boss {npc:%d}. Also, this debuff can be avoided."], 1301508,
+              259447),
+            tags = "[bleed][physical_debuff]",
+        }, -- Trash
         -- TBD
     },
     [2825] = { -- Den of Nalorakk
