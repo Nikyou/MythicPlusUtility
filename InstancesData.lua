@@ -41,6 +41,9 @@ MythicPlusUtility.instancesData = {
         { -- Animated Gold NPC
             text = format(L["Prevent {npc:%d} from reaching the first boss {npc:%d}."], 135406, 135322),
             tags = "[important][creature_slow][creature_stun]",
+        }, { -- Desiccation
+            text = format(L["{spell:%d} debuff is inflicted by the second boss {npc:%d}."], 267626, 134993),
+            tags = "[important][snare][slow][magic_debuff]",
         }, { -- Wretched Discharge
             text = format(
               L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this cast can be interrupted."],
@@ -48,7 +51,7 @@ MythicPlusUtility.instancesData = {
             tags = "[super_important][disease][magic_debuff]",
         }, { -- Severing Axe
             text = format(L["{spell:%d} debuff is inflicted by the third boss {npc:%d}."], 267763, 135475),
-            tags = "[important][bleed][physical_debuff]", -- Add Vanish
+            tags = "[important][bleed][physical_debuff]", -- Add Vanish, Could be not bleed
         }, { -- Poison Nova
             text = format(
               L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this cast can be interrupted."],
@@ -57,10 +60,15 @@ MythicPlusUtility.instancesData = {
         }, { -- Earthwall
             text = format(L["{spell:%d} buff is cast by {npc:%d} on the third boss {npc:%d}."], 267256, 135759, 135472),
             tags = "[purge][purge_spellsteal]",
-        }, { -- Deathly Roar
-            text = format(L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}."], 269369, 136976,
+        }, { -- Hunting Leap
+            text = format(L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}."], 1303039, 136984,
                           136160),
-            tags = "[super_important][fear][magic_debuff]",
+            tags = "[important][bleed][physical_debuff]", -- Add Vanish
+        }, { -- Deathly Roar
+            text = format(
+              L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}. Also, this cast can be interrupted."],
+              269369, 136984, 136160),
+            tags = "[fear][magic_debuff]",
         }, -- Trash
         { -- Ancestral Fury
             text = format(L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d})."], 269976, 134158, 135322),
@@ -166,7 +174,8 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}."], 263958, 134388,
                           133384),
             tags = "[important][creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_beast]",
-        }, { -- Plague
+        }, --[[ Looks removed
+        { -- Plague
             text = format(L["{spell:%d} debuff is inflicted by contact with {npc:%d} on the last boss {npc:%d}."],
                           269686, 137233, 133392),
             tags = "[important][disease][magic_debuff]",
@@ -175,7 +184,7 @@ MythicPlusUtility.instancesData = {
               L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}. Also, this cast can be interrupted."],
               268008, 139949, 133392),
             tags = "[super_important][incapacitate][polymorph][magic_debuff]",
-        }, -- Trash
+        },]] -- Trash
         { -- Embryonic Vigor
             text = format(L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d})."], 269896, 139425,
                           134364, 133384),
@@ -193,7 +202,7 @@ MythicPlusUtility.instancesData = {
         }, { -- Neurotoxin
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 273563, 134600),
             tags = "[important][poison][magic_debuff]",
-        }, { -- Cytotoxin
+        }, { -- Poison Spit
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 267027, 135562),
             tags = "[important][poison][magic_debuff]",
         }, { -- Drain
@@ -232,7 +241,10 @@ MythicPlusUtility.instancesData = {
     },
     [2859] = { -- The Blinding Vale
         -- Boss
-        { -- Bloodthorn Roots
+        { -- Thornblade
+            text = format(L["{spell:%d} debuff is inflicted by the first boss {npc:%d}."], 1235865, 243030),
+            tags = "[bleed][physical_debuff]",
+        }, { -- Bloodthorn Roots
             text = format(L["{spell:%d} debuff is inflicted by the second boss {npc:%d}."], 1236658, 244887),
             tags = "[important][slow][root][magic_debuff]",
         }, { -- Incise
@@ -245,7 +257,7 @@ MythicPlusUtility.instancesData = {
             tags = "[important][bleed][physical_debuff]",
         }, { -- Thornspike
             text = format(L["{spell:%d} debuff is inflicted by the last boss {npc:%d}."], 1247746, 247676),
-            tags = "[important][bleed][physical_debuff]",
+            tags = "[important][bleed][physical_debuff]", -- Could be not bleed
         }, -- Trash
         -- TBD
     },
