@@ -1,3 +1,7 @@
+#### 1.3.1
+### Spells
+* Berserker Rage (Warrior): Now will become Berserker Shout when it is talented. Self and party-wide effects will be shown separately.
+* Fearless (Warrior): Added, removes movement speed-impairing effects.
 #### 1.3.0
 ### New: NPC Model in tooltip
 Added NPC models in tooltips. Enabled by default.
