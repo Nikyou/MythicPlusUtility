@@ -48,7 +48,7 @@ MythicPlusUtility.instancesData = {
             tags = "[super_important][disease][magic_debuff]",
         }, { -- Severing Axe
             text = format(L["{spell:%d} debuff is inflicted by the third boss {npc:%d}."], 267763, 135475),
-            tags = "[important][bleed][physical_debuff]",
+            tags = "[important][bleed][physical_debuff]", -- Add Vanish
         }, { -- Poison Nova
             text = format(
               L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this cast can be interrupted."],

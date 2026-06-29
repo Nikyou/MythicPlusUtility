@@ -141,9 +141,11 @@ L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d
 L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}. Also, this cast can be interrupted."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this cast can be interrupted."] = true
+L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this debuff can be avoided."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}."] = true
 L["{spell:%d} debuff is inflicted by contact with {npc:%d}."] = true
 L["{spell:%d} debuff is inflicted by not soaking the void zone on the second boss {npc:%d}."] = true
+L["{spell:%d} debuff is inflicted by the last boss {npc:%d}. Also, this debuff can be avoided."] = true
 L["{spell:%d} debuff is inflicted by the last boss {npc:%d}."] = true
 L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Also, this debuff can be avoided."] = true
 L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this cast can be interrupted."] = true
