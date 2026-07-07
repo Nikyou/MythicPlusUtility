@@ -57,9 +57,6 @@ MythicPlusUtility.instancesData = {
               L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this cast can be interrupted."],
               267273, 135472),
             tags = "[poison][magic_debuff]",
-        }, { -- Earthwall
-            text = format(L["{spell:%d} buff is cast by {npc:%d} on the third boss {npc:%d}."], 267256, 135759, 135472),
-            tags = "[purge][purge_spellsteal]",
         }, { -- Hunting Leap
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}."], 1303039, 136984,
                           136160),
