@@ -2,7 +2,7 @@
 ## Version: @project-version@
 ## Title: Mythic Plus Utility
 ## Author: Nikyou (Megabelly-Silvermoon EU)
-## IconTexture: Interface\Icons\spell_nature_tremortotem
+## IconTexture: Interface\AddOns\MythicPlusUtility\logo
 ## Category: Dungeons & Raids
 ## Notes: Shows which utility abilities you should take and where to use them in Mythic+ dungeon
 ## Notes-ruRU: Показывает какие утилити способности стоит взять и где их использовать в Мифик+

@@ -2,7 +2,7 @@
 ### Localisation
 * Updated Simplified Chinese localisation.
 ### Miscellaneous
-* Updated addon icon.
+* Updated addon logo. Credits: esiaart
 #### 1.3.1
 ### Spells
 * Berserker Rage (Warrior): Now will become Berserker Shout when it is talented. Self and party-wide effects will be shown separately.
