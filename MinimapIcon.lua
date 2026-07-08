@@ -5,7 +5,7 @@ local minimapIcon = LibStub("LibDBIcon-1.0")
 local LDB = LibStub("LibDataBroker-1.1"):NewDataObject("MythicPlusUtility", {
     type = "launcher",
     text = "Mythic Plus Utility",
-    icon = 136108,
+    icon = "Interface/AddOns/MythicPlusUtility/logo2",
     OnClick = function(_, buttonName)
         if buttonName == "LeftButton" then
             MythicPlusUtility:ToggleAbilitiesFrame()

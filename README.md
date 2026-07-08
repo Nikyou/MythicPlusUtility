@@ -54,6 +54,8 @@ Found a bug or have a suggestion? Open an Issue on [GitHub](https://github.com/N
 
 ## Credits
 
+Logo: [esiaart](https://x.com/esiaart)
+
 Thanks to Tactyks and his [M+ Ability Tracking Sheet](https://docs.google.com/spreadsheets/d/11pOj8w823fjBJqnOWTCA9vwL8_TVJF-kWFCK6WGJ7Jk) for information about dungeon abilities.
 
 Localisation:

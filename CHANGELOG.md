@@ -11,6 +11,12 @@ Added Midnight Season 2 dungeons:
 * Voidscar Arena
 ### Options
 Added Mythic+ seasons select, defaults to the current season.
+#### 1.3.2
+### Localisation
+* Updated Simplified Chinese localisation.
+### Miscellaneous
+* Updated addon logo. Credits: esiaart
+#### 1.3.1
 ### Spells
 * Shapesift (Druid): added "polymorph" tag, will now be recommended against effects that polymorph
 * Spellsteal (Mage): changed from general purge to special case purge (it won't be recommended for buffs that are hurmful if stolen)
