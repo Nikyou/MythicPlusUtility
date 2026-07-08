@@ -39,7 +39,7 @@ L["Disable Minimap Button"] = "禁用小地图按钮"
 L["Algeth'ar Academy"] = "艾杰斯亚学院"
 L["Magisters' Terrace"] = "魔导师平台"
 L["Maisara Caverns"] = "迈萨拉洞窟"
-L["Nexus-Point Xenas"] = "枢纽节点塞纳斯"
+L["Nexus-Point Xenas"] = "节点希纳斯"
 L["Pit of Saron"] = "萨隆矿坑"
 L["Seat of the Triumvirate"] = "执政团之座"
 L["Skyreach"] = "通天峰"
@@ -86,7 +86,8 @@ L["{spell:%d} is channeled by {npc:%d} on the third boss {npc:%d}."] =
 L["{spell:%d} is channeled by {npc:%d}. The caster is immune to CC while it has {spell:%d}"] =
   "{spell:%d} 由 {npc:%d} 引导，在拥有 {spell:%d} 时免疫控制。"
 L["{spell:%d} is channeled by {npc:%d}."] = "{spell:%d} 由 {npc:%d} 引导。"
-L["Mitigates effects of {spell:%d} on the last boss {npc:%d}."] = "减轻尾王 {npc:%d} 的 {spell:%d} 效果。"
+L["Mitigates effects of {spell:%d} on the last boss {npc:%d}."] =
+  "减轻 {spell:%d} 效果，在尾王 {npc:%d} 战斗中。"
 L["Prevent {npc:%d} from reaching {npc:%d}."] = "阻止 {npc:%d} 接触 {npc:%d}。"
 L["Prevent {npc:%d} from reaching players or other {npc:%d} on the second boss {npc:%d}."] =
   "阻止 {npc:%d} 接触玩家或其他 {npc:%d}，在第二个首领 {npc:%d} 战斗中。"
@@ -101,18 +102,19 @@ L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this debuff can be avoided.
   "{spell:%d} debuff由 {npc:%d} 施加，该debuff可以躲避。"
 L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this debuff can be avoided."] =
   "{spell:%d} debuff由第三个首领 {npc:%d} 施加，该debuff可以躲避。"
-L["Avoid {spell:%d} when {npc:%d} casts on last seconds."] = "{npc:%d} 施放 {spell:%d} 时在最后一秒躲避"
+L["Avoid {spell:%d} when {npc:%d} casts on last seconds."] =
+  "在最后一秒躲避 {spell:%d}，当 {npc:%d} 施放时。"
 L["Avoid {spell:%d} when the first boss {npc:%d} starts channeling."] =
-  "第一个首领 {npc:%d} 开始引导时躲避 {spell:%d}。"
+  "躲避 {spell:%d}，当第一个首领 {npc:%d} 开始引导时。"
 L["Avoid {spell:%d} when totem starts channeling on the last boss {npc:%d}."] =
-  "尾王 {npc:%d} 战斗中，图腾开始引导时躲避 {spell:%d}。"
-L["Avoid {spell:%d} when {npc:%d} starts channeling."] = "{npc:%d} 开始引导时躲避 {spell:%d}。"
+  "躲避 {spell:%d}，当图腾开始引导时，在尾王 {npc:%d} 战斗中。"
+L["Avoid {spell:%d} when {npc:%d} starts channeling."] = "躲避 {spell:%d}，当 {npc:%d} 开始引导时。"
 L["Avoid {spell:%d} when {npc:%d} starts channeling on the third boss {npc:%d}."] =
-  "第三个首领 {npc:%d} 战斗中，{npc:%d} 开始引导时躲避 {spell:%d}。"
-L["Avoid {spell:%d} when {npc:%d} jumps on you."] = "{npc:%d} 跳向你时躲避 {spell:%d}。"
+  "躲避 {spell:%d}，当 {npc:%d} 开始引导时，在第三个首领 {npc:%d} 战斗中。"
+L["Avoid {spell:%d} when {npc:%d} jumps on you."] = "躲避 {spell:%d}，当 {npc:%d} 跳向你时。"
 L["Avoid {spell:%d} when the last boss {npc:%d} starts channeling."] =
-  "尾王 {npc:%d} 开始引导时躲避 {spell:%d}。"
-L["Avoid {spell:%d} when {npc:%d} throws axe."] = "{npc:%d} 投掷斧头时躲避 {spell:%d}。"
+  "躲避 {spell:%d}，当尾王 {npc:%d} 开始引导时。"
+L["Avoid {spell:%d} when {npc:%d} throws axe."] = "躲避 {spell:%d}，当 {npc:%d} 投掷斧头时。"
 
 -- 1.1.0
 L["\"Add Optional\""] = "推荐学习（可选）"
@@ -135,7 +137,7 @@ L["Auto Expand Height"] = "自动扩展高度"
 L["Autocast Shine"] = "自动施法闪光"
 L["Automatic"] = "自动"
 L["Avoid {spell:%d} when {npc:%d} jumps. Targets the furthest player."] =
-  "{npc:%d} 跳跃时躲避 {spell:%d}。该技能会锁定最远的玩家。"
+  "躲避 {spell:%d}，当 {npc:%d} 跳跃时。该技能会锁定最远的玩家。"
 L["Body Text"] = "正文文本"
 L["Border"] = "边框"
 L["Currently known abilities that will be useful for this dungeon and only contain dungeon entries that are marked with %s. If disabled, \"Known\" settings will be used."] =
@@ -219,13 +221,14 @@ L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed 
   "{spell:%d} debuff由第一个首领 {npc:%d} 施加，该debuff只能由自己驱散。"
 L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Debuff is removed only from yourself."] =
   "{spell:%d} debuff由第二个首领 {npc:%d} 施加，该debuff只能由自己驱散。"
-L["Avoid {spell:%d} when {npc:%d} throws glaive."] = "{npc:%d} 投掷斧头时躲避 {spell:%d}。"
+L["Avoid {spell:%d} when {npc:%d} throws glaive."] = "躲避 {spell:%d}，当 {npc:%d} 投掷战刃时。"
 L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss {npc:%d}."] =
-  "在尾王 {npc:%d} 战斗中，如果被 {npc:%d} 击飞，跳回平台。"
+  "如果被 {npc:%d} 击飞，跳回平台，在尾王 {npc:%d} 战斗中。"
 L["Skips part of the wind maze after the third boss {npc:%d}."] = "跳过第三个首领 {npc:%d} 后面的风通道"
 
 -- 1.2.1
-L["Avoid {spell:%d} when the last boss {npc:%d} targets you."] = "尾王 {npc:%d} 点名你时躲避 {spell:%d}。"
+L["Avoid {spell:%d} when the last boss {npc:%d} targets you."] =
+  "躲避 {spell:%d}，当尾王 {npc:%d} 点名你时。"
 L["Prevent {npc:%d} from reaching players on the third boss {npc:%d}."] =
   "阻止 {npc:%d} 接触玩家，在第三个首领 {npc:%d} 战斗中。"
 L["Skips add pack before the last boss {npc:%d}. This is route specific."] =
