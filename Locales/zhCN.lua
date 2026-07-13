@@ -5,7 +5,7 @@ if not L then return end
 L["Anchor to Screen's"] = "锚定到屏幕"
 L["Background Color"] = "背景颜色"
 L["Background Opacity"] = "背景透明度"
--- L["Background Settings"] = true -- Translation missing
+L["Background Settings"] = "背景设置"
 L["Body Text Size"] = "正文文本大小"
 L["Disable Minimap Button"] = "禁用小地图按钮"
 L["Dungeon Name Size"] = "地下城名称大小"
@@ -20,7 +20,7 @@ L["Icon Size"] = "图标大小"
 L["Lock Window"] = "锁定窗口"
 L["Minimap Icon"] = "小地图按钮"
 L["Open Settings"] = "打开设置"
--- L["Season Select"] = true -- Translation missing
+L["Season Select"] = "选择赛季"
 L["Show in"] = "显示于"
 L["Show/Hide Utility Window"] = "显示/隐藏功能窗口"
 L["Talent Highlight Settings"] = "天赋高亮设置"
@@ -41,12 +41,12 @@ L["Mythic"] = "史诗"
 L["No utility abilities for this dungeon"] = "该地下城没有功能性技能"
 
 -- Mythic+ Seasons
--- L["Midnight Season 2"] = true -- Translation missing
--- L["Midnight Season 1"] = true -- Translation missing
+L["Midnight Season 2"] = "至暗之夜 第2赛季"
+L["Midnight Season 1"] = "至暗之夜 第1赛季"
 
 -- Dungeons
 -- Midnight
--- L["Altar of Fangs"] = true -- Translation missing
+L["Altar of Fangs"] = "毒牙祭坛"
 L["Den of Nalorakk"] = "纳洛拉克的洞穴"
 L["Magisters' Terrace"] = "魔导师平台"
 L["Maisara Caverns"] = "迈萨拉洞窟"
@@ -159,41 +159,37 @@ L["Prevent {npc:%d} from reaching players on the third boss {npc:%d}."] =
 L["Skips add pack before the last boss {npc:%d}. This is route specific."] =
   "跳过尾王 {npc:%d} 前的小怪。仅适用于特定路线。"
 -- 1.3.0
--- L["{npc:%d} are in stealth before the first boss."] = true -- Translation missing
--- L["{npc:%d} are in stealth in the room with the orb (trash before {npc:%d})."] = true -- Translation missing
--- L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
--- L["{spell:%d} buff is cast by {npc:%d} on the third boss {npc:%d}."] = true -- Translation missing
--- L["{spell:%d} buff is cast by {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
--- L["{spell:%d} buff on {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = true -- Translation missing
--- L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = true -- Translation missing
--- L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss). Also, this cast can be interrupted."] =
---   true
--- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss)."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] =
---   true
--- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by contact with {npc:%d}."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by not soaking the void zone on the second boss {npc:%d}."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by the last boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by the last boss {npc:%d}."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by the third boss {npc:%d}."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted on the second boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
--- L["{spell:%d} is cast by {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
--- L["{spell:%d} is cast by {npc:%d} (trash before the third boss)."] = true -- Translation missing
--- L["{spell:%d} is cast by {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
--- L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
--- L["{spell:%d} is channeled by {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
+L["{npc:%d} are in stealth before the first boss."] = "{npc:%d} 在第一个首领前处于潜行状态。"
+L["{npc:%d} are in stealth in the room with the orb (trash before {npc:%d})."] = "{npc:%d} 在有球的房间内处于潜行状态（{npc:%d} 前的小怪）。"
+L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d})."] = "{spell:%d} buff由 {npc:%d} 施放（{npc:%d} 前的小怪）。"
+L["{spell:%d} buff is cast by {npc:%d} on the third boss {npc:%d}."] = "{spell:%d} buff由 {npc:%d} 施放，在第三个首领 {npc:%d} 战斗中。"
+L["{spell:%d} buff is cast by {npc:%d}. Also, this cast can be interrupted."] = "{spell:%d} buff由 {npc:%d} 施放，该施法可被打断。"
+L["{spell:%d} buff on {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = "{spell:%d} buff 在 {npc:%d} 身上（{npc:%d} 前的小怪），该施法可被打断。"
+L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = "{spell:%d} buff 在 {npc:%d} 和 {npc:%d} 身上（{npc:%d} 前的小怪），该施法可被打断。"
+L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d})."] = "{spell:%d} buff 在 {npc:%d} 和 {npc:%d} 身上（{npc:%d} 前的小怪）。"
+L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] = "{spell:%d} debuff由 {npc:%d} 施加（{npc:%d} 前的小怪），该debuff可以躲避。"
+L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss). Also, this cast can be interrupted."] = "{spell:%d} debuff由 {npc:%d} 施加（第三个首领前的小怪），该施法可被打断。"
+L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss)."] = "{spell:%d} debuff由 {npc:%d} 施加（第三个首领前的小怪）。"
+L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] = "{spell:%d} debuff由 {npc:%d} 和 {npc:%d} 施加（{npc:%d} 前的小怪），该debuff可以躲避。"
+L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d})."] = "{spell:%d} debuff由 {npc:%d} 和 {npc:%d} 施加（{npc:%d} 前的小怪）。"
+L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}. Also, this cast can be interrupted."] = "{spell:%d} debuff由 {npc:%d} 施加，在尾王 {npc:%d} 战斗中，该施法可被打断。"
+L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}."] = "{spell:%d} debuff由 {npc:%d} 施加，在尾王 {npc:%d} 战斗中。"
+L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this cast can be interrupted."] = "{spell:%d} debuff由 {npc:%d} 施加，在第二个首领 {npc:%d} 战斗中，该施法可被打断。"
+L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this debuff can be avoided."] = "{spell:%d} debuff由 {npc:%d} 施加，在第二个首领 {npc:%d} 战斗中，该debuff可以躲避。"
+L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}."] = "{spell:%d} debuff由 {npc:%d} 施加，在第二个首领 {npc:%d} 战斗中。"
+L["{spell:%d} debuff is inflicted by contact with {npc:%d}."] = "{spell:%d} debuff 会因接触 {npc:%d} 而受到。"
+L["{spell:%d} debuff is inflicted by not soaking the void zone on the second boss {npc:%d}."] = "未进入虚空区域分担会受到 {spell:%d} debuff，在第二个首领 {npc:%d} 战斗中。"
+L["{spell:%d} debuff is inflicted by the last boss {npc:%d}. Also, this debuff can be avoided."] = "{spell:%d} debuff由尾王 {npc:%d} 施加，该debuff可以躲避。"
+L["{spell:%d} debuff is inflicted by the last boss {npc:%d}."] = "{spell:%d} debuff由尾王 {npc:%d} 施加。"
+L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Also, this debuff can be avoided."] = "{spell:%d} debuff由第二个首领 {npc:%d} 施加，该debuff可以躲避。"
+L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this cast can be interrupted."] = "{spell:%d} debuff由第三个首领 {npc:%d} 施加，该施法可被打断。"
+L["{spell:%d} debuff is inflicted by the third boss {npc:%d}."] = "{spell:%d} debuff由第三个首领 {npc:%d} 施加。"
+L["{spell:%d} debuff is inflicted on the second boss {npc:%d}. Also, this debuff can be avoided."] = "{spell:%d} debuff 会在第二个首领 {npc:%d} 战斗中施加，该debuff可以躲避。"
+L["{spell:%d} is cast by {npc:%d} (trash before {npc:%d})."] = "{spell:%d} 由 {npc:%d} 施放（{npc:%d} 前的小怪）。"
+L["{spell:%d} is cast by {npc:%d} (trash before the third boss)."] = "{spell:%d} 由 {npc:%d} 施放（第三个首领前的小怪）。"
+L["{spell:%d} is cast by {npc:%d}. Also, this cast can be interrupted."] = "{spell:%d} 由 {npc:%d} 施放，该施法可被打断。"
+L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d})."] = "{spell:%d} 由 {npc:%d} 引导（{npc:%d} 前的小怪）。"
+L["{spell:%d} is channeled by {npc:%d} and {npc:%d} (trash before {npc:%d})."] = "{spell:%d} 由 {npc:%d} 和 {npc:%d} 引导（{npc:%d} 前的小怪）。"
 
 -- Icon Cosmetics Settings
 L["\"Add Optional\""] = "推荐学习（可选）"
