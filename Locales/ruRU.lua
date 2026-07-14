@@ -74,8 +74,7 @@ L["Pit of Saron"] = "Яма Сарона"
 L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
   "{spell:%d} бафф, который накладывает {npc:%d} (треш перед {npc:%d}). Также, это заклинание можно прервать."
 L["{spell:%d} buff is cast by {npc:%d}."] = "{spell:%d} бафф, который накладывает {npc:%d}."
-L["{spell:%d} buff on {npc:%d} (trash before {npc:%d})."] =
-  "{spell:%d} бафф на {npc:%d} (треш перед {npc:%d})."
+L["{spell:%d} buff on {npc:%d} (trash before {npc:%d})."] = "{spell:%d} бафф на {npc:%d} (треш перед {npc:%d})."
 L["{spell:%d} buff on {npc:%d}."] = "{spell:%d} бафф на {npc:%d}."
 L["{spell:%d} buff on the second boss {npc:%d}."] = "{spell:%d} бафф на втором боссе {npc:%d}."
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted and LoS."] =
@@ -92,8 +91,7 @@ L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupte
   "{spell:%d} дебафф, который накладывает {npc:%d}. Также, это заклинание можно прервать."
 L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this debuff can be avoided."] =
   "{spell:%d} дебафф, который накладывает {npc:%d}. Также, этот дебафф можно избежать."
-L["{spell:%d} debuff is inflicted by {npc:%d}."] =
-  "{spell:%d} дебафф, который накладывает {npc:%d}."
+L["{spell:%d} debuff is inflicted by {npc:%d}."] = "{spell:%d} дебафф, который накладывает {npc:%d}."
 L["{spell:%d} debuff is inflicted by contact with {npc:%d} on the last boss {npc:%d}."] =
   "{spell:%d} дебафф, который накладывает контакт с {npc:%d} на последнем боссе {npc:%d}."
 L["{spell:%d} debuff is inflicted by contact with orbs on the last boss {npc:%d}."] =
@@ -122,16 +120,14 @@ L["{spell:%d} is channeled by {npc:%d}. The caster is immune to CC while it has 
 L["{spell:%d} is channeled by {npc:%d}."] = "{spell:%d}, которое направляет {npc:%d}."
 L["Avoid {spell:%d} when {npc:%d} casts on last seconds."] =
   "Избегите {spell:%d}, когда {npc:%d} произносит на последних секундах."
-L["Avoid {spell:%d} when {npc:%d} jumps on you."] =
-  "Избегите {spell:%d}, когда {npc:%d} прыгнет на вас."
+L["Avoid {spell:%d} when {npc:%d} jumps on you."] = "Избегите {spell:%d}, когда {npc:%d} прыгнет на вас."
 L["Avoid {spell:%d} when {npc:%d} jumps. Targets the furthest player."] =
   "Избегите {spell:%d}, когда {npc:%d} прыгнет. Целью выберается самый дальний игрок."
 L["Avoid {spell:%d} when {npc:%d} starts channeling on the third boss {npc:%d}."] =
   "Избегите {spell:%d}, когда {npc:%d} начинает поддерживать заклинание на третьем боссе {npc:%d}."
 L["Avoid {spell:%d} when {npc:%d} starts channeling."] =
   "Избегите {spell:%d}, когда {npc:%d} начинает поддерживать заклинание."
-L["Avoid {spell:%d} when {npc:%d} throws axe."] =
-  "Избегите {spell:%d}, когда {npc:%d} кинет топор."
+L["Avoid {spell:%d} when {npc:%d} throws axe."] = "Избегите {spell:%d}, когда {npc:%d} кинет топор."
 L["Avoid {spell:%d} when the first boss {npc:%d} starts channeling."] =
   "Избегите {spell:%d}, когда первый босс {npc:%d} начинает поддерживать заклинание."
 L["Avoid {spell:%d} when the last boss {npc:%d} starts channeling."] =
@@ -154,8 +150,7 @@ L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Debuff is removed 
   "{spell:%d} дебафф, который накладывает первый босс {npc:%d}. Дебафф снимается только с себя."
 L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Debuff is removed only from yourself."] =
   "{spell:%d} дебафф, который накладывает второй босс {npc:%d}. Дебафф снимается только с себя."
-L["Avoid {spell:%d} when {npc:%d} throws glaive."] =
-  "Избегите {spell:%d}, когда {npc:%d} кинет глефу."
+L["Avoid {spell:%d} when {npc:%d} throws glaive."] = "Избегите {spell:%d}, когда {npc:%d} кинет глефу."
 L["Jump back to the platform if you are thrown off by {npc:%d} on the last boss {npc:%d}."] =
   "Прыгните обратно на платформу, если вас сбросил {npc:%d} на последнем боссе {npc:%d}."
 L["Skips part of the wind maze after the third boss {npc:%d}."] =
@@ -168,8 +163,7 @@ L["Prevent {npc:%d} from reaching players on the third boss {npc:%d}."] =
 L["Skips add pack before the last boss {npc:%d}. This is route specific."] =
   "Пропускает пачку врагов перед последним боссом {npc:%d}. Это специфично для маршрута."
 -- 1.3.0
-L["{npc:%d} are in stealth before the first boss."] =
-  "{npc:%d} в незаметности перед первым боссом."
+L["{npc:%d} are in stealth before the first boss."] = "{npc:%d} в незаметности перед первым боссом."
 L["{npc:%d} are in stealth in the room with the orb (trash before {npc:%d})."] =
   "{npc:%d} в незаметности в комнате со сферой (треш перед {npc:%d})."
 L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d})."] =
@@ -289,8 +283,7 @@ L["Position Settings"] = "Настройки расположения"
 L["Remove"] = "Убрать"
 L["Reverse Type"] = "В обратном порядке по типу"
 L["Scale"] = "Масштаб"
-L["Set as white (#FFFFFF) to not change icon color"] =
-  "Белый (#FFFFFF), чтобы не менять цвет иконки"
+L["Set as white (#FFFFFF) to not change icon color"] = "Белый (#FFFFFF), чтобы не менять цвет иконки"
 L["Set to negative to inverse direction of rotation"] =
   "Отрицательное значение изменит направление вращения"
 L["Shadow Color"] = "Цвет тени"
@@ -316,10 +309,8 @@ L["Wrap"] = "Переносить слова"
 -- Profile
 L["|cff40ff40Profile imported successfully.|r"] = "|cff40ff40Профиль успешно импортирован.|r"
 L["|cffff4040Decompression failed.|r"] = "|cffff4040Ошибка декомпрессии.|r"
-L["|cffff4040Invalid encoded string.|r"] =
-  "|cffff4040Неправильная закодированная строка.|r"
-L["|cffff4040Invalid serialised data.|r"] =
-  "|cffff4040Неправильные сериализованные данные.|r"
+L["|cffff4040Invalid encoded string.|r"] = "|cffff4040Неправильная закодированная строка.|r"
+L["|cffff4040Invalid serialised data.|r"] = "|cffff4040Неправильные сериализованные данные.|r"
 L["|cffff4040Missing profile data.|r"] = "|cffff4040Отсуствуют данные профиля.|r"
 L["|cffff4040Profile belongs to another addon.|r"] =
   "|cffff4040Профиль принадлежит другой модификации.|r"

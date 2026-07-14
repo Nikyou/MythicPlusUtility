@@ -73,8 +73,7 @@ L["{spell:%d} buff is cast by {npc:%d}."] = true
 L["{spell:%d} buff on {npc:%d} (trash before {npc:%d})."] = true
 L["{spell:%d} buff on {npc:%d}."] = true
 L["{spell:%d} buff on the second boss {npc:%d}."] = true
-L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted and LoS."] =
-  true
+L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted and LoS."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be LoS."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d})."] = true
@@ -132,11 +131,9 @@ L["{spell:%d} buff on {npc:%d} (trash before {npc:%d}). Also, this cast can be i
 L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = true
 L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] = true
-L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss). Also, this cast can be interrupted."] =
-  true
+L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss). Also, this cast can be interrupted."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss)."] = true
-L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] =
-  true
+L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}. Also, this cast can be interrupted."] = true
 L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}."] = true

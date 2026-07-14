@@ -103,8 +103,7 @@ L["{spell:%d} debuff is inflicted on the first boss {npc:%d}. Also, this debuff 
   "Le debuff {spell:%d} est infligé sur le premier boss {npc:%d}. Ce debuff peut être évité."
 L["{spell:%d} debuff is inflicted on the first boss {npc:%d}."] =
   "Le debuff {spell:%d} est infligé sur le premier boss {npc:%d}."
-L["{spell:%d} debuff is inflicted on the last boss {npc:%d}."] =
-  "Le debuff {spell:%d} est infligé sur le dernier boss {npc:%d}."
+L["{spell:%d} debuff is inflicted on the last boss {npc:%d}."] = "Le debuff {spell:%d} est infligé sur le dernier boss {npc:%d}."
 L["{spell:%d} debuff is inflicted on the second boss {npc:%d}."] =
   "Le debuff {spell:%d} est infligé sur le deuxième boss {npc:%d}."
 L["{spell:%d} is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
@@ -115,8 +114,7 @@ L["{spell:%d} is channeled by {npc:%d} on the third boss {npc:%d}."] =
 L["{spell:%d} is channeled by {npc:%d}. The caster is immune to CC while it has {spell:%d}"] =
   "Le sort {spell:%d} est canalisé par {npc:%d}. Le lanceur est insensible aux contrôles pendant {spell:%d}."
 L["{spell:%d} is channeled by {npc:%d}."] = "Le sort {spell:%d} est canalisé par {npc:%d}."
-L["Avoid {spell:%d} when {npc:%d} casts on last seconds."] =
-  "Éviter {spell:%d} quand {npc:%d} lance en fin d'incantation."
+L["Avoid {spell:%d} when {npc:%d} casts on last seconds."] = "Éviter {spell:%d} quand {npc:%d} lance en fin d'incantation."
 L["Avoid {spell:%d} when {npc:%d} jumps on you."] = "Éviter {spell:%d} quand {npc:%d} saute sur vous."
 L["Avoid {spell:%d} when {npc:%d} jumps. Targets the furthest player."] =
   "Éviter {spell:%d} quand {npc:%d} saute. Cible le joueur le plus éloigné."
@@ -130,13 +128,11 @@ L["Avoid {spell:%d} when the last boss {npc:%d} starts channeling."] =
   "Éviter {spell:%d} quand le dernier boss {npc:%d} commence à canaliser."
 L["Avoid {spell:%d} when totem starts channeling on the last boss {npc:%d}."] =
   "Éviter {spell:%d} quand le totem commence à canaliser sur le dernier boss {npc:%d}."
-L["Mitigates effects of {spell:%d} on the last boss {npc:%d}."] =
-  "Réduit les effets de {spell:%d} sur le dernier boss {npc:%d}."
+L["Mitigates effects of {spell:%d} on the last boss {npc:%d}."] = "Réduit les effets de {spell:%d} sur le dernier boss {npc:%d}."
 L["Prevent {npc:%d} from reaching {npc:%d}."] = "Empêcher {npc:%d} d'atteindre {npc:%d}."
 L["Prevent {npc:%d} from reaching players or other {npc:%d} on the second boss {npc:%d}."] =
   "Empêcher {npc:%d} d'atteindre les joueurs ou d'autres {npc:%d} sur le deuxième boss {npc:%d}."
-L["Prevent {npc:%d} from reaching the first boss {npc:%d}."] =
-  "Empêcher {npc:%d} d'atteindre le premier boss {npc:%d}."
+L["Prevent {npc:%d} from reaching the first boss {npc:%d}."] = "Empêcher {npc:%d} d'atteindre le premier boss {npc:%d}."
 L["Slow {npc:%d} on the third boss {npc:%d}."] = "Ralentir {npc:%d} sur le troisième boss {npc:%d}."
 L["Stun {npc:%d} on the last boss {npc:%d}."] = "Étourdir {npc:%d} sur le dernier boss {npc:%d}."
 -- 1.1.9
@@ -206,8 +202,7 @@ L["Currently known abilities that will be useful for this dungeon and only conta
 L["Currently known abilities that will be useful for this dungeon."] = "Compétences connues utiles pour ce donjon."
 L["Currently not known abilities that will be useful in this dungeon and only contain dungeon entries that are marked with %s. If disabled, \"Add\" settings will be used."] =
   "Compétences non connues utiles pour ce donjon, contenant uniquement les entrées marquées avec %s. Si désactivé, les paramètres \"Ajouter\" seront utilisés."
-L["Currently not known abilities that will be useful in this dungeon."] =
-  "Compétences non connues utiles pour ce donjon."
+L["Currently not known abilities that will be useful in this dungeon."] = "Compétences non connues utiles pour ce donjon."
 L["Custom Text Settings"] = "Paramètres du texte personnalisé"
 L["Custom Text"] = "Texte personnalisé"
 L["Custom_text"] = "Personnalisé"
@@ -245,10 +240,8 @@ L["Position Settings"] = "Paramètres de position"
 L["Remove"] = "Supprimer"
 L["Reverse Type"] = "Inverser le type"
 L["Scale"] = "Échelle"
-L["Set as white (#FFFFFF) to not change icon color"] =
-  "Définir en blanc (#FFFFFF) pour ne pas modifier la couleur de l'icône"
-L["Set to negative to inverse direction of rotation"] =
-  "Définir une valeur négative pour inverser le sens de rotation"
+L["Set as white (#FFFFFF) to not change icon color"] = "Définir en blanc (#FFFFFF) pour ne pas modifier la couleur de l'icône"
+L["Set to negative to inverse direction of rotation"] = "Définir une valeur négative pour inverser le sens de rotation"
 L["Shadow Color"] = "Couleur de l'ombre"
 L["Shadow Settings"] = "Paramètres de l'ombre"
 L["Shadow X-Offset"] = "Décalage X de l'ombre"

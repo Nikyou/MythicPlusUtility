@@ -111,26 +111,15 @@ end
 
 MythicPlusUtility.globals = {
     labelListOrder = {"default", "defaultText", "custom", "none"},
-    unlearnAbility = {
-        labelList = {default = "\"-\"", defaultText = L["\"Remove\""], none = L["None"], custom = L["Custom_text"]},
-    },
-    needAbility = {
-        labelList = {default = "\"+\"", defaultText = L["\"Add\""], none = L["None"], custom = L["Custom_text"]},
-    },
+    unlearnAbility = {labelList = {default = "\"-\"", defaultText = L["\"Remove\""], none = L["None"], custom = L["Custom_text"]}},
+    needAbility = {labelList = {default = "\"+\"", defaultText = L["\"Add\""], none = L["None"], custom = L["Custom_text"]}},
     onlyNotImportantAbility = {
         labelList = {default = "\"?\"", defaultText = L["\"Optional\""], none = L["None"], custom = L["Custom_text"]},
     },
     needOnlyNotImportantAbility = {
-        labelList = {
-            default = "\"+?\"",
-            defaultText = L["\"Add Optional\""],
-            none = L["None"],
-            custom = L["Custom_text"],
-        },
+        labelList = {default = "\"+?\"", defaultText = L["\"Add Optional\""], none = L["None"], custom = L["Custom_text"]},
     },
-    learnedAbility = {
-        labelList = {default = "\"*\"", defaultText = L["\"Known\""], none = L["None"], custom = L["Custom_text"]},
-    },
+    learnedAbility = {labelList = {default = "\"*\"", defaultText = L["\"Known\""], none = L["None"], custom = L["Custom_text"]}},
     iconGlowTypeList = {pixel = L["Pixel Glow"], autocast = L["Autocast Shine"], action = L["Action Button Glow"]},
     iconGlowTypeListOrder = {"pixel", "autocast", "action"},
     maxValue = 2147483640, -- Little less than Integer Limit

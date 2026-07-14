@@ -68,33 +68,47 @@ L["Skyreach"] = "Himmelsnadel"
 L["Pit of Saron"] = "Grube von Saron"
 
 -- Dungeon entries
-L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = "Zauber {spell:%d} wird von {npc:%d} gewirkt (Trash vor {npc:%d}). Dieser Zauber kann auch unterbrochen werden."
+L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
+  "Zauber {spell:%d} wird von {npc:%d} gewirkt (Trash vor {npc:%d}). Dieser Zauber kann auch unterbrochen werden."
 L["{spell:%d} buff is cast by {npc:%d}."] = "Buff {spell:%d} wird von {npc:%d} gewirkt."
 L["{spell:%d} buff on {npc:%d} (trash before {npc:%d})."] = "Buff {spell:%d} auf {npc:%d} (Trash vor {npc:%d})."
 L["{spell:%d} buff on {npc:%d}."] = "Buff {spell:%d} auf {npc:%d}."
 L["{spell:%d} buff on the second boss {npc:%d}."] = "Buff {spell:%d} auf dem zweiten Boss {npc:%d}."
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted and LoS."] =
   "Debuff {spell:%d} wird von {npc:%d} verursacht (Trash vor {npc:%d}). Dieser Zauber kann unterbrochen oder LoS werden."
-L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = "Debuff {spell:%d} wird von {npc:%d} verursacht (Trash vor {npc:%d}). Dieser Zauber kann unterbrochen werden."
-L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be LoS."] = "Debuff {spell:%d} wird von {npc:%d} verursacht (Trash vor {npc:%d}). Dieser Zauber kann LoS werden."
-L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d})."] = "Debuff {spell:%d} wird von {npc:%d} verursacht (Trash vor {npc:%d})."
-L["{spell:%d} debuff is inflicted by {npc:%d} on the first boss {npc:%d}."] = "Debuff {spell:%d} wird von {npc:%d} beim ersten Boss {npc:%d} verursacht."
-L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."] = "Debuff {spell:%d} wird von {npc:%d} verursacht. Dieser Zauber kann unterbrochen werden."
-L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this debuff can be avoided."] = "Debuff {spell:%d} wird von {npc:%d} verursacht. Dieser Debuff kann verhindert werden."
+L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
+  "Debuff {spell:%d} wird von {npc:%d} verursacht (Trash vor {npc:%d}). Dieser Zauber kann unterbrochen werden."
+L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be LoS."] =
+  "Debuff {spell:%d} wird von {npc:%d} verursacht (Trash vor {npc:%d}). Dieser Zauber kann LoS werden."
+L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d})."] =
+  "Debuff {spell:%d} wird von {npc:%d} verursacht (Trash vor {npc:%d})."
+L["{spell:%d} debuff is inflicted by {npc:%d} on the first boss {npc:%d}."] =
+  "Debuff {spell:%d} wird von {npc:%d} beim ersten Boss {npc:%d} verursacht."
+L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."] =
+  "Debuff {spell:%d} wird von {npc:%d} verursacht. Dieser Zauber kann unterbrochen werden."
+L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this debuff can be avoided."] =
+  "Debuff {spell:%d} wird von {npc:%d} verursacht. Dieser Debuff kann verhindert werden."
 L["{spell:%d} debuff is inflicted by {npc:%d}."] = "Debuff {spell:%d} wird von {npc:%d} verursacht."
-L["{spell:%d} debuff is inflicted by contact with {npc:%d} on the last boss {npc:%d}."] = "Debuff {spell:%d} wird durch Kontakt mit {npc:%d} beim letzten Boss {npc:%d} verursacht."
-L["{spell:%d} debuff is inflicted by contact with orbs on the last boss {npc:%d}."] = "Debuff {spell:%d} wird durch Kontakt mit den Kugeln beim letzten Boss {npc:%d} verursacht."
+L["{spell:%d} debuff is inflicted by contact with {npc:%d} on the last boss {npc:%d}."] =
+  "Debuff {spell:%d} wird durch Kontakt mit {npc:%d} beim letzten Boss {npc:%d} verursacht."
+L["{spell:%d} debuff is inflicted by contact with orbs on the last boss {npc:%d}."] =
+  "Debuff {spell:%d} wird durch Kontakt mit den Kugeln beim letzten Boss {npc:%d} verursacht."
 L["{spell:%d} debuff is inflicted by the first boss {npc:%d}."] = "Debuff {spell:%d} wird vom ersten Boss {npc:%d} verursacht."
 L["{spell:%d} debuff is inflicted by the second boss {npc:%d}."] = "Debuff {spell:%d} wird vom zweiten Boss {npc:%d} verursacht."
-L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this debuff can be avoided."] = "Debuff {spell:%d} wird vom dritten Boss {npc:%d} verursacht. Dieser Debuff kann verhindert werden."
-L["{spell:%d} debuff is inflicted on the first boss {npc:%d}. Also, this debuff can be avoided."] = "Debuff {spell:%d} wird beim ersten Boss {npc:%d} verursacht. Dieser Debuff kann verhindert werden."
+L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this debuff can be avoided."] =
+  "Debuff {spell:%d} wird vom dritten Boss {npc:%d} verursacht. Dieser Debuff kann verhindert werden."
+L["{spell:%d} debuff is inflicted on the first boss {npc:%d}. Also, this debuff can be avoided."] =
+  "Debuff {spell:%d} wird beim ersten Boss {npc:%d} verursacht. Dieser Debuff kann verhindert werden."
 L["{spell:%d} debuff is inflicted on the first boss {npc:%d}."] = "Debuff {spell:%d} wird beim ersten Boss {npc:%d} verursacht."
 L["{spell:%d} debuff is inflicted on the last boss {npc:%d}."] = "Debuff {spell:%d} wird beim letzten Boss {npc:%d} verursacht."
 L["{spell:%d} debuff is inflicted on the second boss {npc:%d}."] = "Debuff {spell:%d} wird beim zweiten Boss {npc:%d} verursacht."
-L["{spell:%d} is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = "Zauber {spell:%d} wird von {npc:%d} (Trash vor {npc:%d}) gewirkt. Dieser Zauber kann unterbrochen werden."
+L["{spell:%d} is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
+  "Zauber {spell:%d} wird von {npc:%d} (Trash vor {npc:%d}) gewirkt. Dieser Zauber kann unterbrochen werden."
 L["{spell:%d} is cast by {npc:%d}."] = "Zauber {spell:%d} wird von {npc:%d} gewirkt."
-L["{spell:%d} is channeled by {npc:%d} on the third boss {npc:%d}."] = "Zauber {spell:%d} wird von {npc:%d} beim dritten Boss {npc:%d} kanalisiert."
-L["{spell:%d} is channeled by {npc:%d}. The caster is immune to CC while it has {spell:%d}"] = "Zauber {spell:%d} wird von {npc:%d} kanalisiert. Der Zaubernde ist CC-immun während er von {spell:%d} betroffen ist."
+L["{spell:%d} is channeled by {npc:%d} on the third boss {npc:%d}."] =
+  "Zauber {spell:%d} wird von {npc:%d} beim dritten Boss {npc:%d} kanalisiert."
+L["{spell:%d} is channeled by {npc:%d}. The caster is immune to CC while it has {spell:%d}"] =
+  "Zauber {spell:%d} wird von {npc:%d} kanalisiert. Der Zaubernde ist CC-immun während er von {spell:%d} betroffen ist."
 L["{spell:%d} is channeled by {npc:%d}."] = "Zauber {spell:%d} wird von {npc:%d} kanalisiert."
 -- L["Avoid {spell:%d} when {npc:%d} casts on last seconds."] = true -- Translation missing
 -- L["Avoid {spell:%d} when {npc:%d} jumps on you."] = true -- Translation missing
@@ -105,9 +119,11 @@ L["{spell:%d} is channeled by {npc:%d}."] = "Zauber {spell:%d} wird von {npc:%d}
 -- L["Avoid {spell:%d} when the first boss {npc:%d} starts channeling."] = true -- Translation missing
 -- L["Avoid {spell:%d} when the last boss {npc:%d} starts channeling."] = true -- Translation missing
 -- L["Avoid {spell:%d} when totem starts channeling on the last boss {npc:%d}."] = true -- Translation missing
-L["Mitigates effects of {spell:%d} on the last boss {npc:%d}."] = "Entschärft Effekte des Zaubers {spell:%d} beim letzetn Boss {npc:%d}."
+L["Mitigates effects of {spell:%d} on the last boss {npc:%d}."] =
+  "Entschärft Effekte des Zaubers {spell:%d} beim letzetn Boss {npc:%d}."
 L["Prevent {npc:%d} from reaching {npc:%d}."] = "{npc:%d} am Erreichen von {npc:%d} hindern."
-L["Prevent {npc:%d} from reaching players or other {npc:%d} on the second boss {npc:%d}."] = "{npc:%d} am Erreichen von Spielern oder anderen {npc:%d} beim zweiten Boss {npc:%d} hindern."
+L["Prevent {npc:%d} from reaching players or other {npc:%d} on the second boss {npc:%d}."] =
+  "{npc:%d} am Erreichen von Spielern oder anderen {npc:%d} beim zweiten Boss {npc:%d} hindern."
 L["Prevent {npc:%d} from reaching the first boss {npc:%d}."] = "{npc:%d} am erreichen des ersten Boss {npc:%d} hindern."
 L["Slow {npc:%d} on the third boss {npc:%d}."] = "{npc:%d} beim dritten Boss {npc:%d} verlangsamen."
 L["Stun {npc:%d} on the last boss {npc:%d}."] = "{npc:%d} beim letzten Boss {npc:%d} betäuben."

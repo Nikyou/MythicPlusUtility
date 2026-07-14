@@ -155,8 +155,7 @@ MythicPlusUtility.options = {
             type = "toggle",
             order = 2.3,
             name = L["Hide not Important"],
-            desc = format(L["Hides dungeon entries that are marked with %s"],
-                          CreateAtlasMarkup("map-icon-ignored-bluequestion")),
+            desc = format(L["Hides dungeon entries that are marked with %s"], CreateAtlasMarkup("map-icon-ignored-bluequestion")),
             get = "GetValue",
             set = "SetValueInstance",
         },
@@ -207,9 +206,7 @@ MythicPlusUtility.options = {
                     type = "range",
                     order = 2.2,
                     name = L["Height"],
-                    hidden = function(info)
-                        return MythicPlusUtility.db.profile.windowSettings.autoExpand
-                    end,
+                    hidden = function(info) return MythicPlusUtility.db.profile.windowSettings.autoExpand end,
                     min = 150,
                     max = 4800,
                     softMax = 1200,
@@ -221,9 +218,7 @@ MythicPlusUtility.options = {
                     type = "toggle",
                     order = 2.4,
                     name = L["Max Height"],
-                    hidden = function(info)
-                        return not MythicPlusUtility.db.profile.windowSettings.autoExpand
-                    end,
+                    hidden = function(info) return not MythicPlusUtility.db.profile.windowSettings.autoExpand end,
                 },
                 maxHeight = {
                     type = "range",
@@ -244,9 +239,7 @@ MythicPlusUtility.options = {
                     type = "select",
                     order = 3.1,
                     name = L["Anchor to Screen's"],
-                    sorting = {
-                        "TOPLEFT", "TOP", "TOPRIGHT", "LEFT", "CENTER", "RIGHT", "BOTTOMLEFT", "BOTTOM", "BOTTOMRIGHT",
-                    },
+                    sorting = {"TOPLEFT", "TOP", "TOPRIGHT", "LEFT", "CENTER", "RIGHT", "BOTTOMLEFT", "BOTTOM", "BOTTOMRIGHT"},
                     values = {
                         TOPLEFT = "TOPLEFT",
                         TOP = "TOP",
@@ -326,13 +319,7 @@ MythicPlusUtility.options = {
             set = "SetValueTextAndIcon",
             args = {},
         },
-        buttonCosmeticGroup = {
-            type = "group",
-            childGroups = "tree",
-            order = 3,
-            name = L["Icon Cosmetics Settings"],
-            args = {},
-        },
+        buttonCosmeticGroup = {type = "group", childGroups = "tree", order = 3, name = L["Icon Cosmetics Settings"], args = {}},
     },
 }
 
@@ -777,12 +764,7 @@ local function populateButtonCosmeticGroup()
                     step = 1,
                 },
                 -- Font Flags
-                labelFontFlagsBreakLine = {
-                    type = "header",
-                    order = 4,
-                    name = L["Font Settings"],
-                    hidden = "ButtonCosmeticHide",
-                },
+                labelFontFlagsBreakLine = {type = "header", order = 4, name = L["Font Settings"], hidden = "ButtonCosmeticHide"},
                 labelOutline = {
                     type = "select",
                     order = 4.1,
@@ -983,9 +965,7 @@ function MythicPlusUtility:SetValueTextAndIconColor(info, r, g, b, a)
     if self.Frame then self.Frame:UpdateText(info[#info - 1], false) end
 end
 
-function MythicPlusUtility:GetValueButtonCosmetic(info)
-    return self.db.profile.buttonCosmetic[info[#info - 1]][info[#info]]
-end
+function MythicPlusUtility:GetValueButtonCosmetic(info) return self.db.profile.buttonCosmetic[info[#info - 1]][info[#info]] end
 
 function MythicPlusUtility:SetValueButtonCosmetic(info, value)
     local name = info[#info]
@@ -1035,9 +1015,7 @@ function MythicPlusUtility:SetValueButtonCosmeticLabel(info, value)
             local n, j = string.find(db[name], "%b{}", i + 1)
             if n == nil then break end
             local substring = string.sub(db[name], n, j)
-            if string.find(substring, "{atlas:.+") then
-                atlasTable[string.sub(substring, 8, #substring - 1)] = true
-            end
+            if string.find(substring, "{atlas:.+") then atlasTable[string.sub(substring, 8, #substring - 1)] = true end
             i = n
         end
 
@@ -1048,8 +1026,7 @@ function MythicPlusUtility:SetValueButtonCosmeticLabel(info, value)
                                                       self:IconToChatIcon(textureID))
         end
         for atlasID, _ in pairs(atlasTable) do
-            db.customLabelTextFormatted = string.gsub(db.customLabelTextFormatted,
-                                                      "%{atlas:" .. escape_pattern(atlasID) .. "%}",
+            db.customLabelTextFormatted = string.gsub(db.customLabelTextFormatted, "%{atlas:" .. escape_pattern(atlasID) .. "%}",
                                                       CreateAtlasMarkup(atlasID))
         end
     end
@@ -1103,15 +1080,15 @@ function MythicPlusUtility:ButtonCosmeticHide(info)
         return enabled or not db.iconGlow
 
     elseif name == "labelFont" or name == "labelSize" or name == "labelColor" or name == "labelOutline" or name
-      == "labelFontFlagsBreakLine" or name == "labelShadowX" or name == "labelShadowY" or name == "labelShadowColor"
-      or name == "labelWidthType" then
+      == "labelFontFlagsBreakLine" or name == "labelShadowX" or name == "labelShadowY" or name == "labelShadowColor" or name
+      == "labelWidthType" then
         return enabled or db.labelType == "none"
 
     elseif name == 'labelWidth' or name == 'labelOverflow' then
         return enabled or db.labelType == "none" or db.labelWidthType ~= "fixed"
 
-    elseif name == 'glowPixelN' or name == 'glowPixelFrequency' or name == 'glowPixelLength' or name == 'glowPixelTh'
-      or name == 'glowPixelXOffset' or name == 'glowPixelYOffset' or name == 'glowPixelBorder' then
+    elseif name == 'glowPixelN' or name == 'glowPixelFrequency' or name == 'glowPixelLength' or name == 'glowPixelTh' or name
+      == 'glowPixelXOffset' or name == 'glowPixelYOffset' or name == 'glowPixelBorder' then
         return enabled or not db.iconGlow or db.iconGlowType ~= "pixel"
 
     elseif name == 'glowAutocastN' or name == 'glowAutocastFrequency' or name == 'glowAutocastScale' or name
@@ -1128,13 +1105,10 @@ end
 function MythicPlusUtility:SetValueTooltipModel(info, value)
     local profile = self.db.profile or {}
     self.db.profile[info[#info - 1]][info[#info]] = value
-    MythicPlusUtility.ModelContainer:SetSize(profile.windowSettings.tooltipModelWidth,
-                                             profile.windowSettings.tooltipModelHeight)
+    MythicPlusUtility.ModelContainer:SetSize(profile.windowSettings.tooltipModelWidth, profile.windowSettings.tooltipModelHeight)
 end
 
-function MythicPlusUtility:GetInstanceIDValues(info)
-    return self.dungeonGlobals.dungeonListBySeason[self.db.profile.seasonSelect]
-end
+function MythicPlusUtility:GetInstanceIDValues(info) return self.dungeonGlobals.dungeonListBySeason[self.db.profile.seasonSelect] end
 
 function MythicPlusUtility:GetInstanceIDOrder(info)
     return self.dungeonGlobals.dungeonListBySeasonOrder[self.db.profile.seasonSelect]

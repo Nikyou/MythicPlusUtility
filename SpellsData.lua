@@ -187,9 +187,7 @@ MythicPlusUtility.utilityAbilities = {
         [24423] = {
             tags = "[creature_mortal_strike]",
             pet = true,
-            alternatives = {
-                263863, 159936, 160060, 263856, 263861, 279362, 160018, 263853, 54680, 263857, 263854, 263858,
-            },
+            alternatives = {263863, 159936, 160060, 263856, 263861, 279362, 160018, 263853, 54680, 263857, 263854, 263858},
             baseline = true,
         }, -- Mortal Wounds ability (pet)
         [53271] = {tags = "[slow][snare][root]", pet = true}, -- Master's Call (pet)
@@ -202,9 +200,7 @@ MythicPlusUtility.utilityAbilities = {
         [24423] = {
             tags = "[creature_mortal_strike]",
             pet = true,
-            alternatives = {
-                263863, 159936, 160060, 263856, 263861, 279362, 160018, 263853, 54680, 263857, 263854, 263858,
-            },
+            alternatives = {263863, 159936, 160060, 263856, 263861, 279362, 160018, 263853, 54680, 263857, 263854, 263858},
             baseline = true,
         }, -- Mortal Wounds ability (pet)
         [53271] = {tags = "[slow][snare][root]", pet = true}, -- Master's Call (pet)

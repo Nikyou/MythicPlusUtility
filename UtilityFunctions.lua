@@ -113,8 +113,7 @@ function MythicPlusUtility:GetNpcHyperlinkById(npcId)
     else
         local npcName = self:GetNpcNameById(npcId)
         if npcName then
-            db.npcIdToHyperlink[npcId] = format("|cffffd100|Hunit:Creature-0-0-0-0-%s-0:%s|h[%s]|h|r", npcId, npcName,
-                                                npcName)
+            db.npcIdToHyperlink[npcId] = format("|cffffd100|Hunit:Creature-0-0-0-0-%s-0:%s|h[%s]|h|r", npcId, npcName, npcName)
             return db.npcIdToHyperlink[npcId]
         end
     end
@@ -204,8 +203,7 @@ function MythicPlusUtility:FormatInstanceDataString(instanceID)
                                                 self:GetSpellIconById(spellId)) .. self:GetSpellHyperlinkById(spellId))
         end
         for npcId, _ in pairs(entry.npcIds) do
-            entry.formattedText = string.gsub(entry.formattedText, "{npc:" .. npcId .. "}",
-                                              self:GetNpcHyperlinkById(npcId))
+            entry.formattedText = string.gsub(entry.formattedText, "{npc:" .. npcId .. "}", self:GetNpcHyperlinkById(npcId))
         end
         if not entry.tagsTable.important then
             entry.formattedText = CreateAtlasMarkup("map-icon-ignored-bluequestion") .. entry.formattedText
@@ -228,8 +226,7 @@ function MythicPlusUtility:FormatInstanceData(instanceID)
     self:ExtractNpcIdsFromInstanceData(instanceID)
     self:ExtractTagsFromInstanceData(instanceID)
 
-    local myTimer =
-      C_Timer.NewTimer(0.5, function(self) MythicPlusUtility:FormatInstanceDataString(self.instanceID) end)
+    local myTimer = C_Timer.NewTimer(0.5, function(self) MythicPlusUtility:FormatInstanceDataString(self.instanceID) end)
     myTimer.instanceID = instanceID
 end
 
@@ -315,9 +312,7 @@ function MythicPlusUtility:CreateCurrentAbilitiesList()
     -- ACTIVE_TALENT_GROUP_CHANGED
     local t = self:tablecopy(self.utilityAbilities[self.db.char.class])
     if self.utilityAbilities[self.db.char.currentSpec] then
-        for spellId, entry in pairs(self.utilityAbilities[self.db.char.currentSpec]) do
-            t[spellId] = self:tablecopy(entry)
-        end
+        for spellId, entry in pairs(self.utilityAbilities[self.db.char.currentSpec]) do t[spellId] = self:tablecopy(entry) end
     end
 
     for spellId, entry in pairs(t) do
@@ -399,8 +394,9 @@ function MythicPlusUtility:UpdateCurrentAbilitiesList(petOnly)
 
     for _, entry in pairs(self.currentAbilitiesList) do
         if (not petOnly or entry.pet) and not entry.racial then
-            if entry.override and entry.isKnown and (self.utilityAbilities[self.db.char.class][entry.override]
-              or self.utilityAbilities[self.db.char.currentSpec][entry.override]) then
+            if entry.override and entry.isKnown
+              and (self.utilityAbilities[self.db.char.class][entry.override]
+                or self.utilityAbilities[self.db.char.currentSpec][entry.override]) then
                 for _, subEntry in pairs(self.currentAbilitiesList) do
                     if subEntry.spellId == entry.override then
                         subEntry.isOverriden = true

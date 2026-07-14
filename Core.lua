@@ -1,5 +1,4 @@
-MythicPlusUtility = LibStub("AceAddon-3.0"):NewAddon("MythicPlusUtility", "AceEvent-3.0", "AceConsole-3.0",
-                                                     "AceSerializer-3.0")
+MythicPlusUtility = LibStub("AceAddon-3.0"):NewAddon("MythicPlusUtility", "AceEvent-3.0", "AceConsole-3.0", "AceSerializer-3.0")
 local AC = LibStub("AceConfig-3.0")
 local ACD = LibStub("AceConfigDialog-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
@@ -103,9 +102,7 @@ function MythicPlusUtility:onTalentFrameShow()
 end
 
 function MythicPlusUtility:onTalentFrameClose()
-    if MythicPlusUtility.Frame and MythicPlusUtility.Frame:IsShown() then
-        MythicPlusUtility.TalentFrameHighlight:HideAll()
-    end
+    if MythicPlusUtility.Frame and MythicPlusUtility.Frame:IsShown() then MythicPlusUtility.TalentFrameHighlight:HideAll() end
 end
 
 function MythicPlusUtility:onUtilityWindowSetShown()
@@ -217,9 +214,7 @@ function MythicPlusUtility:ExtractSpellsFromDB()
     for specId, _ in pairs(self.classSpecialisations[self.db.char.class]) do
         for spellId, entry in pairs(self.utilityAbilities[specId]) do extract(spellId, entry) end
     end
-    for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesRacials) do
-        if entry.isKnown then extract(spellId, entry) end
-    end
+    for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesRacials) do if entry.isKnown then extract(spellId, entry) end end
 end
 
 function MythicPlusUtility:PopulateLocalisation()
