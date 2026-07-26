@@ -26,6 +26,7 @@ L["Show/Hide Utility Window"] = "Afficher/Masquer la fenêtre utilitaire"
 -- L["Talent Highlight Settings"] = true -- Translation missing
 L["Text and Icon Settings"] = "Paramètres du texte et des icônes"
 L["Toggle Window"] = "Afficher/Masquer la fenêtre"
+-- L["Tooltip NPC Model Settings"] = true -- Translation missing
 L["Width"] = "Largeur"
 L["Window Settings"] = "Paramètres de la fenêtre"
 L["X-Offset"] = "Décalage X"
@@ -121,7 +122,7 @@ L["Avoid {spell:%d} when {npc:%d} jumps. Targets the furthest player."] =
 L["Avoid {spell:%d} when {npc:%d} starts channeling on the third boss {npc:%d}."] =
   "Éviter {spell:%d} quand {npc:%d} commence à canaliser sur le troisième boss {npc:%d}."
 L["Avoid {spell:%d} when {npc:%d} starts channeling."] = "Éviter {spell:%d} quand {npc:%d} commence à canaliser."
-L["Avoid {spell:%d} when {npc:%d} throws axe."] = "Éviter {spell:%d} quand {npc:%d} lance sa hache."
+L["Avoid {spell:%d} when {npc:%d} throws an axe."] = "Éviter {spell:%d} quand {npc:%d} lance sa hache."
 L["Avoid {spell:%d} when the first boss {npc:%d} starts channeling."] =
   "Éviter {spell:%d} quand le premier boss {npc:%d} commence à canaliser."
 L["Avoid {spell:%d} when the last boss {npc:%d} starts channeling."] =
@@ -146,40 +147,51 @@ L["Stun {npc:%d} on the last boss {npc:%d}."] = "Étourdir {npc:%d} sur le derni
 -- L["Avoid {spell:%d} when the last boss {npc:%d} targets you."] = true -- Translation missing
 -- L["Prevent {npc:%d} from reaching players on the third boss {npc:%d}."] = true -- Translation missing
 -- L["Skips add pack before the last boss {npc:%d}. This is route specific."] = true -- Translation missing
--- 1.3.0
+-- 1.4.0
 -- L["{npc:%d} are in stealth before the first boss."] = true -- Translation missing
 -- L["{npc:%d} are in stealth in the room with the orb (trash before {npc:%d})."] = true -- Translation missing
+-- L["{npc:%d} are in stealth near {npc:%d} before the first boss."] = true -- Translation missing
 -- L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
 -- L["{spell:%d} buff is cast by {npc:%d} on the third boss {npc:%d}."] = true -- Translation missing
 -- L["{spell:%d} buff is cast by {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
 -- L["{spell:%d} buff on {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = true -- Translation missing
 -- L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = true -- Translation missing
 -- L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
+-- L["{spell:%d} buff on {npc:%d} and {npc:%d}."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss). Also, this cast can be interrupted."] =
---   true
--- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss). Also, this cast can be interrupted."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss)."] = true -- Translation missing
--- L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] =
---   true
--- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d}."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by {npc:%d}, which is summoned by {npc:%d}."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by contact with {npc:%d}."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by not soaking the void zone on the second boss {npc:%d}."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted by the last boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by the last boss {npc:%d}."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted by the third boss {npc:%d}."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted on the last boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
+-- L["{spell:%d} debuff is inflicted on the second boss {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
 -- L["{spell:%d} debuff is inflicted on the second boss {npc:%d}. Also, this debuff can be avoided."] = true -- Translation missing
 -- L["{spell:%d} is cast by {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
 -- L["{spell:%d} is cast by {npc:%d} (trash before the third boss)."] = true -- Translation missing
 -- L["{spell:%d} is cast by {npc:%d}. Also, this cast can be interrupted."] = true -- Translation missing
+-- L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d}). Also, this channel can be interrupted."] = true -- Translation missing
 -- L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
 -- L["{spell:%d} is channeled by {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true -- Translation missing
+-- L["Avoid {spell:%d} when the last boss {npc:%d} jumps at you."] = true -- Translation missing
+-- L["Avoid {spell:%d} when the second boss {npc:%d} starts channeling."] = true -- Translation missing
+-- L["Avoid {spell:%d} when the third boss {npc:%d} charges at you."] = true -- Translation missing
+-- L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] = true -- Translation missing
+-- L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] = true -- Translation missing
 
 -- Icon Cosmetics Settings
 L["\"Add Optional\""] = "\"Ajouter (optionnel)\""

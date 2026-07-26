@@ -127,7 +127,7 @@ L["Avoid {spell:%d} when {npc:%d} starts channeling on the third boss {npc:%d}."
   "Избегите {spell:%d}, когда {npc:%d} начинает поддерживать заклинание на третьем боссе {npc:%d}."
 L["Avoid {spell:%d} when {npc:%d} starts channeling."] =
   "Избегите {spell:%d}, когда {npc:%d} начинает поддерживать заклинание."
-L["Avoid {spell:%d} when {npc:%d} throws axe."] = "Избегите {spell:%d}, когда {npc:%d} кинет топор."
+L["Avoid {spell:%d} when {npc:%d} throws an axe."] = "Избегите {spell:%d}, когда {npc:%d} кинет топор."
 L["Avoid {spell:%d} when the first boss {npc:%d} starts channeling."] =
   "Избегите {spell:%d}, когда первый босс {npc:%d} начинает поддерживать заклинание."
 L["Avoid {spell:%d} when the last boss {npc:%d} starts channeling."] =
@@ -136,11 +136,11 @@ L["Avoid {spell:%d} when totem starts channeling on the last boss {npc:%d}."] =
   "Избегите {spell:%d}, когда тотем начинает поддерживать заклинание на последнем боссе {npc:%d}."
 L["Mitigates effects of {spell:%d} on the last boss {npc:%d}."] =
   "Нивелирует эффекты {spell:%d} на последнем боссе {npc:%d}."
-L["Prevent {npc:%d} from reaching {npc:%d}."] = "Мешает {npc:%d} достичь {npc:%d}."
+L["Prevent {npc:%d} from reaching {npc:%d}."] = "Помешайте {npc:%d} достичь {npc:%d}."
 L["Prevent {npc:%d} from reaching players or other {npc:%d} on the second boss {npc:%d}."] =
-  "Мешает {npc:%d} достичь игроков или других {npc:%d} на втором боссе {npc:%d}."
+  "Помешайте {npc:%d} достичь игроков или других {npc:%d} на втором боссе {npc:%d}."
 L["Prevent {npc:%d} from reaching the first boss {npc:%d}."] =
-  "Мешает {npc:%d} достичь первого босса {npc:%d}."
+  "Помешайте {npc:%d} достичь первого босса {npc:%d}."
 L["Slow {npc:%d} on the third boss {npc:%d}."] = "Замедляет {npc:%d} на третьем боссе {npc:%d}."
 L["Stun {npc:%d} on the last boss {npc:%d}."] = "Оглушает {npc:%d} на последнем боссе {npc:%d}."
 -- 1.1.9
@@ -159,13 +159,15 @@ L["Skips part of the wind maze after the third boss {npc:%d}."] =
 L["Avoid {spell:%d} when the last boss {npc:%d} targets you."] =
   "Избегите {spell:%d}, когда последний босс {npc:%d} выбирает вас целью."
 L["Prevent {npc:%d} from reaching players on the third boss {npc:%d}."] =
-  "Мешает {npc:%d} достичь игроков на третьем боссе {npc:%d}."
+  "Помешайте {npc:%d} достичь игроков на третьем боссе {npc:%d}."
 L["Skips add pack before the last boss {npc:%d}. This is route specific."] =
   "Пропускает пачку врагов перед последним боссом {npc:%d}. Это специфично для маршрута."
--- 1.3.0
+-- 1.4.0
 L["{npc:%d} are in stealth before the first boss."] = "{npc:%d} в незаметности перед первым боссом."
 L["{npc:%d} are in stealth in the room with the orb (trash before {npc:%d})."] =
   "{npc:%d} в незаметности в комнате со сферой (треш перед {npc:%d})."
+L["{npc:%d} are in stealth near {npc:%d} before the first boss."] =
+  "{npc:%d} в незаметности рядом с {npc:%d} перед первым боссом."
 L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d})."] =
   "{spell:%d} бафф, который накладывает {npc:%d} (треш перед {npc:%d})."
 L["{spell:%d} buff is cast by {npc:%d} on the third boss {npc:%d}."] =
@@ -178,6 +180,7 @@ L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d}). Also, this 
   "{spell:%d} бафф на {npc:%d} и {npc:%d} (треш перед {npc:%d}). Также, это заклинание можно прервать."
 L["{spell:%d} buff on {npc:%d} and {npc:%d} (trash before {npc:%d})."] =
   "{spell:%d} бафф на {npc:%d} и {npc:%d} (треш перед {npc:%d})."
+L["{spell:%d} buff on {npc:%d} and {npc:%d}."] = "{spell:%d} бафф на {npc:%d} и {npc:%d}."
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."] =
   "{spell:%d} дебафф, который накладывает {npc:%d} (треш перед {npc:%d}). Также, этот дебафф можно избежать."
 L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss). Also, this cast can be interrupted."] =
@@ -188,18 +191,28 @@ L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d
   "{spell:%d} дебафф, который накладывает {npc:%d} и {npc:%d} (треш перед {npc:%d}). Также, этот дебафф можно избежать."
 L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d} (trash before {npc:%d})."] =
   "{spell:%d} дебафф, который накладывает {npc:%d} и {npc:%d} (треш перед {npc:%d})."
+L["{spell:%d} debuff is inflicted by {npc:%d} and {npc:%d}."] =
+  "{spell:%d} дебафф, который накладывает {npc:%d} и {npc:%d}."
 L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}. Also, this cast can be interrupted."] =
   "{spell:%d} дебафф, который накладывает {npc:%d} на последнем боссе {npc:%d}. Также, это заклинание можно прервать."
 L["{spell:%d} debuff is inflicted by {npc:%d} on the last boss {npc:%d}."] =
   "{spell:%d} дебафф, который накладывает {npc:%d} на последнем боссе {npc:%d}."
 L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this cast can be interrupted."] =
   "{spell:%d} дебафф, который накладывает {npc:%d} на втором боссе {npc:%d}. Также, это заклинание можно прервать."
+L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this debuff can be avoided."] =
+  "{spell:%d} дебафф, который накладывает {npc:%d} на втором боссе {npc:%d}. Также, этот дебафф можно избежать."
 L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}."] =
   "{spell:%d} дебафф, который накладывает {npc:%d} на втором боссе {npc:%d}."
+L["{spell:%d} debuff is inflicted by {npc:%d}, which is summoned by {npc:%d}."] =
+  "{spell:%d} дебафф, который накладывает {npc:%d}, которого призвает {npc:%d}."
 L["{spell:%d} debuff is inflicted by contact with {npc:%d}."] =
   "{spell:%d} дебафф, который накладывается контактом с {npc:%d}."
 L["{spell:%d} debuff is inflicted by not soaking the void zone on the second boss {npc:%d}."] =
   "{spell:%d} дебафф, который накладывается если не закрыть войд-зону на втором боссе {npc:%d}."
+L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Also, this debuff can be avoided."] =
+  "{spell:%d} дебафф, который накладывает первый босс {npc:%d}. Также, этот дебафф можно избежать."
+L["{spell:%d} debuff is inflicted by the last boss {npc:%d}. Also, this debuff can be avoided."] =
+  "{spell:%d} дебафф, который накладывает последний босс {npc:%d}. Также, этот дебафф можно избежать."
 L["{spell:%d} debuff is inflicted by the last boss {npc:%d}."] =
   "{spell:%d} дебафф, который накладывает последний босс {npc:%d}."
 L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Also, this debuff can be avoided."] =
@@ -208,6 +221,10 @@ L["{spell:%d} debuff is inflicted by the third boss {npc:%d}. Also, this cast ca
   "{spell:%d} дебафф, который накладывает третий босс {npc:%d}. Также, это заклинание можно прервать."
 L["{spell:%d} debuff is inflicted by the third boss {npc:%d}."] =
   "{spell:%d} дебафф, который накладывает третий босс {npc:%d}."
+L["{spell:%d} debuff is inflicted on the last boss {npc:%d}. Also, this debuff can be avoided."] =
+  "{spell:%d} дебафф, который накладывает последний босс {npc:%d}. Также, этот дебафф можно избежать."
+L["{spell:%d} debuff is inflicted on the second boss {npc:%d}. Also, this cast can be interrupted."] =
+  "{spell:%d} дебафф, который накладывается на втором боссе {npc:%d}. Также, это заклинание можно прервать."
 L["{spell:%d} debuff is inflicted on the second boss {npc:%d}. Also, this debuff can be avoided."] =
   "{spell:%d} дебафф, который накладывается на втором боссе {npc:%d}. Также, этот дебафф можно избежать."
 L["{spell:%d} is cast by {npc:%d} (trash before {npc:%d})."] =
@@ -216,10 +233,22 @@ L["{spell:%d} is cast by {npc:%d} (trash before the third boss)."] =
   "{spell:%d}, которое произносит {npc:%d} (треш перед третьим боссом)."
 L["{spell:%d} is cast by {npc:%d}. Also, this cast can be interrupted."] =
   "{spell:%d}, которое произносит {npc:%d}. Также, это заклинание можно прервать."
+L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d}). Also, this channel can be interrupted."] =
+  "{spell:%d}, которое направляет {npc:%d} (треш перед {npc:%d}). Также, его можно прервать."
 L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d})."] =
   "{spell:%d}, которое направляет {npc:%d} (треш перед {npc:%d})."
 L["{spell:%d} is channeled by {npc:%d} and {npc:%d} (trash before {npc:%d})."] =
   "{spell:%d}, которое направляет {npc:%d} и {npc:%d} (треш перед {npc:%d})."
+L["Avoid {spell:%d} when the last boss {npc:%d} jumps at you."] =
+  "Избегите {spell:%d}, когда последний босс {npc:%d} прыгнет на вас."
+L["Avoid {spell:%d} when the second boss {npc:%d} starts channeling."] =
+  "Избегите {spell:%d}, когда второй босс {npc:%d} начинает поддерживать заклинание."
+L["Avoid {spell:%d} when the third boss {npc:%d} charges at you."] =
+  "Избегите {spell:%d}, когда последний босс {npc:%d} совершит рывок на вас."
+L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] =
+  "Избегите {spell:%d}, когда третий босс {npc:%d} кинет топор."
+L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] =
+  "Помешайте {npc:%d} достичь вашего лекаря на последнем боссе {npc:%d}."
 
 -- Icon Cosmetics Settings
 L["\"Add Optional\""] = "\"Взять необязательно\""
