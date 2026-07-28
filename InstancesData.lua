@@ -7,11 +7,6 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} debuff is inflicted on the first boss {npc:%d}. Also, this debuff can be avoided."],
                           1296069, 259445),
             tags = "[snare][slow][disease][magic_debuff]",
-            -- }, { -- Spiteful Venom !Probably removed
-            --    text = format(
-            --      L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this debuff can be avoided."],
-            --      1305368, 262398, 259446),
-            --    tags = "[important][poison][magic_debuff]",
         }, { -- Toxic Atrophy
             text = format(L["{spell:%d} debuff is inflicted on the second boss {npc:%d}. Also, this cast can be interrupted."],
                           1310358, 259446),
