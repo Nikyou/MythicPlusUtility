@@ -208,6 +208,9 @@ MythicPlusUtility.instancesData = {
         }, { -- Fel Crazed
             text = format(L["{spell:%d} buff on {npc:%d}."], 1229433, 236084),
             tags = "[purge][purge_spellsteal]",
+        }, { -- Fel Missiles
+            text = format(L["{spell:%d} is channeled by {npc:%d}. Also, this channel can be interrupted."], 1216571, 236084),
+            tags = "[creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_humanoid]",
         }, { -- Flay
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1295427, 235267),
             tags = "[bleed][physical_debuff]",
@@ -264,7 +267,9 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}."], 263958, 134388, 133384),
             tags = "[important][creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_beast]",
         }, { -- Poison Spit
-            text = format(L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}."], 267027, 134389, 133384),
+            text = format(
+              L["{spell:%d} debuff is inflicted by {npc:%d} on the second boss {npc:%d}. Also, this cast can be interrupted."],
+              267027, 134389, 133384),
             tags = "[important][poison][magic_debuff]",
         }, { -- Faithless Tormentor NPC
             text = format(L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."], 268317, 133392),
@@ -291,6 +296,9 @@ MythicPlusUtility.instancesData = {
         }, { -- Essence Disruption
             text = format(L["{spell:%d} is channeled by {npc:%d}."], 1303535, 269227),
             tags = "[creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_humanoid]",
+        }, { -- Poisoned Cheap Shot
+            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."], 1308100, 134602),
+            tags = "[poison][magic_debuff]",
         }, { -- Shrouded Fang NPC
             text = format(L["{npc:%d} are in stealth near {npc:%d} before the first boss."], 134602, 134617),
             tags = "[stealth]",
