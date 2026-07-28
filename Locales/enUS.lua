@@ -161,6 +161,7 @@ L["{spell:%d} is cast by {npc:%d}. Also, this cast can be interrupted."] = true
 L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d}). Also, this channel can be interrupted."] = true
 L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d})."] = true
 L["{spell:%d} is channeled by {npc:%d} and {npc:%d} (trash before {npc:%d})."] = true
+L["{spell:%d} is channeled by {npc:%d}. Also, this channel can be interrupted."] = true
 L["Avoid {spell:%d} when the last boss {npc:%d} jumps at you."] = true
 L["Avoid {spell:%d} when the second boss {npc:%d} starts channeling."] = true
 L["Avoid {spell:%d} when the third boss {npc:%d} charges at you."] = true

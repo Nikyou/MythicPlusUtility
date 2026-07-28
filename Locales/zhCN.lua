@@ -215,6 +215,7 @@ L["{spell:%d} is cast by {npc:%d}. Also, this cast can be interrupted."] =
 L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d})."] = "{spell:%d} 由 {npc:%d} 引导（{npc:%d} 前的小怪）。"
 L["{spell:%d} is channeled by {npc:%d} and {npc:%d} (trash before {npc:%d})."] =
   "{spell:%d} 由 {npc:%d} 和 {npc:%d} 引导（{npc:%d} 前的小怪）。"
+-- L["{spell:%d} is channeled by {npc:%d}. Also, this channel can be interrupted."] = true -- Translation missing
 -- L["Avoid {spell:%d} when the last boss {npc:%d} jumps at you."] = true -- Translation missing
 -- L["Avoid {spell:%d} when the second boss {npc:%d} starts channeling."] = true -- Translation missing
 -- L["Avoid {spell:%d} when the third boss {npc:%d} charges at you."] = true -- Translation missing

@@ -48,7 +48,7 @@ L["Midnight Season 1"] = "Midnight Сезон 1"
 
 -- Dungeons
 -- Midnight
--- L["Altar of Fangs"] = true -- Translation missing
+L["Altar of Fangs"] = "Алтарь Клыков"
 L["Den of Nalorakk"] = "Берлога Налоракка"
 L["Magisters' Terrace"] = "Терраса Магистров"
 L["Maisara Caverns"] = "Пещеры Маисара"
@@ -239,6 +239,8 @@ L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d})."] =
   "{spell:%d}, которое направляет {npc:%d} (треш перед {npc:%d})."
 L["{spell:%d} is channeled by {npc:%d} and {npc:%d} (trash before {npc:%d})."] =
   "{spell:%d}, которое направляет {npc:%d} и {npc:%d} (треш перед {npc:%d})."
+L["{spell:%d} is channeled by {npc:%d}. Also, this channel can be interrupted."] =
+  "{spell:%d}, которое направляет {npc:%d}. Также, его можно прервать."
 L["Avoid {spell:%d} when the last boss {npc:%d} jumps at you."] =
   "Избегите {spell:%d}, когда последний босс {npc:%d} прыгнет на вас."
 L["Avoid {spell:%d} when the second boss {npc:%d} starts channeling."] =
