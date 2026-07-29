@@ -169,7 +169,7 @@ MythicPlusUtility.utilityAbilities = {
     HUNTER = {
         [109215] = {tags = "[self_only][slow][snare][root]", baseline = true}, -- Posthaste
         [109248] = {tags = "[creature_root]", baseline = true}, -- Binding Shot
-        [1513] = {tags = "[cc_beast]"}, -- Scare Beast
+        [1513] = {tags = "[cast_cc_beast]"}, -- Scare Beast
         [1543] = {tags = "[stealth]", baseline = true}, -- Flare
         [187650] = {
             tags = "[cc_aberration][cc_beast][cc_critter][cc_demon][cc_dragonkin][cc_elemental][cc_giant][cc_humanoid][cc_mechanical][cc_undead][cc_other]",
