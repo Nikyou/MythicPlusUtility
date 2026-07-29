@@ -276,8 +276,8 @@ MythicPlusUtility.instancesData = {
             tags = "[important][creature_slow][creature_grip]",
         }, -- Trash
         { -- Addle Mind
-            text = format(L["{spell:%d} is channeled by {npc:%d}."], 1293307, 134364),
-            tags = "[important][creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_humanoid]",
+            text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."], 1314082, 134364),
+            tags = "[important][curse][magic_debuff]",
         }, { -- Arrow Barrage
             text = format(L["{spell:%d} is channeled by {npc:%d}."], 1308113, 134600),
             tags = "[important][creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_humanoid]",
