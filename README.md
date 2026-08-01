@@ -56,7 +56,7 @@ Found a bug or have a suggestion? Open an Issue on [GitHub](https://github.com/N
 
 Logo: [esiaart](https://x.com/esiaart)
 
-Thanks to Tactyks and his [M+ Ability Tracking Sheet](https://docs.google.com/spreadsheets/d/11pOj8w823fjBJqnOWTCA9vwL8_TVJF-kWFCK6WGJ7Jk) for information about dungeon abilities.
+Thanks to Tactyks and his [M+ Ability Tracking Sheet](https://docs.google.com/spreadsheets/d/1gI8-pZVc5LluzupXtsuNOT6Q7LMTu-rD3v2IJhewakY) for information about dungeon abilities.
 
 Localisation:
 * German - Feedy88
