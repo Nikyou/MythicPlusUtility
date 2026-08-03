@@ -1,4 +1,6 @@
 MythicPlusUtility = LibStub("AceAddon-3.0"):NewAddon("MythicPlusUtility", "AceEvent-3.0", "AceConsole-3.0", "AceSerializer-3.0")
+MythicPlusUtility.Variables = {}
+local Variables = MythicPlusUtility.Variables
 local AC = LibStub("AceConfig-3.0")
 local ACD = LibStub("AceConfigDialog-3.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
@@ -13,7 +15,7 @@ function MythicPlusUtility:OnInitialize()
     -- ACD:SetDefaultSize("MythicPlusUtility_Options", 800, 630)
 
     self.profiles = self.Profiles:CreateOptions()
-    self.db.profile.seasonSelect = self.dungeonGlobals.currentSeason
+    self.db.profile.seasonSelect = Variables.dungeonGlobals.currentSeason
     self.ModelContainer:SetSize(self.db.profile.windowSettings.tooltipModelWidth,
                                 self.db.profile.windowSettings.tooltipModelHeight)
     self.profilesFrame = ACD:AddToBlizOptions("MythicPlusUtility_Profiles", L["Profiles"], "Mythic Plus Utility")

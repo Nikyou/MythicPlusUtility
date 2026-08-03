@@ -1,6 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
+local Variables = MythicPlusUtility.Variables
 
-MythicPlusUtility.supportedTags = {
+Variables.supportedTags = {
     self_only = true, -- Ability that only works on the player
 
     cast_cc_aberration = true, -- Aberration that needs a CC effect  (cast time)
@@ -27,7 +28,8 @@ MythicPlusUtility.supportedTags = {
     cc_undead = true, -- Undead that needs a CC effect (insta cast)
     cc_other = true, -- Uncategorised creature that needs a CC effect (insta cast)
 
-    cc_cyclone = true, -- Special CC effect for cyclone as damage does not break it
+    cc_banish = true, -- Special CC case for Banish as damage does not break it ([cast_cc_demon][cast_cc_aberration][cast_cc_elemental])
+    cc_cyclone = true, -- Special CC case for cyclone as damage does not break it (cast cc everything)
 
     creature_grip = true, -- Creature that needs a forced movement effect
     creature_root = true, -- Creature that needs a root effect
@@ -52,26 +54,26 @@ MythicPlusUtility.supportedTags = {
     slow = true, -- Removable slow effect
     root = true, --  Removable root effect
     snare = true, -- Removable snare effect
-    snare_jet = true, -- Removable snare effect with Jet Sream (Shaman talent, special case)
+    -- snare_jet = true, -- Removable snare effect with Jet Sream (Shaman talent, special case)
     stealth = true, -- Removable stealth effect
     stun = true, -- Removable stun effect
+
+    magic_debuff = true, -- Removable magical debuff, not simply type "magic"
+    physical_debuf = true, -- Removable physical debuff
 
     player_jump = true, -- Mechanic that can be prevented by player using "jump" ability
     player_movement_immune = true, -- Mechanic that can be prevented by player using immunity to forced movement
     alter_time = true, -- Special case of alter time
 
     targeted_avoid = true, -- Targeted ability that can be avoided with FD, Shadowmeld, etc.
-
-    magic_debuff = true, -- Removable magical debuff, not simply type "magic"
-    physical_debuf = true, -- Removable physical debuff
 }
 
-MythicPlusUtility.dungeonGlobals = {}
-MythicPlusUtility.dungeonGlobals.currentSeason = "12.1"
-MythicPlusUtility.dungeonGlobals.seasons = {["12.1"] = L["Midnight Season 2"], ["12.0"] = L["Midnight Season 1"]}
-MythicPlusUtility.dungeonGlobals.seasonsOrder = {"12.1", "12.0"}
-MythicPlusUtility.dungeonGlobals.defaultDungeonId = 2993
-MythicPlusUtility.dungeonGlobals.dungeonIdToName = {
+Variables.dungeonGlobals = {}
+Variables.dungeonGlobals.currentSeason = "12.1"
+Variables.dungeonGlobals.seasons = {["12.1"] = L["Midnight Season 2"], ["12.0"] = L["Midnight Season 1"]}
+Variables.dungeonGlobals.seasonsOrder = {"12.1", "12.0"}
+Variables.dungeonGlobals.defaultDungeonId = 2993
+Variables.dungeonGlobals.dungeonIdToName = {
     -- Midnight
     [2993] = L["Altar of Fangs"],
     [2825] = L["Den of Nalorakk"],
@@ -95,21 +97,21 @@ MythicPlusUtility.dungeonGlobals.dungeonIdToName = {
     -- Wrath of the Lich King
     [658] = L["Pit of Saron"],
 }
-MythicPlusUtility.dungeonGlobals.dungeonListBySeasonOrder = {
+Variables.dungeonGlobals.dungeonListBySeasonOrder = {
     ["12.0"] = {2526, 2811, 2874, 2915, 658, 1753, 1209, 2805},
     ["12.1"] = {2993, 2825, 1762, 2813, 2521, 1877, 2859, 2923},
 }
-MythicPlusUtility.dungeonGlobals.dungeonListBySeason = {
+Variables.dungeonGlobals.dungeonListBySeason = {
     ["12.0"] = {[2526] = "", [2811] = "", [2874] = "", [2915] = "", [658] = "", [1753] = "", [1209] = "", [2805] = ""},
     ["12.1"] = {[2813] = "", [2825] = "", [2859] = "", [2923] = "", [2993] = "", [2521] = "", [1877] = "", [1762] = ""},
 }
-local dungeonIdToName = MythicPlusUtility.dungeonGlobals.dungeonIdToName
-local dungeonListBySeason = MythicPlusUtility.dungeonGlobals.dungeonListBySeason
-for season, list in pairs(MythicPlusUtility.dungeonGlobals.dungeonListBySeason) do
+local dungeonIdToName = Variables.dungeonGlobals.dungeonIdToName
+local dungeonListBySeason = Variables.dungeonGlobals.dungeonListBySeason
+for season, list in pairs(Variables.dungeonGlobals.dungeonListBySeason) do
     for id, _ in pairs(list) do if dungeonIdToName[id] then dungeonListBySeason[season][id] = dungeonIdToName[id] end end
 end
 
-MythicPlusUtility.globals = {
+Variables.globals = {
     labelListOrder = {"default", "defaultText", "custom", "none"},
     unlearnAbility = {labelList = {default = "\"-\"", defaultText = L["\"Remove\""], none = L["None"], custom = L["Custom_text"]}},
     needAbility = {labelList = {default = "\"+\"", defaultText = L["\"Add\""], none = L["None"], custom = L["Custom_text"]}},
@@ -132,4 +134,20 @@ MythicPlusUtility.globals = {
     },
 }
 
-MythicPlusUtility.npcIdToEncounterSectionId = {[76227] = 33940}
+Variables.npcIdToEncounterSectionId = {[76227] = 33940}
+
+Variables.classToIcon = {
+    DEATHKNIGHT = "classicon_deathknight",
+    DEMONHUNTER = "classicon_demonhunter",
+    DRUID = "classicon_druid",
+    EVOKER = "classicon_evoker",
+    HUNTER = "classicon_hunter",
+    MAGE = "classicon_mage",
+    MONK = "classicon_monk",
+    PALADIN = "classicon_paladin",
+    PRIEST = "classicon_priest",
+    ROGUE = "classicon_rogue",
+    SHAMAN = "classicon_shaman",
+    WARLOCK = "classicon_warlock",
+    WARRIOR = "classicon_warrior",
+}

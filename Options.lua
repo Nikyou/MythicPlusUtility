@@ -1,6 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
 local LSM = LibStub("LibSharedMedia-3.0", true)
-local maxValue = MythicPlusUtility.globals.maxValue
+local Variables = MythicPlusUtility.Variables
+local maxValue = Variables.globals.maxValue
 
 MythicPlusUtility.defaults = {
     profile = {
@@ -9,8 +10,8 @@ MythicPlusUtility.defaults = {
         toggleFrameLock = true,
         hideOnStart = true,
         hideNotImportant = false,
-        instanceID = MythicPlusUtility.defaultDungeonId,
-        seasonSelect = MythicPlusUtility.dungeonGlobals.currentSeason,
+        instanceID = Variables.dungeonGlobals.defaultDungeonId,
+        seasonSelect = Variables.dungeonGlobals.currentSeason,
         difficultyID = {[1] = false, [2] = false, [23] = true},
         frameBackground = {0, 0, 0, 0.5},
         windowSettings = {
@@ -148,8 +149,8 @@ MythicPlusUtility.options = {
             name = L["Season Select"],
             get = "GetValue",
             set = "SetValue",
-            sorting = MythicPlusUtility.dungeonGlobals.seasonsOrder,
-            values = MythicPlusUtility.dungeonGlobals.seasons,
+            sorting = Variables.dungeonGlobals.seasonsOrder,
+            values = Variables.dungeonGlobals.seasons,
         },
         hideNotImportant = {
             type = "toggle",
@@ -555,8 +556,8 @@ local function populateButtonCosmeticGroup()
                     width = 0.9,
                     hidden = "ButtonCosmeticHide",
                     set = "SetValueButtonCosmeticGlow",
-                    sorting = MythicPlusUtility.globals.iconGlowTypeListOrder,
-                    values = MythicPlusUtility.globals.iconGlowTypeList,
+                    sorting = Variables.globals.iconGlowTypeListOrder,
+                    values = Variables.globals.iconGlowTypeList,
                 },
                 iconGlowColor = {
                     type = "color",
@@ -728,8 +729,8 @@ local function populateButtonCosmeticGroup()
                     width = 1.25,
                     hidden = "ButtonCosmeticHide",
                     set = "SetValueButtonCosmeticLabel",
-                    sorting = MythicPlusUtility.globals.labelListOrder,
-                    values = MythicPlusUtility.globals[entry.name].labelList,
+                    sorting = Variables.globals.labelListOrder,
+                    values = Variables.globals[entry.name].labelList,
                 },
                 labelColor = {
                     type = "color",
@@ -913,8 +914,8 @@ function MythicPlusUtility:SetValueUpdatePosition(info, value)
 end
 
 function MythicPlusUtility:GetValueInstance(info)
-    return self.dungeonGlobals.dungeonIdToName[self.db.profile.instanceID] and self.db.profile.instanceID
-             or self.dungeonGlobals.defaultDungeonId
+    return Variables.dungeonGlobals.dungeonIdToName[self.db.profile.instanceID] and self.db.profile.instanceID
+             or Variables.dungeonGlobals.defaultDungeonId
 end
 
 function MythicPlusUtility:SetValueInstance(info, value)
@@ -992,7 +993,7 @@ function MythicPlusUtility:SetValueButtonCosmeticLabel(info, value)
         local label = ""
         db.isCustom = value == "custom"
         if value == "default" or value == "defaultText" then
-            label = string.gsub(self.globals[info[#info - 1]].labelList[value], "\"", "")
+            label = string.gsub(Variables.globals[info[#info - 1]].labelList[value], "\"", "")
         end
         db.label = label
 
@@ -1108,8 +1109,10 @@ function MythicPlusUtility:SetValueTooltipModel(info, value)
     MythicPlusUtility.ModelContainer:SetSize(profile.windowSettings.tooltipModelWidth, profile.windowSettings.tooltipModelHeight)
 end
 
-function MythicPlusUtility:GetInstanceIDValues(info) return self.dungeonGlobals.dungeonListBySeason[self.db.profile.seasonSelect] end
+function MythicPlusUtility:GetInstanceIDValues(info)
+    return Variables.dungeonGlobals.dungeonListBySeason[self.db.profile.seasonSelect]
+end
 
 function MythicPlusUtility:GetInstanceIDOrder(info)
-    return self.dungeonGlobals.dungeonListBySeasonOrder[self.db.profile.seasonSelect]
+    return Variables.dungeonGlobals.dungeonListBySeasonOrder[self.db.profile.seasonSelect]
 end

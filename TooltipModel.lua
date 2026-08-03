@@ -1,5 +1,5 @@
 MythicPlusUtility.ModelContainer = CreateFrame("Frame", "MPU_Tooltip_Model", GameTooltip, "TooltipBorderedFrameTemplate")
-ModelContainer = MythicPlusUtility.ModelContainer
+local ModelContainer = MythicPlusUtility.ModelContainer
 ModelContainer:SetSize(190, 269)
 ModelContainer:SetPoint("TOPLEFT", GameTooltip, "TOPRIGHT", 0, 0)
 ModelContainer:Hide()

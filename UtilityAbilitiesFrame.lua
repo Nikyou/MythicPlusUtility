@@ -2,6 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
 local ACR = LibStub("AceConfigRegistry-3.0")
 local LCG = LibStub("LibCustomGlow-1.0")
 local LSM = LibStub("LibSharedMedia-3.0", true)
+local Variables = MythicPlusUtility.Variables
 
 local function AddLinkTooltip(widget, link)
     if not link then return end
@@ -150,7 +151,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
 
     function frame:ChangeInstance()
         MythicPlusUtility:PopulateCurrentAbilitiesListWithInstanceData(profile.instanceID)
-        self.dungeonNameText:SetText(MythicPlusUtility.dungeonGlobals.dungeonIdToName[profile.instanceID] or "")
+        self.dungeonNameText:SetText(Variables.dungeonGlobals.dungeonIdToName[profile.instanceID] or "")
         self:UpdateButtons()
         self:UpdateLayout()
 
@@ -714,7 +715,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     dungeonNameText:SetJustifyV("TOP")
     dungeonNameText:SetWordWrap(true)
     dungeonNameText:SetWidth(windowSettings.width - 2 * CLOSE_BUTTON_SIZE - TEXT_WRAP_PADDING)
-    dungeonNameText:SetText(self.dungeonGlobals.dungeonIdToName[profile.instanceID] or "")
+    dungeonNameText:SetText(Variables.dungeonGlobals.dungeonIdToName[profile.instanceID] or "")
     dungeonNameText:SetFont(LSM:Fetch("font", textAndIcon.dungeonName.labelFont), textAndIcon.dungeonName.labelSize, "OUTLINE")
     dungeonNameText:SetPoint("TOP", 0, -TOP_PADDING)
     frame.dungeonNameText = dungeonNameText

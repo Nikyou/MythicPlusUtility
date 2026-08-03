@@ -1,3 +1,5 @@
+local Variables = MythicPlusUtility.Variables
+
 function MythicPlusUtility:GetbuttonsIndices()
     if self.db.profile.buttonCosmetic.unlearnAbility.enabled then
         return self.buttonsIndicesWithEmpty
@@ -81,9 +83,9 @@ function MythicPlusUtility:GetNpcNameById(npcId)
     local db = self.db.locale
     if db.npcIdToName[npcId] and db.npcIdToName[npcId] ~= "" then
         return db.npcIdToName[npcId]
-    elseif self.npcIdToEncounterSectionId[npcId] then
+    elseif Variables.npcIdToEncounterSectionId[npcId] then
         local name = ""
-        local info = C_EncounterJournal.GetSectionInfo(self.npcIdToEncounterSectionId[npcId])
+        local info = C_EncounterJournal.GetSectionInfo(Variables.npcIdToEncounterSectionId[npcId])
         if info and info.title then name = info.title end
         db.npcIdToName[npcId] = name
 
@@ -177,7 +179,7 @@ function MythicPlusUtility:ExtractTagsFromInstanceData(instanceID)
             local substring = string.sub(entry.tags, n, j)
             local tag = string.sub(substring, string.find(substring, "[^%[%]]+"))
 
-            if self.supportedTags[tag] or tag == "important" then
+            if Variables.supportedTags[tag] or tag == "important" then
                 entry.tagsTable[tag] = true
             elseif tag == "super_important" then
                 entry.tagsTable[tag] = true
@@ -241,7 +243,7 @@ function MythicPlusUtility:FormatSpellsData(spellId)
             local substring = string.sub(entry.tags, n, j)
             local tag = string.sub(substring, string.find(substring, "[^%[%]]+"))
 
-            if self.supportedTags[tag] then entry.tagsTable[tag] = true end
+            if Variables.supportedTags[tag] then entry.tagsTable[tag] = true end
 
             i = j
         end
@@ -295,13 +297,13 @@ function MythicPlusUtility:SortCurrentAbilitiesList()
         table.sort(self.currentAbilitiesList, function(a, b) return a.spellName > b.spellName end)
     elseif sortBy == "typeAsc" then
         table.sort(self.currentAbilitiesList, function(a, b)
-            local db = MythicPlusUtility.globals.iconTypeOrder
+            local db = Variables.globals.iconTypeOrder
             if db[a.buttonType] ~= db[b.buttonType] then return db[a.buttonType] < db[b.buttonType] end
             return a.spellName < b.spellName
         end)
     elseif sortBy == "typeDes" then
         table.sort(self.currentAbilitiesList, function(a, b)
-            local db = MythicPlusUtility.globals.iconTypeOrder
+            local db = Variables.globals.iconTypeOrder
             if db[a.buttonType] ~= db[b.buttonType] then return db[a.buttonType] > db[b.buttonType] end
             return a.spellName < b.spellName
         end)
