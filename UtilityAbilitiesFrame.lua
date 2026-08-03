@@ -150,7 +150,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
 
     function frame:ChangeInstance()
         MythicPlusUtility:PopulateCurrentAbilitiesListWithInstanceData(profile.instanceID)
-        self.dungeonNameText:SetText(MythicPlusUtility.dungeonIdToName[profile.instanceID] or "")
+        self.dungeonNameText:SetText(MythicPlusUtility.Variables.dungeonIdToName[profile.instanceID] or "")
         self:UpdateButtons()
         self:UpdateLayout()
 
@@ -714,7 +714,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     dungeonNameText:SetJustifyV("TOP")
     dungeonNameText:SetWordWrap(true)
     dungeonNameText:SetWidth(windowSettings.width - 2 * CLOSE_BUTTON_SIZE - TEXT_WRAP_PADDING)
-    dungeonNameText:SetText(self.dungeonIdToName[profile.instanceID] or "")
+    dungeonNameText:SetText(self.Variables.dungeonIdToName[profile.instanceID] or "")
     dungeonNameText:SetFont(LSM:Fetch("font", textAndIcon.dungeonName.labelFont), textAndIcon.dungeonName.labelSize,
                             "OUTLINE")
     dungeonNameText:SetPoint("TOP", 0, -TOP_PADDING)

@@ -1,6 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
 local LSM = LibStub("LibSharedMedia-3.0", true)
-local maxValue = MythicPlusUtility.globals.maxValue
+local Variables = MythicPlusUtility.Variables
+local maxValue = Variables.globals.maxValue
 
 MythicPlusUtility.defaults = {
     profile = {
@@ -10,7 +11,7 @@ MythicPlusUtility.defaults = {
         hideOnStart = true,
         frameBackground = {0, 0, 0, 0.5},
         hideNotImportant = false,
-        instanceID = MythicPlusUtility.defaultDungeonId,
+        instanceID = Variables.defaultDungeonId,
         difficultyID = {[1] = false, [2] = false, [23] = true},
         windowSettings = {
             width = 350,
@@ -286,7 +287,7 @@ MythicPlusUtility.options = {
             get = "GetValueInstance",
             set = "SetValueInstance",
             sorting = {2526, 2811, 2874, 2915, 658, 1753, 1209, 2805},
-            values = MythicPlusUtility.dungeonIdToName,
+            values = Variables.dungeonIdToName,
         },
         buttonCosmeticGroup = {
             type = "group",
@@ -530,8 +531,8 @@ local function populateButtonCosmeticGroup()
                     width = 0.9,
                     hidden = "ButtonCosmeticHide",
                     set = "SetValueButtonCosmeticGlow",
-                    sorting = MythicPlusUtility.globals.iconGlowTypeListOrder,
-                    values = MythicPlusUtility.globals.iconGlowTypeList,
+                    sorting = Variables.globals.iconGlowTypeListOrder,
+                    values = Variables.globals.iconGlowTypeList,
                 },
                 iconGlowColor = {
                     type = "color",
@@ -703,8 +704,8 @@ local function populateButtonCosmeticGroup()
                     width = 1.25,
                     hidden = "ButtonCosmeticHide",
                     set = "SetValueButtonCosmeticLabel",
-                    sorting = MythicPlusUtility.globals.labelListOrder,
-                    values = MythicPlusUtility.globals[entry.name].labelList,
+                    sorting = Variables.globals.labelListOrder,
+                    values = Variables.globals[entry.name].labelList,
                 },
                 labelColor = {
                     type = "color",
@@ -862,9 +863,7 @@ function MythicPlusUtility:SetValueTalentHighlight(info, value)
     local db = self.db.profile.buttonCosmetic[info[#info - 1]]
     db[name] = value
 
-    if self.Frame and self.Frame:IsShown() then
-        self.TalentFrameHighlight:ShowRelevant()
-    end
+    if self.Frame and self.Frame:IsShown() then self.TalentFrameHighlight:ShowRelevant() end
 end
 
 function MythicPlusUtility:SetValueWindowSettings(info, value)
@@ -895,7 +894,8 @@ function MythicPlusUtility:SetValueUpdatePosition(info, value)
 end
 
 function MythicPlusUtility:GetValueInstance(info)
-    return self.dungeonIdToName[self.db.profile.instanceID] and self.db.profile.instanceID or self.defaultDungeonId
+    return Variables.dungeonIdToName[self.db.profile.instanceID] and self.db.profile.instanceID
+             or Variables.defaultDungeonId
 end
 
 function MythicPlusUtility:SetValueInstance(info, value)
@@ -973,7 +973,7 @@ function MythicPlusUtility:SetValueButtonCosmeticLabel(info, value)
         local label = ""
         db.isCustom = value == "custom"
         if value == "default" or value == "defaultText" then
-            label = string.gsub(self.globals[info[#info - 1]].labelList[value], "\"", "")
+            label = string.gsub(Variables.globals[info[#info - 1]].labelList[value], "\"", "")
         end
         db.label = label
 
