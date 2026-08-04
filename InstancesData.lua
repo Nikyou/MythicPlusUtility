@@ -391,7 +391,7 @@ MythicPlusUtility.instancesData = {
             tags = "[bleed][physical_debuff]",
         }, { -- Shell Guard
             text = format(L["{spell:%d} is channeled by {npc:%d}."], 1250021, 249603),
-            tags = "[creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_beast]",
+            tags = "[creature_stun][creature_fear][creature_incapacitate][cc_beast]",
         }, { -- Violent Sand
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1249621, 249590),
             tags = "[snare][slow][magic_debuff]",
