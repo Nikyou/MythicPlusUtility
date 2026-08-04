@@ -194,7 +194,7 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1217973, 235265),
             tags = "[super_important][curse][magic_debuff]",
         }, { -- Seduction
-            text = format(L["{spell:%d} is cast by {npc:%d}. Also, this cast can be interrupted."], 1201554, 236082),
+            text = format(L["{spell:%d} is channeled by {npc:%d}. Also, this channel can be interrupted."], 1201554, 236082),
             tags = "[important][sleep][magic_debuff][creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_demon]",
         }, { -- Fel Rage
             text = format(L["{spell:%d} buff is cast by {npc:%d}. Also, this cast can be interrupted."], 1214922, 235267),
