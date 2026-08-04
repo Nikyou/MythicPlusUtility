@@ -129,7 +129,7 @@ MythicPlusUtility.utilityAbilities = {
         [22570] = {tags = "[creature_stun]", baseline = true}, -- Maim
         [2637] = {tags = "[cast_cc_beast][cast_cc_dragonkin]"}, -- Hibernate
         [2908] = {tags = "[enrage]"}, -- Soothe
-        [33786] = {tags = "[cc_cyclone]"}, -- Cyclone
+        [33786] = {tags = "[cc_cyclone]"}, -- Cyclone [cast_cc_all]
         [339] = {tags = "[creature_root]", baseline = true}, -- Entangling Roots
         [5211] = {tags = "[creature_stun]", baseline = true}, -- Mighty Bash
         [768] = {tags = "[self_only][slow][snare][root][polymorph]", baseline = true}, -- Cat Form (as a general shapeshift)
@@ -349,7 +349,7 @@ MythicPlusUtility.utilityAbilities = {
         [5782] = {tags = "[creature_fear]", baseline = true}, -- Fear
         [6358] = {tags = "[cast_cc_humanoid]", pet = true, baseline = true}, -- Seduction (pet)
         [6789] = {tags = "[creature_incapacitate]", baseline = true}, -- Mortal Coil
-        [710] = {tags = "[cc_banish]"}, -- Banish
+        [710] = {tags = "[cc_banish]"}, -- Banish [cast_cc_aberration][cast_cc_demon][cast_cc_elemental]
     },
     [265] = {}, -- Affliction
     [266] = {

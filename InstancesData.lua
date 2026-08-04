@@ -391,7 +391,7 @@ MythicPlusUtility.instancesData = {
             tags = "[bleed][physical_debuff]",
         }, { -- Shell Guard
             text = format(L["{spell:%d} is channeled by {npc:%d}."], 1250021, 249603),
-            tags = "[creature_stun][creature_fear][creature_incapacitate][cc_beast]",
+            tags = "[creature_slow][creature_root][creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_beast][cast_cc_beast][cc_cyclone]",
         }, { -- Violent Sand
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1249621, 249590),
             tags = "[snare][slow][magic_debuff]",
@@ -623,7 +623,7 @@ MythicPlusUtility.instancesData = {
         -- Boss
         { -- Coalesced Void NPC
             text = format(L["Prevent {npc:%d} from reaching the first boss {npc:%d}."], 122716, 122313),
-            tags = "[important][creature_slow][creature_grip][cc_aberration][cast_cc_aberration][cc_cyclone][cc_banish]",
+            tags = "[important][creature_slow][creature_root][creature_grip][cc_aberration][cast_cc_aberration][cc_cyclone][cc_banish]",
         }, { -- Shadow Pounce
             text = format(L["{spell:%d} debuff is inflicted on the second boss {npc:%d}."], 245742, 122316),
             tags = "[bleed][physical_debuff]",
