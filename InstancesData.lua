@@ -311,7 +311,7 @@ MythicPlusUtility.instancesData = {
             tags = "[bleed][physical_debuff]",
         }, { -- Bloodthorn Roots
             text = format(L["{spell:%d} debuff is inflicted on the second boss {npc:%d}."], 1236658, 244887),
-            tags = "[important][slow][root][magic_debuff]", -- CC? [creature_stun][creature_fear][creature_incapacitate][creature_grip]
+            tags = "[important][slow][root][magic_debuff]",
         }, { -- Incise
             text = format(L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Also, this debuff can be avoided."],
                           1237166, 244887),
