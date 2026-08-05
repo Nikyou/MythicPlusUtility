@@ -12,8 +12,7 @@ function TalentFrameHighlight:UpdateSpec()
 
     local lastSelected = PlayerUtil.GetCurrentSpecID()
                            and C_ClassTalents.GetLastSelectedSavedConfigID(PlayerUtil.GetCurrentSpecID())
-    local selectionID = PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame
-                          and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown
+    local selectionID = PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown
                           and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown.GetSelectionID
                           and PlayerSpellsFrame.TalentsFrame.LoadoutDropDown:GetSelectionID()
     local configID = lastSelected or selectionID or C_ClassTalents.GetActiveConfigID()
@@ -47,8 +46,7 @@ function TalentFrameHighlight:UpdateSpec()
     for spellId, entry in pairs(self.frames) do
         for nodeID, listEntry in pairs(entry.nodeIDs) do
             if not listEntry.frame and PlayerSpellsFrame and PlayerSpellsFrame.TalentsFrame then
-                listEntry.frame = CreateFrame("Frame",
-                                              "MythicPlusUtility_TalentFrameHighlight_" .. spellId .. "_" .. nodeID,
+                listEntry.frame = CreateFrame("Frame", "MythicPlusUtility_TalentFrameHighlight_" .. spellId .. "_" .. nodeID,
                                               listEntry.buttonFrame, "BackdropTemplate")
                 listEntry.frame:EnableMouse(false)
                 listEntry.frame:Hide()
@@ -79,8 +77,7 @@ function TalentFrameHighlight:ShowRelevant()
     for _, abilityId in ipairs(buttonsIndices) do
         local currentAbility = MythicPlusUtility.currentAbilitiesList[abilityId]
 
-        if buttonCosmetic[currentAbility.buttonType].enabled
-          and buttonCosmetic[currentAbility.buttonType].hightlightEnabled then
+        if buttonCosmetic[currentAbility.buttonType].enabled and buttonCosmetic[currentAbility.buttonType].hightlightEnabled then
             local spellId = currentAbility.spellId
 
             if currentAbility.altSpellId then spellId = currentAbility.altSpellId end
@@ -100,8 +97,7 @@ function TalentFrameHighlight:UpdateHighlight()
     for _, abilityId in ipairs(buttonsIndices) do
         local currentAbility = MythicPlusUtility.currentAbilitiesList[abilityId]
 
-        if buttonCosmetic[currentAbility.buttonType].enabled
-          and buttonCosmetic[currentAbility.buttonType].hightlightEnabled then
+        if buttonCosmetic[currentAbility.buttonType].enabled and buttonCosmetic[currentAbility.buttonType].hightlightEnabled then
             local spellId = currentAbility.spellId
             local cosmeticDB = buttonCosmetic[currentAbility.buttonType]
 

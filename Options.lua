@@ -1,6 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
 local LSM = LibStub("LibSharedMedia-3.0", true)
-local maxValue = MythicPlusUtility.globals.maxValue
+local Variables = MythicPlusUtility.Variables
+local maxValue = Variables.globals.maxValue
 
 MythicPlusUtility.defaults = {
     profile = {
@@ -8,14 +9,15 @@ MythicPlusUtility.defaults = {
         minimap = {hide = false},
         toggleFrameLock = true,
         hideOnStart = true,
-        frameBackground = {0, 0, 0, 0.5},
         hideNotImportant = false,
-        instanceID = MythicPlusUtility.defaultDungeonId,
+        instanceID = Variables.dungeonGlobals.defaultDungeonId,
+        seasonSelect = Variables.dungeonGlobals.currentSeason,
         difficultyID = {[1] = false, [2] = false, [23] = true},
+        frameBackground = {0, 0, 0, 0.5},
         windowSettings = {
             width = 350,
             height = 600,
-            autoExpand = false,
+            autoExpand = true,
             maxHeightEnable = false,
             maxHeight = 1200,
             xOffset = 100,
@@ -115,8 +117,57 @@ MythicPlusUtility.options = {
     handler = MythicPlusUtility,
     childGroups = "tab",
     args = {
-        toggleFrame = {type = "execute", order = 1, name = L["Toggle Window"], func = "ToggleAbilitiesFrame"},
-        breakLine1 = {type = "header", order = 10, name = ""},
+        toggleFrame = {type = "execute", order = 1.1, name = L["Toggle Window"], func = "ToggleAbilitiesFrame"},
+        hideOnStart = {
+            type = "toggle",
+            order = 1.2,
+            width = 1.25,
+            name = L["Hide on Mythic+ start"],
+            get = "GetValue",
+            set = "SetValue",
+        },
+        minimap = {
+            type = "toggle",
+            order = 1.3,
+            name = L["Minimap Icon"],
+            get = function(info) return not MythicPlusUtility.db.profile.minimap.hide end,
+            set = function(info, value) MythicPlusUtility:ToggleMinimapIcon() end,
+        },
+        breakLine1 = {type = "header", order = 2, name = ""},
+        instanceID = {
+            type = "select",
+            order = 2.1,
+            name = L["Dungeon Preview"],
+            get = "GetValueInstance",
+            set = "SetValueInstance",
+            sorting = "GetInstanceIDOrder",
+            values = "GetInstanceIDValues",
+        },
+        seasonSelect = {
+            type = "select",
+            order = 2.2,
+            name = L["Season Select"],
+            get = "GetValue",
+            set = "SetValue",
+            sorting = Variables.dungeonGlobals.seasonsOrder,
+            values = Variables.dungeonGlobals.seasons,
+        },
+        hideNotImportant = {
+            type = "toggle",
+            order = 2.3,
+            name = L["Hide not Important"],
+            desc = format(L["Hides dungeon entries that are marked with %s"], CreateAtlasMarkup("map-icon-ignored-bluequestion")),
+            get = "GetValue",
+            set = "SetValueInstance",
+        },
+        difficultyID = {
+            type = "multiselect",
+            order = 2.4,
+            name = L["Show in"],
+            get = "GetValueDifficulty",
+            set = "SetValueDifficulty",
+            values = {[1] = L["Normal"], [2] = L["Heroic"], [23] = L["Mythic"]},
+        },
         windowSettings = {
             type = "group",
             order = 1,
@@ -124,10 +175,27 @@ MythicPlusUtility.options = {
             get = "GetValueWithParent",
             set = "SetValueWindowSettings",
             args = {
-                sizeHeader = {type = "header", order = 1, name = L["Size Settings"]},
+                backgroundHeader = {type = "header", order = 1, name = L["Background Settings"]},
+                frameBackground = {
+                    type = "color",
+                    hasAlpha = true,
+                    order = 1.1,
+                    name = L["Background Color"],
+                    get = function(info)
+                        local t = MythicPlusUtility.db.profile.frameBackground
+                        return t[1], t[2], t[3], t[4]
+                    end,
+                    set = function(info, r, g, b, a)
+                        MythicPlusUtility.db.profile.frameBackground = {r, g, b, a}
+                        if MythicPlusUtility.Frame then
+                            MythicPlusUtility.Frame.background:SetColorTexture(r, g, b, a)
+                        end
+                    end,
+                },
+                sizeHeader = {type = "header", order = 2, name = L["Size Settings"]},
                 width = {
                     type = "range",
-                    order = 1.1,
+                    order = 2.1,
                     name = L["Width"],
                     min = 150,
                     max = 8880,
@@ -137,29 +205,25 @@ MythicPlusUtility.options = {
                 },
                 height = {
                     type = "range",
-                    order = 1.2,
+                    order = 2.2,
                     name = L["Height"],
-                    hidden = function(info)
-                        return MythicPlusUtility.db.profile.windowSettings.autoExpand
-                    end,
+                    hidden = function(info) return MythicPlusUtility.db.profile.windowSettings.autoExpand end,
                     min = 150,
                     max = 4800,
                     softMax = 1200,
                     bigStep = 5,
                     step = 0.01,
                 },
-                autoExpand = {type = "toggle", order = 1.3, name = L["Auto Expand Height"]},
+                autoExpand = {type = "toggle", order = 2.3, name = L["Auto Expand Height"]},
                 maxHeightEnable = {
                     type = "toggle",
-                    order = 1.4,
+                    order = 2.4,
                     name = L["Max Height"],
-                    hidden = function(info)
-                        return not MythicPlusUtility.db.profile.windowSettings.autoExpand
-                    end,
+                    hidden = function(info) return not MythicPlusUtility.db.profile.windowSettings.autoExpand end,
                 },
                 maxHeight = {
                     type = "range",
-                    order = 1.2,
+                    order = 2.2,
                     name = L["Max Height"],
                     hidden = function(info)
                         return not MythicPlusUtility.db.profile.windowSettings.maxHeightEnable
@@ -171,14 +235,12 @@ MythicPlusUtility.options = {
                     bigStep = 5,
                     step = 0.01,
                 },
-                positionHeader = {type = "header", order = 2, name = L["Position Settings"]},
+                positionHeader = {type = "header", order = 3, name = L["Position Settings"]},
                 framePoint = {
                     type = "select",
-                    order = 2.1,
+                    order = 3.1,
                     name = L["Anchor to Screen's"],
-                    sorting = {
-                        "TOPLEFT", "TOP", "TOPRIGHT", "LEFT", "CENTER", "RIGHT", "BOTTOMLEFT", "BOTTOM", "BOTTOMRIGHT",
-                    },
+                    sorting = {"TOPLEFT", "TOP", "TOPRIGHT", "LEFT", "CENTER", "RIGHT", "BOTTOMLEFT", "BOTTOM", "BOTTOMRIGHT"},
                     values = {
                         TOPLEFT = "TOPLEFT",
                         TOP = "TOP",
@@ -193,7 +255,7 @@ MythicPlusUtility.options = {
                 },
                 xOffset = {
                     type = "range",
-                    order = 2.2,
+                    order = 3.2,
                     name = L["X-Offset"],
                     min = -8880,
                     max = 8880,
@@ -204,7 +266,7 @@ MythicPlusUtility.options = {
                 },
                 yOffset = {
                     type = "range",
-                    order = 2.3,
+                    order = 3.3,
                     name = L["Y-Offset"],
                     min = -4800,
                     max = 4800,
@@ -215,7 +277,7 @@ MythicPlusUtility.options = {
                 },
                 toggleFrameLock = {
                     type = "toggle",
-                    order = 2.4,
+                    order = 3.4,
                     name = L["Lock Window"],
                     get = "GetValue",
                     set = function(info, value)
@@ -258,70 +320,7 @@ MythicPlusUtility.options = {
             set = "SetValueTextAndIcon",
             args = {},
         },
-        frameBackground = {
-            type = "color",
-            hasAlpha = true,
-            order = 12,
-            name = L["Background Color"],
-            get = function(info)
-                local t = MythicPlusUtility.db.profile[info[#info]]
-                return t[1], t[2], t[3], t[4]
-            end,
-            set = function(info, r, g, b, a)
-                MythicPlusUtility.db.profile[info[#info]] = {r, g, b, a}
-                if MythicPlusUtility.Frame then
-                    MythicPlusUtility.Frame.background:SetColorTexture(r, g, b, a)
-                end
-            end,
-        },
-        hideOnStart = {
-            type = "toggle",
-            order = 2,
-            width = 1.25,
-            name = L["Hide on Mythic+ start"],
-            get = "GetValue",
-            set = "SetValue",
-        },
-        minimap = {
-            type = "toggle",
-            order = 3,
-            name = L["Minimap Icon"],
-            get = function(info) return not MythicPlusUtility.db.profile.minimap.hide end,
-            set = function(info, value) MythicPlusUtility:ToggleMinimapIcon() end,
-        },
-        hideNotImportant = {
-            type = "toggle",
-            order = 13,
-            name = L["Hide not Important"],
-            desc = format(L["Hides dungeon entries that are marked with %s"],
-                          CreateAtlasMarkup("map-icon-ignored-bluequestion")),
-            get = "GetValue",
-            set = "SetValueInstance",
-        },
-        difficultyID = {
-            type = "multiselect",
-            order = 14,
-            name = L["Show in"],
-            get = "GetValueDifficulty",
-            set = "SetValueDifficulty",
-            values = {[1] = L["Normal"], [2] = L["Heroic"], [23] = L["Mythic"]},
-        },
-        instanceID = {
-            type = "select",
-            order = 11,
-            name = L["Dungeon Preview"],
-            get = "GetValueInstance",
-            set = "SetValueInstance",
-            sorting = {2526, 2811, 2874, 2915, 658, 1753, 1209, 2805},
-            values = MythicPlusUtility.dungeonIdToName,
-        },
-        buttonCosmeticGroup = {
-            type = "group",
-            childGroups = "tree",
-            order = 3,
-            name = L["Icon Cosmetics Settings"],
-            args = {},
-        },
+        buttonCosmeticGroup = {type = "group", childGroups = "tree", order = 3, name = L["Icon Cosmetics Settings"], args = {}},
     },
 }
 
@@ -557,8 +556,8 @@ local function populateButtonCosmeticGroup()
                     width = 0.9,
                     hidden = "ButtonCosmeticHide",
                     set = "SetValueButtonCosmeticGlow",
-                    sorting = MythicPlusUtility.globals.iconGlowTypeListOrder,
-                    values = MythicPlusUtility.globals.iconGlowTypeList,
+                    sorting = Variables.globals.iconGlowTypeListOrder,
+                    values = Variables.globals.iconGlowTypeList,
                 },
                 iconGlowColor = {
                     type = "color",
@@ -730,8 +729,8 @@ local function populateButtonCosmeticGroup()
                     width = 1.25,
                     hidden = "ButtonCosmeticHide",
                     set = "SetValueButtonCosmeticLabel",
-                    sorting = MythicPlusUtility.globals.labelListOrder,
-                    values = MythicPlusUtility.globals[entry.name].labelList,
+                    sorting = Variables.globals.labelListOrder,
+                    values = Variables.globals[entry.name].labelList,
                 },
                 labelColor = {
                     type = "color",
@@ -766,12 +765,7 @@ local function populateButtonCosmeticGroup()
                     step = 1,
                 },
                 -- Font Flags
-                labelFontFlagsBreakLine = {
-                    type = "header",
-                    order = 4,
-                    name = L["Font Settings"],
-                    hidden = "ButtonCosmeticHide",
-                },
+                labelFontFlagsBreakLine = {type = "header", order = 4, name = L["Font Settings"], hidden = "ButtonCosmeticHide"},
                 labelOutline = {
                     type = "select",
                     order = 4.1,
@@ -920,7 +914,8 @@ function MythicPlusUtility:SetValueUpdatePosition(info, value)
 end
 
 function MythicPlusUtility:GetValueInstance(info)
-    return self.dungeonIdToName[self.db.profile.instanceID] and self.db.profile.instanceID or self.defaultDungeonId
+    return Variables.dungeonGlobals.dungeonIdToName[self.db.profile.instanceID] and self.db.profile.instanceID
+             or Variables.dungeonGlobals.defaultDungeonId
 end
 
 function MythicPlusUtility:SetValueInstance(info, value)
@@ -971,9 +966,7 @@ function MythicPlusUtility:SetValueTextAndIconColor(info, r, g, b, a)
     if self.Frame then self.Frame:UpdateText(info[#info - 1], false) end
 end
 
-function MythicPlusUtility:GetValueButtonCosmetic(info)
-    return self.db.profile.buttonCosmetic[info[#info - 1]][info[#info]]
-end
+function MythicPlusUtility:GetValueButtonCosmetic(info) return self.db.profile.buttonCosmetic[info[#info - 1]][info[#info]] end
 
 function MythicPlusUtility:SetValueButtonCosmetic(info, value)
     local name = info[#info]
@@ -1000,7 +993,7 @@ function MythicPlusUtility:SetValueButtonCosmeticLabel(info, value)
         local label = ""
         db.isCustom = value == "custom"
         if value == "default" or value == "defaultText" then
-            label = string.gsub(self.globals[info[#info - 1]].labelList[value], "\"", "")
+            label = string.gsub(Variables.globals[info[#info - 1]].labelList[value], "\"", "")
         end
         db.label = label
 
@@ -1023,9 +1016,7 @@ function MythicPlusUtility:SetValueButtonCosmeticLabel(info, value)
             local n, j = string.find(db[name], "%b{}", i + 1)
             if n == nil then break end
             local substring = string.sub(db[name], n, j)
-            if string.find(substring, "{atlas:.+") then
-                atlasTable[string.sub(substring, 8, #substring - 1)] = true
-            end
+            if string.find(substring, "{atlas:.+") then atlasTable[string.sub(substring, 8, #substring - 1)] = true end
             i = n
         end
 
@@ -1036,8 +1027,7 @@ function MythicPlusUtility:SetValueButtonCosmeticLabel(info, value)
                                                       self:IconToChatIcon(textureID))
         end
         for atlasID, _ in pairs(atlasTable) do
-            db.customLabelTextFormatted = string.gsub(db.customLabelTextFormatted,
-                                                      "%{atlas:" .. escape_pattern(atlasID) .. "%}",
+            db.customLabelTextFormatted = string.gsub(db.customLabelTextFormatted, "%{atlas:" .. escape_pattern(atlasID) .. "%}",
                                                       CreateAtlasMarkup(atlasID))
         end
     end
@@ -1091,15 +1081,15 @@ function MythicPlusUtility:ButtonCosmeticHide(info)
         return enabled or not db.iconGlow
 
     elseif name == "labelFont" or name == "labelSize" or name == "labelColor" or name == "labelOutline" or name
-      == "labelFontFlagsBreakLine" or name == "labelShadowX" or name == "labelShadowY" or name == "labelShadowColor"
-      or name == "labelWidthType" then
+      == "labelFontFlagsBreakLine" or name == "labelShadowX" or name == "labelShadowY" or name == "labelShadowColor" or name
+      == "labelWidthType" then
         return enabled or db.labelType == "none"
 
     elseif name == 'labelWidth' or name == 'labelOverflow' then
         return enabled or db.labelType == "none" or db.labelWidthType ~= "fixed"
 
-    elseif name == 'glowPixelN' or name == 'glowPixelFrequency' or name == 'glowPixelLength' or name == 'glowPixelTh'
-      or name == 'glowPixelXOffset' or name == 'glowPixelYOffset' or name == 'glowPixelBorder' then
+    elseif name == 'glowPixelN' or name == 'glowPixelFrequency' or name == 'glowPixelLength' or name == 'glowPixelTh' or name
+      == 'glowPixelXOffset' or name == 'glowPixelYOffset' or name == 'glowPixelBorder' then
         return enabled or not db.iconGlow or db.iconGlowType ~= "pixel"
 
     elseif name == 'glowAutocastN' or name == 'glowAutocastFrequency' or name == 'glowAutocastScale' or name
@@ -1116,6 +1106,13 @@ end
 function MythicPlusUtility:SetValueTooltipModel(info, value)
     local profile = self.db.profile or {}
     self.db.profile[info[#info - 1]][info[#info]] = value
-    MythicPlusUtility.ModelContainer:SetSize(profile.windowSettings.tooltipModelWidth,
-                                             profile.windowSettings.tooltipModelHeight)
+    MythicPlusUtility.ModelContainer:SetSize(profile.windowSettings.tooltipModelWidth, profile.windowSettings.tooltipModelHeight)
+end
+
+function MythicPlusUtility:GetInstanceIDValues(info)
+    return Variables.dungeonGlobals.dungeonListBySeason[self.db.profile.seasonSelect]
+end
+
+function MythicPlusUtility:GetInstanceIDOrder(info)
+    return Variables.dungeonGlobals.dungeonListBySeasonOrder[self.db.profile.seasonSelect]
 end

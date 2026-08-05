@@ -129,10 +129,10 @@ MythicPlusUtility.utilityAbilities = {
         [22570] = {tags = "[creature_stun]", baseline = true}, -- Maim
         [2637] = {tags = "[cast_cc_beast][cast_cc_dragonkin]"}, -- Hibernate
         [2908] = {tags = "[enrage]"}, -- Soothe
-        [33786] = {tags = "[cc_cyclone]"}, -- Cyclone
+        [33786] = {tags = "[cc_cyclone]"}, -- Cyclone [cast_cc_all]
         [339] = {tags = "[creature_root]", baseline = true}, -- Entangling Roots
         [5211] = {tags = "[creature_stun]", baseline = true}, -- Mighty Bash
-        [768] = {tags = "[self_only][slow][snare][root]", baseline = true}, -- Cat Form (as a general shapeshift)
+        [768] = {tags = "[self_only][slow][snare][root][polymorph]", baseline = true}, -- Cat Form (as a general shapeshift)
         [99] = {tags = "[creature_incapacitate]"}, -- Incapacitating Roar
     },
     [102] = {
@@ -169,7 +169,7 @@ MythicPlusUtility.utilityAbilities = {
     HUNTER = {
         [109215] = {tags = "[self_only][slow][snare][root]", baseline = true}, -- Posthaste
         [109248] = {tags = "[creature_root]", baseline = true}, -- Binding Shot
-        [1513] = {tags = "[cc_beast]"}, -- Scare Beast
+        [1513] = {tags = "[cast_cc_beast]"}, -- Scare Beast
         [1543] = {tags = "[stealth]", baseline = true}, -- Flare
         [187650] = {
             tags = "[cc_aberration][cc_beast][cc_critter][cc_demon][cc_dragonkin][cc_elemental][cc_giant][cc_humanoid][cc_mechanical][cc_undead][cc_other]",
@@ -187,9 +187,7 @@ MythicPlusUtility.utilityAbilities = {
         [24423] = {
             tags = "[creature_mortal_strike]",
             pet = true,
-            alternatives = {
-                263863, 159936, 160060, 263856, 263861, 279362, 160018, 263853, 54680, 263857, 263854, 263858,
-            },
+            alternatives = {263863, 159936, 160060, 263856, 263861, 279362, 160018, 263853, 54680, 263857, 263854, 263858},
             baseline = true,
         }, -- Mortal Wounds ability (pet)
         [53271] = {tags = "[slow][snare][root]", pet = true}, -- Master's Call (pet)
@@ -202,9 +200,7 @@ MythicPlusUtility.utilityAbilities = {
         [24423] = {
             tags = "[creature_mortal_strike]",
             pet = true,
-            alternatives = {
-                263863, 159936, 160060, 263856, 263861, 279362, 160018, 263853, 54680, 263857, 263854, 263858,
-            },
+            alternatives = {263863, 159936, 160060, 263856, 263861, 279362, 160018, 263853, 54680, 263857, 263854, 263858},
             baseline = true,
         }, -- Mortal Wounds ability (pet)
         [53271] = {tags = "[slow][snare][root]", pet = true}, -- Master's Call (pet)
@@ -218,7 +214,7 @@ MythicPlusUtility.utilityAbilities = {
         [157980] = {tags = "[creature_grip]"}, -- Supernova
         [157997] = {tags = "[creature_root]"}, -- Ice Nova
         [1953] = {tags = "[self_only][root][player_jump]", alternatives = {212653}, baseline = true}, -- Blink
-        [30449] = {tags = "[purge]"}, -- Spellsteal
+        [30449] = {tags = "[purge_spellsteal]"}, -- Spellsteal
         [31661] = {tags = "[creature_incapacitate]"}, -- Dragon's Breath
         [342245] = {tags = "[alter_time]", baseline = true}, -- Alter Time
         [386763] = {tags = "[creature_root]"}, -- Freezing Cold
@@ -353,7 +349,7 @@ MythicPlusUtility.utilityAbilities = {
         [5782] = {tags = "[creature_fear]", baseline = true}, -- Fear
         [6358] = {tags = "[cast_cc_humanoid]", pet = true, baseline = true}, -- Seduction (pet)
         [6789] = {tags = "[creature_incapacitate]", baseline = true}, -- Mortal Coil
-        [710] = {tags = "[cast_cc_demon][cast_cc_aberration][cast_cc_elemental]"}, -- Banish
+        [710] = {tags = "[cc_banish]"}, -- Banish [cast_cc_aberration][cast_cc_demon][cast_cc_elemental]
     },
     [265] = {}, -- Affliction
     [266] = {

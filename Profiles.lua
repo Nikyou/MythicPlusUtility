@@ -123,12 +123,7 @@ function Profiles:CreateOptions()
                         end,
                     },
 
-                    message = {
-                        type = "description",
-                        name = function() return messageText end,
-                        order = 13,
-                        width = "full",
-                    },
+                    message = {type = "description", name = function() return messageText end, order = 13, width = "full"},
 
                 },
             },

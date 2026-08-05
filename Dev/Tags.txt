@@ -23,7 +23,9 @@
 [cc_mechanical] - Mechanical that needs a CC effect (insta cast)
 [cc_other] - Uncategorised creature that needs a CC effect (cast time)
 [cc_undead] - Undead that needs a CC effect (insta cast)
-[cc_cyclone] - Special CC effect for cyclone as damage does not break it
+
+[cc_banish] - Special CC case for Banish as damage does not break it ([cast_cc_demon][cast_cc_aberration][cast_cc_elemental])
+[cc_cyclone] - Special CC case for Cyclone as damage does not break it (cast cc everything)
 
 [creature_grip] - Creature that needs a forced movement effect
 [creature_root] - Creature that needs a root effect
@@ -42,6 +44,8 @@
 [incapacitate] - Removable incapacitate effect
 [poison] - Removable poison effect
 [purge] - Purgable magic effect
+[purge_spellsteal] - Purgable magic effect, Spellsteal special case
+[polymorph] - Removable polymorph effect
 [sleep] - Removable sleep effect
 [slow] - Removable slow effect
 [root]  - Removable root effect
@@ -49,6 +53,9 @@
 [snare_jet] - Removable snare effect with Jet Sream (Shaman talent, special case)
 [stealth] - Removable stealth effect
 [stun] - Removable stun effect
+
+[magic_debuff] - Removable magical debuff, not simply type "magic"
+[physical_debuff] - Removable physical debuff
 
 [player_jump] - Mechanic that can be prevented by player using "jump" ability
 [player_movement_immune] - Mechanic that can be prevented by player using immunity to forced movement
@@ -60,7 +67,5 @@
 -[spell_reflect] - Can be spell reflected
 [targeted_avoid] - Targeted ability that can be avoided with FD, Shadowmeld, etc.
 
-[magic_debuff] - Removable magical debuff, not simply type "magic"
-[physical_debuff] - Removable physical debuff
 
 [] = {tags = ""}, -- 

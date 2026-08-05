@@ -2,6 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
 local ACR = LibStub("AceConfigRegistry-3.0")
 local LCG = LibStub("LibCustomGlow-1.0")
 local LSM = LibStub("LibSharedMedia-3.0", true)
+local Variables = MythicPlusUtility.Variables
 
 local function AddLinkTooltip(widget, link)
     if not link then return end
@@ -59,12 +60,12 @@ end
 
 local function ApplyGlowToFrame(frame, db, type)
     if type == "pixel" then
-        LCG.PixelGlow_Start(frame, db.iconGlowColor, db.glowPixelN, db.glowPixelFrequency, db.glowPixelLength,
-                            db.glowPixelTh, db.glowPixelXOffset, db.glowPixelYOffset, db.glowPixelBorder)
+        LCG.PixelGlow_Start(frame, db.iconGlowColor, db.glowPixelN, db.glowPixelFrequency, db.glowPixelLength, db.glowPixelTh,
+                            db.glowPixelXOffset, db.glowPixelYOffset, db.glowPixelBorder)
         frame.Glow_Stop = LCG.PixelGlow_Stop
     elseif type == "autocast" then
-        LCG.AutoCastGlow_Start(frame, db.iconGlowColor, db.glowAutocastN, db.glowAutocastFrequency,
-                               db.glowAutocastScale, db.glowAutocastXOffset, db.glowAutocastYOffset)
+        LCG.AutoCastGlow_Start(frame, db.iconGlowColor, db.glowAutocastN, db.glowAutocastFrequency, db.glowAutocastScale,
+                               db.glowAutocastXOffset, db.glowAutocastYOffset)
         frame.Glow_Stop = LCG.AutoCastGlow_Stop
     elseif type == "action" then
         LCG.ButtonGlow_Start(frame, db.iconGlowColor)
@@ -150,7 +151,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
 
     function frame:ChangeInstance()
         MythicPlusUtility:PopulateCurrentAbilitiesListWithInstanceData(profile.instanceID)
-        self.dungeonNameText:SetText(MythicPlusUtility.dungeonIdToName[profile.instanceID] or "")
+        self.dungeonNameText:SetText(Variables.dungeonGlobals.dungeonIdToName[profile.instanceID] or "")
         self:UpdateButtons()
         self:UpdateLayout()
 
@@ -341,9 +342,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
                 button.labelLeft:SetShadowOffset(cosmeticDB.labelShadowX, cosmeticDB.labelShadowY)
 
                 if #button.listFrame.lines > #button.list then
-                    for i = #button.list + 1, #button.listFrame.lines do
-                        button.listFrame.lines[i]:Hide()
-                    end
+                    for i = #button.list + 1, #button.listFrame.lines do button.listFrame.lines[i]:Hide() end
                 end
 
                 for listId, text in ipairs(button.list) do
@@ -355,8 +354,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
                         line:SetJustifyH("LEFT")
                         line:SetWordWrap(true)
                         line:SetWidth(windowSettings.width - LEFT_PADDING - RIGHT_PADDING - TEXT_WRAP_PADDING)
-                        line:SetFont(LSM:Fetch("font", textAndIcon.bodyText.labelFont), textAndIcon.bodyText.labelSize,
-                                     nil)
+                        line:SetFont(LSM:Fetch("font", textAndIcon.bodyText.labelFont), textAndIcon.bodyText.labelSize, nil)
                         line:SetText(text)
 
                         if listId == 1 then
@@ -457,9 +455,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
                     end
                 end)
                 listFrame:SetScript("OnHyperlinkClick",
-                                    function(self, link, text, button)
-                    SetItemRef(link, text, button, self)
-                end)
+                                    function(self, link, text, button) SetItemRef(link, text, button, self) end)
                 listFrame:SetScript("OnHyperlinkLeave", function()
                     GameTooltip:Hide()
                     MythicPlusUtility.ModelContainer:HideModel()
@@ -692,8 +688,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
             local button = self.buttons[id]
             button.label:SetWidth(windowSettings.width - LEFT_PADDING - textAndIcon.icon.size - RIGHT_PADDING - 1)
             for subId, _ in ipairs(button.list) do
-                button.listFrame.lines[subId]:SetWidth(windowSettings.width - LEFT_PADDING - RIGHT_PADDING
-                                                         - TEXT_WRAP_PADDING)
+                button.listFrame.lines[subId]:SetWidth(windowSettings.width - LEFT_PADDING - RIGHT_PADDING - TEXT_WRAP_PADDING)
             end
         end
         if updateLayout then self:UpdateLayout() end
@@ -720,9 +715,8 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     dungeonNameText:SetJustifyV("TOP")
     dungeonNameText:SetWordWrap(true)
     dungeonNameText:SetWidth(windowSettings.width - 2 * CLOSE_BUTTON_SIZE - TEXT_WRAP_PADDING)
-    dungeonNameText:SetText(self.dungeonIdToName[profile.instanceID] or "")
-    dungeonNameText:SetFont(LSM:Fetch("font", textAndIcon.dungeonName.labelFont), textAndIcon.dungeonName.labelSize,
-                            "OUTLINE")
+    dungeonNameText:SetText(Variables.dungeonGlobals.dungeonIdToName[profile.instanceID] or "")
+    dungeonNameText:SetFont(LSM:Fetch("font", textAndIcon.dungeonName.labelFont), textAndIcon.dungeonName.labelSize, "OUTLINE")
     dungeonNameText:SetPoint("TOP", 0, -TOP_PADDING)
     frame.dungeonNameText = dungeonNameText
 

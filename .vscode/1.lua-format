@@ -1,4 +1,4 @@
-column_limit: 120
+column_limit: 130
 continuation_indent_width: 2
 extra_sep_at_table_end: true
 break_after_operator: false

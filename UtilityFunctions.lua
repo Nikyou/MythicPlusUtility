@@ -1,115 +1,4 @@
-local L = LibStub("AceLocale-3.0"):GetLocale("MythicPlusUtility")
-
-MythicPlusUtility.supportedTags = {
-    self_only = true, -- Ability that only works on the player
-
-    cast_cc_aberration = true, -- Aberration that needs a CC effect  (cast time)
-    cast_cc_beast = true, -- Beast that needs a CC effect  (cast time)
-    cast_cc_critter = true, -- Critter that needs a CC effect  (cast time)
-    cast_cc_demon = true, -- Demon that needs a CC effect  (cast time)
-    cast_cc_dragonkin = true, -- Dragonkin that needs a CC effect  (cast time)
-    cast_cc_elemental = true, -- Elemental that needs a CC effect  (cast time)
-    cast_cc_giant = true, -- Giant that needs a CC effect  (cast time)
-    cast_cc_humanoid = true, -- Humanoid that needs a CC effect  (cast time)
-    cast_cc_mechanical = true, -- Mechanical that needs a CC effect  (cast time)
-    cast_cc_undead = true, -- Undead that needs a CC effect  (cast time)
-    cast_cc_other = true, -- Uncategorised creature that needs a CC effect  (cast time)
-
-    cc_aberration = true, -- Aberration that needs a CC effect (insta cast)
-    cc_beast = true, -- Beast that needs a CC effect (insta cast)
-    cc_critter = true, -- Critter that needs a CC effect (insta cast)
-    cc_demon = true, -- Demon that needs a CC effect (insta cast)
-    cc_dragonkin = true, -- Dragonkin that needs a CC effect (insta cast)
-    cc_elemental = true, -- Elemental that needs a CC effect (insta cast)
-    cc_giant = true, -- Giant that needs a CC effect (insta cast)
-    cc_humanoid = true, -- Humanoid that needs a CC effect (insta cast)
-    cc_mechanical = true, -- Mechanical that needs a CC effect (insta cast)
-    cc_undead = true, -- Undead that needs a CC effect (insta cast)
-    cc_other = true, -- Uncategorised creature that needs a CC effect (insta cast)
-
-    cc_cyclone = true, -- Special CC effect for cyclone as damage does not break it
-
-    creature_grip = true, -- Creature that needs a forced movement effect
-    creature_root = true, -- Creature that needs a root effect
-    creature_slow = true, -- Creature that needs a slow effect
-    creature_stun = true, -- Creature that needs a stun effect
-    creature_fear = true, -- Creature that needs a fear effect
-    creature_incapacitate = true, -- Creature that needs an incapacitation effect
-    creature_mortal_strike = true, -- Creature that needs a mortal strike effect
-
-    bleed = true, -- Removable bleed effect 
-    charm = true, -- Removable charm effect
-    curse = true, -- Removable curse effect
-    disease = true, -- Removable disease effect
-    enrage = true, -- Removable enrage effect
-    fear = true, -- Removable  fear effect
-    incapacitate = true, -- Removable incapacitate effect
-    poison = true, -- Removable poison effect
-    purge = true, -- Purgable magic effect
-    sleep = true, -- Removable sleep effect
-    slow = true, -- Removable slow effect
-    root = true, --  Removable root effect
-    snare = true, -- Removable snare effect
-    snare_jet = true, -- Removable snare effect with Jet Sream (Shaman talent, special case)
-    stealth = true, -- Removable stealth effect
-    stun = true, -- Removable stun effect
-
-    player_jump = true, -- Mechanic that can be prevented by player using "jump" ability
-    player_movement_immune = true, -- Mechanic that can be prevented by player using immunity to forced movement
-    alter_time = true, -- Special case of alter time
-
-    targeted_avoid = true, -- Targeted ability that can be avoided with FD, Shadowmeld, etc.
-
-    magic_debuff = true, -- Removable magical debuff, not simply type "magic"
-    physical_debuf = true, -- Removable physical debuff
-}
-MythicPlusUtility.defaultDungeonId = 2526
-MythicPlusUtility.dungeonIdToName = {
-    [2526] = L["Algeth'ar Academy"],
-    [2811] = L["Magisters' Terrace"],
-    [2874] = L["Maisara Caverns"],
-    [2915] = L["Nexus-Point Xenas"],
-    [658] = L["Pit of Saron"],
-    [1753] = L["Seat of the Triumvirate"],
-    [1209] = L["Skyreach"],
-    [2805] = L["Windrunner Spire"],
-}
-
-MythicPlusUtility.globals = {
-    labelListOrder = {"default", "defaultText", "custom", "none"},
-    unlearnAbility = {
-        labelList = {default = "\"-\"", defaultText = L["\"Remove\""], none = L["None"], custom = L["Custom_text"]},
-    },
-    needAbility = {
-        labelList = {default = "\"+\"", defaultText = L["\"Add\""], none = L["None"], custom = L["Custom_text"]},
-    },
-    onlyNotImportantAbility = {
-        labelList = {default = "\"?\"", defaultText = L["\"Optional\""], none = L["None"], custom = L["Custom_text"]},
-    },
-    needOnlyNotImportantAbility = {
-        labelList = {
-            default = "\"+?\"",
-            defaultText = L["\"Add Optional\""],
-            none = L["None"],
-            custom = L["Custom_text"],
-        },
-    },
-    learnedAbility = {
-        labelList = {default = "\"*\"", defaultText = L["\"Known\""], none = L["None"], custom = L["Custom_text"]},
-    },
-    iconGlowTypeList = {pixel = L["Pixel Glow"], autocast = L["Autocast Shine"], action = L["Action Button Glow"]},
-    iconGlowTypeListOrder = {"pixel", "autocast", "action"},
-    maxValue = 2147483640, -- Little less than Integer Limit
-    iconTypeOrder = {
-        learnedAbility = 1,
-        onlyNotImportantAbility = 2,
-        needAbility = 3,
-        needOnlyNotImportantAbility = 4,
-        unlearnAbility = 5,
-    },
-}
-
-MythicPlusUtility.npcIdToEncounterSectionId = {[76227] = 33940}
+local Variables = MythicPlusUtility.Variables
 
 function MythicPlusUtility:GetbuttonsIndices()
     if self.db.profile.buttonCosmetic.unlearnAbility.enabled then
@@ -194,9 +83,9 @@ function MythicPlusUtility:GetNpcNameById(npcId)
     local db = self.db.locale
     if db.npcIdToName[npcId] and db.npcIdToName[npcId] ~= "" then
         return db.npcIdToName[npcId]
-    elseif self.npcIdToEncounterSectionId[npcId] then
+    elseif Variables.npcIdToEncounterSectionId[npcId] then
         local name = ""
-        local info = C_EncounterJournal.GetSectionInfo(self.npcIdToEncounterSectionId[npcId])
+        local info = C_EncounterJournal.GetSectionInfo(Variables.npcIdToEncounterSectionId[npcId])
         if info and info.title then name = info.title end
         db.npcIdToName[npcId] = name
 
@@ -226,8 +115,7 @@ function MythicPlusUtility:GetNpcHyperlinkById(npcId)
     else
         local npcName = self:GetNpcNameById(npcId)
         if npcName then
-            db.npcIdToHyperlink[npcId] = format("|cffffd100|Hunit:Creature-0-0-0-0-%s-0:%s|h[%s]|h|r", npcId, npcName,
-                                                npcName)
+            db.npcIdToHyperlink[npcId] = format("|cffffd100|Hunit:Creature-0-0-0-0-%s-0:%s|h[%s]|h|r", npcId, npcName, npcName)
             return db.npcIdToHyperlink[npcId]
         end
     end
@@ -291,7 +179,7 @@ function MythicPlusUtility:ExtractTagsFromInstanceData(instanceID)
             local substring = string.sub(entry.tags, n, j)
             local tag = string.sub(substring, string.find(substring, "[^%[%]]+"))
 
-            if self.supportedTags[tag] or tag == "important" then
+            if Variables.supportedTags[tag] or tag == "important" then
                 entry.tagsTable[tag] = true
             elseif tag == "super_important" then
                 entry.tagsTable[tag] = true
@@ -317,8 +205,7 @@ function MythicPlusUtility:FormatInstanceDataString(instanceID)
                                                 self:GetSpellIconById(spellId)) .. self:GetSpellHyperlinkById(spellId))
         end
         for npcId, _ in pairs(entry.npcIds) do
-            entry.formattedText = string.gsub(entry.formattedText, "{npc:" .. npcId .. "}",
-                                              self:GetNpcHyperlinkById(npcId))
+            entry.formattedText = string.gsub(entry.formattedText, "{npc:" .. npcId .. "}", self:GetNpcHyperlinkById(npcId))
         end
         if not entry.tagsTable.important then
             entry.formattedText = CreateAtlasMarkup("map-icon-ignored-bluequestion") .. entry.formattedText
@@ -341,8 +228,7 @@ function MythicPlusUtility:FormatInstanceData(instanceID)
     self:ExtractNpcIdsFromInstanceData(instanceID)
     self:ExtractTagsFromInstanceData(instanceID)
 
-    local myTimer =
-      C_Timer.NewTimer(0.5, function(self) MythicPlusUtility:FormatInstanceDataString(self.instanceID) end)
+    local myTimer = C_Timer.NewTimer(0.5, function(self) MythicPlusUtility:FormatInstanceDataString(self.instanceID) end)
     myTimer.instanceID = instanceID
 end
 
@@ -357,7 +243,7 @@ function MythicPlusUtility:FormatSpellsData(spellId)
             local substring = string.sub(entry.tags, n, j)
             local tag = string.sub(substring, string.find(substring, "[^%[%]]+"))
 
-            if self.supportedTags[tag] then entry.tagsTable[tag] = true end
+            if Variables.supportedTags[tag] then entry.tagsTable[tag] = true end
 
             i = j
         end
@@ -411,13 +297,13 @@ function MythicPlusUtility:SortCurrentAbilitiesList()
         table.sort(self.currentAbilitiesList, function(a, b) return a.spellName > b.spellName end)
     elseif sortBy == "typeAsc" then
         table.sort(self.currentAbilitiesList, function(a, b)
-            local db = MythicPlusUtility.globals.iconTypeOrder
+            local db = Variables.globals.iconTypeOrder
             if db[a.buttonType] ~= db[b.buttonType] then return db[a.buttonType] < db[b.buttonType] end
             return a.spellName < b.spellName
         end)
     elseif sortBy == "typeDes" then
         table.sort(self.currentAbilitiesList, function(a, b)
-            local db = MythicPlusUtility.globals.iconTypeOrder
+            local db = Variables.globals.iconTypeOrder
             if db[a.buttonType] ~= db[b.buttonType] then return db[a.buttonType] > db[b.buttonType] end
             return a.spellName < b.spellName
         end)
@@ -428,9 +314,7 @@ function MythicPlusUtility:CreateCurrentAbilitiesList()
     -- ACTIVE_TALENT_GROUP_CHANGED
     local t = self:tablecopy(self.utilityAbilities[self.db.char.class])
     if self.utilityAbilities[self.db.char.currentSpec] then
-        for spellId, entry in pairs(self.utilityAbilities[self.db.char.currentSpec]) do
-            t[spellId] = self:tablecopy(entry)
-        end
+        for spellId, entry in pairs(self.utilityAbilities[self.db.char.currentSpec]) do t[spellId] = self:tablecopy(entry) end
     end
 
     for spellId, entry in pairs(t) do
@@ -512,8 +396,9 @@ function MythicPlusUtility:UpdateCurrentAbilitiesList(petOnly)
 
     for _, entry in pairs(self.currentAbilitiesList) do
         if (not petOnly or entry.pet) and not entry.racial then
-            if entry.override and entry.isKnown and (self.utilityAbilities[self.db.char.class][entry.override]
-              or self.utilityAbilities[self.db.char.currentSpec][entry.override]) then
+            if entry.override and entry.isKnown
+              and (self.utilityAbilities[self.db.char.class][entry.override]
+                or self.utilityAbilities[self.db.char.currentSpec][entry.override]) then
                 for _, subEntry in pairs(self.currentAbilitiesList) do
                     if subEntry.spellId == entry.override then
                         subEntry.isOverriden = true
