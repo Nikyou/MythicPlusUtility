@@ -20,6 +20,9 @@ function MythicPlusUtility:OnInitialize()
                                 self.db.profile.windowSettings.tooltipModelHeight)
     self.profilesFrame = ACD:AddToBlizOptions("MythicPlusUtility_Profiles", L["Profiles"], "Mythic Plus Utility")
 
+    self.ModelContainer:SetSize(self.db.profile.windowSettings.tooltipModelWidth,
+                                self.db.profile.windowSettings.tooltipModelHeight)
+
     self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")
     self.db.RegisterCallback(self, "OnProfileCopied", "RefreshConfig")
     self.db.RegisterCallback(self, "OnProfileReset", "RefreshConfig")

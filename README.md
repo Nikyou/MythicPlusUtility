@@ -18,6 +18,7 @@ https://www.curseforge.com/wow/addons/mythic-plus-utility-mpu
 * Customisable Window with utility abilities for a dungeon
 * Clickable icons to show where to use that ability
 * Abilities that are used only on yourself have a special symbol near their name
+* NPC model preview
 * Entries where to use an ability have an importance distinction:
   * **!** - strong impact, a must-have pick in most cases
   * _no indication_ - moderate impact, taking and using this ability is recommended
