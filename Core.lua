@@ -137,7 +137,7 @@ function MythicPlusUtility:PLAYER_ENTERING_WORLD(event, isInitialLogin, isReload
     C_Timer.NewTimer(0.5, function()
         if not (isInitialLogin or isReloadingUi) then
             local _, _, difficultyID, _, _, _, _, instanceID = GetInstanceInfo()
-            if MythicPlusUtility.db.profile.difficultyID[difficultyID] and MythicPlusUtility.instancesData[instanceID] then
+            if MythicPlusUtility.db.profile.generalSettings.difficultyID[difficultyID] and MythicPlusUtility.instancesData[instanceID] then
                 MythicPlusUtility.db.profile.instanceID = instanceID
                 if not MythicPlusUtility.Frame then MythicPlusUtility:InitializeFrames() end
                 MythicPlusUtility.Frame:SetShownHandler(true)
