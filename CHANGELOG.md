@@ -10,7 +10,10 @@ Added Midnight Season 2 dungeons:
 * The Blinding Vale
 * Voidscar Arena
 ### Options
-Added Mythic+ seasons select, defaults to the current season.
+* Added Mythic+ seasons select, defaults to the current season.
+* Some general options were moved into a tab.
+### Spells
+* Added support for professions.
 #### 1.3.2
 ### Localisation
 * Updated Simplified Chinese localisation.

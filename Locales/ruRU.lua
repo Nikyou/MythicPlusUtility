@@ -2,6 +2,7 @@ local L = LibStub("AceLocale-3.0"):NewLocale("MythicPlusUtility", "ruRU")
 if not L then return end
 
 -- Options
+L["Ability Content Settings"] = "Настройки содержимого способностей"
 L["Anchor to Screen's"] = "Закрепить за экран"
 L["Background Color"] = "Цвет фона"
 L["Background Opacity"] = "Прозрачность фона"
@@ -9,7 +10,9 @@ L["Background Settings"] = "Настройки фона"
 L["Body Text Size"] = "Размер текста"
 L["Disable Minimap Button"] = "Отключить кнопку миникарты"
 L["Dungeon Name Size"] = "Размер названия подземелья"
+L["Dungeon Options"] = "Настройки подземелья"
 L["Dungeon Preview"] = "Просмотр подземелья"
+L["General Settings"] = "Общие настройки"
 L["Height"] = "Высота"
 L["Hide not Important"] = "Скрыть неважные"
 L["Hide on Mythic+ start"] = "Скрыть при начале Эпохальный+"
@@ -23,7 +26,10 @@ L["Minimap Icon"] = "Значок миникарты"
 L["Open Settings"] = "Открыть настройки"
 L["Season Select"] = "Выбор сезона"
 L["Show in"] = "Показывать в"
+L["Show Unlearned Professions"] = "Показывать неизученные профессии"
 L["Show/Hide Utility Window"] = "Показать/Скрыть окно"
+L["Shows dungeon entries with unlearned professions."] =
+  "Показывает записи в подземельях содержащие неизученные профессии."
 L["Talent Highlight Settings"] = "Настройки подсветки таланта"
 L["Text and Icon Settings"] = "Настройки текста и иконки"
 L["Toggle Window"] = "Переключение окна"
@@ -251,6 +257,12 @@ L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] =
   "Избегите {spell:%d}, когда третий босс {npc:%d} кинет топор."
 L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] =
   "Помешайте {npc:%d} достичь вашего лекаря на последнем боссе {npc:%d}."
+
+-- Profession Dungeon entries
+L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] =
+  "Взаимодействуйте с {npc:%d}, расположенным сразу за двумя связками яблок, ведущими к первому боссу, чтобы получить {spell:%d}."
+L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"] =
+  "Взаимодействуйте с {npc:%d}, расположенным на небольшой смотровой площадке, ведущей к первому боссу, чтобы получить {spell:%d}."
 
 -- Icon Cosmetics Settings
 L["\"Add Optional\""] = "\"Взять необязательно\""

@@ -2,6 +2,7 @@ local L = LibStub("AceLocale-3.0"):NewLocale("MythicPlusUtility", "frFR")
 if not L then return end
 
 -- Options
+-- L["Ability Content Settings"] = true -- Translation missing
 L["Anchor to Screen's"] = "Ancrer à l'écran"
 L["Background Color"] = "Couleur de l'arrière-plan"
 L["Background Opacity"] = "Opacité de l'arrière-plan"
@@ -9,7 +10,9 @@ L["Background Opacity"] = "Opacité de l'arrière-plan"
 L["Body Text Size"] = "Taille du texte principal"
 L["Disable Minimap Button"] = "Désactiver le bouton de la minicarte"
 L["Dungeon Name Size"] = "Taille du nom du donjon"
+-- L["Dungeon Options"] = true -- Translation missing
 L["Dungeon Preview"] = "Aperçu du donjon"
+-- L["General Settings"] = true -- Translation missing
 L["Height"] = "Hauteur"
 L["Hide not Important"] = "Masquer non important"
 L["Hide on Mythic+ start"] = "Masquer au début du Mythique+"
@@ -22,7 +25,9 @@ L["Minimap Icon"] = "Symbole de Minimap"
 L["Open Settings"] = "Ouvrir les paramètres"
 -- L["Season Select"] = true -- Translation missing
 L["Show in"] = "Afficher dans"
+-- L["Show Unlearned Professions"] = true -- Translation missing
 L["Show/Hide Utility Window"] = "Afficher/Masquer la fenêtre utilitaire"
+-- L["Shows dungeon entries with unlearned professions."] = true -- Translation missing
 -- L["Talent Highlight Settings"] = true -- Translation missing
 L["Text and Icon Settings"] = "Paramètres du texte et des icônes"
 L["Toggle Window"] = "Afficher/Masquer la fenêtre"
@@ -193,6 +198,10 @@ L["Stun {npc:%d} on the last boss {npc:%d}."] = "Étourdir {npc:%d} sur le derni
 -- L["Avoid {spell:%d} when the third boss {npc:%d} charges at you."] = true -- Translation missing
 -- L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] = true -- Translation missing
 -- L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] = true -- Translation missing
+
+-- Profession Dungeon entries
+-- L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] = true -- Translation missing
+-- L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"] = true -- Translation missing
 
 -- Icon Cosmetics Settings
 L["\"Add Optional\""] = "\"Ajouter (optionnel)\""

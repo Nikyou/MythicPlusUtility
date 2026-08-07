@@ -2,6 +2,7 @@ local L = LibStub("AceLocale-3.0"):NewLocale("MythicPlusUtility", "zhCN")
 if not L then return end
 
 -- Options
+-- L["Ability Content Settings"] = true -- Translation missing
 L["Anchor to Screen's"] = "锚定到屏幕"
 L["Background Color"] = "背景颜色"
 L["Background Opacity"] = "背景透明度"
@@ -9,7 +10,9 @@ L["Background Settings"] = "背景设置"
 L["Body Text Size"] = "正文文本大小"
 L["Disable Minimap Button"] = "禁用小地图按钮"
 L["Dungeon Name Size"] = "地下城名称大小"
+-- L["Dungeon Options"] = true -- Translation missing
 L["Dungeon Preview"] = "地下城预览"
+-- L["General Settings"] = true -- Translation missing
 L["Height"] = "高度"
 L["Hide not Important"] = "隐藏不重要的"
 L["Hide on Mythic+ start"] = "大秘境开始时隐藏"
@@ -22,7 +25,9 @@ L["Minimap Icon"] = "小地图按钮"
 L["Open Settings"] = "打开设置"
 L["Season Select"] = "选择赛季"
 L["Show in"] = "显示于"
+-- L["Show Unlearned Professions"] = true -- Translation missing
 L["Show/Hide Utility Window"] = "显示/隐藏功能窗口"
+-- L["Shows dungeon entries with unlearned professions."] = true -- Translation missing
 L["Talent Highlight Settings"] = "天赋高亮设置"
 L["Text and Icon Settings"] = "文本和图标设置"
 L["Toggle Window"] = "切换窗口显示"
@@ -232,6 +237,10 @@ L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] =
   "躲避 {spell:%d}，当第三个首领 {npc:%d} 投掷斧头时。"
 L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] =
   "阻止 {npc:%d} 靠近你的治疗，在尾王 {npc:%d} 战斗中。"
+
+-- Profession Dungeon entries
+-- L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] = true -- Translation missing
+-- L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"] = true -- Translation missing
 
 -- Icon Cosmetics Settings
 L["\"Add Optional\""] = "推荐学习（可选）"

@@ -47,43 +47,18 @@ end
 function MythicPlusUtility:MigrateOldSettings()
     -- Will clean up / change in a few updates
     local db = self.db.profile
-    if not db.AddonName then db.AddonName = "MythicPlusUtility" end
-    if self.db.global.minimap then self.db.global.minimap = nil end
-    if self.db.profile.minimap.show ~= nil then
-        self.db.profile.minimap.hide = not self.db.profile.minimap.show
-        self.db.profile.minimap.show = nil
+    if db.hideOnStart then
+        db.generalSettings.hideOnStart = db.hideOnStart
+        db.hideOnStart = nil
     end
-
-    local function migrateFrameSetting(oldSetting, newSetting)
-        if db[oldSetting] then
-            db.windowSettings[newSetting] = db[oldSetting]
-            db[oldSetting] = nil
-        end
+    if db.hideNotImportant then
+        db.generalSettings.hideNotImportant = db.hideNotImportant
+        db.hideNotImportant = nil
     end
-    local migrateFrameSettingTable = {
-        {"frameWidth", "width"}, {"frameHeight", "height"}, {"frameXOffset", "xOffset"}, {"frameYOffset", "yOffset"},
-        {"selectFramePoint", "framePoint"},
-    }
-    for _, setting in pairs(migrateFrameSettingTable) do migrateFrameSetting(setting[1], setting[2]) end
-
-    if db.buttonSize then
-        db.textAndIcon.icon.size = db.buttonSize
-        db.buttonSize = nil
+    if db.difficultyID then
+        db.generalSettings.difficultyID = db.difficultyID
+        db.difficultyID = nil
     end
-    if db.labelFontSize then
-        db.textAndIcon.icon.labelSize = db.labelFontSize
-        db.textFontSize = nil
-    end
-    if db.textFontSize then
-        db.textAndIcon.bodyText.labelSize = db.textFontSize
-        db.textFontSize = nil
-    end
-    if db.dungeonNameSize then
-        db.textAndIcon.dungeonName.labelSize = db.dungeonNameSize
-        db.dungeonNameSize = nil
-    end
-
-    db.font = nil
 end
 
 function MythicPlusUtility:RefreshConfig()
@@ -219,6 +194,7 @@ function MythicPlusUtility:ExtractSpellsFromDB()
         for spellId, entry in pairs(self.utilityAbilities[specId]) do extract(spellId, entry) end
     end
     for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesRacials) do if entry.isKnown then extract(spellId, entry) end end
+    for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesProfessions) do extract(spellId, entry) end
 end
 
 function MythicPlusUtility:PopulateLocalisation()
@@ -253,6 +229,13 @@ function MythicPlusUtility:GetCharacterInfo()
                 if not known then entry.isKnown = self:IsSpellKnownHandler(spellId) end
             end
         end
+
+        for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesProfessions) do
+            entry.isKnown = MythicPlusUtility:IsSpellKnownHandler(spellId)
+            entry.spellId = spellId
+            entry.spellName = MythicPlusUtility:GetSpellNameById(spellId)
+        end
+
         MythicPlusUtility.db.char.currentSpec = C_SpecializationInfo.GetSpecializationInfo(
                                                   C_SpecializationInfo.GetSpecialization())
         MythicPlusUtility:ExtractSpellsFromDB()

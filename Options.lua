@@ -8,12 +8,15 @@ MythicPlusUtility.defaults = {
         AddonName = "MythicPlusUtility",
         minimap = {hide = false},
         toggleFrameLock = true,
-        hideOnStart = true,
-        hideNotImportant = false,
         instanceID = Variables.dungeonGlobals.defaultDungeonId,
         seasonSelect = Variables.dungeonGlobals.currentSeason,
-        difficultyID = {[1] = false, [2] = false, [23] = true},
         frameBackground = {0, 0, 0, 0.5},
+        generalSettings = {
+            difficultyID = {[1] = false, [2] = false, [23] = true},
+            hideOnStart = true,
+            hideNotImportant = false,
+            showAllProfessions = false,
+        },
         windowSettings = {
             width = 350,
             height = 600,
@@ -118,14 +121,6 @@ MythicPlusUtility.options = {
     childGroups = "tab",
     args = {
         toggleFrame = {type = "execute", order = 1.1, name = L["Toggle Window"], func = "ToggleAbilitiesFrame"},
-        hideOnStart = {
-            type = "toggle",
-            order = 1.2,
-            width = 1.25,
-            name = L["Hide on Mythic+ start"],
-            get = "GetValue",
-            set = "SetValue",
-        },
         minimap = {
             type = "toggle",
             order = 1.3,
@@ -152,25 +147,45 @@ MythicPlusUtility.options = {
             sorting = Variables.dungeonGlobals.seasonsOrder,
             values = Variables.dungeonGlobals.seasons,
         },
-        hideNotImportant = {
-            type = "toggle",
-            order = 2.3,
-            name = L["Hide not Important"],
-            desc = format(L["Hides dungeon entries that are marked with %s"], CreateAtlasMarkup("map-icon-ignored-bluequestion")),
-            get = "GetValue",
-            set = "SetValueInstance",
-        },
-        difficultyID = {
-            type = "multiselect",
-            order = 2.4,
-            name = L["Show in"],
-            get = "GetValueDifficulty",
-            set = "SetValueDifficulty",
-            values = {[1] = L["Normal"], [2] = L["Heroic"], [23] = L["Mythic"]},
+        generalSettings = {
+            type = "group",
+            order = 1,
+            name = L["General Settings"],
+            get = "GetValueWithParent",
+            set = "SetValueWithParent",
+            args = {
+                backgroundHeader = {type = "header", order = 1, name = L["Dungeon Options"]},
+                hideOnStart = {type = "toggle", order = 1.1, width = 1.25, name = L["Hide on Mythic+ start"]},
+                difficultyID = {
+                    type = "multiselect",
+                    order = 1.2,
+                    name = L["Show in"],
+                    get = "GetValueDifficulty",
+                    set = "SetValueDifficulty",
+                    values = {[1] = L["Normal"], [2] = L["Heroic"], [23] = L["Mythic"]},
+                },
+                sizeHeader = {type = "header", order = 2, name = L["Ability Content Settings"]},
+                hideNotImportant = {
+                    type = "toggle",
+                    order = 2.1,
+                    name = L["Hide not Important"],
+                    desc = format(L["Hides dungeon entries that are marked with %s"],
+                                  CreateAtlasMarkup("map-icon-ignored-bluequestion")),
+                    set = "SetValueInstanceWithParent",
+                },
+                showAllProfessions = {
+                    type = "toggle",
+                    order = 2.2,
+                    width = 1.5,
+                    name = L["Show Unlearned Professions"],
+                    desc = L["Shows dungeon entries with unlearned professions."],
+                    set = "SetValueInstanceWithParent",
+                },
+            },
         },
         windowSettings = {
             type = "group",
-            order = 1,
+            order = 2,
             name = L["Window Settings"],
             get = "GetValueWithParent",
             set = "SetValueWindowSettings",
@@ -313,7 +328,7 @@ MythicPlusUtility.options = {
         },
         textAndIconGroup = {
             type = "group",
-            order = 2,
+            order = 3,
             name = L["Text and Icon Settings"],
             childGroups = "tree",
             get = "GetValueTextAndIcon",
@@ -923,9 +938,14 @@ function MythicPlusUtility:SetValueInstance(info, value)
     if self.Frame then self.Frame:ChangeInstance() end
 end
 
-function MythicPlusUtility:GetValueDifficulty(info, key) return self.db.profile.difficultyID[key] end
+function MythicPlusUtility:SetValueInstanceWithParent(info, value)
+    self.db.profile[info[#info - 1]][info[#info]] = value
+    if self.Frame then self.Frame:ChangeInstance() end
+end
 
-function MythicPlusUtility:SetValueDifficulty(info, key, state) self.db.profile.difficultyID[key] = state end
+function MythicPlusUtility:GetValueDifficulty(info, key) return self.db.profile.generalSettings.difficultyID[key] end
+
+function MythicPlusUtility:SetValueDifficulty(info, key, state) self.db.profile.generalSettings.difficultyID[key] = state end
 
 function MythicPlusUtility:GetValueWithParent(info) return self.db.profile[info[#info - 1]][info[#info]] end
 

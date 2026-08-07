@@ -267,6 +267,11 @@ function MythicPlusUtility:FormatSpellsData(spellId)
             entry.spellId = spellId
             entry.spellName = self:GetSpellNameById(spellId)
         end
+        for spellId, entry in pairs(self.utilityAbilitiesProfessions) do
+            extract(entry)
+            entry.spellId = spellId
+            entry.spellName = self:GetSpellNameById(spellId)
+        end
     else
         if self.utilityAbilities[self.db.char.class][spellId] then
             extract(self.utilityAbilities[self.db.char.class][spellId])
@@ -284,6 +289,11 @@ function MythicPlusUtility:FormatSpellsData(spellId)
             extract(self.utilityAbilitiesRacials[spellId])
             self.utilityAbilitiesRacials[spellId].spellId = spellId
             self.utilityAbilitiesRacials[spellId].spellName = self:GetSpellNameById(spellId)
+        end
+        if self.utilityAbilitiesProfessions[spellId] then
+            extract(self.utilityAbilitiesProfessions[spellId])
+            self.utilityAbilitiesProfessions[spellId].spellId = spellId
+            self.utilityAbilitiesProfessions[spellId].spellName = self:GetSpellNameById(spellId)
         end
     end
 end
@@ -349,6 +359,10 @@ function MythicPlusUtility:CreateCurrentAbilitiesList()
                 t[spellId] = self:tablecopy(entry)
             end
         end
+    end
+
+    if self.utilityAbilitiesProfessions then
+        for spellId, entry in pairs(self.utilityAbilitiesProfessions) do t[spellId] = self:tablecopy(entry) end
     end
 
     self.currentAbilitiesList = {}
@@ -471,10 +485,15 @@ function MythicPlusUtility:PopulateCurrentAbilitiesListWithInstanceData(instance
     self:SortCurrentAbilitiesList()
 
     for id, entry in ipairs(self.currentAbilitiesList) do
-        if entry.list and #entry.list > 0 then table.insert(self.buttonsIndices, id) end
+        if entry.list and #entry.list > 0
+          and (not entry.profession or entry.isKnown or self.db.profile.generalSettings.showAllProfessions) then
+            table.insert(self.buttonsIndices, id)
+        end
     end
     for id, entry in ipairs(self.currentAbilitiesList) do
-        if (entry.list and #entry.list > 0) or (entry.isKnown and not (entry.baseline or entry.racial)) then
+        if (entry.list and #entry.list > 0
+          and (not entry.profession or entry.isKnown or self.db.profile.generalSettings.showAllProfessions))
+          or (entry.isKnown and not entry.baseline and not entry.racial and not entry.profession) then
             table.insert(self.buttonsIndicesWithEmpty, id)
         end
     end

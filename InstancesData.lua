@@ -62,7 +62,7 @@ MythicPlusUtility.instancesData = {
             tags = "[important][curse]",
         }, { -- Warding Incense (Prof)
             text = format(
-              L["Interract with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"],
+              L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"],
               257419, 1271545),
             tags = "[important][profession_alchemy]",
         }, { -- Bestial Wrath
@@ -341,7 +341,7 @@ MythicPlusUtility.instancesData = {
             text = format(L["Avoid {spell:%d} when {npc:%d} starts channeling."], 1238368, 245513),
             tags = "[important][targeted_avoid]",
         }, { -- Flourishing Stride (Prof)
-            text = format(L["Interract with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"],
+            text = format(L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"],
                           255650, 1265942),
             tags = "[important][profession_herbalism]",
         }, { -- Potad-Toss

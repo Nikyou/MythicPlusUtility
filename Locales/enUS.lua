@@ -1,6 +1,7 @@
 local L = LibStub("AceLocale-3.0"):NewLocale("MythicPlusUtility", "enUS", true)
 
 -- Options
+L["Ability Content Settings"] = true
 L["Anchor to Screen's"] = true
 L["Background Color"] = true
 L["Background Opacity"] = true
@@ -8,7 +9,9 @@ L["Background Settings"] = true
 L["Body Text Size"] = true
 L["Disable Minimap Button"] = true
 L["Dungeon Name Size"] = true
+L["Dungeon Options"] = true
 L["Dungeon Preview"] = true
+L["General Settings"] = true
 L["Height"] = true
 L["Hide not Important"] = true
 L["Hide on Mythic+ start"] = true
@@ -21,7 +24,9 @@ L["Minimap Icon"] = true
 L["Open Settings"] = true
 L["Season Select"] = true
 L["Show in"] = true
+L["Show Unlearned Professions"] = true
 L["Show/Hide Utility Window"] = true
+L["Shows dungeon entries with unlearned professions."] = true
 L["Talent Highlight Settings"] = true
 L["Text and Icon Settings"] = true
 L["Toggle Window"] = true
@@ -167,6 +172,10 @@ L["Avoid {spell:%d} when the second boss {npc:%d} starts channeling."] = true
 L["Avoid {spell:%d} when the third boss {npc:%d} charges at you."] = true
 L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] = true
 L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] = true
+
+-- Profession Dungeon entries
+L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] = true
+L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"] = true
 
 -- Icon Cosmetics Settings
 L["\"Add Optional\""] = true

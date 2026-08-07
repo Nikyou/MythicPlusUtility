@@ -67,6 +67,23 @@ MythicPlusUtility.classSpecialisations = {
     },
 }
 
+MythicPlusUtility.utilityAbilitiesProfessions = {
+    [131474] = {tags = "[profession_fishing]", profession = true}, -- Fishing
+    [195127] = {tags = "[profession_archaeology]", profession = true}, -- Archaeology
+    [2018] = {tags = "[profession_blacksmithing]", profession = true}, -- Blacksmithing
+    [2108] = {tags = "[profession_leatherworking]", profession = true}, -- Leatherworking
+    [2259] = {tags = "[profession_alchemy]", profession = true}, -- Alchemy
+    [2366] = {tags = "[profession_herbalism]", profession = true}, -- Herbalism
+    [25229] = {tags = "[profession_jewelcrafting]", profession = true}, -- Jewelcrafting	
+    [2550] = {tags = "[profession_cooking]", profession = true}, -- Cooking
+    [2575] = {tags = "[profession_mining]", profession = true}, -- Mining
+    [3908] = {tags = "[profession_tailoring]", profession = true}, -- Tailoring
+    [4036] = {tags = "[profession_engineering]", profession = true}, -- Engineering
+    [45357] = {tags = "[profession_inscription]", profession = true}, -- Inscription
+    [7411] = {tags = "[profession_enchanting]", profession = true}, -- Enchanting
+    [8613] = {tags = "[profession_skinning]", profession = true}, -- Skinning
+}
+
 MythicPlusUtility.utilityAbilitiesRacials = {
     [107079] = {tags = "[creature_incapacitate]", racial = true}, -- Quaking Palm
     [20549] = {tags = "[creature_stun]", racial = true}, -- War Stomp

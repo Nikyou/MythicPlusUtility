@@ -66,6 +66,22 @@ Variables.supportedTags = {
     alter_time = true, -- Special case of alter time
 
     targeted_avoid = true, -- Targeted ability that can be avoided with FD, Shadowmeld, etc.
+
+    -- Professions; When something can be used only if the player has a specific profession
+    profession_alchemy = true,
+    profession_archaeology = true,
+    profession_blacksmithing = true,
+    profession_cooking = true,
+    profession_enchanting = true,
+    profession_engineering = true,
+    profession_fishing = true,
+    profession_herbalism = true,
+    profession_inscription = true,
+    profession_jewelcrafting = true,
+    profession_leatherworking = true,
+    profession_mining = true,
+    profession_skinning = true,
+    profession_tailoring = true,
 }
 
 Variables.dungeonGlobals = {}
