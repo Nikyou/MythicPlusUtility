@@ -60,6 +60,11 @@ MythicPlusUtility.instancesData = {
         }, { -- Insatiable Hunger
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}, which is summoned by {npc:%d}."], 1238801, 245567, 245855),
             tags = "[important][curse]",
+        }, { -- Warding Incense (Prof)
+            text = format(
+              L["Interract with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"],
+              257419, 1271545),
+            tags = "[important][profession_alchemy]",
         }, { -- Bestial Wrath
             text = format(L["{spell:%d} buff on {npc:%d} and {npc:%d}."], 1246865, 245145, 245190),
             tags = "[enrage]",
@@ -335,6 +340,10 @@ MythicPlusUtility.instancesData = {
         }, { -- Lightmaw Beams
             text = format(L["Avoid {spell:%d} when {npc:%d} starts channeling."], 1238368, 245513),
             tags = "[important][targeted_avoid]",
+        }, { -- Flourishing Stride (Prof)
+            text = format(L["Interract with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"],
+                          255650, 1265942),
+            tags = "[important][profession_herbalism]",
         }, { -- Potad-Toss
             text = format(L["{spell:%d} is cast by {npc:%d}."], 1250829, 250202),
             tags = "[creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_elemental]",
