@@ -137,7 +137,8 @@ function MythicPlusUtility:PLAYER_ENTERING_WORLD(event, isInitialLogin, isReload
     C_Timer.NewTimer(0.5, function()
         if not (isInitialLogin or isReloadingUi) then
             local _, _, difficultyID, _, _, _, _, instanceID = GetInstanceInfo()
-            if MythicPlusUtility.db.profile.generalSettings.difficultyID[difficultyID] and MythicPlusUtility.instancesData[instanceID] then
+            if MythicPlusUtility.db.profile.generalSettings.difficultyID[difficultyID]
+              and MythicPlusUtility.instancesData[instanceID] then
                 MythicPlusUtility.db.profile.instanceID = instanceID
                 if not MythicPlusUtility.Frame then MythicPlusUtility:InitializeFrames() end
                 MythicPlusUtility.Frame:SetShownHandler(true)
@@ -152,7 +153,9 @@ function MythicPlusUtility:PLAYER_ENTERING_WORLD(event, isInitialLogin, isReload
 end
 
 function MythicPlusUtility:CHALLENGE_MODE_START(event)
-    if self.Frame and self.db.profile.hideOnStart and self.Frame:IsShown() then self.Frame:SetShownHandler(false) end
+    if self.Frame and self.db.profile.generalSettings.hideOnStart and self.Frame:IsShown() then
+        self.Frame:SetShownHandler(false)
+    end
 end
 
 function MythicPlusUtility:UPDATE_VEHICLE_ACTIONBAR(event)
