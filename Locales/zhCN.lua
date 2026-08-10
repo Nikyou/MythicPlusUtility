@@ -2,7 +2,7 @@ local L = LibStub("AceLocale-3.0"):NewLocale("MythicPlusUtility", "zhCN")
 if not L then return end
 
 -- Options
--- L["Ability Content Settings"] = true -- Translation missing
+L["Ability Content Settings"] = "技能内容设置"
 L["Anchor to Screen's"] = "锚定到屏幕"
 L["Background Color"] = "背景颜色"
 L["Background Opacity"] = "背景透明度"
@@ -10,9 +10,9 @@ L["Background Settings"] = "背景设置"
 L["Body Text Size"] = "正文文本大小"
 L["Disable Minimap Button"] = "禁用小地图按钮"
 L["Dungeon Name Size"] = "地下城名称大小"
--- L["Dungeon Options"] = true -- Translation missing
+L["Dungeon Options"] = "地下城选项"
 L["Dungeon Preview"] = "地下城预览"
--- L["General Settings"] = true -- Translation missing
+L["General Settings"] = "常规设置"
 L["Height"] = "高度"
 L["Hide not Important"] = "隐藏不重要的"
 L["Hide on Mythic+ start"] = "大秘境开始时隐藏"
@@ -25,9 +25,9 @@ L["Minimap Icon"] = "小地图按钮"
 L["Open Settings"] = "打开设置"
 L["Season Select"] = "选择赛季"
 L["Show in"] = "显示于"
--- L["Show Unlearned Professions"] = true -- Translation missing
+L["Show Unlearned Professions"] = "显示未学习的专业"
 L["Show/Hide Utility Window"] = "显示/隐藏功能窗口"
--- L["Shows dungeon entries with unlearned professions."] = true -- Translation missing
+L["Shows dungeon entries with unlearned professions."] = "显示尚未学习的专业对应的地下城条目。"
 L["Talent Highlight Settings"] = "天赋高亮设置"
 L["Text and Icon Settings"] = "文本和图标设置"
 L["Toggle Window"] = "切换窗口显示"
@@ -239,8 +239,10 @@ L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] =
   "阻止 {npc:%d} 靠近你的治疗，在尾王 {npc:%d} 战斗中。"
 
 -- Profession Dungeon entries
--- L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] = true -- Translation missing
--- L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"] = true -- Translation missing
+L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] =
+  "与通往第一个首领路上两堆苹果后方的 {npc:%d} 互动，以获得 {spell:%d}"
+L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"] =
+  "与通往第一个首领路旁小平台上的 {npc:%d} 互动，以获得 {spell:%d}"
 
 -- Icon Cosmetics Settings
 L["\"Add Optional\""] = "推荐学习（可选）"
