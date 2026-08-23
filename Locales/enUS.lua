@@ -172,6 +172,9 @@ L["Avoid {spell:%d} when the second boss {npc:%d} starts channeling."] = true
 L["Avoid {spell:%d} when the third boss {npc:%d} charges at you."] = true
 L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] = true
 L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] = true
+-- 1.4.1
+L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. Then interact with them to receive {spell:%d}."] =
+  true
 
 -- Profession Dungeon entries
 L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] = true

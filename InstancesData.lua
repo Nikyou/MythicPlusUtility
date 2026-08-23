@@ -18,6 +18,11 @@ MythicPlusUtility.instancesData = {
         }, { -- Paralyzing Shots
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1294569, 272271),
             tags = "[important][snare][slow][magic_debuff]",
+        }, { -- Cursed Bones NPC
+            text = format(
+              L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. Then interact with them to receive {spell:%d}."],
+              272104, 1310018),
+            tags = "[curse_target]",
         }, { -- Envenom
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."], 1289416, 261557),
             tags = "[poison][magic_debuff]",
@@ -48,6 +53,9 @@ MythicPlusUtility.instancesData = {
         { -- Feast of Misery
             text = format(L["{spell:%d} is channeled by {npc:%d}."], 1238687, 245855),
             tags = "[important][creature_mortal_strike]",
+        }, { -- Feast of Misery
+            text = format(L["Avoid {spell:%d} when {npc:%d} starts channeling."], 1238687, 245855),
+            tags = "[important][targeted_avoid]",
         }, { -- Frigid Roar
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."], 1309919, 241872),
             tags = "[important][snare][slow][magic_debuff]",
@@ -124,8 +132,13 @@ MythicPlusUtility.instancesData = {
             text = format(L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d})."], 269976, 134158, 135322),
             tags = "[super_important][enrage]",
         }, { -- Bind Soul
-            text = format(L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d})."], 270920, 137478, 134993),
+            text = format(
+              L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."],
+              270920, 137478, 134993),
             tags = "[super_important][purge]",
+        }, { -- Captain's Bulwark
+            text = format(L["{spell:%d} buff is cast by {npc:%d}."], 1296671, 137473),
+            tags = "[important][purge][purge_spellsteal]",
         }, { -- Healing Tide Totem
             text = format(L["{spell:%d} is cast by {npc:%d} (trash before the third boss)."], 270497, 135239),
             tags = "[important][creature_mortal_strike]",
@@ -158,9 +171,6 @@ MythicPlusUtility.instancesData = {
             tags = "[bleed][physical_debuff]",
         }, { -- Bound by Shadow
             text = format(L["{spell:%d} buff on {npc:%d}."], 269935, 133943),
-            tags = "[purge][purge_spellsteal]",
-        }, { -- Captain's Bulwark
-            text = format(L["{spell:%d} buff is cast by {npc:%d}."], 1296671, 137473),
             tags = "[purge][purge_spellsteal]",
         }, { -- Frost Shock
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d} (trash before the third boss)."], 270499, 135239),

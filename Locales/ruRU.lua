@@ -257,6 +257,9 @@ L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] =
   "Избегите {spell:%d}, когда третий босс {npc:%d} кинет топор."
 L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] =
   "Помешайте {npc:%d} достичь вашего лекаря на последнем боссе {npc:%d}."
+-- 1.4.1
+L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. Then interact with them to receive {spell:%d}."] =
+  "Снимите проклятие с {npc:%d}, разбросанных по всему подземелью. Затем взаимодействуйте с ними, чтобы получить {spell:%d}."
 
 -- Profession Dungeon entries
 L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] =

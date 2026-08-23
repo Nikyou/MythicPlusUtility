@@ -1,3 +1,6 @@
+#### 1.4.1
+### Dungeon Entries
+* Added Cursed bones to Altar of Fangs.
 #### 1.4.0
 ### Dungeons
 Added Midnight Season 2 dungeons:

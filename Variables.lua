@@ -82,6 +82,9 @@ Variables.supportedTags = {
     profession_mining = true,
     profession_skinning = true,
     profession_tailoring = true,
+
+    -- extra
+    curse_target = true, -- Remove curse from target, not self
 }
 
 Variables.dungeonGlobals = {}

@@ -237,6 +237,8 @@ L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] =
   "躲避 {spell:%d}，当第三个首领 {npc:%d} 投掷斧头时。"
 L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] =
   "阻止 {npc:%d} 靠近你的治疗，在尾王 {npc:%d} 战斗中。"
+-- 1.4.1
+-- L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. Then interact with them to receive {spell:%d}."] = true -- Translation missing
 
 -- Profession Dungeon entries
 -- L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] = true -- Translation missing

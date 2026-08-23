@@ -153,16 +153,16 @@ MythicPlusUtility.utilityAbilities = {
         [99] = {tags = "[creature_incapacitate]"}, -- Incapacitating Roar
     },
     [102] = {
-        [2782] = {tags = "[curse][poison]"}, -- Remove Corruption
+        [2782] = {tags = "[curse][curse_target][poison]"}, -- Remove Corruption
     }, -- Balance
     [103] = {
-        [2782] = {tags = "[curse][poison]"}, -- Remove Corruption
+        [2782] = {tags = "[curse][curse_target][poison]"}, -- Remove Corruption
     }, -- Feral
     [104] = {
-        [2782] = {tags = "[curse][poison]"}, -- Remove Corruption
+        [2782] = {tags = "[curse][curse_target][poison]"}, -- Remove Corruption
     }, -- Guardian
     [105] = {
-        [392378] = {tags = "[curse][poison]"}, -- Improved Nature's Cure
+        [392378] = {tags = "[curse][curse_target][poison]"}, -- Improved Nature's Cure
     }, -- Restoration
     EVOKER = {
         [357210] = {tags = "[self_only][slow][snare][root][player_movement_immune]", override = 403631, baseline = true}, -- Deep Breath
@@ -172,7 +172,7 @@ MythicPlusUtility.utilityAbilities = {
         }, -- Sleep Walk
         [365585] = {tags = "[poison]", baseline = true}, -- Expunge
         [368970] = {tags = "[creature_stun]", baseline = true}, -- Tail Swipe
-        [374251] = {tags = "[bleed][poison][curse][disease]", baseline = true}, -- Cauterizing Flame
+        [374251] = {tags = "[bleed][poison][curse][curse_target][disease]", baseline = true}, -- Cauterizing Flame
         [374346] = {tags = "[enrage]"}, -- Overawe
         [387341] = {tags = "[creature_slow]"}, -- Walloping Blow
     },
@@ -240,7 +240,7 @@ MythicPlusUtility.utilityAbilities = {
             tags = "[self_only][bleed][charm][curse][disease][enrage][fear][incapacitate][poison][sleep][slow][snare]",
             baseline = true,
         }, -- Ice Block
-        [475] = {tags = "[curse]"}, -- Remove Curse
+        [475] = {tags = "[curse][curse_target]"}, -- Remove Curse
     },
     [62] = {}, -- Arcane
     [63] = {}, -- Fire
@@ -349,13 +349,13 @@ MythicPlusUtility.utilityAbilities = {
     },
     [262] = {
         [51490] = {tags = "[creature_grip]", baseline = true}, -- Thunderstorm
-        [51886] = {tags = "[curse]"}, -- Cleanse Spirit
+        [51886] = {tags = "[curse][curse_target]"}, -- Cleanse Spirit
     }, -- Elemental
     [263] = {
-        [51886] = {tags = "[curse]"}, -- Cleanse Spirit
+        [51886] = {tags = "[curse][curse_target]"}, -- Cleanse Spirit
     }, -- Enhancement
     [264] = {
-        [383016] = {tags = "[curse]"}, -- Improved Purify Spirit
+        [383016] = {tags = "[curse][curse_target]"}, -- Improved Purify Spirit
     }, -- Restoration
     WARLOCK = {
         [19505] = {tags = "[purge]", pet = true, baseline = true}, -- Devour Magic (pet)

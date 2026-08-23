@@ -51,7 +51,7 @@ L["No utility abilities for this dungeon"] = "Aucun utilitaire pour ce donjon"
 
 -- Dungeons
 -- Midnight
--- L["Altar of Fangs"] = true -- Translation missing
+L["Altar of Fangs"] = "Autel des crochets"
 L["Den of Nalorakk"] = "Antre de Nalorakk"
 L["Magisters' Terrace"] = "Terrasse des Magistères"
 L["Maisara Caverns"] = "Cavernes de Maisara"
@@ -198,6 +198,8 @@ L["Stun {npc:%d} on the last boss {npc:%d}."] = "Étourdir {npc:%d} sur le derni
 -- L["Avoid {spell:%d} when the third boss {npc:%d} charges at you."] = true -- Translation missing
 -- L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] = true -- Translation missing
 -- L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] = true -- Translation missing
+-- 1.4.1
+-- L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. Then interact with them to receive {spell:%d}."] = true -- Translation missing
 
 -- Profession Dungeon entries
 -- L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] = true -- Translation missing
