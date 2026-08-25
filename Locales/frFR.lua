@@ -49,30 +49,6 @@ L["No utility abilities for this dungeon"] = "Aucun utilitaire pour ce donjon"
 -- L["Midnight Season 2"] = true -- Translation missing
 -- L["Midnight Season 1"] = true -- Translation missing
 
--- Dungeons
--- Midnight
-L["Altar of Fangs"] = "Autel des crochets"
-L["Den of Nalorakk"] = "Antre de Nalorakk"
-L["Magisters' Terrace"] = "Terrasse des Magistères"
-L["Maisara Caverns"] = "Cavernes de Maisara"
-L["Murder Row"] = "Allée du meurtre"
-L["Nexus-Point Xenas"] = "Point-Nexus Xenas"
-L["The Blinding Vale"] = "Le val Aveuglant"
-L["Voidscar Arena"] = "Arène de la Cicatrice du Vide"
-L["Windrunner Spire"] = "Flèche de Coursevent"
--- Dragonflight
-L["Algeth'ar Academy"] = "Académie d'Algeth'ar"
-L["Ruby Life Pools"] = "Bassins de l’Essence rubis"
--- Battle for Azeroth
-L["Kings' Rest"] = "Repos des rois"
-L["Temple of Sethraliss"] = "Temple de Sephraliss"
--- Legion
-L["Seat of the Triumvirate"] = "Siège du Triumvirat"
--- Warlords of Draenor
-L["Skyreach"] = "Orée-du-Ciel"
--- Wrath of the Lich King
-L["Pit of Saron"] = "Fosse de Saron"
-
 -- Dungeon entries
 L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
   "Le buff {spell:%d} est lancé par {npc:%d} (ennemis avant {npc:%d}). L'incantation peut être interrompue."

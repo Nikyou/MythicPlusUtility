@@ -52,30 +52,6 @@ L["No utility abilities for this dungeon"] =
 L["Midnight Season 2"] = "Midnight Сезон 2"
 L["Midnight Season 1"] = "Midnight Сезон 1"
 
--- Dungeons
--- Midnight
-L["Altar of Fangs"] = "Алтарь Клыков"
-L["Den of Nalorakk"] = "Берлога Налоракка"
-L["Magisters' Terrace"] = "Терраса Магистров"
-L["Maisara Caverns"] = "Пещеры Маисара"
-L["Murder Row"] = "Закоулок душегубов"
-L["Nexus-Point Xenas"] = "Узел Нексуса Зенас"
-L["The Blinding Vale"] = "Слепящая долина"
-L["Voidscar Arena"] = "Арена Шрама Бездны"
-L["Windrunner Spire"] = "Шпили Ветрокрылых"
--- Dragonflight
-L["Algeth'ar Academy"] = "Академия Алгет'ар"
-L["Ruby Life Pools"] = "Рубиновые Омуты Жизни"
--- Battle for Azeroth
-L["Kings' Rest"] = "Гробница королей"
-L["Temple of Sethraliss"] = "Храм Сетралисс"
--- Legion
-L["Seat of the Triumvirate"] = "Престол Триумвирата"
--- Warlords of Draenor
-L["Skyreach"] = "Небесный Путь"
--- Wrath of the Lich King
-L["Pit of Saron"] = "Яма Сарона"
-
 -- Dungeon entries
 L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
   "{spell:%d} бафф, который накладывает {npc:%d} (треш перед {npc:%d}). Также, это заклинание можно прервать."

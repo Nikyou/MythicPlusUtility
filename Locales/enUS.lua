@@ -48,30 +48,6 @@ L["No utility abilities for this dungeon"] = true
 L["Midnight Season 2"] = true
 L["Midnight Season 1"] = true
 
--- Dungeons
--- Midnight
-L["Altar of Fangs"] = true
-L["Den of Nalorakk"] = true
-L["Magisters' Terrace"] = true
-L["Maisara Caverns"] = true
-L["Murder Row"] = true
-L["Nexus-Point Xenas"] = true
-L["The Blinding Vale"] = true
-L["Voidscar Arena"] = true
-L["Windrunner Spire"] = true
--- Dragonflight
-L["Algeth'ar Academy"] = true
-L["Ruby Life Pools"] = true
--- Battle for Azeroth
-L["Kings' Rest"] = true
-L["Temple of Sethraliss"] = true
--- Legion
-L["Seat of the Triumvirate"] = true
--- Warlords of Draenor
-L["Skyreach"] = true
--- Wrath of the Lich King
-L["Pit of Saron"] = true
-
 -- Dungeon entries
 L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] = true
 L["{spell:%d} buff is cast by {npc:%d}."] = true

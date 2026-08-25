@@ -49,30 +49,6 @@ L["Mythic"] = "Mythisch"
 -- L["Midnight Season 2"] = true -- Translation missing
 -- L["Midnight Season 1"] = true -- Translation missing
 
--- Dungeons
--- Midnight
-L["Altar of Fangs"] = "Der Altar der Fänge"
-L["Den of Nalorakk"] = "Nalorakks Bau"
-L["Magisters' Terrace"] = "Terrasse der Magister"
-L["Maisara Caverns"] = "Maisarakavernen"
-L["Murder Row"] = "Mördergasse"
-L["Nexus-Point Xenas"] = "Nexuspunkt Xenas"
-L["The Blinding Vale"] = "Das blendende Tal"
-L["Voidscar Arena"] = "Arena der Leerennarbe"
-L["Windrunner Spire"] = "Windläuferturm"
--- Dragonflight
-L["Algeth'ar Academy"] = "Akademie von Algeth'ar"
-L["Ruby Life Pools"] = "Rubinlebensbecken"
--- Battle for Azeroth
-L["Kings' Rest"] = "Die Königsruh"
-L["Temple of Sethraliss"] = "Der Tempel von Sethraliss"
--- Legion
-L["Seat of the Triumvirate"] = "Der Sitz des Triumvirats"
--- Warlords of Draenor
-L["Skyreach"] = "Himmelsnadel"
--- Wrath of the Lich King
-L["Pit of Saron"] = "Grube von Saron"
-
 -- Dungeon entries
 L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
   "Zauber {spell:%d} wird von {npc:%d} gewirkt (Trash vor {npc:%d}). Dieser Zauber kann auch unterbrochen werden."

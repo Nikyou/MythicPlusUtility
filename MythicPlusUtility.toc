@@ -36,8 +36,8 @@ Libs\LibDBIcon-1.0\lib.xml
 Locales.xml
 
 Core.lua
-Variables.lua
 UtilityFunctions.lua
+Variables.lua
 Options.lua
 Profiles.lua
 SpellsData.lua
