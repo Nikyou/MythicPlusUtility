@@ -108,6 +108,20 @@ function MythicPlusUtility:GetNpcNameById(npcId)
     return ""
 end
 
+function MythicPlusUtility:GetZoneNameByInstanceId(instanceID)
+    local db = self.db.locale
+    if db.instanceIDToZoneName[instanceID] and db.instanceIDToZoneName[instanceID] ~= "" then
+        return db.instanceIDToZoneName[instanceID]
+    else
+        local zoneName = GetRealZoneText(instanceID)
+        if zoneName then
+            db.spellIdToIconId[instanceID] = zoneName
+            return zoneName
+        end
+    end
+    return ""
+end
+
 function MythicPlusUtility:GetNpcHyperlinkById(npcId)
     local db = self.db.locale
     if (db.npcIdToHyperlink[npcId]) and (not string.find(db.npcIdToHyperlink[npcId], "|h%[%]|h|r")) then

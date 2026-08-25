@@ -929,7 +929,7 @@ function MythicPlusUtility:SetValueUpdatePosition(info, value)
 end
 
 function MythicPlusUtility:GetValueInstance(info)
-    return Variables.dungeonGlobals.dungeonIdToName[self.db.profile.instanceID] and self.db.profile.instanceID
+    return Variables.dungeonGlobals.dungeonList[self.db.profile.instanceID] and self.db.profile.instanceID
              or Variables.dungeonGlobals.defaultDungeonId
 end
 

@@ -92,29 +92,29 @@ Variables.dungeonGlobals.currentSeason = "12.1"
 Variables.dungeonGlobals.seasons = {["12.1"] = L["Midnight Season 2"], ["12.0"] = L["Midnight Season 1"]}
 Variables.dungeonGlobals.seasonsOrder = {"12.1", "12.0"}
 Variables.dungeonGlobals.defaultDungeonId = 2993
-Variables.dungeonGlobals.dungeonIdToName = {
+Variables.dungeonGlobals.dungeonList = {
     -- Midnight
-    [2993] = L["Altar of Fangs"],
-    [2825] = L["Den of Nalorakk"],
-    [2811] = L["Magisters' Terrace"],
-    [2874] = L["Maisara Caverns"],
-    [2813] = L["Murder Row"],
-    [2915] = L["Nexus-Point Xenas"],
-    [2859] = L["The Blinding Vale"],
-    [2923] = L["Voidscar Arena"],
-    [2805] = L["Windrunner Spire"],
+    [2993] = true, -- Altar of Fangs
+    [2825] = true, -- Den of Nalorakk
+    [2811] = true, -- Magisters' Terrace
+    [2874] = true, -- Maisara Caverns
+    [2813] = true, -- Murder Row
+    [2915] = true, -- Nexus-Point Xenas
+    [2859] = true, -- The Blinding Vale
+    [2923] = true, -- Voidscar Arena
+    [2805] = true, -- Windrunner Spire
     -- Dragonflight
-    [2526] = L["Algeth'ar Academy"],
-    [2521] = L["Ruby Life Pools"],
+    [2526] = true, -- Algeth'ar Academy
+    [2521] = true, -- Ruby Life Pools
     -- Battle for Azeroth
-    [1762] = L["Kings' Rest"],
-    [1877] = L["Temple of Sethraliss"],
+    [1762] = true, -- Kings' Rest
+    [1877] = true, -- Temple of Sethraliss
     -- Legion
-    [1753] = L["Seat of the Triumvirate"],
+    [1753] = true, -- Seat of the Triumvirate
     -- Warlords of Draenor
-    [1209] = L["Skyreach"],
+    [1209] = true, -- Skyreach
     -- Wrath of the Lich King
-    [658] = L["Pit of Saron"],
+    [658] = true, -- Pit of Saron
 }
 Variables.dungeonGlobals.dungeonListBySeasonOrder = {
     ["12.0"] = {2526, 2811, 2874, 2915, 658, 1753, 1209, 2805},
@@ -124,11 +124,6 @@ Variables.dungeonGlobals.dungeonListBySeason = {
     ["12.0"] = {[2526] = "", [2811] = "", [2874] = "", [2915] = "", [658] = "", [1753] = "", [1209] = "", [2805] = ""},
     ["12.1"] = {[2813] = "", [2825] = "", [2859] = "", [2923] = "", [2993] = "", [2521] = "", [1877] = "", [1762] = ""},
 }
-local dungeonIdToName = Variables.dungeonGlobals.dungeonIdToName
-local dungeonListBySeason = Variables.dungeonGlobals.dungeonListBySeason
-for season, list in pairs(Variables.dungeonGlobals.dungeonListBySeason) do
-    for id, _ in pairs(list) do if dungeonIdToName[id] then dungeonListBySeason[season][id] = dungeonIdToName[id] end end
-end
 
 Variables.globals = {
     labelListOrder = {"default", "defaultText", "custom", "none"},

@@ -59,6 +59,7 @@ function MythicPlusUtility:MigrateOldSettings()
         db.generalSettings.difficultyID = db.difficultyID
         db.difficultyID = nil
     end
+    if not self.db.locale.instanceIDToZoneName then self.db.locale.instanceIDToZoneName = {} end
 end
 
 function MythicPlusUtility:RefreshConfig()
@@ -171,11 +172,12 @@ function MythicPlusUtility:CheckLocalisation()
     self.db.global.buildNumber = (select(2, GetBuildInfo()))
     if (not self.db.locale.buildNumber) or (self.db.locale.buildNumber ~= self.db.global.buildNumber) then
         self.db.locale.buildNumber = self.db.global.buildNumber
-        self.db.locale.spellIdToName = {}
+        self.db.locale.instanceIDToZoneName = {}
+        self.db.locale.npcIdToHyperlink = {}
+        self.db.locale.npcIdToName = {}
         self.db.locale.spellIdToHyperlink = {}
         self.db.locale.spellIdToIconId = {}
-        self.db.locale.npcIdToName = {}
-        self.db.locale.npcIdToHyperlink = {}
+        self.db.locale.spellIdToName = {}
     end
     self:PopulateLocalisation()
     C_Timer.NewTimer(0.5, function() MythicPlusUtility:PopulateLocalisation() end)
@@ -205,6 +207,10 @@ function MythicPlusUtility:PopulateLocalisation()
         self:GetSpellNameById(spellId)
         self:GetSpellIconById(spellId)
         self:GetSpellHyperlinkById(spellId)
+    end
+    local dungeonListBySeason = Variables.dungeonGlobals.dungeonListBySeason
+    for season, list in pairs(Variables.dungeonGlobals.dungeonListBySeason) do
+        for id, _ in pairs(list) do dungeonListBySeason[season][id] = self:GetZoneNameByInstanceId(id) end
     end
 end
 
