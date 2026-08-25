@@ -238,7 +238,8 @@ L["Avoid {spell:%d} when the third boss {npc:%d} throws an axe."] =
 L["Prevent {npc:%d} from reaching your healer on the last boss {npc:%d}."] =
   "阻止 {npc:%d} 靠近你的治疗，在尾王 {npc:%d} 战斗中。"
 -- 1.4.1
--- L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. Then interact with them to receive {spell:%d}."] = true -- Translation missing
+L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. Then interact with them to receive {spell:%d}."] =
+  "为散布在地下城各处的 {npc:%d} 驱散诅咒，然后与其互动，以获得 {spell:%d}。"
 
 -- Profession Dungeon entries
 L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] =
@@ -285,7 +286,7 @@ L["Glow Color"] = "发光颜色"
 L["Glow Settings"] = "发光设置"
 L["Glow Type"] = "发光类型"
 L["Icon Color"] = "图标颜色"
-L["Icon Cosmetics Settings"] = "图标外观设置"
+L["Icon Cosmetics Settings"] = "技能分类外观设置"
 L["Icon"] = "图标"
 L["Ignore"] = "忽略"
 L["Known Not Important"] = "已学习（不重要）"
