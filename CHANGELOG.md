@@ -1,3 +1,6 @@
+#### 1.4.2
+### Localisation
+* Updated Simplified and Traditional Chinese localisation. Thanks, Ye11ow!
 #### 1.4.1
 ### Dungeon Entries
 * Added Cursed bones to Altar of Fangs.

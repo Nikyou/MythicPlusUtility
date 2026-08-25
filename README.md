@@ -60,6 +60,7 @@ Logo: [esiaart](https://x.com/esiaart)
 Thanks to Tactyks and his [M+ Ability Tracking Sheet](https://docs.google.com/spreadsheets/d/1gI8-pZVc5LluzupXtsuNOT6Q7LMTu-rD3v2IJhewakY) for information about dungeon abilities.
 
 Localisation:
-* German - Feedy88
 * French - kaelmnop, latnm, Gicade
+* German - Feedy88
 * Simplified Chinese - Ye11ow
+* Traditional Chinese - Ye11ow

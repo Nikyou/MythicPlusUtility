@@ -49,30 +49,6 @@ L["No utility abilities for this dungeon"] = "該地城沒有功能性技能"
 L["Midnight Season 2"] = "至暗之夜 第2賽季"
 L["Midnight Season 1"] = "至暗之夜 第1賽季"
 
--- Dungeons
--- Midnight
-L["Altar of Fangs"] = "毒牙祭壇"
-L["Den of Nalorakk"] = "納羅拉克之穴"
-L["Magisters' Terrace"] = "博學者殿堂"
-L["Maisara Caverns"] = "梅薩拉洞穴"
-L["Murder Row"] = "兇殺路"
-L["Nexus-Point Xenas"] = "奧核點瑟納斯"
-L["The Blinding Vale"] = "盲目谷地"
-L["Voidscar Arena"] = "虛無之痕競技場"
-L["Windrunner Spire"] = "風行者塔"
--- Dragonflight
-L["Algeth'ar Academy"] = "阿爾蓋薩學院"
-L["Ruby Life Pools"] = "晶紅生命之池"
--- Battle for Azeroth
-L["Kings' Rest"] = "諸王之眠"
-L["Temple of Sethraliss"] = "瑟沙利斯神廟"
--- Legion
-L["Seat of the Triumvirate"] = "三傑議會之座"
--- Warlords of Draenor
-L["Skyreach"] = "擎天峰"
--- Wrath of the Lich King
-L["Pit of Saron"] = "薩倫之淵"
-
 -- Dungeon entries
 L["{spell:%d} buff is cast by {npc:%d} (trash before {npc:%d}). Also, this cast can be interrupted."] =
   "{spell:%d} buff由 {npc:%d} 施放（{npc:%d} 前的小怪），該施法可被打斷。"
