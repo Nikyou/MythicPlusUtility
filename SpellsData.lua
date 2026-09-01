@@ -68,6 +68,7 @@ MythicPlusUtility.classSpecialisations = {
 }
 
 MythicPlusUtility.utilityAbilitiesProfessions = {
+    [104381] = {tags = "[profession_cooking]", profession = true}, -- Cooking
     [131474] = {tags = "[profession_fishing]", profession = true}, -- Fishing
     [195127] = {tags = "[profession_archaeology]", profession = true}, -- Archaeology
     [2018] = {tags = "[profession_blacksmithing]", profession = true}, -- Blacksmithing
@@ -75,7 +76,6 @@ MythicPlusUtility.utilityAbilitiesProfessions = {
     [2259] = {tags = "[profession_alchemy]", profession = true}, -- Alchemy
     [2366] = {tags = "[profession_herbalism]", profession = true}, -- Herbalism
     [25229] = {tags = "[profession_jewelcrafting]", profession = true}, -- Jewelcrafting	
-    [2550] = {tags = "[profession_cooking]", profession = true}, -- Cooking
     [2575] = {tags = "[profession_mining]", profession = true}, -- Mining
     [3908] = {tags = "[profession_tailoring]", profession = true}, -- Tailoring
     [4036] = {tags = "[profession_engineering]", profession = true}, -- Engineering
