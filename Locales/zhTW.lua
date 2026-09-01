@@ -218,10 +218,11 @@ L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. T
   "為散布在地城各處的 {npc:%d} 驅散詛咒，然後與其互動，以獲得 {spell:%d}。"
 
 -- Profession Dungeon entries
-L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] =
-  "與通往第一個首領路上兩堆蘋果後方的 {npc:%d} 互動，以獲得 {spell:%d}"
-L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"] =
-  "與通往第一個首領路旁小平臺上的 {npc:%d} 互動，以獲得 {spell:%d}"
+-- L["After the second boss, go up the stairs to the {npc:%d} mini-boss room and interact with {npc:%d} in the top left corner next to the serpent eggs for {spell:%d}."] = true -- Translation missing
+L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}."] =
+  "與通往第一個首領路上兩堆蘋果後方的 {npc:%d} 互動，以獲得 {spell:%d}。"
+L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}."] =
+  "與通往第一個首領路旁小平臺上的 {npc:%d} 互動，以獲得 {spell:%d}。"
 
 -- Icon Cosmetics Settings
 L["\"Add Optional\""] = "建議學會（可選）"

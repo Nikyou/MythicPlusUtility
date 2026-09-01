@@ -18,6 +18,11 @@ MythicPlusUtility.instancesData = {
         }, { -- Paralyzing Shots
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1294569, 272271),
             tags = "[important][snare][slow][magic_debuff]",
+        }, { -- Mutating Elixir (Prof)
+            text = format(
+              L["After the second boss, go up the stairs to the {npc:%d} mini-boss room and interact with {npc:%d} in the top left corner next to the serpent eggs for {spell:%d}."],
+              261573, 272278, 1310012),
+            tags = "[important][profession_alchemy][profession_cooking]",
         }, { -- Cursed Bones NPC
             text = format(
               L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. Then interact with them to receive {spell:%d}."],
@@ -70,7 +75,7 @@ MythicPlusUtility.instancesData = {
             tags = "[important][curse]",
         }, { -- Warding Incense (Prof)
             text = format(
-              L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"],
+              L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}."],
               257419, 1271545),
             tags = "[important][profession_alchemy]",
         }, { -- Bestial Wrath
@@ -249,15 +254,15 @@ MythicPlusUtility.instancesData = {
     [2521] = { -- Ruby Life Pools
         -- Boss
         -- Trash
-        { -- Flaming Barrage
+        { -- Blaze of Glory
+            text = format(L["{spell:%d} buff on {npc:%d} (trash before {npc:%d})."], 373972, 190207, 189232),
+            tags = "[super_important][purge][purge_spellsteal]",
+        }, { -- Flaming Barrage
             text = format(L["{spell:%d} is channeled by {npc:%d} (trash before {npc:%d})."], 385536, 190206, 189232),
             tags = "[important][creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_humanoid]",
         }, { -- Inferno
             text = format(L["Avoid {spell:%d} when {npc:%d} casts on last seconds."], 373692, 190034),
             tags = "[important][targeted_avoid]",
-        }, { -- Blaze of Glory
-            text = format(L["{spell:%d} buff on {npc:%d} (trash before {npc:%d})."], 373972, 190207, 189232),
-            tags = "[purge][purge_spellsteal]",
         }, { -- Blazing Rush
             text = format(
               L["{spell:%d} debuff is inflicted by {npc:%d} (trash before {npc:%d}). Also, this debuff can be avoided."], 372796,
@@ -351,7 +356,7 @@ MythicPlusUtility.instancesData = {
             text = format(L["Avoid {spell:%d} when {npc:%d} starts channeling."], 1238368, 245513),
             tags = "[important][targeted_avoid]",
         }, { -- Flourishing Stride (Prof)
-            text = format(L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"],
+            text = format(L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}."],
                           255650, 1265942),
             tags = "[important][profession_herbalism]",
         }, { -- Potad-Toss

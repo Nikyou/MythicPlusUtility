@@ -238,9 +238,11 @@ L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. T
   "Снимите проклятие с {npc:%d}, разбросанных по всему подземелью. Затем взаимодействуйте с ними, чтобы получить {spell:%d}."
 
 -- Profession Dungeon entries
-L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] =
+L["After the second boss, go up the stairs to the {npc:%d} mini-boss room and interact with {npc:%d} in the top left corner next to the serpent eggs for {spell:%d}."] =
+  "После второго босса поднимитесь по лестнице в комнату с мини-боссом {npc:%d} и взаимодействуйте с {npc:%d} в верхнем левом углу рядом с змеиными яйцами, чтобы получить {spell:%d}."
+L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}."] =
   "Взаимодействуйте с {npc:%d}, расположенным сразу за двумя связками яблок, ведущими к первому боссу, чтобы получить {spell:%d}."
-L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"] =
+L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}."] =
   "Взаимодействуйте с {npc:%d}, расположенным на небольшой смотровой площадке, ведущей к первому боссу, чтобы получить {spell:%d}."
 
 -- Icon Cosmetics Settings

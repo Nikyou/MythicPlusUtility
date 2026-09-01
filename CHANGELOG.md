@@ -1,3 +1,7 @@
+#### 1.4.3
+### Dungeon Entries
+* Added Mutating Elixir proffession buff to Altar of Fangs.
+* Changed priority for Blaze of Glory purge in Ruby Life Pools to super important.
 #### 1.4.2
 ### Localisation
 * Updated Simplified and Traditional Chinese localisation. Thanks, Ye11ow!

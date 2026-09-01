@@ -178,8 +178,9 @@ L["Stun {npc:%d} on the last boss {npc:%d}."] = "Étourdir {npc:%d} sur le derni
 -- L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. Then interact with them to receive {spell:%d}."] = true -- Translation missing
 
 -- Profession Dungeon entries
--- L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}"] = true -- Translation missing
--- L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}"] = true -- Translation missing
+-- L["After the second boss, go up the stairs to the {npc:%d} mini-boss room and interact with {npc:%d} in the top left corner next to the serpent eggs for {spell:%d}."] = true -- Translation missing
+-- L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}."] = true -- Translation missing
+-- L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}."] = true -- Translation missing
 
 -- Icon Cosmetics Settings
 L["\"Add Optional\""] = "\"Ajouter (optionnel)\""
