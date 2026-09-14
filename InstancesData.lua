@@ -315,7 +315,7 @@ MythicPlusUtility.instancesData = {
             tags = "[poison][magic_debuff]",
         }, { -- Essence Disruption
             text = format(L["{spell:%d} is channeled by {npc:%d}. Also, this channel can be interrupted."], 1303535, 269227),
-            tags = "[creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_humanoid]",
+            tags = "[creature_stun][creature_fear][creature_incapacitate][creature_grip][cc_humanoid][cast_cc_humanoid][cc_cyclone]",
         }, { -- Poisoned Cheap Shot
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."], 1308100, 134602),
             tags = "[poison][magic_debuff]",

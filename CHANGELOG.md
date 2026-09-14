@@ -1,3 +1,6 @@
+#### 1.4.4
+### Dungeon Entries
+* Added CC tags to Essence Disruption in Temple of Sethraliss.
 #### 1.4.3
 ### Dungeon Entries
 * Added Mutating Elixir proffession buff to Altar of Fangs.
