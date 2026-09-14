@@ -218,7 +218,8 @@ L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. T
   "为散布在地下城各处的 {npc:%d} 驱散诅咒，然后与其互动，以获得 {spell:%d}。"
 
 -- Profession Dungeon entries
--- L["After the second boss, go up the stairs to the {npc:%d} mini-boss room and interact with {npc:%d} in the top left corner next to the serpent eggs for {spell:%d}."] = true -- Translation missing
+L["After the second boss, go up the stairs to the {npc:%d} mini-boss room and interact with {npc:%d} in the top left corner next to the serpent eggs for {spell:%d}."] =
+  "击败第二个首领后，前往 {npc:%d} 小首领房间，与左上角蛇蛋旁的 {npc:%d} 互动，以获得 {spell:%d}。"
 L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}."] =
   "与通往第一个首领路上两堆苹果后方的 {npc:%d} 互动，以获得 {spell:%d}。"
 L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}."] =
