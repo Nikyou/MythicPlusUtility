@@ -1,3 +1,6 @@
+#### 1.4.5
+### Fixes
+* Added a check for secret value before comparing NPC name.
 #### 1.4.4
 ### Dungeon Entries
 * Added CC tags to Essence Disruption in Temple of Sethraliss.

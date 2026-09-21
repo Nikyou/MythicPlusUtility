@@ -81,10 +81,11 @@ function MythicPlusUtility:IconToChatIcon(iconId) return format("|T%s:0:0:0:0|t"
 
 function MythicPlusUtility:GetNpcNameById(npcId)
     local db = self.db.locale
-    if db.npcIdToName[npcId] and db.npcIdToName[npcId] ~= "" then
-        return db.npcIdToName[npcId]
+    local name = db.npcIdToName[npcId]
+    if name and (issecretvalue(name) or name ~= "") then
+        return name
     elseif Variables.npcIdToEncounterSectionId[npcId] then
-        local name = ""
+        name = ""
         local info = C_EncounterJournal.GetSectionInfo(Variables.npcIdToEncounterSectionId[npcId])
         if info and info.title then name = info.title end
         db.npcIdToName[npcId] = name
@@ -94,7 +95,7 @@ function MythicPlusUtility:GetNpcNameById(npcId)
         local guid = format("Creature-0-0-0-0-%s-0", npcId)
         local tooltipData = C_TooltipInfo.GetHyperlink(format("unit:%s", guid))
         if tooltipData then
-            local name
+            name = ""
             for _, line in pairs(tooltipData.lines) do
                 if line.type == Enum.TooltipDataLineType.UnitName then
                     name = line.leftText;
