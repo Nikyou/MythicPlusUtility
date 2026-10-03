@@ -1,3 +1,6 @@
+#### 1.4.6
+### Dungeon Entries
+* Murder Row: Zaen Bladesorrow is now shown as second boss.
 #### 1.4.5
 ### Fixes
 * Added a check for secret value before comparing NPC name.

@@ -203,10 +203,10 @@ MythicPlusUtility.instancesData = {
     [2813] = { -- Murder Row
         -- Boss
         { -- Heartstop Poison
-            text = format(L["{spell:%d} debuff is inflicted by the first boss {npc:%d}."], 474515, 234649),
+            text = format(L["{spell:%d} debuff is inflicted by the second boss {npc:%d}."], 474515, 234649),
             tags = "[important][poison][magic_debuff]",
         }, { -- Murder in a Row
-            text = format(L["{spell:%d} debuff is inflicted by the first boss {npc:%d}. Also, this debuff can be avoided."],
+            text = format(L["{spell:%d} debuff is inflicted by the second boss {npc:%d}. Also, this debuff can be avoided."],
                           474740, 234649),
             tags = "[bleed][physical_debuff]",
         }, -- Trash
