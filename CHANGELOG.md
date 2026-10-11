@@ -1,3 +1,6 @@
+#### 1.4.7
+### Dungeon Entries
+* Kings' Rest: Serpent Strike is now not a snare effect (still a slow effect).
 #### 1.4.6
 ### Dungeon Entries
 * Murder Row: Zaen Bladesorrow is now shown as second boss.

@@ -191,7 +191,7 @@ MythicPlusUtility.instancesData = {
             tags = "[fear][magic_debuff]",
         }, { -- Serpent Strike
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}."], 1306763, 137486),
-            tags = "[poison][snare][slow][magic_debuff]",
+            tags = "[poison][slow][magic_debuff]",
         }, { -- Shadowfrost Bolt
             text = format(L["{spell:%d} debuff is inflicted by {npc:%d}. Also, this cast can be interrupted."], 1294815, 134174),
             tags = "[snare][slow][magic_debuff]",
