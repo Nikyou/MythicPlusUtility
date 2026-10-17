@@ -7,7 +7,7 @@ local SpellSettings = {}
 MythicPlusUtility.SpellSettings = SpellSettings
 
 local NOTICE_MAX_LINES = 12
-local LOGO_SIZE = 40
+local LOGO_SIZE = 50
 local LOGO_X_OFFSET = 0
 local LOGO_Y_OFFSET = 2
 
