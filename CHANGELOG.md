@@ -1,3 +1,14 @@
+#### 1.5.0
+### New: Ability Settings
+Added Ability Settings under Mythic Plus Utility settings (`/mpu spells` or `/mpu abilities`):
+* Class Abilities, Racials, and Professions: customise an ability to hide it or change its tags, replaced spell, alternative spells, and baseline.
+* Custom Abilities: add your own abilities for a class, a specialisation, or all classes.
+* Import / Export of ability settings, with Merge or Replace.
+* A notice when the default values of an ability you customised were updated.
+### Fixes
+* Talent highlight is no longer shown on talents of an inspected player.
+### Miscellaneous
+* TOC bump.
 #### 1.4.7
 ### Dungeon Entries
 * Kings' Rest: Serpent Strike is now not a snare effect (still a slow effect).

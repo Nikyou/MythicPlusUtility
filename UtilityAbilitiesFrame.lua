@@ -284,7 +284,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
                 local button = self.buttons[id]
                 button:Show()
 
-                button.list = MythicPlusUtility:tablecopy(currentAbility.list)
+                button.list = currentAbility.list
                 button.hasImportant = currentAbility.hasImportant
                 button.buttonType = currentAbility.buttonType
 
@@ -372,7 +372,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
                 local button = CreateFrame("Button", nil, self)
                 button:SetSize(textAndIcon.icon.size, textAndIcon.icon.size)
 
-                button.list = MythicPlusUtility:tablecopy(currentAbility.list)
+                button.list = currentAbility.list
                 button.hasImportant = currentAbility.hasImportant
                 button.buttonType = currentAbility.buttonType
 
@@ -576,7 +576,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     end
 
     function frame:UpdateIconSize(updateLayout)
-        updateLayout = updateLayout or true
+        if updateLayout == nil then updateLayout = true end
 
         if #self.buttons > 0 then
             for _, button in ipairs(self.buttons) do
@@ -588,7 +588,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     end
 
     function frame:UpdateText(parent, updateLayout)
-        updateLayout = updateLayout or true
+        if updateLayout == nil then updateLayout = true end
         if not parent then
             self:UpdateText("icon", updateLayout)
             self:UpdateText("dungeonName", updateLayout)
@@ -647,7 +647,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
             local flagsDB = ""
             if bodyDB.labelOutline ~= "NONE" then flagsDB = bodyDB.labelOutline end
 
-            self.listEmptyText:SetFont(LSM:Fetch("font", fontFileDB), bodyDB.labelSize, flagsDB)
+            self.listEmptyText:SetFont(fontFileDB, bodyDB.labelSize, flagsDB)
             if #self.buttons > 0 then
                 for _, button in ipairs(self.buttons) do
                     for _, line in ipairs(button.listFrame.lines) do
@@ -679,7 +679,7 @@ function MythicPlusUtility:UtilityAbilitiesFrame()
     end
 
     function frame:UpdateTextWrap(updateLayout)
-        updateLayout = updateLayout or true
+        if updateLayout == nil then updateLayout = true end
         buttonsIndices = MythicPlusUtility:GetbuttonsIndices()
 
         self.dungeonNameText:SetWidth(windowSettings.width - 2 * CLOSE_BUTTON_SIZE - TEXT_WRAP_PADDING)

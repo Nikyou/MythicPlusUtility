@@ -36,12 +36,14 @@ Libs\LibDBIcon-1.0\lib.xml
 Locales.xml
 
 Core.lua
-UtilityFunctions.lua
 Variables.lua
+UtilityFunctions.lua
 Options.lua
 Profiles.lua
 SpellsData.lua
 InstancesData.lua
+SpellSettings.lua
+SpellSettingsOptions.lua
 UtilityAbilitiesFrame.lua
 MinimapIcon.lua
 TalentFrameHighlight.lua

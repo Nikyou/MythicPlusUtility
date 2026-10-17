@@ -12,6 +12,7 @@ https://www.curseforge.com/wow/addons/mythic-plus-utility-mpu
 * `/mpu show` - opens Utility Window for selected dungeon in settings
 * `/mpu minimap` - toggles Minimap Button
 * `/mpu profile` - opens profile settings out of combat
+* `/mpu spells` or `/mpu abilities` - opens ability settings out of combat
 
 ## Key Features
 
@@ -29,6 +30,12 @@ https://www.curseforge.com/wow/addons/mythic-plus-utility-mpu
   * Add - Currently not known abilities that will be useful in this dungeon.
   * Add Not Important - Currently not known abilities that will be useful in this dungeon and only contain dungeon entries that are marked with *?*. If disabled, "Add" settings will be used.
   * Remove - Talents that can be unlearned for this dungeon. Does not check if the talent is a prerequisite for another talent that is needed.
+* Talent highlight in the talent window for abilities shown in the Utility Window
+* Ability Settings:
+  * Customise class abilities, racials, and professions: hide an ability or change its tags, replaced spell, alternative spells, and baseline
+  * Add custom abilities for a class, a specialisation, or all classes
+  * Import and export ability settings separately from the profile
+  * A notice when the default values of an ability you customised were updated
 
 ## Not included
 
@@ -39,8 +46,6 @@ https://www.curseforge.com/wow/addons/mythic-plus-utility-mpu
 
 ## To Do
 
-* An option to disable specific spells from showing in the window
-* An option to add custom abilities
 * An option to add custom dungeon entries
 
 ## Localisation

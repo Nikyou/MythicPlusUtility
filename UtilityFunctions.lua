@@ -8,31 +8,46 @@ function MythicPlusUtility:GetbuttonsIndices()
     end
 end
 
-function MythicPlusUtility:InitializeFrames()
-    self.Frame = self:UtilityAbilitiesFrame()
-    MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
-    MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
-    MythicPlusUtility.TalentFrameHighlight:ShowRelevant()
-end
+function MythicPlusUtility:InitializeFrames() self.Frame = self:UtilityAbilitiesFrame() end
 
 function MythicPlusUtility:IsSpellKnownHandler(spellId, isPet)
-    isPet = isPet or false
-    local known = false
-
-    if isPet then
-        known = C_SpellBook.IsSpellInSpellBook(spellId, 1)
-    else
-        known = C_SpellBook.IsSpellKnown(spellId)
-    end
-
-    return known
+    if isPet then return C_SpellBook.IsSpellInSpellBook(spellId, Enum.SpellBookSpellBank.Pet) end
+    return C_SpellBook.IsSpellKnown(spellId)
 end
 
-function MythicPlusUtility:tablecopy(tbl)
-    if type(tbl) ~= "table" then return tbl end
-    local t = {}
-    for i, v in pairs(tbl) do t[i] = self:tablecopy(v) end
-    return t
+function MythicPlusUtility:UpdateKnownState(entry)
+    entry.isKnown = false
+    entry.altSpellId = nil
+
+    if entry.alternatives then
+        for _, subSpellId in ipairs(entry.alternatives) do
+            if self:IsSpellKnownHandler(subSpellId, entry.pet) then
+                entry.isKnown = true
+                entry.altSpellId = subSpellId
+                break
+            end
+        end
+    end
+    if not entry.isKnown then entry.isKnown = self:IsSpellKnownHandler(entry.spellId, entry.pet) end
+
+    entry.spellName = self:GetSpellNameById(entry.altSpellId or entry.spellId)
+end
+
+function MythicPlusUtility:ParseTags(tags, withImportance)
+    local tagsTable = {}
+
+    for tag in string.gmatch(tags or "", "%[([^%[%]]+)%]") do
+        if Variables.supportedTags[tag] then
+            tagsTable[tag] = true
+        elseif withImportance and tag == "important" then
+            tagsTable.important = true
+        elseif withImportance and tag == "super_important" then
+            tagsTable.super_important = true
+            tagsTable.important = true
+        end
+    end
+
+    return tagsTable
 end
 
 function MythicPlusUtility:GetSpellNameById(spellId)
@@ -102,6 +117,7 @@ function MythicPlusUtility:GetNpcNameById(npcId)
                     break
                 end
             end
+            if issecretvalue(name) then return "" end
             db.npcIdToName[npcId] = name
             return name
         end
@@ -116,7 +132,7 @@ function MythicPlusUtility:GetZoneNameByInstanceId(instanceID)
     else
         local zoneName = GetRealZoneText(instanceID)
         if zoneName then
-            db.spellIdToIconId[instanceID] = zoneName
+            db.instanceIDToZoneName[instanceID] = zoneName
             return zoneName
         end
     end
@@ -125,11 +141,12 @@ end
 
 function MythicPlusUtility:GetNpcHyperlinkById(npcId)
     local db = self.db.locale
-    if (db.npcIdToHyperlink[npcId]) and (not string.find(db.npcIdToHyperlink[npcId], "|h%[%]|h|r")) then
-        return db.npcIdToHyperlink[npcId]
+    local hyperlink = db.npcIdToHyperlink[npcId]
+    if hyperlink and not issecretvalue(hyperlink) and not string.find(hyperlink, "|h%[%]|h|r") then
+        return hyperlink
     else
         local npcName = self:GetNpcNameById(npcId)
-        if npcName then
+        if npcName and not issecretvalue(npcName) then
             db.npcIdToHyperlink[npcId] = format("|cffffd100|Hunit:Creature-0-0-0-0-%s-0:%s|h[%s]|h|r", npcId, npcName, npcName)
             return db.npcIdToHyperlink[npcId]
         end
@@ -137,82 +154,36 @@ function MythicPlusUtility:GetNpcHyperlinkById(npcId)
     return ""
 end
 
-function MythicPlusUtility:ExtractSpellIdsFromInstanceData(instanceID)
-    local function extract(entry)
-        entry.spellIds = {}
-        local i = 0
+local function ExtractIds(text, idType)
+    local ids = {}
+    for id in string.gmatch(text, "{" .. idType .. ":(%d+)}") do ids[tonumber(id)] = true end
+    return ids
+end
 
-        while true do
-            local n, j = string.find(entry.text, "{spell:%d+}", i + 1)
-            if n == nil then break end
-            local substring = string.sub(entry.text, n, j)
-            local spellId = tonumber(string.sub(substring, string.find(substring, "%d+")))
+function MythicPlusUtility:ForEachInstanceEntry(instanceID, func)
+    if not instanceID then
+        for _, instance in pairs(self.instancesData) do for _, entry in pairs(instance) do func(entry) end end
+    else
+        for _, entry in pairs(self.instancesData[instanceID]) do func(entry) end
+    end
+end
+
+function MythicPlusUtility:ExtractInstanceData(instanceID)
+    self:ForEachInstanceEntry(instanceID, function(entry)
+        entry.spellIds = ExtractIds(entry.text, "spell")
+        entry.npcIds = ExtractIds(entry.text, "npc")
+        entry.tagsTable = self:ParseTags(entry.tags, true)
+
+        for spellId, _ in pairs(entry.spellIds) do
             self:GetSpellNameById(spellId)
             self:GetSpellIconById(spellId)
-            entry.spellIds[spellId] = true
-            i = j
         end
-    end
-
-    if not instanceID then
-        for _, instance in pairs(self.instancesData) do for _, entry in pairs(instance) do extract(entry) end end
-    else
-        for _, entry in pairs(self.instancesData[instanceID]) do extract(entry) end
-    end
+        for npcId, _ in pairs(entry.npcIds) do self:GetNpcNameById(npcId) end
+    end)
 end
 
-function MythicPlusUtility:ExtractNpcIdsFromInstanceData(instanceID)
-    local function extract(entry)
-        entry.npcIds = {}
-        local i = 0
-
-        while true do
-            local n, j = string.find(entry.text, "{npc:%d+}", i + 1)
-            if n == nil then break end
-            local substring = string.sub(entry.text, n, j)
-            local npcId = tonumber(string.sub(substring, string.find(substring, "%d+")))
-            self:GetNpcNameById(npcId)
-            entry.npcIds[npcId] = true
-            i = j
-        end
-    end
-
-    if not instanceID then
-        for _, instance in pairs(self.instancesData) do for _, entry in pairs(instance) do extract(entry) end end
-    else
-        for _, entry in pairs(self.instancesData[instanceID]) do extract(entry) end
-    end
-end
-function MythicPlusUtility:ExtractTagsFromInstanceData(instanceID)
-    local function extract(entry)
-        entry.tagsTable = {}
-        local i = 0
-
-        while true do
-            local n, j = string.find(entry.tags, "%b[]", i + 1)
-            if n == nil then break end
-            local substring = string.sub(entry.tags, n, j)
-            local tag = string.sub(substring, string.find(substring, "[^%[%]]+"))
-
-            if Variables.supportedTags[tag] or tag == "important" then
-                entry.tagsTable[tag] = true
-            elseif tag == "super_important" then
-                entry.tagsTable[tag] = true
-                entry.tagsTable.important = true
-            end
-
-            i = j
-        end
-    end
-
-    if not instanceID then
-        for _, instance in pairs(self.instancesData) do for _, entry in pairs(instance) do extract(entry) end end
-    else
-        for _, entry in pairs(self.instancesData[instanceID]) do extract(entry) end
-    end
-end
 function MythicPlusUtility:FormatInstanceDataString(instanceID)
-    local function format(entry)
+    self:ForEachInstanceEntry(instanceID, function(entry)
         entry.formattedText = entry.text
 
         for spellId, _ in pairs(entry.spellIds) do
@@ -229,88 +200,14 @@ function MythicPlusUtility:FormatInstanceDataString(instanceID)
         if entry.tagsTable.super_important then
             entry.formattedText = CreateAtlasMarkup("QuestNormal") .. entry.formattedText
         end
-    end
-
-    if not instanceID then
-        for _, instance in pairs(self.instancesData) do for _, entry in pairs(instance) do format(entry) end end
-    else
-        for _, entry in pairs(self.instancesData[instanceID]) do format(entry) end
-    end
+    end)
 end
 
 function MythicPlusUtility:FormatInstanceData(instanceID)
-    self:ExtractSpellIdsFromInstanceData(instanceID)
-    self:ExtractNpcIdsFromInstanceData(instanceID)
-    self:ExtractTagsFromInstanceData(instanceID)
+    self:ExtractInstanceData(instanceID)
 
     local myTimer = C_Timer.NewTimer(0.5, function(self) MythicPlusUtility:FormatInstanceDataString(self.instanceID) end)
     myTimer.instanceID = instanceID
-end
-
-function MythicPlusUtility:FormatSpellsData(spellId)
-    local function extract(entry)
-        entry.tagsTable = {}
-        local i = 0
-
-        while true do
-            local n, j = string.find(entry.tags, "%b[]", i + 1)
-            if n == nil then break end
-            local substring = string.sub(entry.tags, n, j)
-            local tag = string.sub(substring, string.find(substring, "[^%[%]]+"))
-
-            if Variables.supportedTags[tag] then entry.tagsTable[tag] = true end
-
-            i = j
-        end
-    end
-
-    if not spellId then
-        for spellId, entry in pairs(self.utilityAbilities[self.db.char.class]) do
-            extract(entry)
-            entry.spellId = spellId
-            entry.spellName = self:GetSpellNameById(spellId)
-        end
-        for specId, _ in pairs(self.classSpecialisations[self.db.char.class]) do
-            for spellId, entry in pairs(self.utilityAbilities[specId]) do
-                extract(entry)
-                entry.spellId = spellId
-                entry.spellName = self:GetSpellNameById(spellId)
-            end
-        end
-        for spellId, entry in pairs(self.utilityAbilitiesRacials) do
-            extract(entry)
-            entry.spellId = spellId
-            entry.spellName = self:GetSpellNameById(spellId)
-        end
-        for spellId, entry in pairs(self.utilityAbilitiesProfessions) do
-            extract(entry)
-            entry.spellId = spellId
-            entry.spellName = self:GetSpellNameById(spellId)
-        end
-    else
-        if self.utilityAbilities[self.db.char.class][spellId] then
-            extract(self.utilityAbilities[self.db.char.class][spellId])
-            self.utilityAbilities[self.db.char.class][spellId].spellId = spellId
-            self.utilityAbilities[self.db.char.class][spellId].spellName = self:GetSpellNameById(spellId)
-        end
-        for specId, _ in pairs(self.classSpecialisations[self.db.char.class]) do
-            if self.utilityAbilities[specId][spellId] then
-                extract(self.utilityAbilities[specId][spellId])
-                self.utilityAbilities[specId][spellId].spellId = spellId
-                self.utilityAbilities[specId][spellId].spellName = self:GetSpellNameById(spellId)
-            end
-        end
-        if self.utilityAbilitiesRacials[spellId] then
-            extract(self.utilityAbilitiesRacials[spellId])
-            self.utilityAbilitiesRacials[spellId].spellId = spellId
-            self.utilityAbilitiesRacials[spellId].spellName = self:GetSpellNameById(spellId)
-        end
-        if self.utilityAbilitiesProfessions[spellId] then
-            extract(self.utilityAbilitiesProfessions[spellId])
-            self.utilityAbilitiesProfessions[spellId].spellId = spellId
-            self.utilityAbilitiesProfessions[spellId].spellName = self:GetSpellNameById(spellId)
-        end
-    end
 end
 
 function MythicPlusUtility:SortCurrentAbilitiesList()
@@ -337,51 +234,33 @@ end
 
 function MythicPlusUtility:CreateCurrentAbilitiesList()
     -- ACTIVE_TALENT_GROUP_CHANGED
-    local t = self:tablecopy(self.utilityAbilities[self.db.char.class])
-    if self.utilityAbilities[self.db.char.currentSpec] then
-        for spellId, entry in pairs(self.utilityAbilities[self.db.char.currentSpec]) do t[spellId] = self:tablecopy(entry) end
+    local containers = Variables.spellContainers
+    local t = {}
+
+    local function add(abilities, knownOnly)
+        if not abilities then return end
+        for spellId, ability in pairs(abilities) do
+            local entry = {}
+            for key, value in pairs(ability) do entry[key] = value end
+            self:UpdateKnownState(entry)
+            if not knownOnly then
+                t[spellId] = entry
+            elseif entry.isKnown then
+                t[entry.altSpellId or spellId] = entry
+            end
+        end
     end
 
-    for spellId, entry in pairs(t) do
-        entry.spellId = spellId
-
-        if not (entry.alternatives and #entry.alternatives > 0) then
-            entry.isKnown = MythicPlusUtility:IsSpellKnownHandler(spellId, entry.pet)
-        else
-            local known = false
-
-            for _, subSpellId in ipairs(entry.alternatives) do
-                known = MythicPlusUtility:IsSpellKnownHandler(subSpellId, entry.pet)
-                if known then
-                    entry.isKnown = true
-                    entry.altSpellId = subSpellId
-                    entry.spellName = self:GetSpellNameById(subSpellId)
-
-                    break
-                end
-            end
-            if not known then entry.isKnown = MythicPlusUtility:IsSpellKnownHandler(spellId, entry.pet) end
-        end
-
+    add(self.effectiveAbilities[self.db.char.class])
+    add(self.effectiveAbilities[self.db.char.currentSpec])
+    for _, entry in pairs(t) do
         if entry.override and entry.isKnown and t[entry.override] then t[entry.override].isOverriden = true end
     end
-
-    for spellId, entry in pairs(self.utilityAbilitiesRacials) do
-        if entry.isKnown then
-            if entry.altSpellId then
-                t[entry.altSpellId] = self:tablecopy(entry)
-            else
-                t[spellId] = self:tablecopy(entry)
-            end
-        end
-    end
-
-    if self.utilityAbilitiesProfessions then
-        for spellId, entry in pairs(self.utilityAbilitiesProfessions) do t[spellId] = self:tablecopy(entry) end
-    end
+    add(self.effectiveAbilities[containers.racial], true)
+    add(self.effectiveAbilities[containers.profession])
 
     self.currentAbilitiesList = {}
-    for _, entry in pairs(t) do table.insert(self.currentAbilitiesList, self:tablecopy(entry)) end
+    for _, entry in pairs(t) do table.insert(self.currentAbilitiesList, entry) end
 
     self:SortCurrentAbilitiesList()
 end
@@ -389,52 +268,19 @@ end
 function MythicPlusUtility:UpdateCurrentAbilitiesList(petOnly)
     -- TRAIT_CONFIG_UPDATED
     -- UPDATE_VEHICLE_ACTIONBAR for Hunter and Warlock
-    petOnly = petOnly or false
+    local bySpellId = {}
 
-    for _, entry in pairs(self.currentAbilitiesList) do
+    for _, entry in ipairs(self.currentAbilitiesList) do
         if (not petOnly or entry.pet) and not entry.racial then
-
-            if not (entry.alternatives and #entry.alternatives > 0) then
-                entry.isKnown = MythicPlusUtility:IsSpellKnownHandler(entry.spellId, entry.pet)
-            else
-                local known = false
-
-                for _, subSpellId in ipairs(entry.alternatives) do
-                    known = MythicPlusUtility:IsSpellKnownHandler(subSpellId, entry.pet)
-                    if known then
-                        entry.isKnown = true
-                        entry.altSpellId = subSpellId
-                        entry.spellName = self:GetSpellNameById(subSpellId)
-
-                        break
-                    end
-                end
-
-                if not known then
-                    entry.isKnown = MythicPlusUtility:IsSpellKnownHandler(entry.spellId, entry.pet)
-                    if entry.altSpellId then
-                        entry.altSpellId = false
-                        entry.spellName = self:GetSpellNameById(entry.spellId)
-                    end
-                end
-            end
-
-            if entry.isOverriden then entry.isOverriden = false end
+            self:UpdateKnownState(entry)
+            entry.isOverriden = false
         end
+        bySpellId[entry.spellId] = entry
     end
 
-    for _, entry in pairs(self.currentAbilitiesList) do
-        if (not petOnly or entry.pet) and not entry.racial then
-            if entry.override and entry.isKnown
-              and (self.utilityAbilities[self.db.char.class][entry.override]
-                or self.utilityAbilities[self.db.char.currentSpec][entry.override]) then
-                for _, subEntry in pairs(self.currentAbilitiesList) do
-                    if subEntry.spellId == entry.override then
-                        subEntry.isOverriden = true
-                        break
-                    end
-                end
-            end
+    for _, entry in ipairs(self.currentAbilitiesList) do
+        if (not petOnly or entry.pet) and not entry.racial and entry.override and entry.isKnown and bySpellId[entry.override] then
+            bySpellId[entry.override].isOverriden = true
         end
     end
 
@@ -447,13 +293,14 @@ function MythicPlusUtility:PopulateCurrentAbilitiesListWithInstanceData(instance
 
     for _, entry in ipairs(self.currentAbilitiesList) do
         entry.list = {}
+        entry.hasImportant = false
 
         if not entry.isOverriden then
             if self.instancesData[instanceID] then
                 local hasImportant = false
                 for _, instanceEntry in ipairs(self.instancesData[instanceID]) do
 
-                    if not (self.db.profile.hideNotImportant and not instanceEntry.tagsTable.important) then
+                    if not (self.db.profile.generalSettings.hideNotImportant and not instanceEntry.tagsTable.important) then
                         local found = false
                         for tag, _ in pairs(instanceEntry.tagsTable) do
                             if entry.tagsTable[tag] then

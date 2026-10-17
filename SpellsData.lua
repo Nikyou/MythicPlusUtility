@@ -178,7 +178,7 @@ MythicPlusUtility.utilityAbilities = {
     },
     [1467] = {}, -- Devastation
     [1468] = {
-        [403631] = {tags = "[self_only][slow][snare][root][player_movement_immune]", baseline = true}, -- Dream Flight
+        [359816] = {tags = "[self_only][slow][snare][root][player_movement_immune]", baseline = true}, -- Dream Flight
     }, -- Preservation
     [1473] = {
         [403631] = {tags = "[self_only][slow][snare][root][player_movement_immune]", override = 357210, baseline = true}, -- Breath of Eons
