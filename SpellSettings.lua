@@ -66,7 +66,9 @@ function MythicPlusUtility:IsDefaultSpell(container, spellId)
     if self.utilityAbilitiesRacials[spellId] or self.utilityAbilitiesProfessions[spellId] then return true end
 
     if container == containers.allClasses then
-        for class, _ in pairs(self.classSpecialisations) do if self:ClassHasDefaultSpell(class, spellId) then return true end end
+        for class, _ in pairs(self.classSpecialisations) do
+            if self:ClassHasDefaultSpell(class, spellId) then return true end
+        end
         return false
     end
 

@@ -15,8 +15,8 @@ function MythicPlusUtility:OnInitialize()
     -- ACD:SetDefaultSize("MythicPlusUtility_Options", 800, 630)
 
     self.SpellSettings:CreateOptions()
-    self.spellSettingsFrame = ACD:AddToBlizOptions("MythicPlusUtility_SpellSettings", L["Ability Settings"],
-                                                   "Mythic Plus Utility")
+    self.spellSettingsFrame =
+      ACD:AddToBlizOptions("MythicPlusUtility_SpellSettings", L["Ability Settings"], "Mythic Plus Utility")
     self.Profiles:CreateOptions()
     self.profilesFrame = ACD:AddToBlizOptions("MythicPlusUtility_Profiles", L["Profiles"], "Mythic Plus Utility")
 

@@ -94,8 +94,7 @@ end
 function SpellSettings:GetSortedSpellIds(abilities)
     local spellIds = {}
     for spellId, _ in pairs(abilities or {}) do table.insert(spellIds, spellId) end
-    table.sort(spellIds,
-               function(a, b) return MythicPlusUtility:GetSpellNameById(a) < MythicPlusUtility:GetSpellNameById(b) end)
+    table.sort(spellIds, function(a, b) return MythicPlusUtility:GetSpellNameById(a) < MythicPlusUtility:GetSpellNameById(b) end)
     return spellIds
 end
 
@@ -370,8 +369,7 @@ function SpellSettings:CreateImportExportArgs()
             desc = L["Adds the imported settings. Settings of the same abilities are replaced."],
             disabled = function() return not SpellSettings.pendingImport end,
             confirm = function()
-                return SpellSettings:GetImportSummary(
-                         L["Merge %d customised and %d custom abilities into the current settings?"])
+                return SpellSettings:GetImportSummary(L["Merge %d customised and %d custom abilities into the current settings?"])
             end,
             func = function() SpellSettings:ApplyImport(false) end,
         },
@@ -545,8 +543,9 @@ function SpellSettings:GetTagsHelpText()
     local text = L["Checked: tag is added. Grey: default. Empty: tag is removed. Green tags are default tags."]
     local record = MythicPlusUtility:GetSpellEditorRecord()
     if not (record and record.changeTags) then
-        text = text .. "\n" .. ORANGE_FONT_COLOR:WrapTextInColorCode(
-                 L["Custom tags are not used while \"Custom Tags\" is off in Ability Settings."])
+        text = text .. "\n"
+                 .. ORANGE_FONT_COLOR:WrapTextInColorCode(
+                   L["Custom tags are not used while \"Custom Tags\" is off in Ability Settings."])
     end
     return text
 end
@@ -820,9 +819,7 @@ function MythicPlusUtility:ValidateCustomPendingSpell(info, value)
     return true
 end
 
-function MythicPlusUtility:IsCustomPendingEmpty(info)
-    return not SpellSettings.pendingSpellIds[GetContainerKey(info[#info - 1])]
-end
+function MythicPlusUtility:IsCustomPendingEmpty(info) return not SpellSettings.pendingSpellIds[GetContainerKey(info[#info - 1])] end
 
 function MythicPlusUtility:AddCustomPendingSpell(info)
     local container = GetContainerKey(info[#info - 1])
