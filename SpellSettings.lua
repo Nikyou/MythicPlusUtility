@@ -438,13 +438,13 @@ function SpellSettings:ParseImport(importString)
 
     local spellSettings, dropped = MythicPlusUtility:SanitizeSpellSettings(data.spellSettings)
     self.pendingImport = {spellSettings = spellSettings, dropped = dropped}
-    self.messageText = self:GetImportSummary(L["Ready to import %d customised abilities and %d custom abilities."])
+    self.messageText = self:GetImportSummary(L["Ready to import %d customised and %d custom abilities."])
 end
 
 function SpellSettings:GetImportSummary(text)
     local pending = self.pendingImport
     local summary = format(text, CountRecords(pending.spellSettings, "overrides"), CountRecords(pending.spellSettings, "custom"))
-    if pending.dropped > 0 then summary = summary .. "\n" .. format(L["%d invalid entries were dropped."], pending.dropped) end
+    if pending.dropped > 0 then summary = summary .. "\n" .. format(L["%d invalid entries were skipped."], pending.dropped) end
     return summary
 end
 
@@ -465,7 +465,7 @@ function SpellSettings:ApplyImport(replace)
         end
     end
 
-    local summary = self:GetImportSummary(L["Imported %d customised abilities and %d custom abilities."])
+    local summary = self:GetImportSummary(L["Imported %d customised and %d custom abilities."])
     self.messageText = "|cff40ff40" .. summary .. "|r"
     self.pendingImport = nil
 
@@ -613,7 +613,7 @@ function SpellSettings:ShowNotice()
             line.icon:Hide()
         else
             local reason = change.isCustom and L["custom ability is now a default ability, customise the default ability instead"]
-                             or L["default settings were updated"]
+                             or L["default values were updated"]
             line:SetText(format("%s (%s): %s", MythicPlusUtility:GetSpellNameById(change.spellId),
                                 self:GetContainerName(change.container), reason))
             line.icon:SetTexture(MythicPlusUtility:GetSpellIconById(change.spellId))

@@ -71,7 +71,7 @@ end
 function SpellSettings:GetContainerName(container)
     if container == containers.racial then return L["Racials"] end
     if container == containers.profession then return L["Professions"] end
-    if container == containers.allClasses then return L["All classes"] end
+    if container == containers.allClasses then return L["All Classes"] end
     if type(container) == "number" then
         local _, name = GetSpecializationInfoByID(container)
         return name or tostring(container)
@@ -209,7 +209,7 @@ local function CreateCustomRow(container, spellId, order)
                 width = 0.6,
                 fontSize = "medium",
                 name = L["Default Used"],
-                desc = L["This ability is already a default ability, so the default ability is used instead. Customise the default ability instead."],
+                desc = L["This ability is already a default ability, which is used instead of this custom ability. Customise the default ability instead."],
                 image = WARNING_ICON,
                 imageWidth = 20,
                 imageHeight = 20,
@@ -367,11 +367,11 @@ function SpellSettings:CreateImportExportArgs()
             type = "execute",
             order = 12,
             name = L["Merge"],
-            desc = L["Adds the imported settings. Settings of the same spells are replaced."],
+            desc = L["Adds the imported settings. Settings of the same abilities are replaced."],
             disabled = function() return not SpellSettings.pendingImport end,
             confirm = function()
                 return SpellSettings:GetImportSummary(
-                         L["Merge %d customised abilities and %d custom abilities into the current settings?"])
+                         L["Merge %d customised and %d custom abilities into the current settings?"])
             end,
             func = function() SpellSettings:ApplyImport(false) end,
         },
@@ -383,7 +383,7 @@ function SpellSettings:CreateImportExportArgs()
             disabled = function() return not SpellSettings.pendingImport end,
             confirm = function()
                 return SpellSettings:GetImportSummary(
-                         L["Replace the current ability settings with %d customised abilities and %d custom abilities?"])
+                         L["Replace the current ability settings with %d customised and %d custom abilities?"])
             end,
             func = function() SpellSettings:ApplyImport(true) end,
         },
@@ -542,7 +542,7 @@ end
 function SpellSettings:GetTagsHelpText()
     if self.editing.isCustom then return L["Checked tags are used for this ability."] end
 
-    local text = L["Checked - tag is added, grey - default, empty - tag is removed. Green tags are default tags."]
+    local text = L["Checked: tag is added. Grey: default. Empty: tag is removed. Green tags are default tags."]
     local record = MythicPlusUtility:GetSpellEditorRecord()
     if not (record and record.changeTags) then
         text = text .. "\n" .. ORANGE_FONT_COLOR:WrapTextInColorCode(
@@ -606,7 +606,7 @@ function SpellSettings:CreateEditorArgs()
                 order = 4,
                 width = 0.8,
                 hidden = not isCustom,
-                name = L["Pet ability"],
+                name = L["Pet Ability"],
                 desc = L["Checks the pet spellbook for this ability."],
             },
             reset = {
@@ -718,7 +718,7 @@ function MythicPlusUtility:GetSpellSettingsClassValues(info)
     local classNames = SpellSettings:GetClassNames()
     if info[#info - 1] ~= "custom" then return classNames end
 
-    local values = {[containers.allClasses] = L["All classes"]}
+    local values = {[containers.allClasses] = L["All Classes"]}
     for class, name in pairs(classNames) do values[class] = name end
     return values
 end
