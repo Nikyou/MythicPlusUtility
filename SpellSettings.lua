@@ -526,7 +526,7 @@ end
 
 function SpellSettings:SetPortraitLogo(frame)
     frame:SetPortraitToAsset("Interface\AddOns\MythicPlusUtility\logo")
-    frame:GetPortrait():SetTexCoord(-2 / 58, 60 / 58, 0, 62 / 58)
+    frame:GetPortrait():SetTexCoord(1 / 33, 32 / 33, 2 / 33, 1)
 end
 
 function SpellSettings:CreateNoticeFrame()

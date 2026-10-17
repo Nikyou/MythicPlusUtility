@@ -663,10 +663,12 @@ function SpellSettings:CreateEditorFrame()
     end
 
     local group = AceGUI:Create("SimpleGroup")
+    group:SetAutoAdjustHeight(false)
+    group:SetWidth(frame:GetWidth() - 28)
+    group:SetHeight(frame:GetHeight() - 76)
     group.frame:SetParent(frame)
     group.frame:ClearAllPoints()
     group.frame:SetPoint("TOPLEFT", 16, -64)
-    group.frame:SetPoint("BOTTOMRIGHT", -12, 12)
     group.frame:Show()
 
     frame:SetScript("OnHide", function()
