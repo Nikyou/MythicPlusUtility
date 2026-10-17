@@ -66,7 +66,9 @@ function Profiles:PerformImport(importString)
         return
     end
 
+    MythicPlusUtility.db:ResetProfile(false, true)
     SafeMerge(MythicPlusUtility.db.profile, data.profile)
+    MythicPlusUtility.db.profile.spellSettings = MythicPlusUtility:SanitizeSpellSettings(data.profile.spellSettings)
     messageText = L["|cff40ff40Profile imported successfully.|r"]
 
 end

@@ -38,11 +38,12 @@ Locales.xml
 Core.lua
 Variables.lua
 UtilityFunctions.lua
-Variables.lua
 Options.lua
 Profiles.lua
 SpellsData.lua
 InstancesData.lua
+SpellSettings.lua
+SpellSettingsOptions.lua
 UtilityAbilitiesFrame.lua
 MinimapIcon.lua
 TalentFrameHighlight.lua

@@ -17,6 +17,7 @@ MythicPlusUtility.defaults = {
             hideNotImportant = false,
             showAllProfessions = false,
         },
+        spellSettings = {overrides = {}, custom = {}},
         windowSettings = {
             width = 350,
             height = 600,
@@ -238,7 +239,7 @@ MythicPlusUtility.options = {
                 },
                 maxHeight = {
                     type = "range",
-                    order = 2.2,
+                    order = 2.5,
                     name = L["Max Height"],
                     hidden = function(info)
                         return not MythicPlusUtility.db.profile.windowSettings.maxHeightEnable
@@ -300,11 +301,11 @@ MythicPlusUtility.options = {
                         if MythicPlusUtility.Frame then MythicPlusUtility.Frame:FrameLockUpdate() end
                     end,
                 },
-                tooltipHeader = {type = "header", order = 3, name = L["Tooltip NPC Model Settings"]},
-                showTooltipModel = {type = "toggle", order = 3.1, name = L["Enable"], set = "SetValueWithParent"},
+                tooltipHeader = {type = "header", order = 4, name = L["Tooltip NPC Model Settings"]},
+                showTooltipModel = {type = "toggle", order = 4.1, name = L["Enable"], set = "SetValueWithParent"},
                 tooltipModelWidth = {
                     type = "range",
-                    order = 3.2,
+                    order = 4.2,
                     name = L["Width"],
                     min = 50,
                     max = 8880,
@@ -315,7 +316,7 @@ MythicPlusUtility.options = {
                 },
                 tooltipModelHeight = {
                     type = "range",
-                    order = 3.3,
+                    order = 4.3,
                     name = L["Height"],
                     min = 50,
                     max = 4800,
@@ -898,7 +899,7 @@ function MythicPlusUtility:SetValueTalentHighlight(info, value)
     local db = self.db.profile.buttonCosmetic[info[#info - 1]]
     db[name] = value
 
-    if self.Frame and self.Frame:IsShown() then self.TalentFrameHighlight:ShowRelevant() end
+    self.TalentFrameHighlight:Refresh()
 end
 
 function MythicPlusUtility:SetValueWindowSettings(info, value)
@@ -921,11 +922,6 @@ function MythicPlusUtility:SetValueWindowSettings(info, value)
             self.Frame:UpdatePosition()
         end
     end
-end
-
-function MythicPlusUtility:SetValueUpdatePosition(info, value)
-    self.db.profile[info[#info]] = value
-    if self.Frame then self.Frame:UpdatePosition() end
 end
 
 function MythicPlusUtility:GetValueInstance(info)
@@ -1081,7 +1077,7 @@ function MythicPlusUtility:SetValueButtonCosmeticColor(info, r, g, b, a)
         elseif name == "iconGlowColor" then
             self.Frame:updateButtonCosmeticGlow(info[#info - 1])
         elseif name == "hightlightColor" then
-            self.TalentFrameHighlight:UpdateHighlight()
+            self.TalentFrameHighlight:Refresh()
         end
     end
 end

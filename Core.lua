@@ -14,12 +14,13 @@ function MythicPlusUtility:OnInitialize()
     self.optionsFrame = ACD:AddToBlizOptions("MythicPlusUtility_Options", "Mythic Plus Utility")
     -- ACD:SetDefaultSize("MythicPlusUtility_Options", 800, 630)
 
-    self.profiles = self.Profiles:CreateOptions()
-    self.db.profile.seasonSelect = Variables.dungeonGlobals.currentSeason
-    self.ModelContainer:SetSize(self.db.profile.windowSettings.tooltipModelWidth,
-                                self.db.profile.windowSettings.tooltipModelHeight)
+    self.SpellSettings:CreateOptions()
+    self.spellSettingsFrame = ACD:AddToBlizOptions("MythicPlusUtility_SpellSettings", L["Spell Settings"],
+                                                   "Mythic Plus Utility")
+    self.Profiles:CreateOptions()
     self.profilesFrame = ACD:AddToBlizOptions("MythicPlusUtility_Profiles", L["Profiles"], "Mythic Plus Utility")
 
+    self.db.profile.seasonSelect = Variables.dungeonGlobals.currentSeason
     self.ModelContainer:SetSize(self.db.profile.windowSettings.tooltipModelWidth,
                                 self.db.profile.windowSettings.tooltipModelHeight)
 
@@ -30,16 +31,17 @@ function MythicPlusUtility:OnInitialize()
     self:RegisterChatCommand("mpu", "SlashCommand")
     self:InitializeMinimapIcon()
     self:GetCharacterInfo()
-    self:ExtractSpellsFromDB()
     self:CheckLocalisation()
     self:FormatInstanceData()
-    self:FormatSpellsData()
+    self.SpellSettings:BuildOptions()
 
     C_Timer.NewTimer(1, function()
         if MythicPlusUtility.db.char.class == "HUNTER" or MythicPlusUtility.db.char.class == "WARLOCK" then
             MythicPlusUtility:RegisterEvent("UPDATE_VEHICLE_ACTIONBAR")
         end
         MythicPlusUtility:CreateCurrentAbilitiesList()
+        MythicPlusUtility.SpellSettings:BuildOptions()
+        MythicPlusUtility.SpellSettings:CheckDefaultChanges()
     end)
 
 end
@@ -47,61 +49,32 @@ end
 function MythicPlusUtility:MigrateOldSettings()
     -- Will clean up / change in a few updates
     local db = self.db.profile
-    if db.hideOnStart then
-        db.generalSettings.hideOnStart = db.hideOnStart
-        db.hideOnStart = nil
-    end
-    if db.hideNotImportant then
-        db.generalSettings.hideNotImportant = db.hideNotImportant
-        db.hideNotImportant = nil
-    end
-    if db.difficultyID then
-        db.generalSettings.difficultyID = db.difficultyID
-        db.difficultyID = nil
+    for _, name in ipairs({"hideOnStart", "hideNotImportant", "difficultyID"}) do
+        if db[name] ~= nil then
+            db.generalSettings[name] = db[name]
+            db[name] = nil
+        end
     end
     if not self.db.locale.instanceIDToZoneName then self.db.locale.instanceIDToZoneName = {} end
 end
 
 function MythicPlusUtility:RefreshConfig()
+    self:MigrateOldSettings()
     if not self.db.profile.minimap.hide then
         minimapIcon:Show("MythicPlusUtility")
     else
         minimapIcon:Hide("MythicPlusUtility")
     end
+    self:BuildEffectiveAbilities()
+    if self.currentAbilitiesList then self:CreateCurrentAbilitiesList() end
     if self.Frame then self.Frame:ProfileChange() end
     self.ModelContainer:SetSize(self.db.profile.windowSettings.tooltipModelWidth,
                                 self.db.profile.windowSettings.tooltipModelHeight)
+    self.SpellSettings:RefreshOptions()
+    self.TalentFrameHighlight:Refresh()
 end
 
-function MythicPlusUtility:onTalentFrameShow()
-    if MythicPlusUtility.Frame and MythicPlusUtility.Frame:IsShown() then
-        MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
-        MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
-        MythicPlusUtility.TalentFrameHighlight:ShowRelevant()
-    end
-end
-
-function MythicPlusUtility:onTalentFrameClose()
-    if MythicPlusUtility.Frame and MythicPlusUtility.Frame:IsShown() then MythicPlusUtility.TalentFrameHighlight:HideAll() end
-end
-
-function MythicPlusUtility:onUtilityWindowSetShown()
-    if MythicPlusUtility.Frame:IsShown() then
-        MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
-        MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
-        MythicPlusUtility.TalentFrameHighlight:ShowRelevant()
-    else
-        MythicPlusUtility.TalentFrameHighlight:HideAll()
-    end
-end
-
-function MythicPlusUtility:onUtilityWindowChangeInstance()
-    C_Timer.NewTimer(0.5, function()
-        MythicPlusUtility.TalentFrameHighlight:UpdateAnchers()
-        MythicPlusUtility.TalentFrameHighlight:UpdateHighlight()
-        if MythicPlusUtility.Frame:IsShown() then MythicPlusUtility.TalentFrameHighlight:ShowRelevant() end
-    end)
-end
+function MythicPlusUtility:onUtilityWindowUpdate() MythicPlusUtility.TalentFrameHighlight:Refresh() end
 
 function MythicPlusUtility:OnEnable()
     self:RegisterEvent("ACTIVE_PLAYER_SPECIALIZATION_CHANGED")
@@ -109,14 +82,14 @@ function MythicPlusUtility:OnEnable()
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
     self:RegisterEvent("CHALLENGE_MODE_START")
 
-    EventRegistry:RegisterCallback("PlayerSpellsFrame.OpenFrame", MythicPlusUtility.onTalentFrameShow)
-    EventRegistry:RegisterCallback("PlayerSpellsFrame.CloseFrame", MythicPlusUtility.onTalentFrameClose)
-    EventRegistry:RegisterCallback("MPU_UtilityWindow_SetShown", MythicPlusUtility.onUtilityWindowSetShown)
-    EventRegistry:RegisterCallback("MPU_UtilityWindow_ChangeInstance", MythicPlusUtility.onUtilityWindowChangeInstance)
+    EventRegistry:RegisterCallback("MPU_UtilityWindow_SetShown", MythicPlusUtility.onUtilityWindowUpdate)
+    EventRegistry:RegisterCallback("MPU_UtilityWindow_ChangeInstance", MythicPlusUtility.onUtilityWindowUpdate)
+    self.TalentFrameHighlight:Initialize()
 end
 
 function MythicPlusUtility:ACTIVE_PLAYER_SPECIALIZATION_CHANGED(event)
     self.db.char.currentSpec = C_SpecializationInfo.GetSpecializationInfo(C_SpecializationInfo.GetSpecialization())
+    self:BuildEffectiveAbilities()
     if self.Frame and self.Frame:IsShown() then
         self:CreateCurrentAbilitiesList()
         self.Frame:ChangeInstance()
@@ -184,22 +157,18 @@ function MythicPlusUtility:CheckLocalisation()
 end
 
 function MythicPlusUtility:ExtractSpellsFromDB()
+    local availableSpells = {}
 
-    local function extract(spellId, entry)
-        self.db.char.availableSpells[spellId] = true
-        if entry.alternatives and #entry.alternatives > 0 then
-            for _, subSpellId in pairs(entry.alternatives) do self.db.char.availableSpells[subSpellId] = true end
+    for _, abilities in pairs(self.effectiveAbilities) do
+        for spellId, entry in pairs(abilities) do
+            availableSpells[spellId] = true
+            if entry.alternatives then
+                for _, subSpellId in ipairs(entry.alternatives) do availableSpells[subSpellId] = true end
+            end
         end
     end
 
-    self.db.char.availableSpells = {}
-
-    for spellId, entry in pairs(self.utilityAbilities[self.db.char.class]) do extract(spellId, entry) end
-    for specId, _ in pairs(self.classSpecialisations[self.db.char.class]) do
-        for spellId, entry in pairs(self.utilityAbilities[specId]) do extract(spellId, entry) end
-    end
-    for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesRacials) do if entry.isKnown then extract(spellId, entry) end end
-    for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesProfessions) do extract(spellId, entry) end
+    self.db.char.availableSpells = availableSpells
 end
 
 function MythicPlusUtility:PopulateLocalisation()
@@ -216,38 +185,10 @@ end
 
 function MythicPlusUtility:GetCharacterInfo()
     self.db.char.class = UnitClassBase("player")
+    self:BuildEffectiveAbilities()
     C_Timer.NewTimer(0.5, function()
-        for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesRacials) do
-            if not (entry.alternatives and #entry.alternatives > 0) then
-                entry.isKnown = MythicPlusUtility:IsSpellKnownHandler(spellId)
-                entry.spellId = spellId
-                entry.spellName = MythicPlusUtility:GetSpellNameById(spellId)
-            else
-                local known = false
-
-                for _, subSpellId in ipairs(entry.alternatives) do
-                    known = MythicPlusUtility:IsSpellKnownHandler(subSpellId)
-                    if known then
-                        entry.isKnown = true
-                        entry.altSpellId = subSpellId
-                        entry.spellName = MythicPlusUtility:GetSpellNameById(subSpellId)
-
-                        break
-                    end
-                end
-                if not known then entry.isKnown = self:IsSpellKnownHandler(spellId) end
-            end
-        end
-
-        for spellId, entry in pairs(MythicPlusUtility.utilityAbilitiesProfessions) do
-            entry.isKnown = MythicPlusUtility:IsSpellKnownHandler(spellId)
-            entry.spellId = spellId
-            entry.spellName = MythicPlusUtility:GetSpellNameById(spellId)
-        end
-
         MythicPlusUtility.db.char.currentSpec = C_SpecializationInfo.GetSpecializationInfo(
                                                   C_SpecializationInfo.GetSpecialization())
-        MythicPlusUtility:ExtractSpellsFromDB()
     end)
 end
 
@@ -269,6 +210,8 @@ function MythicPlusUtility:SlashCommand(input, editbox)
         self:ToggleMinimapIcon()
     elseif input == "profile" or input == "profiles" then
         self:OpenSettings(UnitAffectingCombat("player"), self.profilesFrame)
+    elseif input == "spells" then
+        self:OpenSettings(UnitAffectingCombat("player"), self.spellSettingsFrame)
     else
         self:OpenSettings(UnitAffectingCombat("player"), self.optionsFrame)
     end
