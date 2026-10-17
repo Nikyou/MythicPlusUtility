@@ -359,16 +359,21 @@ L["Baseline abilities are not talents, so they are never suggested for removal."
   "Базовые способности не являются талантами, поэтому их никогда не предлагается убрать."
 L["Built-in values of this ability. Custom values below are used instead where they are set."] =
   "Встроенные значения этой способности. Если ниже заданы свои значения, используются они."
-L["|cffff4040Missing ability settings data.|r"] = "|cffff4040Отсутствуют данные настроек способностей.|r"
-L["|cffff4040Not an Ability Settings string.|r"] = "|cffff4040Это не строка настроек способностей.|r"
-L["Checked tags are used for this ability."] = "Для этой способности используются отмеченные метки."
+L["|cffff4040Missing ability settings data.|r"] =
+  "|cffff4040Отсутствуют данные настроек способностей.|r"
+L["|cffff4040Not an Ability Settings string.|r"] =
+  "|cffff4040Это не строка настроек способностей.|r"
+L["Checked tags are used for this ability."] =
+  "Для этой способности используются отмеченные метки."
 L["Checked: tag is added. Grey: default. Empty: tag is removed. Green tags are default tags."] =
   "Отмечено: метка добавлена. Серая: по умолчанию. Пусто: метка убрана. Зеленые метки - метки по умолчанию."
-L["Checks the pet spellbook for this ability."] = "Проверяет наличие способности в книге заклинаний питомца."
+L["Checks the pet spellbook for this ability."] =
+  "Проверяет наличие способности в книге заклинаний питомца."
 L["Class"] = "Класс"
 L["Class Abilities"] = "Классовые способности"
 L["Clear all custom values of this ability?"] = "Удалить все свои значения этой способности?"
-L["Clears all custom values of this ability."] = "Удаляет все свои значения этой способности."
+L["Clears all custom values of this ability."] =
+  "Удаляет все свои значения этой способности."
 L["Current Class"] = "Текущий класс"
 L["Custom Abilities"] = "Свои способности"
 L["custom ability is now a default ability, customise the default ability instead"] =
@@ -383,9 +388,11 @@ L["Default Used"] = "Не используется"
 L["Default Values (read-only)"] = "Значения по умолчанию (только чтение)"
 L["default values were updated"] = "значения по умолчанию изменились"
 L["Delete"] = "Удалить"
-L["Delete the custom abilities of the selected class?"] = "Удалить свои способности выбранного класса?"
+L["Delete the custom abilities of the selected class?"] =
+  "Удалить свои способности выбранного класса?"
 L["Delete this custom ability?"] = "Удалить эту способность?"
-L["Deletes the custom abilities of the selected class."] = "Удаляет свои способности выбранного класса."
+L["Deletes the custom abilities of the selected class."] =
+  "Удаляет свои способности выбранного класса."
 L["Edit"] = "Изменить"
 L["Enter a valid spell ID."] = "Введите верный ID заклинания."
 L["Enter spell IDs separated by commas."] = "Введите ID заклинаний, разделенные запятыми."
@@ -410,14 +417,19 @@ L["Replaces all current ability settings with the imported settings."] =
   "Заменяет все текущие настройки способностей импортированными."
 L["Replaces Spell ID"] = "Заменяет ID заклинания"
 L["Reset"] = "Сбросить"
-L["Reset the ability settings of the selected class?"] = "Сбросить настройки способностей выбранного класса?"
-L["Reset the ability settings of this tab?"] = "Сбросить настройки способностей на этой вкладке?"
+L["Reset the ability settings of the selected class?"] =
+  "Сбросить настройки способностей выбранного класса?"
+L["Reset the ability settings of this tab?"] =
+  "Сбросить настройки способностей на этой вкладке?"
 L["Reset to Default"] = "Сбросить значения"
-L["Resets the ability settings of the selected class."] = "Сбрасывает настройки способностей выбранного класса."
-L["Resets the ability settings of this tab."] = "Сбрасывает настройки способностей на этой вкладке."
+L["Resets the ability settings of the selected class."] =
+  "Сбрасывает настройки способностей выбранного класса."
+L["Resets the ability settings of this tab."] =
+  "Сбрасывает настройки способностей на этой вкладке."
 L["%s tags"] = "Метки: %s"
 L["Show"] = "Показать"
-L["Some of your ability settings need your attention:"] = "Проверьте некоторые настройки способностей:"
+L["Some of your ability settings need your attention:"] =
+  "Проверьте некоторые настройки способностей:"
 L["Spell ID"] = "ID заклинания"
 L["Spell ID %s does not exist."] = "Заклинания с ID %s не существует."
 L["Spell IDs separated by commas. When one of them is known, it is shown instead of this ability. Leave empty to use the default value."] =
@@ -431,52 +443,72 @@ L["When this ability is known, the ability with this spell ID is not shown. Leav
 L["Yes"] = "Да"
 
 -- Tags
-L["Aberration that needs a CC effect (cast time)"] = "Аберрация, требующий контроля (с временем применения)"
-L["Aberration that needs a CC effect (instant cast)"] = "Аберрация, требующий контроля (мгновенного)"
+L["Aberration that needs a CC effect (cast time)"] =
+  "Аберрация, требующий контроля (с временем применения)"
+L["Aberration that needs a CC effect (instant cast)"] =
+  "Аберрация, требующий контроля (мгновенного)"
 L["Ability that only works on the player"] = "Способность действует только на игрока"
-L["Beast that needs a CC effect (cast time)"] = "Животное, требующий контроля (с временем применения)"
-L["Beast that needs a CC effect (instant cast)"] = "Животное, требующий контроля (мгновенного)"
+L["Beast that needs a CC effect (cast time)"] =
+  "Животное, требующий контроля (с временем применения)"
+L["Beast that needs a CC effect (instant cast)"] =
+  "Животное, требующий контроля (мгновенного)"
 L["Cast-time CC"] = "Контроль с временем применения"
 L["Creature"] = "Существа"
 L["Creature Effects"] = "Эффекты на существ"
 L["Creature that needs a fear effect"] = "Существо, требующее эффекта страха"
-L["Creature that needs a forced movement effect"] = "Существо, требующее принудительного перемещения"
-L["Creature that needs a mortal strike effect"] = "Существо, требующее эффекта смертельного удара"
+L["Creature that needs a forced movement effect"] =
+  "Существо, требующее принудительного перемещения"
+L["Creature that needs a mortal strike effect"] =
+  "Существо, требующее эффекта смертельного удара"
 L["Creature that needs a root effect"] = "Существо, требующее обездвиживания"
 L["Creature that needs a slow effect"] = "Существо, требующее замедления"
 L["Creature that needs a stun effect"] = "Существо, требующее оглушения"
 L["Creature that needs an incapacitation effect"] = "Существо, требующее выведения из строя"
-L["Critter that needs a CC effect (cast time)"] = "Существо, требующий контроля (с временем применения)"
-L["Critter that needs a CC effect (instant cast)"] = "Существо, требующий контроля (мгновенного)"
+L["Critter that needs a CC effect (cast time)"] =
+  "Существо, требующий контроля (с временем применения)"
+L["Critter that needs a CC effect (instant cast)"] =
+  "Существо, требующий контроля (мгновенного)"
 L["Crowd Control"] = "Контроль"
-L["Curse that needs to be removed from a target, not only from yourself"] = "Проклятие, которое нужно снять с цели, а не только с себя"
-L["Demon that needs a CC effect (cast time)"] = "Демон, требующий контроля (с временем применения)"
+L["Curse that needs to be removed from a target, not only from yourself"] =
+  "Проклятие, которое нужно снять с цели, а не только с себя"
+L["Demon that needs a CC effect (cast time)"] =
+  "Демон, требующий контроля (с временем применения)"
 L["Demon that needs a CC effect (instant cast)"] = "Демон, требующий контроля (мгновенного)"
 L["Dispel"] = "Рассеивание"
-L["Dragonkin that needs a CC effect (cast time)"] = "Дракон, требующий контроля (с временем применения)"
-L["Dragonkin that needs a CC effect (instant cast)"] = "Дракон, требующий контроля (мгновенного)"
+L["Dragonkin that needs a CC effect (cast time)"] =
+  "Дракон, требующий контроля (с временем применения)"
+L["Dragonkin that needs a CC effect (instant cast)"] =
+  "Дракон, требующий контроля (мгновенного)"
 L["Effects on Enemies"] = "Эффекты на противниках"
 L["Effects on Players"] = "Эффекты на игроках"
-L["Elemental that needs a CC effect (cast time)"] = "Элементаль, требующий контроля (с временем применения)"
-L["Elemental that needs a CC effect (instant cast)"] = "Элементаль, требующий контроля (мгновенного)"
+L["Elemental that needs a CC effect (cast time)"] =
+  "Элементаль, требующий контроля (с временем применения)"
+L["Elemental that needs a CC effect (instant cast)"] =
+  "Элементаль, требующий контроля (мгновенного)"
 L["General"] = "Общее"
-L["Giant that needs a CC effect (cast time)"] = "Великан, требующий контроля (с временем применения)"
+L["Giant that needs a CC effect (cast time)"] =
+  "Великан, требующий контроля (с временем применения)"
 L["Giant that needs a CC effect (instant cast)"] = "Великан, требующий контроля (мгновенного)"
-L["Humanoid that needs a CC effect (cast time)"] = "Гуманоид, требующий контроля (с временем применения)"
-L["Humanoid that needs a CC effect (instant cast)"] = "Гуманоид, требующий контроля (мгновенного)"
+L["Humanoid that needs a CC effect (cast time)"] =
+  "Гуманоид, требующий контроля (с временем применения)"
+L["Humanoid that needs a CC effect (instant cast)"] =
+  "Гуманоид, требующий контроля (мгновенного)"
 L["Instant-cast CC"] = "Мгновенный контроль"
 L["Mechanic that the player can avoid with a \"jump\" ability"] =
   "Механика, которую игрок может избежать способностью \"прыжка\""
 L["Mechanic that the player can avoid with immunity to forced movement"] =
   "Механика, которую игрок может избежать невосприимчивостью к принудительному перемещению"
-L["Mechanical that needs a CC effect (cast time)"] = "Механизм, требующий контроля (с временем применения)"
-L["Mechanical that needs a CC effect (instant cast)"] = "Механизм, требующий контроля (мгновенного)"
+L["Mechanical that needs a CC effect (cast time)"] =
+  "Механизм, требующий контроля (с временем применения)"
+L["Mechanical that needs a CC effect (instant cast)"] =
+  "Механизм, требующий контроля (мгновенного)"
 L["Movement"] = "Передвижение"
 L["Other"] = "Другое"
 L["Player Movement"] = "Передвижение игрока"
 L["Professions"] = "Профессии"
 L["Purgeable magic effect"] = "Магический эффект, который можно развеять"
-L["Purgeable magic effect, Spellsteal special case"] = "Магический эффект, который можно развеять, особый случай для Чарокрада"
+L["Purgeable magic effect, Spellsteal special case"] =
+  "Магический эффект, который можно развеять, особый случай для Чарокрада"
 L["Removable bleed effect"] = "Снимаемое кровотечение"
 L["Removable charm effect"] = "Снимаемое подчинение"
 L["Removable curse effect"] = "Снимаемое проклятие"
@@ -484,7 +516,8 @@ L["Removable disease effect"] = "Снимаемая болезнь"
 L["Removable enrage effect"] = "Снимаемое исступление"
 L["Removable fear effect"] = "Снимаемый страх"
 L["Removable incapacitate effect"] = "Снимаемое выведение из строя"
-L["Removable magical debuff, not simply type \"magic\""] = "Снимаемый магический дебафф, не просто тип \"магия\""
+L["Removable magical debuff, not simply type \"magic\""] =
+  "Снимаемый магический дебафф, не просто тип \"магия\""
 L["Removable physical debuff"] = "Снимаемый физический дебафф"
 L["Removable poison effect"] = "Снимаемый яд"
 L["Removable polymorph effect"] = "Снимаемое превращение"
@@ -510,11 +543,16 @@ L["Requires Skinning"] = "Требуется Снятие шкур"
 L["Requires Tailoring"] = "Требуется Портняжное дело"
 L["Special case for Alter Time"] = "Особый случай для Искажения времени"
 L["Special CC"] = "Особый контроль"
-L["Special CC case for Banish, as damage does not break it"] = "Особый случай для Изгнания, так как урон его не прерывает"
-L["Special CC case for Cyclone, as damage does not break it"] = "Особый случай для Смерча, так как урон его не прерывает"
+L["Special CC case for Banish, as damage does not break it"] =
+  "Особый случай для Изгнания, так как урон его не прерывает"
+L["Special CC case for Cyclone, as damage does not break it"] =
+  "Особый случай для Смерча, так как урон его не прерывает"
 L["Targeted ability that can be avoided with Feign Death, Shadowmeld, etc."] =
   "Направленная способность, которую можно избежать с помощью Притвориться мертвым, Слиться с тенью и т. п."
-L["Uncategorised creature that needs a CC effect (cast time)"] = "Существо без типа, требующий контроля (с временем применения)"
-L["Uncategorised creature that needs a CC effect (instant cast)"] = "Существо без типа, требующий контроля (мгновенного)"
-L["Undead that needs a CC effect (cast time)"] = "Нежить, требующий контроля (с временем применения)"
+L["Uncategorised creature that needs a CC effect (cast time)"] =
+  "Существо без типа, требующий контроля (с временем применения)"
+L["Uncategorised creature that needs a CC effect (instant cast)"] =
+  "Существо без типа, требующий контроля (мгновенного)"
+L["Undead that needs a CC effect (cast time)"] =
+  "Нежить, требующий контроля (с временем применения)"
 L["Undead that needs a CC effect (instant cast)"] = "Нежить, требующий контроля (мгновенного)"

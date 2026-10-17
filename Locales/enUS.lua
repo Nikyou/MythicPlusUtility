@@ -153,7 +153,8 @@ L["Remove the curse from {npc:%d}, which are scattered throughout the dungeon. T
   true
 
 -- Profession Dungeon entries
-L["After the second boss, go up the stairs to the {npc:%d} mini-boss room and interact with {npc:%d} in the top left corner next to the serpent eggs for {spell:%d}."] = true
+L["After the second boss, go up the stairs to the {npc:%d} mini-boss room and interact with {npc:%d} in the top left corner next to the serpent eggs for {spell:%d}."] =
+  true
 L["Interact with {npc:%d} located just after the two bundles of apples leading up to the first boss for {spell:%d}."] = true
 L["Interact with {npc:%d} located on a small outlook leading up to the first boss for {spell:%d}."] = true
 
@@ -316,9 +317,11 @@ L["Show"] = true
 L["Some of your ability settings need your attention:"] = true
 L["Spell ID"] = true
 L["Spell ID %s does not exist."] = true
-L["Spell IDs separated by commas. When one of them is known, it is shown instead of this ability. Leave empty to use the default value."] = true
+L["Spell IDs separated by commas. When one of them is known, it is shown instead of this ability. Leave empty to use the default value."] =
+  true
 L["Tags"] = true
-L["This ability is already a default ability, which is used instead of this custom ability. Customise the default ability instead."] = true
+L["This ability is already a default ability, which is used instead of this custom ability. Customise the default ability instead."] =
+  true
 L["This ability is already added."] = true
 L["When this ability is known, the ability with this spell ID is not shown. Leave empty to use the default value."] = true
 L["Yes"] = true
