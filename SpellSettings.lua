@@ -7,6 +7,9 @@ local SpellSettings = {}
 MythicPlusUtility.SpellSettings = SpellSettings
 
 local NOTICE_MAX_LINES = 12
+local LOGO_SIZE = 40
+local LOGO_X_OFFSET = 0
+local LOGO_Y_OFFSET = 2
 
 local recordFields = {
     overrides = {
@@ -525,8 +528,13 @@ function SpellSettings:DismissNotice()
 end
 
 function SpellSettings:SetPortraitLogo(frame)
-    frame:SetPortraitToAsset("Interface\AddOns\MythicPlusUtility\logo")
-    frame:GetPortrait():SetTexCoord(1 / 33, 32 / 33, 2 / 33, 1)
+    local portrait = frame:GetPortrait()
+    portrait:SetColorTexture(0, 0, 0)
+
+    local logo = frame.PortraitContainer:CreateTexture(nil, "OVERLAY", nil, 1)
+    logo:SetTexture("Interface/AddOns/MythicPlusUtility/logo")
+    logo:SetSize(LOGO_SIZE, LOGO_SIZE)
+    logo:SetPoint("CENTER", portrait, "CENTER", LOGO_X_OFFSET, LOGO_Y_OFFSET)
 end
 
 function SpellSettings:CreateNoticeFrame()
