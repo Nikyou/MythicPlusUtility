@@ -15,7 +15,7 @@ function MythicPlusUtility:OnInitialize()
     -- ACD:SetDefaultSize("MythicPlusUtility_Options", 800, 630)
 
     self.SpellSettings:CreateOptions()
-    self.spellSettingsFrame = ACD:AddToBlizOptions("MythicPlusUtility_SpellSettings", L["Spell Settings"],
+    self.spellSettingsFrame = ACD:AddToBlizOptions("MythicPlusUtility_SpellSettings", L["Ability Settings"],
                                                    "Mythic Plus Utility")
     self.Profiles:CreateOptions()
     self.profilesFrame = ACD:AddToBlizOptions("MythicPlusUtility_Profiles", L["Profiles"], "Mythic Plus Utility")
@@ -210,7 +210,7 @@ function MythicPlusUtility:SlashCommand(input, editbox)
         self:ToggleMinimapIcon()
     elseif input == "profile" or input == "profiles" then
         self:OpenSettings(UnitAffectingCombat("player"), self.profilesFrame)
-    elseif input == "spells" then
+    elseif input == "spells" or input == "abilities" then
         self:OpenSettings(UnitAffectingCombat("player"), self.spellSettingsFrame)
     else
         self:OpenSettings(UnitAffectingCombat("player"), self.optionsFrame)

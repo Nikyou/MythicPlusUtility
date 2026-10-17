@@ -424,18 +424,18 @@ function SpellSettings:ParseImport(importString)
 
     local meta = data.meta
     if type(meta) ~= "table" or meta.addon ~= "MythicPlusUtility" or meta.type ~= "spellSettings" then
-        self.messageText = L["|cffff4040Not a Spell Settings string.|r"]
+        self.messageText = L["|cffff4040Not an Ability Settings string.|r"]
         return
     end
 
     if type(data.spellSettings) ~= "table" then
-        self.messageText = L["|cffff4040Missing spell settings data.|r"]
+        self.messageText = L["|cffff4040Missing ability settings data.|r"]
         return
     end
 
     local spellSettings, dropped = MythicPlusUtility:SanitizeSpellSettings(data.spellSettings)
     self.pendingImport = {spellSettings = spellSettings, dropped = dropped}
-    self.messageText = self:GetImportSummary(L["Ready to import %d spell overrides and %d custom abilities."])
+    self.messageText = self:GetImportSummary(L["Ready to import %d customised abilities and %d custom abilities."])
 end
 
 function SpellSettings:GetImportSummary(text)
@@ -462,7 +462,8 @@ function SpellSettings:ApplyImport(replace)
         end
     end
 
-    self.messageText = "|cff40ff40" .. self:GetImportSummary(L["Imported %d spell overrides and %d custom abilities."]) .. "|r"
+    local summary = self:GetImportSummary(L["Imported %d customised abilities and %d custom abilities."])
+    self.messageText = "|cff40ff40" .. summary .. "|r"
     self.pendingImport = nil
 
     MythicPlusUtility:UpdateSpellSettings()
@@ -523,6 +524,11 @@ function SpellSettings:DismissNotice()
     end
 end
 
+function SpellSettings:SetPortraitLogo(frame)
+    frame:SetPortraitToAsset("Interface\AddOns\MythicPlusUtility\logo")
+    frame:GetPortrait():SetTexCoord(-2 / 58, 60 / 58, 0, 62 / 58)
+end
+
 function SpellSettings:CreateNoticeFrame()
     local frame = CreateFrame("Frame", "MythicPlusUtility_SpellSettingsNotice", UIParent, "PortraitFrameTemplate")
     frame:SetWidth(420)
@@ -534,7 +540,7 @@ function SpellSettings:CreateNoticeFrame()
     frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving)
     frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
-    frame:SetPortraitToAsset("Interface\\AddOns\\MythicPlusUtility\\logo")
+    self:SetPortraitLogo(frame)
     frame:SetTitle("Mythic Plus Utility")
     frame.onCloseCallback = function()
         SpellSettings:DismissNotice()
@@ -553,20 +559,14 @@ function SpellSettings:CreateNoticeFrame()
     header:SetPoint("TOPLEFT", 70, -32)
     header:SetPoint("RIGHT", -16, 0)
     header:SetJustifyH("LEFT")
-    header:SetText(L["Some of your spell settings need your attention:"])
+    header:SetText(L["Some of your ability settings need your attention:"])
     frame.header = header
-
-    local list = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-    list:SetPoint("TOPLEFT", 16, -70)
-    list:SetPoint("RIGHT", -16, 0)
-    list:SetJustifyH("LEFT")
-    list:SetSpacing(4)
-    frame.list = list
+    frame.lines = {}
 
     local button = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
     button:SetSize(180, 22)
     button:SetPoint("BOTTOM", 0, 14)
-    button:SetText(L["Open Spell Settings"])
+    button:SetText(L["Open Ability Settings"])
     button:SetScript("OnClick", function()
         SpellSettings:DismissNotice()
         MythicPlusUtility:OpenSettings(InCombatLockdown(), MythicPlusUtility.spellSettingsFrame)
@@ -576,26 +576,50 @@ function SpellSettings:CreateNoticeFrame()
     return frame
 end
 
+function SpellSettings:GetNoticeLine(frame, index)
+    if frame.lines[index] then return frame.lines[index] end
+
+    local line = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+    line:SetJustifyH("LEFT")
+    line.icon = frame:CreateTexture(nil, "OVERLAY")
+    line.icon:SetSize(18, 18)
+    line.icon:SetPoint("RIGHT", line, "LEFT", -6, 0)
+    frame.lines[index] = line
+    return line
+end
+
 function SpellSettings:ShowNotice()
     local frame = self.noticeFrame or self:CreateNoticeFrame()
-    local lines = {}
+    local count = math.min(#self.changes, NOTICE_MAX_LINES + 1)
+    local height = 70
 
-    for i, change in ipairs(self.changes) do
+    for i = 1, count do
+        local line = self:GetNoticeLine(frame, i)
+        local change = self.changes[i]
+
+        line:ClearAllPoints()
+        line:SetPoint("TOPLEFT", 40, -height)
+        line:SetPoint("RIGHT", -16, 0)
         if i > NOTICE_MAX_LINES then
-            table.insert(lines, format(L["...and %d more"], #self.changes - NOTICE_MAX_LINES))
-            break
+            line:SetText(format(L["...and %d more"], #self.changes - NOTICE_MAX_LINES))
+            line.icon:Hide()
+        else
+            local reason = change.isCustom and L["custom ability is now a default ability, customise the default ability instead"]
+                             or L["default settings were updated"]
+            line:SetText(format("%s (%s): %s", MythicPlusUtility:GetSpellNameById(change.spellId),
+                                self:GetContainerName(change.container), reason))
+            line.icon:SetTexture(MythicPlusUtility:GetSpellIconById(change.spellId))
+            line.icon:Show()
         end
-
-        local reason = change.isCustom and L["custom ability is now a default spell, edit the default spell instead"]
-                         or L["default settings were updated"]
-        table.insert(lines, format("%s %s (%s): %s", MythicPlusUtility:IconToChatIcon(MythicPlusUtility:GetSpellIconById(
-                                     change.spellId)), MythicPlusUtility:GetSpellNameById(change.spellId),
-                                   self:GetContainerName(change.container), reason))
+        line:Show()
+        height = height + math.max(line:GetStringHeight(), 18) + 6
+    end
+    for i = count + 1, #frame.lines do
+        frame.lines[i]:Hide()
+        frame.lines[i].icon:Hide()
     end
 
-    frame.list:SetText(table.concat(lines, "\n"))
-    frame:SetHeight(frame.list:GetStringHeight() + 120)
-
+    frame:SetHeight(height + 50)
     frame:RegisterEvent("PLAYER_REGEN_DISABLED")
     frame:RegisterEvent("PLAYER_REGEN_ENABLED")
     frame:SetShown(not InCombatLockdown())

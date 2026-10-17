@@ -1,10 +1,10 @@
 #### 1.5.0
-### New: Spell Settings
-Added Spell Settings under Mythic Plus Utility settings (`/mpu spells`):
-* Class spells, Racials, and Professions: override a spell to disable it or change its tags, override, alternatives, and baseline.
+### New: Ability Settings
+Added Ability Settings under Mythic Plus Utility settings (`/mpu spells` or `/mpu abilities`):
+* Class Abilities, Racials, and Professions: customise an ability to hide it or change its tags, replaced spell, alternative spells, and baseline.
 * Custom Abilities: add your own abilities for a class, a specialisation, or all classes.
-* Import / Export of spell settings, with Merge or Replace.
-* A notice when the default settings of a spell you changed were updated.
+* Import / Export of ability settings, with Merge or Replace.
+* A notice when the default values of an ability you customised were updated.
 ### Fixes
 * Talent highlight is no longer shown on talents of an inspected player.
 ### Miscellaneous

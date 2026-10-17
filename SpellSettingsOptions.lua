@@ -15,8 +15,8 @@ SpellSettings.showCurrentClass = {classSpells = true, custom = true}
 SpellSettings.selectedClass = {}
 SpellSettings.pendingSpellIds = {}
 
-local overrideColumns = {{L["Override"], 0.5}, {L["Enabled"], 0.5}, {L["Name"], 1.3}, {L["Change tags"], 0.6}, {"", 0.5}}
-local customColumns = {{L["Enabled"], 0.5}, {L["Name"], 1.3}, {"", 0.5}, {"", 0.5}}
+local overrideColumns = {{L["Customise"], 0.5}, {L["Show"], 0.5}, {L["Ability"], 1.3}, {L["Custom Tags"], 0.6}, {"", 0.5}}
+local customColumns = {{L["Show"], 0.5}, {L["Ability"], 1.3}, {"", 0.5}, {"", 0.5}}
 
 local function GetContainerKey(key) return tonumber(key) or key end
 
@@ -208,8 +208,8 @@ local function CreateCustomRow(container, spellId, order)
                 order = 5,
                 width = 0.6,
                 fontSize = "medium",
-                name = L["Not used"],
-                desc = L["This spell is already a default spell, so the default spell is used instead of this custom ability. Edit the default spell instead."],
+                name = L["Default Used"],
+                desc = L["This ability is already a default ability, so the default ability is used instead. Customise the default ability instead."],
                 image = WARNING_ICON,
                 imageWidth = 20,
                 imageHeight = 20,
@@ -226,7 +226,7 @@ function SpellSettings:CreateClassSelectArgs()
             type = "toggle",
             order = 1,
             width = 1.2,
-            name = L["Show current class"],
+            name = L["Current Class"],
             get = "GetValueSpellSettingsCurrentClass",
             set = "SetValueSpellSettingsCurrentClass",
         },
@@ -244,9 +244,9 @@ function SpellSettings:CreateClassSelectArgs()
             type = "execute",
             order = 3,
             name = L["Reset"],
-            desc = L["Resets the spell settings of the selected class."],
+            desc = L["Resets the ability settings of the selected class."],
             confirm = true,
-            confirmText = L["Reset the spell settings of the selected class?"],
+            confirmText = L["Reset the ability settings of the selected class?"],
             func = "ResetSpellSettingsTab",
         },
     }
@@ -320,9 +320,9 @@ function SpellSettings:CreateSingleContainerArgs(container)
             type = "execute",
             order = 1,
             name = L["Reset"],
-            desc = L["Resets the spell settings of this tab."],
+            desc = L["Resets the ability settings of this tab."],
             confirm = true,
-            confirmText = L["Reset the spell settings of this tab?"],
+            confirmText = L["Reset the ability settings of this tab?"],
             func = "ResetSpellSettingsTab",
         },
         [container] = self:CreateOverrideContainer(container, 2, ""),
@@ -342,7 +342,7 @@ end
 
 function SpellSettings:CreateImportExportArgs()
     return {
-        exportHeader = {type = "header", order = 1, name = L["Export Spell Settings"]},
+        exportHeader = {type = "header", order = 1, name = L["Export Ability Settings"]},
         exportButton = {type = "execute", order = 2, name = L["Export"], func = function() SpellSettings:GenerateExport() end},
         exportBox = {
             type = "input",
@@ -353,7 +353,7 @@ function SpellSettings:CreateImportExportArgs()
             get = function() return SpellSettings.exportString end,
             set = function() end,
         },
-        importHeader = {type = "header", order = 10, name = L["Import Spell Settings"]},
+        importHeader = {type = "header", order = 10, name = L["Import Ability Settings"]},
         importBox = {
             type = "input",
             order = 11,
@@ -371,7 +371,7 @@ function SpellSettings:CreateImportExportArgs()
             disabled = function() return not SpellSettings.pendingImport end,
             confirm = function()
                 return SpellSettings:GetImportSummary(
-                         L["Merge %d spell overrides and %d custom abilities into the current settings?"])
+                         L["Merge %d customised abilities and %d custom abilities into the current settings?"])
             end,
             func = function() SpellSettings:ApplyImport(false) end,
         },
@@ -379,11 +379,11 @@ function SpellSettings:CreateImportExportArgs()
             type = "execute",
             order = 13,
             name = L["Replace"],
-            desc = L["Replaces all current spell settings with the imported settings."],
+            desc = L["Replaces all current ability settings with the imported settings."],
             disabled = function() return not SpellSettings.pendingImport end,
             confirm = function()
                 return SpellSettings:GetImportSummary(
-                         L["Replace the current spell settings with %d spell overrides and %d custom abilities?"])
+                         L["Replace the current ability settings with %d customised abilities and %d custom abilities?"])
             end,
             func = function() SpellSettings:ApplyImport(true) end,
         },
@@ -414,11 +414,11 @@ end
 function SpellSettings:CreateOptions()
     self.options = {
         type = "group",
-        name = L["Spell Settings"],
+        name = L["Ability Settings"],
         handler = MythicPlusUtility,
         childGroups = "tab",
         args = {
-            classSpells = {type = "group", order = 1, name = L["Class spells"], args = {}},
+            classSpells = {type = "group", order = 1, name = L["Class Abilities"], args = {}},
             racials = {type = "group", order = 2, name = L["Racials"], args = {}},
             professions = {type = "group", order = 3, name = L["Professions"], args = {}},
             custom = {type = "group", order = 4, name = L["Custom Abilities"], args = {}},
@@ -448,6 +448,7 @@ function SpellSettings:CreateTagArgs(category, isCustom, defaultTags)
             dialogControl = "InteractiveLabel",
             order = 0,
             fontSize = "medium",
+            width = 3.4,
             name = format(L["%s tags"], category.name),
             desc = self:GetTagsHelp(category),
             image = HELP_ICON,
@@ -479,6 +480,77 @@ function SpellSettings:CreateTagArgs(category, isCustom, defaultTags)
     return args
 end
 
+function SpellSettings:GetDefaultValueText(label, value)
+    return format("%s%s:%s %s", NORMAL_FONT_COLOR_CODE, label, FONT_COLOR_CODE_CLOSE, value)
+end
+
+function SpellSettings:GetSpellListText(spellIds)
+    local names = {}
+    for _, spellId in ipairs(spellIds) do
+        table.insert(names, format("%s (%d)", MythicPlusUtility:GetSpellNameById(spellId), spellId))
+    end
+    return table.concat(names, ", ")
+end
+
+function SpellSettings:CreateDefaultArgs(data)
+    local args = {
+        info = {
+            type = "description",
+            order = 1,
+            width = 3.6,
+            fontSize = "medium",
+            name = L["Built-in values of this ability. Custom values below are used instead where they are set."],
+        },
+        tags = {
+            type = "description",
+            order = 2,
+            width = 3.6,
+            fontSize = "medium",
+            name = self:GetDefaultValueText(L["Tags"], data.tags),
+        },
+        baseline = {
+            type = "description",
+            order = 5,
+            width = 3.6,
+            fontSize = "medium",
+            name = self:GetDefaultValueText(L["Baseline"], data.baseline and L["Yes"] or L["No"]),
+        },
+    }
+
+    if data.override then
+        args.override = {
+            type = "description",
+            order = 3,
+            width = 3.6,
+            fontSize = "medium",
+            name = self:GetDefaultValueText(L["Replaces Spell ID"], self:GetSpellListText({data.override})),
+        }
+    end
+    if data.alternatives then
+        args.alternatives = {
+            type = "description",
+            order = 4,
+            width = 3.6,
+            fontSize = "medium",
+            name = self:GetDefaultValueText(L["Alternative Spell IDs"], self:GetSpellListText(data.alternatives)),
+        }
+    end
+
+    return args
+end
+
+function SpellSettings:GetTagsHelpText()
+    if self.editing.isCustom then return L["Checked tags are used for this ability."] end
+
+    local text = L["Checked - tag is added, grey - default, empty - tag is removed. Green tags are default tags."]
+    local record = MythicPlusUtility:GetSpellEditorRecord()
+    if not (record and record.changeTags) then
+        text = text .. "\n" .. ORANGE_FONT_COLOR:WrapTextInColorCode(
+                 L["Custom tags are not used while \"Custom Tags\" is off in Ability Settings."])
+    end
+    return text
+end
+
 function SpellSettings:CreateEditorArgs()
     local editing = self.editing
     local isCustom = editing.isCustom
@@ -486,41 +558,14 @@ function SpellSettings:CreateEditorArgs()
     local args = {}
 
     if not isCustom then
-        defaultTags = MythicPlusUtility:ParseTags(MythicPlusUtility:GetDefaultAbilities(editing.container)[editing.spellId].tags)
+        local data = MythicPlusUtility:GetDefaultAbilities(editing.container)[editing.spellId]
+        defaultTags = MythicPlusUtility:ParseTags(data.tags)
         args.default = {
             type = "group",
             inline = true,
             order = 1,
-            name = L["Default"],
-            get = "GetValueSpellEditorDefault",
-            args = {
-                tags = {type = "input", order = 1, width = "full", name = L["Tags"], disabled = true},
-                override = {
-                    type = "input",
-                    order = 2,
-                    width = 1.5,
-                    name = L["Override"],
-                    disabled = true,
-                    hidden = "IsSpellEditorDefaultEmpty",
-                },
-                alternatives = {
-                    type = "input",
-                    order = 3,
-                    width = 1.5,
-                    name = L["Alternatives"],
-                    disabled = true,
-                    hidden = "IsSpellEditorDefaultEmpty",
-                },
-                baseline = {type = "toggle", order = 4, width = "full", name = L["Baseline"], disabled = true},
-                reset = {
-                    type = "execute",
-                    order = 5,
-                    name = L["Reset to default"],
-                    confirm = true,
-                    confirmText = L["Reset this spell to its default settings?"],
-                    func = "ResetSpellEditor",
-                },
-            },
+            name = L["Default Values (read-only)"],
+            args = self:CreateDefaultArgs(data),
         }
     end
 
@@ -528,7 +573,7 @@ function SpellSettings:CreateEditorArgs()
         type = "group",
         inline = true,
         order = 2,
-        name = L["Settings"],
+        name = isCustom and L["Ability Values"] or L["Custom Values"],
         get = "GetValueSpellEditor",
         set = "SetValueSpellEditor",
         args = {
@@ -536,16 +581,16 @@ function SpellSettings:CreateEditorArgs()
                 type = "input",
                 order = 1,
                 width = 1,
-                name = L["Override"],
-                desc = L["Spell ID of an ability that is hidden when this ability is known. Leave empty to use the default."],
+                name = L["Replaces Spell ID"],
+                desc = L["When this ability is known, the ability with this spell ID is not shown. Leave empty to use the default value."],
                 validate = "ValidateSpellEditorSpellId",
             },
             alternatives = {
                 type = "input",
                 order = 2,
                 width = 1.5,
-                name = L["Alternatives"],
-                desc = L["Spell IDs separated by commas that replace this ability when known. Leave empty to use the default."],
+                name = L["Alternative Spell IDs"],
+                desc = L["Spell IDs separated by commas. When one of them is known, it is shown instead of this ability. Leave empty to use the default value."],
                 validate = "ValidateSpellEditorSpellList",
             },
             baseline = {
@@ -554,7 +599,7 @@ function SpellSettings:CreateEditorArgs()
                 width = 0.8,
                 tristate = not isCustom,
                 name = L["Baseline"],
-                desc = L["Baseline abilities are not suggested for removal."],
+                desc = L["Baseline abilities are not talents, so they are never suggested for removal."],
             },
             pet = {
                 type = "toggle",
@@ -564,6 +609,16 @@ function SpellSettings:CreateEditorArgs()
                 name = L["Pet ability"],
                 desc = L["Checks the pet spellbook for this ability."],
             },
+            reset = {
+                type = "execute",
+                order = 5,
+                hidden = isCustom,
+                name = L["Reset to Default"],
+                desc = L["Clears all custom values of this ability."],
+                confirm = true,
+                confirmText = L["Clear all custom values of this ability?"],
+                func = "ResetSpellEditor",
+            },
         },
     }
 
@@ -571,16 +626,9 @@ function SpellSettings:CreateEditorArgs()
     args.tagsHelp = {
         type = "description",
         order = 4,
+        width = 3.6,
         fontSize = "medium",
-        name = isCustom and L["Checked tags are used for this ability."]
-          or L["Checked - tag is added, grey - default, empty - tag is removed. Green tags are default tags."],
-    }
-    args.tagsInactive = {
-        type = "description",
-        order = 5,
-        fontSize = "medium",
-        hidden = "IsSpellEditorChangeTagsOn",
-        name = ORANGE_FONT_COLOR:WrapTextInColorCode(L["Tag changes are not used while \"Change tags\" is off."]),
+        name = function() return SpellSettings:GetTagsHelpText() end,
     }
 
     for i, category in ipairs(Variables.tagCategoriesOrder) do
@@ -608,7 +656,7 @@ function SpellSettings:CreateEditorFrame()
     frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving)
     frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
-    frame:SetPortraitToAsset("Interface\\AddOns\\MythicPlusUtility\\logo")
+    self:SetPortraitLogo(frame)
     frame.onCloseCallback = function()
         frame:Hide()
         return false
@@ -631,6 +679,10 @@ function SpellSettings:CreateEditorFrame()
     self.editorFrame = frame
     self.editorGroup = group
     return frame
+end
+
+function SpellSettings:RefreshEditor()
+    if self.editorFrame and self.editorFrame:IsShown() then ACD:Open("MythicPlusUtility_SpellEditor", self.editorGroup) end
 end
 
 function SpellSettings:OpenEditor(isCustom, container, spellId)
@@ -707,6 +759,7 @@ end
 function MythicPlusUtility:SetValueSpellOverride(info, value)
     local container, spellId = GetRowSpell(info)
     self:SetSpellOverrideValue(container, spellId, info[#info], value or nil)
+    SpellSettings:RefreshEditor()
 end
 
 function MythicPlusUtility:GetValueSpellOverrideEnabled(info)
@@ -718,6 +771,7 @@ function MythicPlusUtility:SetValueSpellOverrideEnabled(info, value)
     local container, spellId = GetRowSpell(info)
     if value then value = nil end
     self:SetSpellOverrideValue(container, spellId, "enabled", value)
+    SpellSettings:RefreshEditor()
 end
 
 function MythicPlusUtility:OpenSpellOverrideEditor(info) SpellSettings:OpenEditor(false, GetRowSpell(info)) end
@@ -760,7 +814,7 @@ function MythicPlusUtility:ValidateCustomPendingSpell(info, value)
 
     local spellId = ParseSpellId(value)
     if not (spellId and C_Spell.DoesSpellExist(spellId)) then return L["Enter a valid spell ID."] end
-    if self:GetCustomAbility(GetContainerKey(info[#info - 1]), spellId) then return L["This spell is already added."] end
+    if self:GetCustomAbility(GetContainerKey(info[#info - 1]), spellId) then return L["This ability is already added."] end
     return true
 end
 
@@ -783,28 +837,6 @@ function MythicPlusUtility:GetSpellEditorRecord(create)
     if editing.isCustom then return self:GetCustomAbility(editing.container, editing.spellId) end
     return self:GetSpellOverride(editing.container, editing.spellId, create)
 end
-
-function MythicPlusUtility:GetSpellEditorDefault()
-    local editing = SpellSettings.editing
-    return self:GetDefaultAbilities(editing.container)[editing.spellId]
-end
-
-function MythicPlusUtility:GetValueSpellEditorDefault(info)
-    local data = self:GetSpellEditorDefault()
-    local name = info[#info]
-
-    if name == "tags" then return data.tags or "" end
-    if name == "override" then return data.override and tostring(data.override) or "" end
-    if name == "alternatives" then return table.concat(data.alternatives or {}, ", ") end
-    return data[name] or false
-end
-
-function MythicPlusUtility:IsSpellEditorChangeTagsOn()
-    local record = SpellSettings.editing and not SpellSettings.editing.isCustom and self:GetSpellEditorRecord()
-    return not record or record.changeTags
-end
-
-function MythicPlusUtility:IsSpellEditorDefaultEmpty(info) return not self:GetSpellEditorDefault()[info[#info]] end
 
 function MythicPlusUtility:ResetSpellEditor()
     local editing = SpellSettings.editing
